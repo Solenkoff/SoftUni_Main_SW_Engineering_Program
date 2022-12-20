@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P01_Activation_Keys", "P01_Activation_Keys\P01_Activation_Keys.csproj", "{DE6A865D-7F9F-407D-94AE-47ABD4DD3475}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P02_Emoji_Detector", "P02_Emoji_Detector\P02_Emoji_Detector.csproj", "{06AF706E-72D6-492C-A6DC-C9087C083379}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P02v2_Emoji_Detector", "P02v2_Emoji_Detector\P02v2_Emoji_Detector.csproj", "{B4FC9C9E-FC7D-446D-A81F-3B5EA7ABCABA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P01v_Activation_Keys", "P01v_Activation_Keys\P01v_Activation_Keys.csproj", "{DA18DE1E-0293-4EB6-A206-A76AA09CA89B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P03_Pirates", "P03_Pirates\P03_Pirates.csproj", "{3321ED83-C9C4-4FCA-87DC-5334BD6DA8BE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P03v2_Pirates", "P03v2_Pirates\P03v2_Pirates.csproj", "{6035A7D0-D900-40ED-B278-71CFE617F43A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P03v3_Pirates", "P03v3_Pirates\P03v3_Pirates.csproj", "{78B04F01-A967-4FAC-B916-C82C9B9861EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE6A865D-7F9F-407D-94AE-47ABD4DD3475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE6A865D-7F9F-407D-94AE-47ABD4DD3475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE6A865D-7F9F-407D-94AE-47ABD4DD3475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE6A865D-7F9F-407D-94AE-47ABD4DD3475}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06AF706E-72D6-492C-A6DC-C9087C083379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06AF706E-72D6-492C-A6DC-C9087C083379}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06AF706E-72D6-492C-A6DC-C9087C083379}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06AF706E-72D6-492C-A6DC-C9087C083379}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4FC9C9E-FC7D-446D-A81F-3B5EA7ABCABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4FC9C9E-FC7D-446D-A81F-3B5EA7ABCABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4FC9C9E-FC7D-446D-A81F-3B5EA7ABCABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4FC9C9E-FC7D-446D-A81F-3B5EA7ABCABA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA18DE1E-0293-4EB6-A206-A76AA09CA89B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA18DE1E-0293-4EB6-A206-A76AA09CA89B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA18DE1E-0293-4EB6-A206-A76AA09CA89B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA18DE1E-0293-4EB6-A206-A76AA09CA89B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3321ED83-C9C4-4FCA-87DC-5334BD6DA8BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3321ED83-C9C4-4FCA-87DC-5334BD6DA8BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3321ED83-C9C4-4FCA-87DC-5334BD6DA8BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3321ED83-C9C4-4FCA-87DC-5334BD6DA8BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6035A7D0-D900-40ED-B278-71CFE617F43A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6035A7D0-D900-40ED-B278-71CFE617F43A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6035A7D0-D900-40ED-B278-71CFE617F43A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6035A7D0-D900-40ED-B278-71CFE617F43A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78B04F01-A967-4FAC-B916-C82C9B9861EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78B04F01-A967-4FAC-B916-C82C9B9861EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78B04F01-A967-4FAC-B916-C82C9B9861EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78B04F01-A967-4FAC-B916-C82C9B9861EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E4FADD1F-6C56-428C-B431-72423C1FAECB}
+	EndGlobalSection
+EndGlobal
