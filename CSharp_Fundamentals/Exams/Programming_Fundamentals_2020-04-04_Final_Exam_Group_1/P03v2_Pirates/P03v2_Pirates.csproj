@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>_01_Reverse_Strings</RootNamespace>
+    <RootNamespace>P03v2_P_rates</RootNamespace>
   </PropertyGroup>
 
 </Project>
