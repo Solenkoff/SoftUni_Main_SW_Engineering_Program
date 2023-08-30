@@ -39,3 +39,8 @@
         IEnumerable<ITransaction> GetAllInAmountRange(double lo, double hi);
     }
 }
+
+//Test -> Compile
+//Run -> Fail
+//Impelement
+//Run - Success
