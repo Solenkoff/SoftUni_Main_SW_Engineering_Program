@@ -1,0 +1,31 @@
+h1 {
+    color: blue;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+.highlight {
+    background-color: rgb(215, 133, 133);
+}
+
+#main-title {
+    color: orange;
+}
+
+#special-paragraph {
+    font-style: oblique;
+}
+
+div {
+    background-color: rgb(210, 210, 184);
+}
+
+ul {
+    list-style-type: disc;
+}
+
+li {
+    color: orangered;
+}
