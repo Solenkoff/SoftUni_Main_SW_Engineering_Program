@@ -1,0 +1,32 @@
+body {
+    font-weight: 500;
+}
+
+.highlighted {
+    color: blue;
+    font-size: 20px;
+}
+
+div#special {
+    background-color: rgb(255, 193, 77);
+}
+
+.important .important-one{
+    color: rgb(110, 191, 213);
+}
+
+.important .important-two{
+    color: rgb(198, 61, 54);
+    font-style: italic;
+    font-weight: bold;
+}
+
+.paragraph.multiple-class{
+    color: blue;
+}
+
+.fancy[href="https://softuni.bg"]{
+    color: orange;
+    text-decoration-line: underline;
+  text-decoration-style: double;
+}
