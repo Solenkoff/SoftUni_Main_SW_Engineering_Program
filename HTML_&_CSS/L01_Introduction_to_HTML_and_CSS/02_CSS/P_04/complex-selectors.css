@@ -1,0 +1,38 @@
+nav ul li a {
+    color: blue;
+    text-decoration: none;
+}
+
+nav ul li:first-child {
+    font-weight: bold;
+}
+
+nav ul li:last-child {
+    font-style: italic;
+}
+
+.services h2::before {
+    content: ">> ";
+    color: darkred;
+}
+
+.services h2::after {
+    content: " <<";
+    color: darkred;
+}
+
+.wrapper > section.services article {
+    background-color: lightblue;
+}
+
+section + header {
+    background-color: #f0f0f0;
+}
+
+li img[src^="https://images.unsplash.com"] {
+    border: 10px solid red;
+}
+
+section.services ~ footer {
+    background-color: lightgrey;
+}
