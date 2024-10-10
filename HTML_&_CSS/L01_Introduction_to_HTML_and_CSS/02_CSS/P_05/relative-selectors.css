@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.8;
+    padding: 18px;
+}
+
+section p {
+    color: rgb(86, 81, 81);
+}
+
+.main-list > li {
+    font-weight: bold;
+}
+
+article.highlighted + article {
+    background-color: rgb(233, 106, 106);
+}
+
+h2.forerunner ~ p {
+    color: rgb(89, 92, 249);
+}
+
+li.special + li > a {
+    color: green;
+}
+
+.red {
+    color: rgb(240, 72, 72);
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: darkblue;
+}
+
+li > ul {
+    padding-left: 22px;
+}
