@@ -1,0 +1,12 @@
+.blog article header p {
+    color: gray;
+}
+
+time {
+    font-style: italic;
+    font-weight: 500;
+}
+
+span.author {
+    font-weight: bold;
+}
