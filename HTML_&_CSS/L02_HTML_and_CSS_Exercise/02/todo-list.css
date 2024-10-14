@@ -1,0 +1,4 @@
+.done ol li {
+    text-decoration: line-through;
+    text-decoration-thickness: 1.4px;
+}
