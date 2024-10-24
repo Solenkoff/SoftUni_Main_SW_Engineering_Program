@@ -1,0 +1,22 @@
+body {
+    border: 2px solid green;
+    /* max-width: 100%; */
+    padding: 2em;
+}
+
+.wrapper {
+    max-width: 1000px;
+    border: 2px solid blue;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.header, .main, .footer {
+    border: 2px solid black;
+    padding: 2em;
+    text-align: center;
+}
+
+.wrapper * + * {
+    margin-top: 2em;
+}
