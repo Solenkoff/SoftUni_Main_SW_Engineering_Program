@@ -1,0 +1,58 @@
+html {
+    font: 14px/1.5 Lato, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 2em;
+    background-color: #ebebeb;
+    /* font-family: Lato, sans-serif; */
+}
+
+.card {
+    display: block;
+    max-width: 340px;
+    overflow: hidden;
+    margin: 0 auto;
+    text-decoration: none;
+    color: #2D2D2D;
+    background-color: #FFFFFF;
+    border-radius: 0.3em;
+    box-shadow: 0 0 1em 0 rgb(0,0,0,0.1);
+    padding-bottom: 0.7em;
+
+}
+
+.card span {
+    display: block;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.main, .footer {
+    padding: 1em 2em;
+}
+
+.main strong {
+    display: block;
+    font-size: 1.2em;
+    padding-bottom: 0.5em;
+}
+
+.footer span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-style: italic;
+}
+
+
+/* Additional feat. */
+
+.card:hover strong {
+    color: darkorange;
+}
