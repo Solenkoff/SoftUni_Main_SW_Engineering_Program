@@ -1,0 +1,61 @@
+html {
+    font: 14px/1.5 Lato, sans-serif;
+    color: #050505;
+}
+
+body {
+    background: #eeeeee;
+    padding: 2em;
+}
+
+
+
+.sidebar-right, .sidebar-left {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2em;
+    background-color: #ffffff;
+    border-radius: 0.3em;
+    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.2);
+
+}
+
+.sidebar-left .mid-section {
+    flex-direction: row-reverse;
+}
+
+.sidebar-right {
+    margin-bottom: 2em;
+}
+
+header, footer,
+.mid-section div, main {
+    border: 2px solid #c4c4c4;
+    border-radius: 0.3em;
+    padding: 1.5em;
+}
+
+.mid-section {
+    display: flex;
+    gap: 0.8em
+}
+
+.mid-section main {
+     flex-grow: 2;
+}
+
+.mid-section div {
+    flex-grow: 1;
+}
+
+p {
+    margin: 0;
+}
+
+header {
+    margin-bottom: 0.8em;
+}
+
+footer {
+    margin-top: 0.8em;
+}
