@@ -1,0 +1,64 @@
+body {
+    font: 14px/1.5 Lato, sans-serif;
+    background-color: #eee;
+    padding: 2em;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+img {
+    
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+li {
+    display: flex;
+    flex: 1 1 calc(33% - (2 * 2em));
+    list-style: none outside;
+    border: 8px solid #333;
+    background-color: #fff;
+    border-radius: 0.2em;
+    box-shadow: 0 0 0.5em 0.1em rgb(0,0,0,0.2);
+    padding: 1em;
+    position: relative;
+}
+
+.gallery a {
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+}
+
+.gallery figure {
+    display: flex;
+    gap: 2em;
+    flex-direction: column;
+}
+
+.gallery figure .media {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 1 auto;
+}
+
+.gallery figure .media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 1em 0 rgb(0,0,0,0.2);
+    border-radius: 0.2em;
+}
+
+.gallery figcaption {
+    font-style: italic;
+    opacity: 0.4;
+}
