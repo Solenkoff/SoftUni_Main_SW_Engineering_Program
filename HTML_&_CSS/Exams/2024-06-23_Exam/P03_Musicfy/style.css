@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+}
+
+header .img-wrapper {
+  width: 120px;
+}
+
+header .img-wrapper img {
+  width: 70%;
+}
+
+.list-items {
+  display: flex;
+  padding: 0;
+}
+
+.list-items li {
+  list-style: none;
+  padding: 0 10px;
+  color: white;
+  font-weight: bold;
+  margin: 10px;
+}
+
+main .img-wrapper {
+  width: 100%;
+  height: 300px;
+  background-color: #1db954;
+  position: relative;
+}
+
+main .img-wrapper img {
+  position: relative;
+  top: 50px;
+  width: 45%;
+}
+
+main > h2 {
+  text-align: center;
+  color: white;
+  position: relative;
+  top: -280px;
+  margin: 30px 0;
+}
+
+.taxes {
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  height: 400px auto;
+  margin: 0 auto -220px auto;
+  position: relative;
+  top: -280px;
+}
+
+.taxes-card {
+  flex-basis: 30%;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+}
+
+.taxes-card h2 {
+  margin-top: 20px;
+  color: #54546d;
+}
+
+.taxes-card ul {
+  margin-top: 20px;
+  color: #54546d;
+  margin-left: 50px;
+  width: 80%;
+}
+
+.taxes-card li {
+  list-style-type: circle;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.taxes-card footer {
+  padding: 10px 0;
+  border-radius: 0 0 10px 10px;
+}
+
+.taxes-card footer div:first-child {
+  border-right: 1px solid white;
+}
+
+.taxes-card footer p {
+  color: white;
+}
+
+.basics {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.basics > p {
+  position: relative;
+  top: -50px;
+}
+
+.basics button {
+  background-color: #1db954;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 15px;
+  width: 50%;
+  align-self: center;
+  border-radius: 20px;
+}
+
+.professional button {
+  background-color: #1db954;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 15px;
+  width: 50%;
+  align-self: center;
+  border-radius: 20px;
+  margin: 30px;
+}
+
+.basics footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: #191414;
+}
+
+.professional footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: #191414;
+}
+
+.taxes-card footer .main-description {
+  font-size: 20px;
+  padding: 8px;
+}
+
+.taxes-card footer .secondary-description {
+  font-size: 14px;
+  padding: 8px;
+}
+
+.study-form {
+  width: 65%;
+  margin: 80px auto;
+}
+
+.study-form h3 {
+  text-align: center;
+  font-size: 40px;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+.study-form p {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.study-form ul {
+  padding: 0;
+}
+
+.study-form ul li {
+  list-style: none;
+  padding: 10px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.study-form ul li span {
+  flex-basis: 30%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.study-form ul li:nth-child(even) {
+  background-color: #1db9548e;
+}
+
+.study-form ul li:nth-child(odd) {
+  background-color: #19141438;
+}
+
+.study-form ul li:first-child {
+  border-radius: 5px 5px 0 0;
+}
+
+.study-form ul li:last-child {
+  border-radius: 0 0 5px 5px;
+}
+
+.finance {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 80px;
+  
+}
+
+.finance .postbank-img-wrapper {
+  width: 30%;
+}
+
+.finance img {
+  float: right;
+  width: 80%;
+}
+
+.finance .content h3 {
+  font-weight: bold;
+  text-align: center;
+}
+
+.finance .content p {
+  margin-top: 20px;
+  width: 50rem;
+}
+
+footer {
+  text-align: center;
+  background-color: #191414;
+  color: white;
+  padding: 30px 0;
+}
