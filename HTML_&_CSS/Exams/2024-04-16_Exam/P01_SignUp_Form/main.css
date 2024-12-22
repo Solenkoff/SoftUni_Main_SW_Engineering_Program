@@ -1,0 +1,132 @@
+@import url("my-reset.css");
+/* @import url("typography.css"); */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap");
+
+
+:root {
+  --clr-background: #C1BDBA;
+  --clr-form-background: #24333C;
+  --clr-btn-green: #1AB188;
+  --clr-input-border: #A0B3B0;
+  --clr-input-font: #92999E;
+  --clr-white-font: #FFFFFF;
+  --clr-log-in-btn-inactive: #435359;
+  --clr-log-in-btn-active: #179A77;
+}
+
+html {
+    font: 14px/1.5 'Kode Mono', sans-serif;
+}
+
+body, input, button, textarea {
+    font: inherit;
+}
+
+body {
+    padding: 2em ;
+    background-color: var(--clr-background);
+}
+
+form {
+    max-width: 750px;
+    margin: 0 auto;
+    background-color: var(--clr-form-background);
+    color: #FFFFFF;
+    padding: 4rem;
+    border-radius: 0.4rem;
+    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.2);
+    font-size: 1.8em;
+}
+
+.nav {
+    display: flex;
+    margin-bottom: 2em;
+}
+
+.nav li {
+    display: block;
+    list-style: none outside;
+    flex: 1 1 auto;
+}
+
+.nav a {
+    display: block;
+    color: inherit; 
+    text-decoration: none;
+    padding: 0.8em 1em;
+    text-align: center;
+    background: var(--clr-log-in-btn-inactive);
+
+}
+
+.nav a:hover {
+    background-color: var(--clr-log-in-btn-active);
+}
+
+.nav li.current a{
+    background-color: var(--clr-btn-green);
+
+}
+
+form h2 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 1.6em;
+    padding-bottom: 2rem;
+
+}
+
+.field {
+    position: relative;
+    padding-bottom: 2em;
+}
+
+.field input {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--clr-input-border);
+    background-color: transparent;
+    padding: 0.3em 0.5em;
+    line-height: 1;
+    outline: none;
+}
+
+.field input:required ~ label::after {
+    display: inline-block;
+    content: '*';
+    color: var(--clr-btn-green);
+    padding: 0.1em;
+}
+
+.field label {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.3em 0.5em;
+    color: var(--clr-input-font);
+
+}
+
+form input[type="submit"] {
+    display: block;
+    width: 100%;
+    background-color: var(--clr-btn-green);
+    color: var(--clr-white-font);
+    text-transform: uppercase;
+    border: none;
+    font-size: 1.6em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 0.4em 1em;
+}
+.flex {
+    display: flex;
+    gap: 1.2em;
+}
+
+.flex .field {
+    flex: 1 1 auto;
+}
