@@ -1,0 +1,121 @@
+@import url(my-reset.css);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+:root {
+    --clr-bg-blue: #819DAF;
+    --clr-bg-white: #FFFFFF;
+    --clr-bg-btn-more: #327DC4;
+    --clr-font-blue: #327DC4;
+    --clr-font-white: #FFFFFF;
+    --clr-font-black: #000000;
+}
+
+html {
+    font: 12px/1.5 Poppins, sans-serif;
+}
+
+
+h1 {
+	font-size: 2.8rem;
+}
+
+h2 {
+	font-size: 2.2rem;
+}
+
+h3 {
+	font-size: 1.6rem;
+}
+
+h4 {
+	font-size: 1.6rem;
+}
+
+h5 {
+	font-size: 1.4rem;
+}
+
+h6 {
+	font-size: 1.2rem;
+}
+
+body {
+    padding: 1.5em;
+    background: var(--clr-bg-white);
+}
+
+.container {
+    
+    max-width: 100em;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin: 1em;
+}
+
+.section-header span {
+    color: var(--clr-font-blue);
+}
+
+.section-header h2 {
+    font-size: 2.4em;
+    font-weight: 600;
+}
+
+.section-header p {
+    font-size: 1.2em;
+    padding-bottom: 1em;
+}
+
+.articles-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5em;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--clr-bg-blue);
+    border-radius: 1.5em;
+    overflow: hidden;
+    flex: 1 1 30%;
+}
+
+.media {
+    display: block;
+    border-radius: 1.5em;
+    overflow: hidden;
+}
+
+.card-content {
+    font-size: 1.2em;
+    padding: 1.5em 1.5em 1em 1.2em;
+}
+
+.card-content h3{
+    font-size: 1.6em;
+    font-weight: 500;
+    padding-bottom: 0.6em;
+
+}
+
+.button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--clr-bg-btn-more);
+    color: var(--clr-font-white);
+    padding: 0.3em 1.4em;
+    border: 1px solid #323CC4;
+    outline: 1px solid var(--clr-font-white);
+    border-radius: 4em;
+    text-align: center;
+    font-size: 0.9em;
+    margin-top: 0.8em;
+}
+
+
+
