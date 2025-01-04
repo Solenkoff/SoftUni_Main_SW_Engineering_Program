@@ -1,0 +1,221 @@
+@import url(my-reset.css);
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+
+
+:root {
+    --clr-bg-gray: #EFEFEF;
+    --clr-font-gray: #A6A1A5;
+    --clr-black: #000000;
+    --clr-white: #FFFFFF;
+    --clr-red: #D01919;
+}
+
+
+html {
+    font: 16px/1.5 'PT Sans', 'PT Sans', sans-serif;
+}
+
+h1 {
+    font-size: 2.8em;
+}
+
+h2 {
+    font-size: 2.4em;
+}
+
+h3 {
+    font-size: 2em;
+}
+
+h4 {
+    font-size: 1.6em;
+}
+
+h5 {
+    font-size: 1.4em;
+}
+
+h6 {
+    font-size: 1.2em;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--clr-red);
+    color: var(--clr-white);
+     padding: 1em 3em;
+}
+
+.phone > *,
+.address > *,
+.sotials > * {
+    display: inline-block;
+}
+
+.sotials * {
+    padding-right: 0.5em;
+
+}
+
+
+/*  Nav  */
+
+.main-nav ul {
+    display: flex;
+    justify-content: right;
+    gap: 4em;
+    padding: 1em 3.5em;
+
+}
+
+.main-nav ul{
+    list-style-type: none;
+}
+
+.main-nav li {
+    display: block;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--clr-white);
+}
+
+
+/*  Banner */
+
+.banner {
+    padding-bottom: 7em;
+    background-image: url(../image/fitness-main.jpg);
+    background-repeat: no-repeat;
+    background-size: 100vw auto;
+    background-position: center -16em;
+
+}
+
+.banner-content {
+    max-width: 40em;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--clr-white);
+}
+
+.banner-content p {
+    padding: 0 6em;
+}
+
+.banner-content a {
+    display: block;
+    width: 8em;
+    height: 2em;
+    margin: 1.5em auto;
+    padding: 0.3em 0.6em;
+    background-color: var(--clr-red);
+    color: var(--clr-white);
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 0.4em;
+}
+
+h1 {
+    font-size: 3.4em;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    padding: 6rem 1rem 1rem 1rem;
+}
+
+.section.welcome .section-wrapper,
+.section.coaches .section-wrapper{
+    max-width: 85em;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section.coaches {
+    background: var(--clr-bg-gray);
+    padding-bottom: 4em;
+}
+.content {
+    display: flex;
+    justify-content: space-between;
+    gap: 12em;
+}
+
+.section.welcome .content {
+    padding: 0 3em;
+}
+
+.section.welcome {
+    padding-bottom: 4em;
+}
+
+.content article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 calc(33% );
+    
+}
+
+.welcome .media {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5em;
+}
+
+.welcome .media img{
+    display: block;
+    align-items: center;
+    min-width: 2em;
+    width: 20%;
+}
+
+.heading {
+    color: var(--clr-red);
+    font-weight: 600;
+    padding-bottom: 1em;
+}
+
+.content p {
+    align-items: center;
+}
+
+.devider {
+    width: 3em;
+    height: 2px;
+    background-color: var(--clr-red);
+    margin: 2em auto;
+}
+
+.section h3 {
+    padding: 1em 0 0 0;
+}
+
+.section.banner {
+    background-color: pink;
+}
+
+.section.coaches p {
+    padding: 0.5em 1em;
+}
+
+.footer {
+    background-color: var(--clr-red);
+    text-align: center;
+    padding: 0.5em;
+    font-weight: 500;
+}
+
+.section.coaches .content p.name {
+    padding-bottom: 0;
+    font-weight: 900;
+    /* margin-bottom: -0.5em; */
+}
+
+.content article p:last-of-type {
+    color:  var(--clr-font-gray);
+}
