@@ -3,6 +3,7 @@ import http from 'http';
 import siteCss from './content/styles/site.css.js';
 import homePage from './views/home/index.html.js';
 import addBreedPage from './views/addBreed.html.js';
+import addCatPage from './views/addCat.html.js';
 
 
 const server = http.createServer((req, res) => {
@@ -28,6 +29,9 @@ const server = http.createServer((req, res) => {
             break;
         case '/cats/add-breed':
             res.write(addBreedPage);
+            break;
+        case '/cats/add-cat':
+            res.write(addCatPage);
             break;
         default:
             res.write('Page Not Found!');
