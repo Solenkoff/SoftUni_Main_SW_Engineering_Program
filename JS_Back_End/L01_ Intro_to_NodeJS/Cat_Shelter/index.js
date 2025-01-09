@@ -1,8 +1,14 @@
 import http from 'http';
 
-const server = http.createServer((req, res) => {
-    res.write('It works!');
+import homePage from './views/home/index.html.js';
 
+const server = http.createServer((req, res) => {
+
+    res.writeHead(200, {
+        'content-type': 'text/html',
+    })
+
+    res.write(homePage);
     res.end();
 });
 
