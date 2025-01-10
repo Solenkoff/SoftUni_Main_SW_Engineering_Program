@@ -8,8 +8,10 @@ import addBreedPage from './views/addBreed.html.js';
 import addCatPage from './views/addCat.html.js';
 
 let cats = [];
+let breeds = [];
 
 initCats();
+initBreeds();
 
 const server = http.createServer((req, res) => {
     if (req.method === 'POST') {
@@ -22,13 +24,27 @@ const server = http.createServer((req, res) => {
         req.on('end', () => {
             const data = new URLSearchParams(body);
 
-            cats.push({
-                // id: cats.length + 1,    //  Works if there is NO delete cat option
-                id: uuid(),
-                ...Object.fromEntries(data.entries()),
-            });
+            if (req.url === '/cats/add-cat') {
+                cats.push({
+                    // id: cats.length + 1,    //  Works if there is NO delete cat option
+                    id: uuid(),
+                    ...Object.fromEntries(data.entries()),
+                });
 
-            saveCats();
+                saveCats();
+            } else if (req.url === '/cats/add-breed') {
+                const newBreed = Object.fromEntries(data.entries());
+                const newBreedName = newBreed.breed;
+
+                const currBreeds = breeds.map(b => b.breed);
+
+                if (!currBreeds.includes(newBreedName)) {
+                    breeds.push(newBreed);
+
+                    saveBreed();
+                }
+
+            }
 
             res.writeHead('302', {
                 'location': '/',
@@ -73,6 +89,24 @@ const server = http.createServer((req, res) => {
 
     res.end();
 });
+
+async function initBreeds() {
+    try {
+        const breedJson = await fs.readFile('./breed.json', { encoding: 'utf-8' });
+        breeds = JSON.parse(breedJson);
+    } catch (err) {
+        alert('Error: ${err.message}');
+    }
+}
+
+async function saveBreed() {
+    try {
+        const breedJson = JSON.stringify(breeds, null, 2);
+        await fs.writeFile('./breed.json', breedJson, { encoding: 'utf-8' });
+    } catch (err) {
+
+    }
+}
 
 async function initCats() {
     try {
