@@ -35,10 +35,14 @@
     "breed": "Fluffy Cat"
   },
   {
-    "id": "8c3b28da-e508-4942-acc2-15d564a57e6c",
-    "name": "Ivaylo Solenkov",
-    "description": "dsshsdj",
-    "imageUrl": "https://www.irishnews.com/resizer/v2/CIEV7WRZTNOJ3PD3BGPX6GDTC4.jpg?auth=8e187b34057512c73c21fd73e4ad75c2ed9b9cbdb3c53bac7c245f819789694d&width=800&height=977",
+    "id": "12da3d99-a975-4d67-a92e-e0269dc36217",
+    "name": "Tsotsolanko",
+    "description": "Gentle and loving. Loves to be held and purrs loudly when happy.",
+    "imageUrl": "https://as2.ftcdn.net/v2/jpg/05/80/61/41/1000_F_580614175_LW6mydM9ii6KEwPjF8aAlPqmlj21YKiC.jpg",
+    "breed": "Fluffy Cat"
+  },
+  {
+    "id": "8c3c1058-3699-4644-8653-ec0d3df52aef",
     "breed": "Fluffy Cat"
   }
 ]

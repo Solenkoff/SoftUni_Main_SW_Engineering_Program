@@ -6,6 +6,7 @@ import siteCss from './content/styles/site.css.js';
 import homePage from './views/home/index.html.js';
 import addBreedPage from './views/addBreed.html.js';
 import addCatPage from './views/addCat.html.js';
+import editCatPage from './views/editCat.html.js';
 
 let cats = [];
 let breeds = [];
@@ -23,16 +24,19 @@ const server = http.createServer((req, res) => {
 
         req.on('end', () => {
             const data = new URLSearchParams(body);
+            console.log(data.entries());
 
             if (req.url === '/cats/add-cat') {
+
                 cats.push({
-                    // id: cats.length + 1,    //  Works if there is NO delete cat option
                     id: uuid(),
                     ...Object.fromEntries(data.entries()),
                 });
 
                 saveCats();
+
             } else if (req.url === '/cats/add-breed') {
+
                 const newBreed = Object.fromEntries(data.entries());
                 const newBreedName = newBreed.breed;
 
@@ -44,6 +48,18 @@ const server = http.createServer((req, res) => {
                     saveBreed();
                 }
 
+            }else if (req.url.startsWith('/cat/edit')) {
+
+                const id = req.url.split('/cat/edit/')[1];
+        
+                cats = cats.filter(c => c.id !== id);
+
+                cats.push({
+                    id: uuid(),
+                    ...Object.fromEntries(data.entries()),
+                });
+
+                saveCats();
             }
 
             res.writeHead('302', {
@@ -55,6 +71,7 @@ const server = http.createServer((req, res) => {
 
         return;
     }
+
 
     // Load assets
     if (req.url === '/styles/site.css') {
@@ -71,21 +88,34 @@ const server = http.createServer((req, res) => {
         'content-type': 'text/html',
     })
 
+    if (req.url.startsWith('/cat/edit')) {
+
+        const id = req.url.split('/cat/edit/')[1];
+
+        const cat = cats.find(c => c.id == id);
+
+        res.write(editCatPage(cat, breeds));
+
+        return res.end();
+    }
+
+
     switch (req.url) {
+
         case '/':
-            console.log(uuid())
             res.write(homePage(cats));
             break;
         case '/cats/add-breed':
             res.write(addBreedPage());
             break;
         case '/cats/add-cat':
-            res.write(addCatPage());
+            res.write(addCatPage(breeds));
             break;
         default:
             res.write('Page Not Found!');
             break;
     }
+
 
     res.end();
 });

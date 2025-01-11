@@ -1,4 +1,4 @@
-export default (breeds) => `<!DOCTYPE html>
+export default (cat, breeds) => `<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,22 +21,22 @@ export default (breeds) => `<!DOCTYPE html>
         </nav>
         <h1>Cat Shelter</h1>
     </header>
-    <main>
-        <form action="/cats/add-cat" method="POST" class="cat-form">
-            <h2>Add Cat</h2>
+    <main>S
+        <form action="/cat/edit/${cat.id}" method="POST" class="cat-form">
+            <h2>Edit Cat</h2>
             <label for="name">Name</label>
-            <input name="name" type="text" id="name">
+            <input type="text" id="name" value="${cat.name}">
             <label for="description">Description</label>
-            <textarea name="description" id="description"></textarea>
-            <label for="image">Image</label>
-            <input name="imageUrl" type="text" id="image">
+            <textarea id="description">${cat.description}</textarea>
+            <label for="imageUrl">Image</label>
+            <input type="text" id="imageUrl" value="${cat.imageUrl}">
             <label for="group">Breed</label>
-            <select name="breed" id="group">
+            <select name="breed" id="group" value="${cat.breed}">
                 ${breeds.map(b => `<option value="${b.breed}">${b.breed}</option>`)}
             </select>
-            <button type="submit">Add Cat</button>
+            <button type="submit">Edit Cat</button>
         </form>
     </main>
 </body>
 
-</html>`;
+</html>`
