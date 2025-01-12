@@ -97,6 +97,19 @@ const server = http.createServer((req, res) => {
         res.write(editCatPage(cat, breeds));
 
         return res.end();
+    }else if (req.url.startsWith('/cat/delete')) {
+
+        const id = req.url.split('/cat/edit/')[1];
+
+        cats = cats.filter(c => c.id !== id);
+
+        saveCats();
+
+        res.writeHead('302', {
+            'location': '/',
+        })
+
+        return res.end();
     }
 
 
