@@ -3,7 +3,9 @@ import movies from '../movies.js';
 
 const movieService = {
 
-    
+    getAll(){
+        return movies;
+    },
     findMovie(movieId){
         //  TODO: If no such movie...
         return movies.find(movie => movie.id === movieId);
