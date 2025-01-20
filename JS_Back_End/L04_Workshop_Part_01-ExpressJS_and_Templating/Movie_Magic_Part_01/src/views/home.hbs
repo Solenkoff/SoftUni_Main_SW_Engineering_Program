@@ -3,8 +3,7 @@
     <div class="band">
 
         <!-- If there are posts for creature in the database display each of them -->
-        {{#if movies}}
-        {{#each movies}}
+    {{#each movies}}
         <div class="flip flip-vertical">
             <div class="front">
                 <img src="{{imageUrl}}" alt="{{title}}">
@@ -16,12 +15,11 @@
                 <a href="/movies/{{id}}/details" class="details">Details</a>
             </div>
         </div>
-        {{/each}}
-        {{else}}
+    {{else}}
         <div class="no-posts">
             <p class="no-offer">There are no posts yet...</p>
         </div>
-        {{/if}}
+    {{/each}}
 
         <!-- If there are still no posts in the database display: -->
         <!-- <div class="no-posts">
