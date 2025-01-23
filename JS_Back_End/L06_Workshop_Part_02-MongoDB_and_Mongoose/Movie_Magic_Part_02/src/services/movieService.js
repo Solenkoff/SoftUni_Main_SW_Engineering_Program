@@ -4,11 +4,11 @@ import movies from '../movies.js';
 
 const movieService = {
 
-    async getAll( filter = {} ){
+    getAll( filter = {} ){
         //  #2 from homeController -> <lean>
-        let result = await  Movie.find({}).lean();
+        // let result = await  Movie.find({}).lean();  // with async
 
-        // let result =  Movie.find({});
+        let result =  Movie.find({}); 
 
         // if(filter.search){
         //     result = result.filter(movie => movie.title.toLowerCase().includes(filter.search.toLowerCase()));
@@ -24,9 +24,11 @@ const movieService = {
 
         return result;
     },
-    findMovie(movieId){
+    getOne(movieId){
         //  TODO: If no such movie...
-        return movies.find(movie => movie.id === movieId);
+        const result = Movie.findById(movieId);
+
+        return result;
     },
     createMovie(movieData){
         const newId = uuid();
