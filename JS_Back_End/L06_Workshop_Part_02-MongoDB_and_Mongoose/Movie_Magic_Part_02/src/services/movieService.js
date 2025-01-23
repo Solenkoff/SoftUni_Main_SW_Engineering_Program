@@ -1,22 +1,26 @@
 import { v4 as uuid } from 'uuid';
+import Movie from '../models/Movie.js';
 import movies from '../movies.js';
 
 const movieService = {
 
-    getAll( filter = {} ){
-        let result = movies;
+    async getAll( filter = {} ){
+        //  #2 from homeController -> <lean>
+        let result = await  Movie.find({}).lean();
 
-        if(filter.search){
-            result = result.filter(movie => movie.title.toLowerCase().includes(filter.search.toLowerCase()));
-        }
+        // let result =  Movie.find({});
 
-        if(filter.genre){
-            result = result.filter(movie => movie.genre.toLocaleLowerCase() === filter.genre.toLocaleLowerCase());
-        }
+        // if(filter.search){
+        //     result = result.filter(movie => movie.title.toLowerCase().includes(filter.search.toLowerCase()));
+        // }
 
-        if(filter.year){
-            result = result.filter(movie => movie.year === filter.year);
-        }
+        // if(filter.genre){
+        //     result = result.filter(movie => movie.genre.toLocaleLowerCase() === filter.genre.toLocaleLowerCase());
+        // }
+
+        // if(filter.year){
+        //     result = result.filter(movie => movie.year === filter.year);
+        // }
 
         return result;
     },

@@ -10,7 +10,7 @@ const port = 5000;
 
 //  db configuration
  try {
-    const uri = 'mongodb://127.0.0.1:27017/magic-movie'
+    const uri = 'mongodb://127.0.0.1:27017/magic-movies'
     await mongoose.connect(uri);
 
     console.log('DB connected successfully!');
@@ -23,6 +23,9 @@ const port = 5000;
 //  handlebars configuration
 app.engine('hbs', handlebars.engine({
     extname: 'hbs',
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+    },
     helpers: {
         showRating: showRatingHelper
     }
