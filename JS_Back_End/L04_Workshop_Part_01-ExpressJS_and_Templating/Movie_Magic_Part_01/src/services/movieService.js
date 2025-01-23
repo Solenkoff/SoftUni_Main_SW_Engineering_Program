@@ -25,13 +25,15 @@ const movieService = {
         return movies.find(movie => movie.id === movieId);
     },
     createMovie(movieData){
-        const newMovie = { 
-            id: uuid(),
+        const newId = uuid();
+
+        movies.push({
+            id: newId,
             ...movieData,
-            rating: Number(movieData.rating)
-        }
- 
-        movies.push(newMovie); 
+            rating: Number(movieData.rating),
+        });
+
+        return newId;
     }
 }
 
