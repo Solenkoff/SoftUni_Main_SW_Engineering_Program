@@ -34,15 +34,13 @@ const movieService = {
         return result;
     },
     createMovie(movieData){
-        const newId = uuid();
-
-        movies.push({
-            id: newId,
+        const newMoviePromise = Movie.create({
             ...movieData,
+            year: Number(movieData.year),
             rating: Number(movieData.rating),
         });
 
-        return newId;
+        return newMoviePromise; 
     }
 }
 
