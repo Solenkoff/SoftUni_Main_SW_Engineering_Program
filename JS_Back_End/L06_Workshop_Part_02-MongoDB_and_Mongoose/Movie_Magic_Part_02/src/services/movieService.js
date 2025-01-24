@@ -8,21 +8,24 @@ const movieService = {
         //  #2 from homeController -> <lean>
         // let result = await  Movie.find({}).lean();  // with async
 
-        let result =  Movie.find({}); 
+        let query =  Movie.find({}); 
 
-        // if(filter.search){
-        //     result = result.filter(movie => movie.title.toLowerCase().includes(filter.search.toLowerCase()));
-        // }
+        if(filter.search){
+            // TODO  fix partial search to be case sensitive
+            query = query.where({title: filter.search});
+        }
 
-        // if(filter.genre){
-        //     result = result.filter(movie => movie.genre.toLocaleLowerCase() === filter.genre.toLocaleLowerCase());
-        // }
+        if(filter.genre){
+            // TODO  fix partial search to be case sensitive
+            query = query.where({genre: filter.genre});
+        }
 
-        // if(filter.year){
-        //     result = result.filter(movie => movie.year === filter.year);
-        // }
+        if(filter.year){
+            // TODO  fix partial search to be case sensitive
+            query = query.where({year: Number(filter.year)});
+        }
 
-        return result;
+        return query;
     },
     getOne(movieId){
         //  TODO: If no such movie...
