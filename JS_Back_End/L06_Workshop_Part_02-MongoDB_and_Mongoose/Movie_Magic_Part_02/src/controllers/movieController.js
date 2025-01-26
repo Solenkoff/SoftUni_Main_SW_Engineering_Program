@@ -5,7 +5,7 @@ import castService from '../services/castService.js';
 
 const movieController = Router();
 
-movieController.get('/search', async ( req, res ) => {
+movieController.get('/search', async (req, res) => {
     const filter = req.query;
     const movies = await movieService.getAll(filter);
 
@@ -16,18 +16,18 @@ movieController.get('/create', (req, res) => {
     res.render('create');
 })
 
-movieController.post('/create', async (req, res) => { 
+movieController.post('/create', async (req, res) => {
     const newMovieData = req.body;
-    
+
     await movieService.createMovie(newMovieData);
-    
+
     res.redirect('/');
 })
- 
+
 movieController.get('/:movieId/details', async (req, res) => {
     const movieId = req.params.movieId;
     const movie = await movieService.getOne(movieId);
- 
+
     res.render('movie/details', { movie });
 })
 
@@ -38,6 +38,16 @@ movieController.get('/:movieId/attach-cast', async (req, res) => {
 
     res.render('movie/attach-cast', { movie, casts });
 })
+
+movieController.post('/:movieId/attach-cast', async (req, res) => {
+    console.log(req.body);
+
+    const castId = req.body.cast;
+    const movieId = req.params.movieId;
+    await movieService.attachCast(movieId, castId);
+
+    res.redirect(`/movies/${movieId}/details`);
+});
 
 
 export default movieController; 
