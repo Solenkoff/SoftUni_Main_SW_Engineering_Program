@@ -39,6 +39,15 @@ const movieService = {
         });
 
         return newMoviePromise; 
+    },
+    async attachCast(movieId, castId){
+        //  #1  Attach
+        const movie = await Movie.findById(movieId);
+        movie.casts.push(castId); 
+
+        await movie.save();
+
+        return movie;
     }
 }
 
