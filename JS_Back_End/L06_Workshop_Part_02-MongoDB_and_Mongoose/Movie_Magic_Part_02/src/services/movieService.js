@@ -31,6 +31,9 @@ const movieService = {
 
         return result;
     },
+    getOneWithCasts(movieId){
+        return this.getOne(movieId).populate('casts');
+    },
     createMovie(movieData){
         const newMoviePromise = Movie.create({
             ...movieData,
