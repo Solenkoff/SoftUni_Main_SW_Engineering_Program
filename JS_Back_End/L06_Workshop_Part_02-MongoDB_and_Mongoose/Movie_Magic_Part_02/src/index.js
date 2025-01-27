@@ -1,17 +1,18 @@
 import express from 'express';
 import handlebars from 'express-handlebars';
 import mongoose from 'mongoose';
+import 'dotenv/config';
 
 import routes from './routes.js';
 import showRatingHelper from './helpers/rating-helper.js';
 
 const app = express();
-const port = 5000;
+const port = 5000;  
 
 //  db configuration
  try {
-    const uri = 'mongodb://127.0.0.1:27017/magic-movies'
-    await mongoose.connect(uri);
+    const localUri = 'mongodb://127.0.0.1:27017/magic-movies';
+    await mongoose.connect(process.env.DATABASE_URI ?? localUri);
 
     console.log('DB connected successfully!');
  } catch (err) {
