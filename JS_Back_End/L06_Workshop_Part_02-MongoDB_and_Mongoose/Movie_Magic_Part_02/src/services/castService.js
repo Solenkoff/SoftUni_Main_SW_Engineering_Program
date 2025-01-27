@@ -7,7 +7,7 @@ export default {
 
         if(filter.exclude){
             //query = query.find({_id: {$nin: filter.exclude}});   //  with mongodb
-            query = query.nin('id', filter.exclude);              //  with mongoose
+            query = query.nin('_id', filter.exclude);              //  with mongoose
         }
 
         return query;
