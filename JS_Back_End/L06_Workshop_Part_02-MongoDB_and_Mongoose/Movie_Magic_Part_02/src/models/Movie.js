@@ -1,6 +1,6 @@
 import { Schema, model, Types } from 'mongoose';
 
- //  Create schema
+//  Create schema
 const movieSchema = new Schema({
     title: String,
     category: String,
@@ -10,15 +10,24 @@ const movieSchema = new Schema({
     imageUrl: String,
     rating: Number,
     description: String,
+    // casts: {
+    //     type: Types.ObjectId,
+    //     ref: 'Cast'
+    // }
+    
     casts: [{
-        type: Types.ObjectId,
-        ref: 'Cast'
+        _id: false,
+        character: String,
+        cast: {
+            type: Types.ObjectId,
+            ref: 'Cast'
+        }
     }],
 });
 
- //  Create model
- const Movie = model('Movie', movieSchema);
+//  Create model
+const Movie = model('Movie', movieSchema);
 
 
- //  Export model
- export default Movie;
+//  Export model
+export default Movie;
