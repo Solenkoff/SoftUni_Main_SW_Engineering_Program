@@ -32,7 +32,7 @@ const movieService = {
         return result;
     },
     getOneWithCasts(movieId) {
-        return this.getOne(movieId).populate('casts');
+        return this.getOne(movieId).populate('casts.cast');
     },
     createMovie(movieData) {
         const newMoviePromise = Movie.create({
@@ -43,7 +43,7 @@ const movieService = {
 
         return newMoviePromise;
     },
-    async attachCast(movieId, castId) {
+    async attachCast(movieId, castId, character) {
         // TODO: Check if castId has not been added already
 
         //  #1  Attach   ( Allows additional checks )
@@ -54,7 +54,17 @@ const movieService = {
         // return movie;
 
         //*  #2  Better Attach
-        return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } });
+        //   - without  
+        // return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } });
+        //   - with 
+        return Movie.findByIdAndUpdate(movieId, {
+            $push: {
+                casts: {
+                    cast: castId,
+                    character
+                }
+            }
+        });
 
     }
 }
