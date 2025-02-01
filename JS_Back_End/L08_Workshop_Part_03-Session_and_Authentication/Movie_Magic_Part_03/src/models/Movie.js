@@ -11,9 +11,9 @@ const movieSchema = new Schema({
     rating: Number,
     description: String,
     // casts: {
-    //     type: Types.ObjectId,
+    //     type: Types.ObjectId,  
     //     ref: 'Cast'
-    // }
+    // } 
     
     casts: [{
         _id: false,
@@ -23,6 +23,10 @@ const movieSchema = new Schema({
             ref: 'Cast'
         }
     }],
+    creator: {
+        type: Types.ObjectId,
+        ref: 'User',
+    }
 });
 
 //  Create model
