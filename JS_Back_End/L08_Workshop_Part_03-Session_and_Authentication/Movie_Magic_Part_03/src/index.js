@@ -1,6 +1,7 @@
 import express from 'express';
 import handlebars from 'express-handlebars';
 import mongoose from 'mongoose';
+import cookieParser  from 'cookie-parser';
 import 'dotenv/config';
 
 import routes from './routes.js';
@@ -36,7 +37,8 @@ app.set('views', './src/views');
 
 //  express configuration
 app.use('/static', express.static('src/public'));
-app.use(express.urlencoded({extended: false}));    //  Get Express to parse form data
+app.use(express.urlencoded({extended: false}));  
+app.use(cookieParser());  //  Get Express to parse form data
 
 //  set up routes
 app.use(routes);
