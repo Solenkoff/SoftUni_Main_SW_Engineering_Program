@@ -34,11 +34,12 @@ const movieService = {
     getOneWithCasts(movieId) {
         return this.getOne(movieId).populate('casts.cast');
     },
-    createMovie(movieData) {
+    createMovie(movieData, creatorId) {
         const newMoviePromise = Movie.create({
             ...movieData,
             year: Number(movieData.year),
             rating: Number(movieData.rating),
+            creator: creatorId,
         });
 
         return newMoviePromise;
