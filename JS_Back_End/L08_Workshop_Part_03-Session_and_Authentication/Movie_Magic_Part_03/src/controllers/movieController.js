@@ -25,6 +25,8 @@ movieController.post('/create', async (req, res) => {
 })
 
 movieController.get('/:movieId/details', async (req, res) => {
+    console.log(req.user);
+
     const movieId = req.params.movieId;
     const movie = await movieService.getOneWithCasts(movieId);
     // const casts = await castService.getAll(movie.casts);  -> Getting all casts that are present in the movie(movie.casts -> ids)

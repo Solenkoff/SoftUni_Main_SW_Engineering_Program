@@ -1,0 +1,22 @@
+import jwt from 'jsonwebtoken';
+
+const SECRET = process.env.JWT_SECRET || 'BasicSecret';
+
+export const authMiddleware = () => (req, res, next) => {
+    const token = req.cookies['auth'];
+
+    if(!token){
+        return next();
+    }
+
+    try {
+        const decodedToken = jwt.verify(token, SECRET);
+
+        req.user = decodedToken;
+
+        next();
+    } catch (err) {
+        //  TODO: Invalid token
+    }
+
+};         
