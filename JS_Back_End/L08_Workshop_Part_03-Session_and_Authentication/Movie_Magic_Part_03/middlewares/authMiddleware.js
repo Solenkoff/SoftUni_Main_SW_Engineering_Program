@@ -13,6 +13,8 @@ export const authMiddleware = () => (req, res, next) => {
         const decodedToken = jwt.verify(token, SECRET);
 
         req.user = decodedToken;
+        res.locals.user = decodedToken;
+        // const isAuthenticated = true;   //  instead of res.locals.user
 
         next();
     } catch (err) {
