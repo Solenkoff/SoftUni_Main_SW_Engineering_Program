@@ -16,14 +16,21 @@
                         <p class="card-year">Year: {{movie.year}}</p>
                         <p class="card-ranking">Rating: <span id="stars">{{showRating movie.rating}}</span></p>
                     </div>
-
                 </div>
 
                 <p class="disc">Description: {{movie.description}}</p>
                 <p class="card-category">Category: {{movie.category}}</p>
 
-                <a href="/movies/{{movie.id}}/attach-cast" class="details">Attach</a>
+                {{#if isCreator}}
+                <div class="details-btn">
+                    <a href="/movies/{{movie.id}}/attach-cast" class="details">Attach</a>
+                    <a href="#" class="details">Edit</a>
+                    <a href="#" class="details">Delete</a>
+                </div>
+                {{/if}}
+
             </div>
+
         </div>
         <div class="card_right">
             <img src="{{movie.imageUrl}}" alt="{{movie.title}}">
@@ -31,9 +38,9 @@
     </div>
 
     <div class="main-cast-card">
-        
+
         {{#each movie.casts}}
-            <div class="cast-card">
+        <div class="cast-card">
             <div class="card-img">
                 <img src="{{cast.imageUrl}}" alt="{{cast.name}}">
             </div>
@@ -45,7 +52,7 @@
             </div>
         </div>
         {{/each}}
-        
+
     </div>
 
 </section>
