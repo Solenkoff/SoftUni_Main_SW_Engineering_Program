@@ -10,11 +10,11 @@ movieController.get('/search', async (req, res) => {
     const movies = await movieService.getAll(filter);
 
     res.render('search', { movies, filter });
-})
+});
 
 movieController.get('/create', (req, res) => {
     res.render('create');
-})
+});
 
 movieController.post('/create', async (req, res) => {
     const newMovieData = req.body;
@@ -23,17 +23,16 @@ movieController.post('/create', async (req, res) => {
     await movieService.createMovie(newMovieData, userId);
 
     res.redirect('/');
-})
+});
 
 movieController.get('/:movieId/details', async (req, res) => {
-
     const movieId = req.params.movieId;
     const movie = await movieService.getOneWithCasts(movieId);
     // const casts = await castService.getAll(movie.casts);  -> Getting all casts that are present in the movie(movie.casts -> ids)
-    const isCreator = movie.creator &&  movie.creator.toString() === req.user?.id;  // movie.creator is  ObjectId
-
-    res.render('movie/details', { movie, isCreator});
-})
+    const isCreator = movie.creator?.equals(req.user?.id);
+    //const isCreator = movie.creator &&  movie.creator.toString() === req.user?.id;  // movie.creator is  ObjectId
+    res.render('movie/details', { movie, isCreator, user: req.user });
+});
 
 movieController.get('/:movieId/attach-cast', async (req, res) => {
     const movieId = req.params.movieId;
@@ -41,7 +40,7 @@ movieController.get('/:movieId/attach-cast', async (req, res) => {
     const casts = await castService.getAll({exclude: movie.casts.map(c => c.cast)});
 
     res.render('movie/attach-cast', { movie, casts });
-})
+});
 
 movieController.post('/:movieId/attach-cast', async (req, res) => {
  
