@@ -44,7 +44,7 @@ const movieService = {
 
         return newMoviePromise;
     },
-    async attachCast(movieId, castId, character) {
+    attachCast(movieId, castId, character) {
         // TODO: Check if castId has not been added already
 
         //  #1  Attach   ( Allows additional checks )
@@ -67,8 +67,11 @@ const movieService = {
             }
         });
 
-    }
-}
+    },
+    delete(movieId){
+        return Movie.findByIdAndDelete(movieId);
+    } 
+}  
 
 
 
