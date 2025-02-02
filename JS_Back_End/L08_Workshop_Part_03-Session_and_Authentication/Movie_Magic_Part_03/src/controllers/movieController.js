@@ -26,13 +26,13 @@ movieController.post('/create', async (req, res) => {
 })
 
 movieController.get('/:movieId/details', async (req, res) => {
-    console.log(req.user);
 
     const movieId = req.params.movieId;
     const movie = await movieService.getOneWithCasts(movieId);
     // const casts = await castService.getAll(movie.casts);  -> Getting all casts that are present in the movie(movie.casts -> ids)
+    const isCreator = movie.creator &&  movie.creator.toString() === req.user?.id;  // movie.creator is  ObjectId
 
-    res.render('movie/details', { movie });
+    res.render('movie/details', { movie, isCreator});
 })
 
 movieController.get('/:movieId/attach-cast', async (req, res) => {
