@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 import movieService from '../services/movieService.js';
 
-const router = Router();
+const router = Router();   
 
 router.get('/', async (req, res) => {
     // #1 Convert documents to plain object
