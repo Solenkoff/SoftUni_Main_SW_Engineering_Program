@@ -65,6 +65,30 @@ movieController.get('/:movieId/delete', async (req, res) => {
     res.redirect('/');
 });
 
+
+movieController.get('/:movieId/edit', async (req, res) => {
+    const movieId = req.params.movieId;
+    const movie = await movieService.getOne(movieId);
+
+    if (!movie.creator?.equals(req.user?.id)) {
+        return res.redirect('404');
+    }
+
+    const categories = getCategoriesViewData(movie.category);
+
+    res.render('movie/edit', { movie, categories });
+});
+
+movieController.post('/:movieId/edit', async (req, res) => {
+    const updatedMovieData = req.body;
+    const movieId = req.params.movieId;
+
+    await movieService.update(movieId, updatedMovieData);
+    
+    res.redirect(`/movies/${movieId}/details`); 
+});
+
+
 function getCategoriesViewData(category){
     const categoriesMap = {
         'tv-show': 'TV Show',
@@ -82,19 +106,5 @@ function getCategoriesViewData(category){
 
     return categories;
 }
-
-movieController.get('/:movieId/edit', async (req, res) => {
-    const movieId = req.params.movieId;
-    const movie = await movieService.getOne(movieId);
-
-    if (!movie.creator?.equals(req.user?.id)) {
-        return res.redirect('404');
-    }
-
-    const categories = getCategoriesViewData(movie.category);
-    
-    res.render('movie/edit', { movie, categories });
-});
-
 
 export default movieController;   
