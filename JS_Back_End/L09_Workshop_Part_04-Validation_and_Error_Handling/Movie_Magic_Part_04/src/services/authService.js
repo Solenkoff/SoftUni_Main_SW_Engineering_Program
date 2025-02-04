@@ -1,11 +1,22 @@
-import User from "../models/user.js";
+import User from "../models/User.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 const SECRET = process.env.JWT_SECRET || 'BasicSecret';
 
 export default {
-    register(userData) {
+    async register(userData) {
+        //  Check if password match repassword   =>  Done in Model with virtual property
+        // if(userData.password !== userData.rePassword){
+        //     throw new Error('Password missmatch!');
+        // }
+
+        //  Check if email exists
+        const userCount = await User.countDocuments({ email: userData.email });
+        if (userCount > 0) {
+            throw new Error('Email already exists!');
+        }
+
         return User.create(userData);
     },
     async login(email, password) {
