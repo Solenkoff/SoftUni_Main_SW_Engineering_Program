@@ -53,7 +53,7 @@ const movieService = {
 
         // await movie.save();
         // return movie;
-
+  
         //*  #2  Better Attach
         //   - without  
         // return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } });
@@ -72,7 +72,7 @@ const movieService = {
         return Movie.findByIdAndDelete(movieId);
     },
     update(movieId, movieData){
-        return Movie.findByIdAndUpdate(movieId, movieData);
+        return Movie.findByIdAndUpdate(movieId, movieData, { runValidators: true });
     }
 }  
 
