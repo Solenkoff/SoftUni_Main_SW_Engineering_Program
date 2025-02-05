@@ -3,6 +3,7 @@ import { Router } from 'express';
 import movieService from '../services/movieService.js';
 import castService from '../services/castService.js';
 import { isAuth } from '../../middlewares/authMiddleware.js';
+import { getErrorMessage } from '../utils/errorUtils.js';
 
 const movieController = Router();
 
@@ -16,7 +17,7 @@ movieController.get('/search', async (req, res) => {
     res.render('search', { movies, filter });
 });
 
-movieController.get('/create', isAuth, (req, res) => {
+movieController.get('/create', isAuth, (req, res) => {    
     res.render('create');
 });
 
@@ -60,7 +61,9 @@ movieController.get('/:movieId/delete', isAuth, async (req, res) => {
     const movieId = req.params.movieId;
 
     const movie = await movieService.getOne(movieId);
+
     if (!movie.creator?.equals(req.user?.id)) {
+        res.setError('You are not the movie owner!');
         return res.redirect('404');
     }
 
@@ -74,9 +77,9 @@ movieController.get('/:movieId/edit', isAuth, async (req, res) => {
     const movieId = req.params.movieId;
     const movie = await movieService.getOne(movieId);
 
-    if (!movie.creator?.equals(req.user?.id)) {
-        return res.redirect('404');
-    }
+    // if (!movie.creator?.equals(req.user?.id)) {
+    //     return res.redirect('404');
+    // }
 
     const categories = getCategoriesViewData(movie.category);
 
@@ -84,14 +87,20 @@ movieController.get('/:movieId/edit', isAuth, async (req, res) => {
 });
     
 movieController.post('/:movieId/edit', isAuth, async (req, res) => {
-    const updatedMovieData = req.body;
-    const movieId = req.params.movieId;
+    const movieData = req.body;
+    const movieId = req.params.movieId;    
 
-    await movieService.update(movieId, updatedMovieData);
+    //  TODO: Check if creator
+    try {
+        await movieService.update(movieId, movieData);
+    } catch (err) {
+        const categories = getCategoriesViewData(movieData.category);
+        return res.render('movie/edit', { movie: movieData, categories,  error: getErrorMessage(err) });
+    }
     
     res.redirect(`/movies/${movieId}/details`); 
-});
-
+}); 
+ 
 
 function getCategoriesViewData(category){
     const categoriesMap = {
