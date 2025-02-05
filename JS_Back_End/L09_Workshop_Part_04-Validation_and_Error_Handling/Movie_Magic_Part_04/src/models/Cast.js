@@ -5,7 +5,7 @@ const castSchema = new Schema({
         type: String,
         required: [true, 'Name is required!'],
         minLength: [5, 'Name should be at least 5 characters long!'],
-        match: [/^[a-zA-Z0-9]+$/, 'Name should be alphanumeric, digits and whitespaces only!'],
+        match: [/^[a-zA-Z 0-9]+$/, 'Name should be alphanumeric, digits and whitespaces only!'],
     },
     age: {
         type: Number,
@@ -15,7 +15,7 @@ const castSchema = new Schema({
     born: {
         type: String,
         minLength: 10,
-        match: /^[a-zA-Z0-9]+$/,
+        match: /^[a-zA-Z 0-9]+$/,
     },
     imageUrl: {
         type: String,

@@ -7,31 +7,34 @@ const movieSchema = new Schema({
         required: [true, 'Title is required!'],
         minLength: [5, 'Title should be at least 5 characters long!'],
         maxLength: 250,
-        match: [/^[a-zA-Z0-9]+$/, 'Title should be alphanumeric, digits and whitespaces only!'],
+        match: [/^[a-zA-Z 0-9]+$/, 'Title should be alphanumeric, digits and whitespaces only!'],
     },
     category: {
         type: String,
         required: true,
-        enum: [
-            'tv - show',
-            'animation',
-            'movie',
-            'documentary',
-            'short - film',
-        ]
+        enum: {
+            values: [
+                'tv - show',
+                'animation',
+                'movie',
+                'documentary',
+                'short - film',
+            ],
+            message: '{VALUE} is not supported'
+        },
     },
     genre: {
         type: String,
         required: [true, 'Genre is required!'],
         minLength: [5, 'Genre should be at least 5 characters long!'],
         maxLength: 250,
-        match: [/^[a-zA-Z0-9]+$/, 'Genre should be alphanumeric, digits and whitespaces only!'],
+        match: [/^[a-zA-Z 0-9]+$/, 'Genre should be alphanumeric, digits and whitespaces only!'],
     },
     director: {
         type: String,
         minLength: [5, 'Director should be at least 5 characters long!'],
         maxLength: 250,
-        match: [/^[a-zA-Z0-9]+$/, 'Director should be alphanumeric, digits and whitespaces only!'],
+        match: [/^[a-zA-Z 0-9]+$/, 'Director should be alphanumeric, digits and whitespaces only!'],
     },
     year: {
         type: Number,
@@ -50,7 +53,7 @@ const movieSchema = new Schema({
     description: {
         type: String,
         minLength: 20,
-        match: /^[a-zA-Z0-9]+$/,
+        match: /^[a-zA-Z 0-9]+$/,
     },
     // casts: {
     //     type: Types.ObjectId,  
