@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import bcrypt from 'bcrypt';
 
 //  TODO: Modify user schema
 const userSchema = new Schema({
@@ -16,6 +17,9 @@ const userSchema = new Schema({
     },
 });
 
+userSchema.pre('save', async function () {
+    this.password = await bcrypt.hash(this.password, 10);
+});
 
 const User = model('User', userSchema);
 
