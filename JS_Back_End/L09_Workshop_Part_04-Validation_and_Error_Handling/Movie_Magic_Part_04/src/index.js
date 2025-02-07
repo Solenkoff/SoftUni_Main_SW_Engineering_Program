@@ -7,8 +7,8 @@ import 'dotenv/config';
 
 import routes from './routes.js';
 import showRatingHelper from './helpers/rating-helper.js';
-import { authMiddleware } from '../middlewares/authMiddleware.js';
-import { tempData } from '../middlewares/tempDataMiddleware.js';
+import { authMiddleware } from './middlewares/authMiddleware.js';
+import { tempData } from './middlewares/tempDataMiddleware.js';
 
 const app = express();
 const port = 5000;
