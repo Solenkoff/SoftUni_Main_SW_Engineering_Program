@@ -1,4 +1,5 @@
 import express from 'express';
+import routes from './routes.js';
 const app = express();
 //  Express setup
 app.use(express.static('src/public'));   //  from root dir
