@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import handlbars from 'express-handlebars';
-
+import cookieParser from 'cookie-parser';
 
 import routes from './routes.js';
     
@@ -35,6 +35,7 @@ app.set('views', './src/views');
 //  Express setup
 app.use(express.static('src/public'));   //  from root dir
 app.use(express.urlencoded({extended: false}));
+app.use(cookieParser());
 app.use(routes);
 
 
