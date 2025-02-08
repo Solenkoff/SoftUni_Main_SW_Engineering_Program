@@ -14,7 +14,6 @@ export const register = async (userData) => {
         throw new Error('User already exists!');
     }
 
-    return User.create(userData); 
     const createdUser = await User.create(userData); 
 
     const token = generateToken(createdUser);
@@ -22,11 +21,29 @@ export const register = async (userData) => {
     return token;
 };
 
+export const login = async (email, password) => {
+    //Validate user
+    const user = await User.findOne({email});
+    if(!user){
+        throw new Error('Invalid user or email!');
+    }
+    //Validate password
+    const isValidPassword = await bcrypt.compare(password, user.password);
+    if(!isValidPassword){
+        throw new Error('Invalid user or email!');   
+    }
 
+    const token = generateToken(user);
+
+    return token;
+}
+
+
+   
  
 const authService = {
-    register
     register,
+    login,
 };
 
 export default authService; 
