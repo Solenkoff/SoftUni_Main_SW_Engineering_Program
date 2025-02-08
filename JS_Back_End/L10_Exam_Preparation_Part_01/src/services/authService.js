@@ -15,6 +15,11 @@ export const register = async (userData) => {
     }
 
     return User.create(userData); 
+    const createdUser = await User.create(userData); 
+
+    const token = generateToken(createdUser);
+
+    return token;
 };
 
 

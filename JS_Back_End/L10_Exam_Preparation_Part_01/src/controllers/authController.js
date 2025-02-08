@@ -1,11 +1,15 @@
 import { Router } from "express";
 import authService from "../services/authService.js";
+import { AUTH_COOKIE_NAME } from "../../config.js";
 
 const authController = Router();
 
 
+authController.get('/register',  (req, res) => {
+    res.render('auth/register'); 
 });
 
+authController.post('/register', async (req, res) => {
     const userData = req.body;
 
     authService.register(userData);
