@@ -20,6 +20,8 @@ authController.post('/register', async (req, res) => {
 });
 
     res.redirect('/auth/login');
+authController.get('/login', (req, res) => {
+    res.render('auth/login');
 });
 
 
