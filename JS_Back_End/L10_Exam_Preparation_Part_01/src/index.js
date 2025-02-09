@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 
 import routes from './routes.js';
 import { auth } from './middlewares/authMiddleware.js';
+import { setTitle } from './utils/pageTitleUtil.js';
     
 
 const app = express();
@@ -28,6 +29,9 @@ app.engine('hbs', handlbars.engine({
     extname: 'hbs',
     runtimeOptions: {
         allowProtoPropertiesByDefault: true,  
+    },
+    helpers: {
+        setTitle
     }
 }));
 
