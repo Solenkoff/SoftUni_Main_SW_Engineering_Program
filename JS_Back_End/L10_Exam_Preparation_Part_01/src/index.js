@@ -25,6 +25,9 @@ try {
 //  Handlebars setup
 app.engine('hbs', handlbars.engine({
     extname: 'hbs',
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+    }
 }))
 
 app.set('view engine', 'hbs');
