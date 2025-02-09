@@ -1,19 +1,19 @@
-import jwt from 'jsonwebtoke';
+import jwt from 'jsonwebtoken';
 
-import { 
-    AUTH_COOKIE_NAME, 
+import {
+    AUTH_COOKIE_NAME,
     JWT_SECRET
-} from '../config.js';
+} from '../../config.js';
 
 export const auth = (req, res, next) => {
     const token = req.cookie[AUTH_COOKIE_NAME];
 
-    if(!token){
+    if (!token) {
         return next();
     }
 
     try {
-        const decodedToken = jwt.vrify(token, JWT_SECRET);
+        const decodedToken = jwt.verify(token, JWT_SECRET);
         req.user = decodedToken;
         res.locals.user = decodedToken;
         next();
@@ -23,10 +23,10 @@ export const auth = (req, res, next) => {
     }
 
     next();
-}   
+}
 
 export const isAuth = (req, res, next) => {
-    if(!req.user){
+    if (!req.user) {
         return res.redirect('/auth/login');
     }
 
