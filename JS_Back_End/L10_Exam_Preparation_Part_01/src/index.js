@@ -4,6 +4,7 @@ import handlbars from 'express-handlebars';
 import cookieParser from 'cookie-parser';
 
 import routes from './routes.js';
+import { auth } from './middlewares/authMiddleware.js';
     
 
 const app = express();
@@ -26,9 +27,9 @@ try {
 app.engine('hbs', handlbars.engine({
     extname: 'hbs',
     runtimeOptions: {
-        allowProtoPropertiesByDefault: true,
+        allowProtoPropertiesByDefault: true,  
     }
-}))
+}));
 
 app.set('view engine', 'hbs');
 //  may use   |  import path from 'path';
@@ -39,6 +40,7 @@ app.set('views', './src/views');
 app.use(express.static('src/public'));   //  from root dir
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(auth);
 app.use(routes);
 
 

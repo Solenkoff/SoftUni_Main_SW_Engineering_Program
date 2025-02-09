@@ -1,6 +1,7 @@
 import { Router } from "express";
+
 import authService from "../services/authService.js";
-import { AUTH_COOKIE_NAME } from "../../config.js";
+import { AUTH_COOKIE_NAME } from "../config.js";
 import { isAuth } from "../middlewares/authMiddleware.js";
 import { getErrorMessage } from "../utils/errorUtil.js";
 
@@ -35,9 +36,9 @@ authController.post('/login', async (req, res) => {
         const token = await authService.login(email, password);
         res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
         res.redirect('/');
-    } catch (error) {
+    } catch (err) {
         res.render('auth/login', { 
-            error: getErrorMessage(error), 
+            error: getErrorMessage(err), 
             user: { email } 
         });
     }
