@@ -31,11 +31,16 @@ authController.get('/login', (req, res) => {
 authController.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
-    const token = await authService.login(email, password);
-
-    res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
-
-    res.redirect('/');
+    try {
+        const token = await authService.login(email, password);
+        res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
+        res.redirect('/');
+    } catch (error) {
+        res.render('auth/login', { 
+            error: getErrorMessage(error), 
+            user: { email } 
+        });
+    }
 });
 
 authController.get('/logout', isAuth, (req, res) => {
