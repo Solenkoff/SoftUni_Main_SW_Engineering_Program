@@ -1,22 +1,21 @@
-
-
 export const tempData = ( req, res, next) => {
     res.setError = (message) => {
-        res.session.error = {
+        req.session.error = {
             message, 
             isFirstRequest: true,
-        }
-    }
+        };
+    };
 
-    if(!res.session.error){
+    if(!req.session.error){
         return next();
     }
 
-    if(res.session.isFirstRequest){
-        res.session.isFirstRequest = false;
-        res.locals.error = res.session.error.message;
+    if(req.session.error.isFirstRequest){
+        req.session.error.isFirstRequest = false;
+        console.log(req.session.error.message);
+        res.locals.error = req.session.error.message;
     }else{
-        res.locals.error = null;
+        req.session.error = null;
     }
 
     next();
