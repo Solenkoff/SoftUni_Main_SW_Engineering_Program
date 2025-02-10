@@ -7,6 +7,7 @@ import expressSession from 'express-session';
 import routes from './routes.js';
 import { auth } from './middlewares/authMiddleware.js';
 import { setTitle } from './utils/pageTitleUtil.js';
+import { tempData } from './middlewares/tempDataMiddleware.js';
 
 
 const app = express();
@@ -54,8 +55,8 @@ app.use(expressSession({
         httpOnly: true 
     }
 }));
-
 app.use(auth);
+app.use(tempData);
 app.use(routes);
 
 
