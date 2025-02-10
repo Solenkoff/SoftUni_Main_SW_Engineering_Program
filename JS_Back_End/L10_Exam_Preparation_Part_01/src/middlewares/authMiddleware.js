@@ -1,11 +1,31 @@
 import jwt from 'jsonwebtoken';
 
+import jsonwebtoken from '../lib/jsonwebtoken.js';
 import {
     AUTH_COOKIE_NAME,
     JWT_SECRET
 } from '../config.js';
 
-export const auth = (req, res, next) => {
+// export const auth = (req, res, next) => {
+//     const token = req.cookies[AUTH_COOKIE_NAME];
+
+//     if (!token) {
+//         return next();
+//     }
+
+//     try {
+//         const decodedToken = jwt.verify(token, JWT_SECRET);
+//         req.user = decodedToken;
+//         res.locals.user = decodedToken;
+//     } catch (err) {
+//         res.clearCookie(AUTH_COOKIE_NAME);
+//         return res.redirect('/auth/login');
+//     }
+
+//     next();
+// }
+
+export const auth = async (req, res, next) => {
     const token = req.cookies[AUTH_COOKIE_NAME];
 
     if (!token) {
@@ -13,7 +33,7 @@ export const auth = (req, res, next) => {
     }
 
     try {
-        const decodedToken = jwt.verify(token, JWT_SECRET);
+        const decodedToken = await jsonwebtoken.verify(token, JWT_SECRET);
         req.user = decodedToken;
         res.locals.user = decodedToken;
     } catch (err) {
@@ -23,6 +43,7 @@ export const auth = (req, res, next) => {
 
     next();
 }
+
 
 export const isAuth = (req, res, next) => {
     if (!req.user) {
