@@ -4,7 +4,7 @@ const homeController = Router();
 
 
 homeController.get('/', (req, res) => {
-    res.setError('Big Error');
+    // *  res.setError('Big Error');
     res.render('home');
     // res.render('home', {pageTitle: 'TechStore | Home'});
 })
