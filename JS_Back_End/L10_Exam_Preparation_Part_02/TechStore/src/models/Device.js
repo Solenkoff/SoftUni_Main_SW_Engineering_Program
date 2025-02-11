@@ -63,3 +63,4 @@ const Device = model('Device', deviceSchema);
 
 export default Device;
 
+ 
