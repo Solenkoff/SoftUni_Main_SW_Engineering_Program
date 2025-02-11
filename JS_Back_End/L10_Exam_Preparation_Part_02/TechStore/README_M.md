@@ -121,3 +121,11 @@
                ->  Should be same everywhere  name/username...
         -  rePassword/confirmPassword has to match with `authService`
         -  add values to fields `value="{{user.name}}"` , `value="{{user.email}}"`
+ 
+
+##  Implement solution
+
+1. Add Models
+   - modelSchema -> const deviceSchema = new Schema({ })
+   - relations
+
