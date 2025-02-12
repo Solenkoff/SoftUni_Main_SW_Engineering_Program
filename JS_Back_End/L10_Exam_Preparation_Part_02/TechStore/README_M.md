@@ -75,7 +75,7 @@
  - [ ] Atach user to handlebars context
 
  9. Authorization
- - [ ] Add isAuth middleware
+ - [ ] Add isAuth middleware  /  isGuset  ?
  - [ ] Add route guards authorization
 
  10. Error Handling
@@ -147,3 +147,8 @@
       - Call service 
       - Catch error and return response with kept data and error message
       - Redirect to  
+
+4. Home / Catalog  (3)   
+   - Fix home view   
+   - Get last 3
+      - ?  with timestamp in Schema
