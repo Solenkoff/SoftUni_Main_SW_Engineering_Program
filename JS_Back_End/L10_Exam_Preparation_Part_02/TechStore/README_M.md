@@ -129,3 +129,21 @@
    - modelSchema -> const deviceSchema = new Schema({ })
    - relations
 
+2. Add Model Controller  -> diviceController.js   
+   - use controller in routes.js
+   - fix 
+
+3. Create
+   - move and rename create.html
+      - add title
+      - method="POST"
+      - fix names
+      - fix href="/ /create" in main.hbs  
+   - GET create 
+   - POST create
+      - Check if logged user ->  isAuth 
+      - Get data from req.body;
+      - Get user Id
+      - Call service 
+      - Catch error and return response with kept data and error message
+      - Redirect to  

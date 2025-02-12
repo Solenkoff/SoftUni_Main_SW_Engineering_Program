@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { isAuth } from '../middlewares/authMiddleware.js';
 import deviceService from '../services/deviceService.js';
 import { getErrorMessage } from '../utils/errorUtil.js';

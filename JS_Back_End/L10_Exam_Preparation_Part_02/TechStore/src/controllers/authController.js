@@ -21,7 +21,7 @@ authController.post('/register', async (req, res) => {
         res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
         res.redirect('/');
     } catch (err) {
-        res.render('auth/register', { error: getErrorMessage(err), user: userData });
+        res.render('auth/register', { error: getErrorMessage(err), userData });
     }
 });
 
@@ -39,7 +39,7 @@ authController.post('/login', async (req, res) => {
     } catch (err) {
         res.render('auth/login', { 
             error: getErrorMessage(err), 
-            user: { email } 
+            userData: { email } 
         });
     }
 });

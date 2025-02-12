@@ -39,8 +39,6 @@ export const login = async (email, password) => {
 }
 
 
-   
- 
 const authService = {
     register,
     login,
