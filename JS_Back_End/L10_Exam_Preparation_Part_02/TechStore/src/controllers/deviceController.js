@@ -6,6 +6,13 @@ import { getErrorMessage } from '../utils/errorUtil.js';
 
 const deviceController = Router();
 
+
+deviceController.get('/catalog', async (req, res) => {
+    const devices = await deviceService.getAll();
+
+    res.render('devices/catalog', { devices });
+})
+
 deviceController.get('/create', isAuth, (req, res) => {
     res.render('devices/create');
 
