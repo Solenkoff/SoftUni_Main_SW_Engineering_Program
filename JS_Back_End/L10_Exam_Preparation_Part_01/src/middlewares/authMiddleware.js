@@ -1,6 +1,4 @@
-import jwt from 'jsonwebtoken';
-
-import jsonwebtoken from '../lib/jsonwebtoken.js';  
+import jwt from '../lib/jwt.js';  
 import {
     AUTH_COOKIE_NAME,
     JWT_SECRET
@@ -33,8 +31,7 @@ export const auth = async (req, res, next) => {
     }
 
     try {
-        const decodedToken = await jsonwebtoken.verify(token, JWT_SECRET);
-        await jsonwebtoken.sign
+        const decodedToken = await jwt.verify(token, JWT_SECRET);
         req.user = decodedToken;
         res.locals.user = decodedToken;
     } catch (err) {
