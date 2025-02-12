@@ -1,4 +1,3 @@
-import jwt from 'jsonwebtoken';
 
 import jsonwebtoken from '../lib/jsonwebtoken.js';  
 import {
@@ -24,6 +23,7 @@ import {
 
 //     next();
 // }
+
 
 export const auth = async (req, res, next) => {
     const token = req.cookies[AUTH_COOKIE_NAME];
