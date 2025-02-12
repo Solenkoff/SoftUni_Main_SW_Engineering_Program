@@ -1,5 +1,5 @@
 
-import jsonwebtoken from '../lib/jsonwebtoken.js';  
+import jsonwebtoken from '../lib/jsonwebtoken.js';
 import {
     AUTH_COOKIE_NAME,
     JWT_SECRET
@@ -49,6 +49,16 @@ export const auth = async (req, res, next) => {
 export const isAuth = (req, res, next) => {
     if (!req.user) {
         return res.redirect('/auth/login');
+    }
+
+    next();
+}
+
+export const isGuest = (req, res, next) => {
+    if (req.user) {
+        res.setError('You are already loged in!');
+        return res.redirect('/');
+
     }
 
     next();
