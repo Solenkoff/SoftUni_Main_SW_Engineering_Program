@@ -69,5 +69,16 @@ deviceController.get('/:deviceId/delete', isAuth, async (req, res) => {
 
 });
 
+deviceController.get('/:deviceId/edit', isAuth, async (req, res) => {
+    const deviceId = req.params.deviceId;
+    const device = await deviceService.getOne(deviceId);
+
+    if(!device.owner.equals(req.user.id)){
+        res.setError('Only owners can edit their offer!');
+        return res.redirect(`/devices/${deviceId}/details`);
+    }
+
+    res.render('devices/edit', { device });
+});
 
 export default deviceController;       

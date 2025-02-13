@@ -152,3 +152,46 @@
    - Fix home view   
    - Get last 3
       - ?  with timestamp in Schema
+
+5. Catalog
+   - Fix  view      
+   - Get all items   
+   - Any  'IF' logic... 
+   - Render      
+
+6. Details       
+   - Get item id
+   - Get item by the id
+   - Check if user isOwner
+   - hasPreferred ?
+   - fix view
+   - render view
+
+7. Prefer
+   - Get deviceId   
+   - Get user id
+   - Call service to prefer
+      - Check if owner
+      - Check if already prefered
+      - add to preferredList
+      - device.save();
+   - redirect
+
+8. Delete
+   - Get deviceId   
+   - Get user id
+   - Call service to remove
+      - Check if owner
+      - Delete 
+   - redirect
+            
+9. Edit 
+   / GET
+      - Get deviceId 
+      - Get device               
+      - Check if owner   -> error + redirect
+      - render EDIT page
+
+10. Edit 
+    / pOST
+      - Get deviceId    
