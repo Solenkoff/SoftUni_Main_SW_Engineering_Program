@@ -194,4 +194,14 @@
 
 10. Edit 
     / pOST
-      - Get deviceId    
+      - Get deviceId
+      - Get userId
+      - Get deviceData
+      - Call service
+         - get device
+         - check if owner
+!!!      - update     { runValidators: true }                 !!!
+      - Redirect  OR  render same page with Data and Error       
+
+11. About
+   - in homeController  -> render('about');     
