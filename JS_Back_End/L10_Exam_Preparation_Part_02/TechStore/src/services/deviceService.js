@@ -40,6 +40,7 @@ export const remove = async (deviceId, userId) => {
 
 export const updateOne = async (deviceId, userId, deviceData) => {
     const device = await getOne(deviceId);
+
     if (!device.owner.equals(userId)) {
         throw new Error('Only owner can  edit their offer!');
     }
