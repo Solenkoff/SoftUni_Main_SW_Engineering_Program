@@ -13,12 +13,12 @@ export const prefer = async (deviceId, userId) => {
     const device = await Device.findById(deviceId);
 
     // TODO:  Check if owner
-    if(device.owner.equals(userId)){
+    if (device.owner.equals(userId)) {
         throw new Error('Cannot prefer your own offer!');
     }
 
     // TODO: Check if already prefered
-    if(device.preferredList.includes(userId)){
+    if (device.preferredList.includes(userId)) {
         throw new Error('You have already preferred this offer!');
     }
     //  if no validation 
@@ -28,7 +28,16 @@ export const prefer = async (deviceId, userId) => {
 
     return device.save();
 }
- 
+
+export const remove = async (deviceId, userId) => {
+    const device = await Device.findById(deviceId);
+    if (!device.owner.equals(userId)) {
+        throw new Error('Only owner can delete their offer!');
+    }
+
+    return Device.findByIdAndDelete(deviceId);
+}
+
 
 const deviceService = {
     getAll,
@@ -36,6 +45,7 @@ const deviceService = {
     getOne,
     create,
     prefer,
+    remove,
 };
 
 export default deviceService; 
