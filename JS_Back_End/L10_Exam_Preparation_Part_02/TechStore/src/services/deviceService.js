@@ -1,7 +1,21 @@
 import Device from '../models/Device.js';
+  
 
+export const getAll = (filter = {}) => {
+    let query = Device.find({});
+    
+    if(filter.owner){
+        query = query.find({ owner: filter.owner });
+    }
 
-export const getAll = () => Device.find({});
+    if(filter.preferredBy){
+        query = query.find({preferredList: filter.preferredBy });
+        //query = query.in('preferredList', filter.preferredBy );
+    }
+
+    return query;
+};
+
 //export const getLatest = () => Device.find({}).sort({_id: 'desc'}).limit(3);
 export const getLatest = () => getAll().sort({ createdAt: 'desc' }).limit(3);
 
