@@ -45,7 +45,7 @@ export const updateOne = async (deviceId, userId, deviceData) => {
         throw new Error('Only owner can  edit their offer!');
     }
 
-    return Device.findByIdAndUpdate(deviceId, deviceData);
+    return Device.findByIdAndUpdate(deviceId, deviceData, { runValidators: true });   //*  !!!
 }
 
 
