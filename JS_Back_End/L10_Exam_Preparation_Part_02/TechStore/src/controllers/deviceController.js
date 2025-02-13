@@ -24,7 +24,7 @@ deviceController.post('/create', isAuth, async (req, res) => {   // Check if log
 
     try {
         await deviceService.create(deviceData, userId);     // Call service 
-        res.redirect('/catalog');                           //redirect to catalog
+        res.redirect('/devices/catalog');                           //redirect to catalog
     } catch (err) {                                         // Catch error and return response with kept data and error message
         res.render('devices/create', { device: deviceData, error: getErrorMessage(err) });
     }
@@ -52,6 +52,22 @@ deviceController.get('/:deviceId/prefer', isAuth, async (req, res) => {
     }
 
     res.redirect(`/devices/${deviceId}/details`);
-})
+});
+
+deviceController.get('/:deviceId/delete', isAuth, async (req, res) => {
+    const deviceId = req.params.deviceId;
+    const userId = req.user.id;
+ 
+    try {
+        await deviceService.remove(deviceId, userId);
+
+        res.redirect('/devices/catalog');
+    } catch (err) { 
+        res.setError(getErrorMessage(err));
+        res.redirect(`/devices/${deviceId}/details`);
+    }
+
+});
+
 
 export default deviceController;       
