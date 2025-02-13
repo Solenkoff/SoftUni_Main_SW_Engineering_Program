@@ -204,4 +204,11 @@
       - Redirect  OR  render same page with Data and Error       
 
 11. About
-   - in homeController  -> render('about');     
+   - in homeController  -> render('about');
+
+12. 404
+   - in routes  -> render('404');     
+
+12. Profile
+   - Add GET  to homeController
+   - fix view   
