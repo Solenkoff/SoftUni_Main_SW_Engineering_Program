@@ -38,6 +38,15 @@ export const remove = async (deviceId, userId) => {
     return Device.findByIdAndDelete(deviceId);
 }
 
+export const updateOne = async (deviceId, userId, deviceData) => {
+    const device = await getOne(deviceId);
+    if (!device.owner.equals(userId)) {
+        throw new Error('Only owner can  edit their offer!');
+    }
+
+    return Device.findByIdAndUpdate(deviceId, deviceData);
+}
+
 
 const deviceService = {
     getAll,
@@ -46,6 +55,7 @@ const deviceService = {
     create,
     prefer,
     remove,
+    updateOne,
 };
 
 export default deviceService; 

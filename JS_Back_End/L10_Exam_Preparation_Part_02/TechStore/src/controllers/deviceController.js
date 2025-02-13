@@ -1,7 +1,8 @@
 import { Router } from 'express';
 
-import { isAuth } from '../middlewares/authMiddleware.js';
 import deviceService from '../services/deviceService.js';
+import { isAuth } from '../middlewares/authMiddleware.js';
+import { isOwner } from '../middlewares/isOwnerMiddleware.js';
 import { getErrorMessage } from '../utils/errorUtil.js';
 
 const deviceController = Router();
@@ -47,7 +48,7 @@ deviceController.get('/:deviceId/prefer', isAuth, async (req, res) => {
 
     try {
         await deviceService.prefer(deviceId, userId);
-    } catch (err) { 
+    } catch (err) {
         res.setError(getErrorMessage(err));
     }
 
@@ -57,12 +58,12 @@ deviceController.get('/:deviceId/prefer', isAuth, async (req, res) => {
 deviceController.get('/:deviceId/delete', isAuth, async (req, res) => {
     const deviceId = req.params.deviceId;
     const userId = req.user.id;
- 
+
     try {
         await deviceService.remove(deviceId, userId);
 
         res.redirect('/devices/catalog');
-    } catch (err) { 
+    } catch (err) {
         res.setError(getErrorMessage(err));
         res.redirect(`/devices/${deviceId}/details`);
     }
@@ -70,15 +71,32 @@ deviceController.get('/:deviceId/delete', isAuth, async (req, res) => {
 });
 
 deviceController.get('/:deviceId/edit', isAuth, async (req, res) => {
+    //  with isOwner middleware -> just pass the device through req
+    //  res.render('devices/edit', { device: req.device });
+
     const deviceId = req.params.deviceId;
     const device = await deviceService.getOne(deviceId);
 
-    if(!device.owner.equals(req.user.id)){
+    if (!device.owner.equals(req.user.id)) {
         res.setError('Only owners can edit their offer!');
         return res.redirect(`/devices/${deviceId}/details`);
     }
 
     res.render('devices/edit', { device });
+});
+
+deviceController.post('/:deviceId/edit', isAuth, async (req, res) => {
+    const deviceId = req.params.deviceId;
+    const userId = req.user.id;
+    const deviceData = req.body;
+
+    try {
+        await deviceService.updateOne(deviceId, userId, deviceData);
+        return res.redirect(`/devices/${deviceId}/details`);
+    } catch (err) {
+        res.render('devices/edit', { device: deviceData, error: getErrorMessage(err) });
+    }
+
 });
 
 export default deviceController;       
