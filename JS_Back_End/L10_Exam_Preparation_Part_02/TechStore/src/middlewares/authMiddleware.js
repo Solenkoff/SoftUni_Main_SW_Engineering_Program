@@ -34,7 +34,6 @@ export const auth = async (req, res, next) => {
 
     try {
         const decodedToken = await jsonwebtoken.verify(token, JWT_SECRET);
-        await jsonwebtoken.sign
         req.user = decodedToken;
         res.locals.user = decodedToken;
     } catch (err) {
