@@ -22,12 +22,12 @@ export const register = async (userData) => {
 };
 
 export const login = async (email, password) => {
-    //Validate user
+
     const user = await User.findOne({email});
     if(!user){
         throw new Error('Invalid user or email!');
     }
-    //Validate password
+
     const isValidPassword = await bcrypt.compare(password, user.password);
     if(!isValidPassword){
         throw new Error('Invalid user or email!');   
@@ -39,8 +39,6 @@ export const login = async (email, password) => {
 }
 
 
-   
- 
 const authService = {
     register,
     login,

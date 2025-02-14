@@ -14,10 +14,8 @@ const app = express();
 const port = 3000;
 
 
-//  Db setup
 try {
-    // TODO: Change DB name
-    const url = 'mongodb://localhost:27017/recipes';
+    const url = 'mongodb://localhost:27017/modelDb';
     await mongoose.connect(url);
 
     console.log('DB Connected!');
@@ -26,7 +24,6 @@ try {
     console.log(err.message);
 }
 
-//  Handlebars setup
 app.engine('hbs', handlbars.engine({
     extname: 'hbs',
     runtimeOptions: {
@@ -38,16 +35,13 @@ app.engine('hbs', handlbars.engine({
 }));
 
 app.set('view engine', 'hbs');
-//  may use   |  import path from 'path';
-//            |  app.set('views', path.resolve('./src/views'));  
 app.set('views', './src/views');
 
-//  Express setup
-app.use(express.static('src/public'));   //  from root dir
+app.use(express.static('src/public'));  
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(expressSession({
-    secret: '*86c82de7-2a59-42fb-8167-1aab798ba08b',
+    secret: '*slnlsnLSlLlnsl***03jpjSIDj90034j4twSJ',
     resave: false,
     saveUninitialized: false,
     cookie: { 
@@ -58,6 +52,5 @@ app.use(expressSession({
 app.use(auth);
 app.use(tempData);
 app.use(routes);
-
 
 app.listen(port, () => console.log('Server is listening on http://localhost:3000...'));     
