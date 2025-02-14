@@ -1,15 +1,15 @@
-{{setTitle 'Login Page'}}
+{{setTitle 'Login - Home Cooking Recipes'}}
 
-
-<div class="login-box">
-    <h1>Login</h1>
+<section class="form-container">
+    <h2>Login</h2>
     <form method="POST">
-        <label>Email</label>
-        <input type="text" name="email" placeholder="Email.." value="{{userData.email}}">
-        <label>Password</label>
-        <input type="password" name="password" placeholder="Password..">
-        <input type="submit" value="Submit">
-    </form>
-    <p>Not have an account? <a href="/auth/register">Register here</a></p>
-</div>
+        <label for="email">Email:</label>
+        <input type="email" id="email"name="email" value="{{userData.email}}">
 
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="/auth/register">Register here</a>.</p>
+</section>
