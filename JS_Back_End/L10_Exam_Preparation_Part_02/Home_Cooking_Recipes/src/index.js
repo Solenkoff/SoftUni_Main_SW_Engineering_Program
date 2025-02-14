@@ -15,7 +15,7 @@ const port = 3000;
 
 
 try {
-    const url = 'mongodb://localhost:27017/modelDb';
+    const url = 'mongodb://localhost:27017/recipesDb';
     await mongoose.connect(url);
 
     console.log('DB Connected!');
