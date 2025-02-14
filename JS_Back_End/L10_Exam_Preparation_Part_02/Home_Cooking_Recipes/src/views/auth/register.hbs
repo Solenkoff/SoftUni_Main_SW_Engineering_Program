@@ -1,21 +1,18 @@
-{{setTitle 'Recipes | Register'}}
+{{setTitle 'Register Page'}}
 
-<section class="form-container">
-    <h2>Register</h2>
+
+<div class="register-box">
+    <h1>Register</h1>
     <form method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="{{user.name}}">
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="{{user.email}}">
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password">
-
-        <label for="password">Repeat Password:</label>
-        <input type="password" id="re-password" name="confirmPassword">
-
-        <button type="submit">Register</button>
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Username.." value="{{userData.username}}">
+        <label>Email</label>
+        <input type="text" name="email" placeholder="Email.." value="{{userData.email}}">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Password..">
+        <label>Confirm Password</label>
+        <input type="password" name="confirmPassword" placeholder="Confirm Password..">
+        <input type="submit" value="Submit">
     </form>
-    <p>Already have an account? <a href="/auth/login">Login here</a>.</p>
-</section>
+    <p>Already have an account? <a href="/auth/login">Login here</a></p>
+</div>

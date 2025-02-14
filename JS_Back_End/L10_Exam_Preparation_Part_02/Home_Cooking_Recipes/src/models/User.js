@@ -1,19 +1,21 @@
 import { Schema, model } from "mongoose";
 import bcrypt from 'bcrypt';
 
-//  TODO: Modify user schema
 const userSchema = new Schema({
+    username: {
+        type: String,
+        required: [true, 'Username is required!'],
+        minLength: [2, 'The username should be at least 2 characters long'],
+    },
     email: {
         type: String,
         required: [true, 'Email is required!'],
-    },
-    name: {
-        type: String,
-        required: [true, 'Name is required!'],
+        minLength: [10, 'The email should be at least 10 characters long'],
     },
     password: {
         type: String,
         required: [true, 'Password is required!'],
+        minLength: [4, 'The password should be at least 4 characters long']
     },
 });
 

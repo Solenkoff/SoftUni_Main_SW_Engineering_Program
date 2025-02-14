@@ -1,15 +1,15 @@
 {
-  "name": "l10_exam_preparation_part_01",
+  "name": "home-cooking-recipes",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Author",
   "license": "ISC",
   "type": "module",
-  "description": "",
+  "description": "project_description",
   "devDependencies": {
     "nodemon": "^3.1.9"
   },
