@@ -4,6 +4,7 @@ import authService from "../services/authService.js";
 import { AUTH_COOKIE_NAME } from "../config.js";
 import { isAuth, isGuest } from "../middlewares/authMiddleware.js";
 import { getErrorMessage } from "../utils/errorUtil.js";
+ 
 
 const authController = Router();
 
