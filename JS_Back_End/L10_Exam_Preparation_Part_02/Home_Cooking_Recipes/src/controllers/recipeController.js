@@ -29,5 +29,15 @@ recipeController.post('/create', isAuth, async (req, res) => {
     }
 });
 
+recipeController.get('/:recipeId/details', async (req, res) => {
+    const recipeId = req.params.recipeId;
+    const recipe = await recipeService.getOne(recipeId);
+
+    const isOwner = recipe.owner.equals(req.user?.id);
+    const hasRecommended = recipe.recommendList.includes(req.user?.id);
+    const recommendationsCount = recipe.recommendList.length;
+
+    res.render('recipes/details', { recipe, isOwner, hasRecommended, recommendationsCount });
+});
 
 export default recipeController;   
