@@ -1,36 +1,29 @@
 import { Schema, model, Types } from 'mongoose';
 
 const modelSchema = new Schema({
-    name: {
+    title: {
         type: String,
         required: true,
-        minLength: [2, 'The Name should be at least 2 characters']
+        //minLength: [2, 'The Name should be at least 2 characters']
     },
-    typeModel: {
+    ingredients: {
         type: String,
         required: true,
-        enum: [
-            'Wildfire', 
-            'Flood', 
-            'Earthquake', 
-            'Hurricane', 
-            'Drought', 
-            'Tsunami', 
-            'Other'
-        ],
     },
-    eventYear: {
-        type: Number,
+    instructions: {
+        type: String,
         required: true,
-        min: [0, 'The Year should be between 0 and 2024'],
-        max: [2024, 'The Year should be between 0 and 2024']
+    },
+    description : {
+        type: String,
+        required: true,
     },
     image: {
         type: String,
         required: true,
-        validate: [ /^https?:\/\//, 'The Disaster Image should start with http:// or https://' ]
+        // validate: [ /^https?:\/\//, 'The Disaster Image should start with http:// or https://' ]
     },
-    interestedList : [{
+    recommendList : [{
         type: Types.ObjectId,
         ref: 'User'
     }],
@@ -40,8 +33,8 @@ const modelSchema = new Schema({
     }
 });
 
-const Model = model('Model', modelSchema);
+const Recipe = model('Recipe', modelSchema);
 
-export default Model;
+export default Recipe;
 
  

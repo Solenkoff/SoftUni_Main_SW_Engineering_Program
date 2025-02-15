@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import homeController from "./controllers/homeController.js";
 import authController from "./controllers/authController.js";
-//import modelController from "./controllers/modelController.js";
+import recipeController from "./controllers/recipeController.js";
 
 
 const routes = Router();
@@ -10,7 +10,7 @@ const routes = Router();
 
 routes.use(homeController);
 routes.use('/auth', authController);
-//routes.use('/model', modelController);
+routes.use('/recipes', recipeController);
 routes.all('*', (req, res) => {
     res.render('404');
 });
