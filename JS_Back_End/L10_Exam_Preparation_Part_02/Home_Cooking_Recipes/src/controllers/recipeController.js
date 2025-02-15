@@ -6,6 +6,11 @@ import { getErrorMessage } from '../utils/errorUtil.js';
 
 const recipeController = Router();
 
+recipeController.get('/catalog', async (req, res) => {
+    const recipes = await recipeService.getAll();
+
+    res.render('recipes/catalog', { recipes });
+})
 
 recipeController.get('/create', isAuth, (req, res) => {
     res.render('recipes/create');
