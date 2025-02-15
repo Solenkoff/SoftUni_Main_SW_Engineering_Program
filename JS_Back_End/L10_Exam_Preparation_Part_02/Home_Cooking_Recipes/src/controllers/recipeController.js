@@ -40,4 +40,17 @@ recipeController.get('/:recipeId/details', async (req, res) => {
     res.render('recipes/details', { recipe, isOwner, hasRecommended, recommendationsCount });
 });
 
+recipeController.get('/:recipeId/recommend', isAuth, async (req, res) => {
+    const recipeId = req.params.recipeId;
+    const userId = req.user.id;
+
+    try {
+        await recipeService.recommend(recipeId, userId);
+    } catch (err) {
+        res.setError(getErrorMessage(err));
+    }
+
+    res.redirect(`/recipes/${recipeId}/details`);
+});
+
 export default recipeController;   
