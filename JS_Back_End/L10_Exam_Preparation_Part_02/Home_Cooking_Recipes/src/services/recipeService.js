@@ -29,6 +29,15 @@ export const recommend = async (recipeId, userId) => {
     return recipe.save();
 }
 
+export const remove = async (recipeId, userId) => {
+    const recipe = await Recipe.findById(recipeId);
+    if (!recipe.owner.equals(userId)) {
+        throw new Error('Only owner can delete their post!');
+    }
+
+    return Recipe.findByIdAndDelete(recipeId);
+}
+
 
 const recipeService = {
     getAll,
@@ -36,7 +45,9 @@ const recipeService = {
     getOne,
     create,
     recommend,
+    remove,
    
 };
+
 
 export default recipeService; 
