@@ -3,6 +3,11 @@ import Recipe from "../models/Recipe.js";
 
 export const getAll = (filter = {}) => {
     let query = Recipe.find({});
+
+    if (filter.title) {
+        query = query.find({ title: { $regex: filter.title, $options: 'i' }});
+        
+    }
     
     return query;
 };
@@ -57,7 +62,6 @@ const recipeService = {
     recommend,
     remove,
     updateOne,
-   
 };
 
 
