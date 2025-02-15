@@ -1,8 +1,7 @@
 {{setTitle '{{recipe.title}} - Home Cooking Recipes'}}
 
 <article class="recipe-detail">
-    <img src="{{recipe.image}}"
-        alt="Spaghetti Carbonara">
+    <img src="{{recipe.image}}" alt="Spaghetti Carbonara">
     <h2>{{recipe.title}}</h2>
     <p>{{recipe.description}}</p>
 
@@ -21,11 +20,17 @@
     <h3>People Who Recommend: {{recommendationsCount}}</h3>
 </article>
 
+{{#if user}}
 <div class="command">
+    {{#if isOwner}}
     <a href="/recipes/{{recipe.id}}/edit">Edit</a>
     <a href="/recipes/{{recipe.id}}/delete">Delete</a>
-
-    <a href="/recipes/{{recipe.id}}/recommend">Recommend</a>
-    <p>You've already recommended this recipe!</p>
+    {{else}}
+        {{#if hasRecommended}}
+            <p>You've already recommended this recipe!</p>
+        {{else}}
+            <a href="/recipes/{{recipe.id}}/recommend">Recommend</a>
+        {{/if}}
+    {{/if}}
 </div>
-
+{{/if}}
