@@ -53,4 +53,22 @@ recipeController.get('/:recipeId/recommend', isAuth, async (req, res) => {
     res.redirect(`/recipes/${recipeId}/details`);
 });
 
+recipeController.get('/:recipeId/delete', isAuth, async (req, res) => {
+    const recipeId = req.params.recipeId;
+    const userId = req.user.id;
+
+    try {
+        await recipeService.remove(recipeId, userId);
+
+        res.redirect('/recipes/catalog');
+    } catch (err) {
+        res.setError(getErrorMessage(err));
+        res.redirect(`/recipes/${recipeId}/details`);
+    }
+
+});
+
+
+
+
 export default recipeController;   
