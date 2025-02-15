@@ -3,7 +3,10 @@
 <section class="form-container">
     <h2>Create Recipe</h2>
     <form method="POST">
-        <label for="title">Recipe Title:</label>
+
+        {{>recipeFullSpec}}
+
+        {{!-- <label for="title">Recipe Title:</label>
         <input type="text" id="title" name="title" value="{{recipe.title}}">
 
         <label for="description">Description:</label>
@@ -16,7 +19,7 @@
         <textarea id="instructions" name="instructions">{{recipe.instructions}}</textarea>
 
         <label for="image">Image URL:</label>
-        <input type="url" id="image" name="image" value="{{recipe.image}}">
+        <input type="url" id="image" name="image" value="{{recipe.image}}"> --}}
 
         <button type="submit">Create Recipe</button>
     </form>
