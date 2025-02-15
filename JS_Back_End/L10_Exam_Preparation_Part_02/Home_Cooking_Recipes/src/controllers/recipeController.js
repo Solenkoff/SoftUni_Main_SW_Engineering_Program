@@ -68,6 +68,18 @@ recipeController.get('/:recipeId/delete', isAuth, async (req, res) => {
 
 });
 
+recipeController.get('/:recipeId/edit', isAuth, async (req, res) => {
+    const recipeId = req.params.recipeId;
+    const recipe = await recipeService.getOne(recipeId);
+
+    if (!recipe.owner.equals(req.user.id)) {
+        res.setError('Only owners can edit their post!');
+        return res.redirect(`/recipes/${recipeId}/details`);
+    }
+
+    res.render('recipes/edit', { recipe });
+});
+
 
 
 
