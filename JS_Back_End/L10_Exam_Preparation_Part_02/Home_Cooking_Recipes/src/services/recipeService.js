@@ -38,6 +38,16 @@ export const remove = async (recipeId, userId) => {
     return Recipe.findByIdAndDelete(recipeId);
 }
 
+export const updateOne = async (recipeId, userId, recipeData) => {
+    const recipe = await getOne(recipeId);
+
+    if (!recipe.owner.equals(userId)) {
+        throw new Error('Only owner can  edit their post!');
+    }
+
+    return Recipe.findByIdAndUpdate(recipeId, recipeData, { runValidators: true }); 
+}
+
 
 const recipeService = {
     getAll,
@@ -46,6 +56,7 @@ const recipeService = {
     create,
     recommend,
     remove,
+    updateOne,
    
 };
 
