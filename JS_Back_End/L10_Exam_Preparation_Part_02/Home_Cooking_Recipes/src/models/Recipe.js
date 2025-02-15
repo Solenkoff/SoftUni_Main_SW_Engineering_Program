@@ -31,6 +31,8 @@ const modelSchema = new Schema({
         type: Types.ObjectId,
         ref: 'User'
     }
+},{
+    timestamps: true,
 });
 
 const Recipe = model('Recipe', modelSchema);
