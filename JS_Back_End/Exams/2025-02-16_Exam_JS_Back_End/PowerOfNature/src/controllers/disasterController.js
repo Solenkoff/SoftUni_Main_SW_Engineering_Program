@@ -60,6 +60,21 @@ disasterController.get('/:disasterId/interest', isAuth, async (req, res) => {
     res.redirect(`/disasters/${disasterId}/details`);
 });
 
+disasterController.get('/:disasterId/delete', isAuth, async (req, res) => {
+    const disasterId = req.params.disasterId;
+    const userId = req.user.id;
+
+    try {
+        await disasterService.remove(disasterId, userId);
+
+        res.redirect('/disasters/catalog');
+    } catch (err) {
+        res.setError(getErrorMessage(err));
+        res.redirect(`/disasters/${disasterId}/details`);
+    }
+
+});
+
 
 function getDisasterTypesViewData(typeDisaster) {
     const disasterTypes = [
