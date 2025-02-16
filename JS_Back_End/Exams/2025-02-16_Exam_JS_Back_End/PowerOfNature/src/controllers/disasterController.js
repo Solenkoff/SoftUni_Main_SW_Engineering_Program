@@ -36,7 +36,16 @@ disasterController.post('/create', isAuth, async (req, res) => {
     }
 });
 
+disasterController.get('/:disasterId/details', async (req, res) => {
+    const disasterId = req.params.disasterId;
+    const disaster = await disasterService.getOne(disasterId);
 
+    const isOwner = disaster.owner.equals(req.user?.id);
+    const isInterested = disaster.interestedList.includes(req.user?.id);
+    const interestCount = disaster.interestedList.length;
+
+    res.render('disasters/details', { disaster, isOwner, isInterested, interestCount});
+});
 
 
 function getDisasterTypesViewData(typeDisaster) {
