@@ -75,6 +75,21 @@ disasterController.get('/:disasterId/delete', isAuth, async (req, res) => {
 
 });
 
+disasterController.get('/:disasterId/edit', isAuth, async (req, res) => {
+    const disasterId = req.params.disasterId;
+    const disaster = await disasterService.getOne(disasterId);
+
+    if (!disaster.owner.equals(req.user.id)) {
+        res.setError('Only owners can edit their event post!');
+        return res.redirect(`/disasters/${disasterId}/details`);
+    }
+
+    const currDisasterType = disaster.typeDisaster;
+    const disasterTypesData = getDisasterTypesViewData(currDisasterType);
+
+    res.render('disasters/edit', { disaster, disasterTypes: disasterTypesData });
+});
+
 
 function getDisasterTypesViewData(typeDisaster) {
     const disasterTypes = [
