@@ -4,6 +4,14 @@ import Disaster from "../models/Disaster.js";
 export const getAll = (filter = {}) => {
     let query = Disaster.find({});
 
+    if (filter.name) {
+        query = query.find({ name: { $regex: filter.name, $options: 'i' }});
+        
+    }
+
+    if (filter.typeDisaster) {
+        query = query.find({ typeDisaster: filter.typeDisaster });
+    }
 
     return query;
 };
@@ -47,7 +55,6 @@ export const updateOne = async (disasterId, userId, disasterData) => {
 
     return Disaster.findByIdAndUpdate(disasterId, disasterData, { runValidators: true });
 }
-
 
 
 const disasterService = {

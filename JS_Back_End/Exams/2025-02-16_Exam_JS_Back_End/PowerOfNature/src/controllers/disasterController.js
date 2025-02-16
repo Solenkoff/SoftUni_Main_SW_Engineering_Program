@@ -104,6 +104,15 @@ disasterController.post('/:disasterId/edit', isAuth, async (req, res) => {
 
 });
 
+disasterController.get('/search', async (req, res) => {
+    const filter = req.query;
+    const disasters = await disasterService.getAll(filter);
+
+    const disasterTypesData = getDisasterTypesViewData(filter.typeDisaster);
+
+    res.render('disasters/search', { disasters, filter, disasterTypes: disasterTypesData });
+});
+
 
 
 function getDisasterTypesViewData(typeDisaster) {

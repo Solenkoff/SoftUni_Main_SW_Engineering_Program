@@ -1,0 +1,29 @@
+{{setTitle 'Search'}}
+
+<section class="event-search">
+    <h1 id="title">Search</h1>
+
+    <form class="search-form" method="GET">
+        <input type="text" class="search-event" name="name" placeholder="Search by Name..." value="{{filter.name}}">
+        <select id="type" name="typeDisaster">
+            {{#each disasterTypes}}
+                <option value="{{value}}" {{selected}}>{{label}}</option>
+            {{/each}}
+        </select>
+        <button type="submit" class="btn-search">Search</button>
+    </form>
+
+    <div class="search-result">
+        <div class="search-list">
+            {{#each disasters}}
+                 {{>disasterCard}}
+            {{else}}
+                <div class="no-match">
+                    <p>No match was found!</p>
+                </div>
+            {{/each}}
+        </div> 
+
+    </div>
+    
+</section>
