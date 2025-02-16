@@ -28,6 +28,16 @@ export const interest = async (disasterId, userId) => {
     return disaster.save();
 }
 
+export const remove = async (disasterId, userId) => {
+    const disaster = await Disaster.findById(disasterId);
+
+    if (!disaster.owner.equals(userId)) {
+        throw new Error('Only owner can delete their event post!');
+    }
+
+    return Disaster.findByIdAndDelete(disasterId);
+}
+
 
 
 const disasterService = {
@@ -35,6 +45,7 @@ const disasterService = {
     create,
     getOne,
     interest,
+    remove,
 };
 
 export default disasterService; 
