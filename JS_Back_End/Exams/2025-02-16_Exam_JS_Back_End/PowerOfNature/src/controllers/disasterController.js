@@ -8,6 +8,13 @@ import { getErrorMessage } from '../utils/errorUtil.js';
 const disasterController = Router();
 
 
+disasterController.get('/catalog', async (req, res) => {
+    const disasters = await disasterService.getAll();
+
+    res.render('disasters/catalog', { disasters }); 
+}) 
+
+
 disasterController.get('/create', isAuth, (req, res) => {
     const disasterTypesData = getDisasterTypesViewData();
 
