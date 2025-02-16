@@ -6,10 +6,10 @@
     "dev": "nodemon src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Solenkoff",
   "license": "ISC",
   "type": "module",
-  "description": "",
+  "description": "JS-Back-End-Exam",
   "devDependencies": {
     "nodemon": "^3.1.9"
   },
