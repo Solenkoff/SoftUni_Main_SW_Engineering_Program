@@ -38,6 +38,16 @@ export const remove = async (disasterId, userId) => {
     return Disaster.findByIdAndDelete(disasterId);
 }
 
+export const updateOne = async (disasterId, userId, disasterData) => {
+    const disaster = await getOne(disasterId);
+
+    if (!disaster.owner.equals(userId)) {
+        throw new Error('Only owner can  edit their event post!');
+    }
+
+    return Disaster.findByIdAndUpdate(disasterId, disasterData, { runValidators: true });
+}
+
 
 
 const disasterService = {
@@ -46,6 +56,7 @@ const disasterService = {
     getOne,
     interest,
     remove,
+    updateOne
 };
 
 export default disasterService; 
