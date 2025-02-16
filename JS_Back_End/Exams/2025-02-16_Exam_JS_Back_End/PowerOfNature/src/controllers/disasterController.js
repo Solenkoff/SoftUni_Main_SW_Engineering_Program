@@ -90,6 +90,21 @@ disasterController.get('/:disasterId/edit', isAuth, async (req, res) => {
     res.render('disasters/edit', { disaster, disasterTypes: disasterTypesData });
 });
 
+disasterController.post('/:disasterId/edit', isAuth, async (req, res) => {
+    const disasterId = req.params.disasterId;
+    const userId = req.user.id;
+    const disasterData = req.body;
+
+    try {
+        await disasterService.updateOne(disasterId, userId, disasterData);
+        return res.redirect(`/disasters/${disasterId}/details`);
+    } catch (err) {
+        res.render('disasters/edit', { disaster: disasterData, error: getErrorMessage(err) });
+    }
+
+});
+
+
 
 function getDisasterTypesViewData(typeDisaster) {
     const disasterTypes = [
