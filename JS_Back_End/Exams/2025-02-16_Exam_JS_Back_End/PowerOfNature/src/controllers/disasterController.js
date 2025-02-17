@@ -95,11 +95,14 @@ disasterController.post('/:disasterId/edit', isAuth, async (req, res) => {
     const userId = req.user.id;
     const disasterData = req.body;
 
+    const currDisasterType = disasterData.typeDisaster;
+    const disasterTypesData = getDisasterTypesViewData(currDisasterType);
+
     try {
         await disasterService.updateOne(disasterId, userId, disasterData);
         return res.redirect(`/disasters/${disasterId}/details`);
     } catch (err) {
-        res.render('disasters/edit', { disaster: disasterData, error: getErrorMessage(err) });
+        res.render('disasters/edit', { disaster: disasterData, disasterTypes: disasterTypesData, error: getErrorMessage(err) });
     }
 
 });

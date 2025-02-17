@@ -3,12 +3,12 @@ import { Schema, model, Types } from 'mongoose';
 const disasterSchema = new Schema({
     name: {
         type: String,
-        required: true,
+        required: [true, 'Name is required'],
         minLength: [2, 'The Name should be at least 2 characters long']
     },
     typeDisaster: {
         type: String,
-        required: true,
+        required: [true, 'Type is required'],
         enum: [
             'Wildfire', 
             'Flood', 
@@ -21,23 +21,23 @@ const disasterSchema = new Schema({
     },
     eventYear: {
         type: Number,
-        required: true,
+        required: [true, 'Eventyear is required'],
         min: [0, 'The Year should be between 0 and 2024'],
         max: [2024, 'The Year should be between 0 and 2024']
     },
     location: {
         type: String,
-        required: true,
+        required: [true, 'Location is required'],
         minLength: [3, 'The Location should be at least 3 characters long']
     },
     image: {
         type: String,
-        required: true,
-        validate: [ /^https?:\/\//, 'The Disaster Image should start with http:// or https://' ]
+        required: [true, 'Image is required'],
+        validate: [ /^https?:\/\//, 'The image link should start with http:// or https://' ]
     },
     description: {
         type: String,
-        required: true,
+        required: [true, 'Description is required'],
         minLength: [10, 'The Description should be a minimum of 10 characters long']
     },
     interestedList : [{
