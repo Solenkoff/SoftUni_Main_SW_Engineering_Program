@@ -13,10 +13,12 @@ export default function UserList() {
         userService.getAll()
             .then(result => {
                 setUsers(result);
-                
+            })
+            .catch(err => {
+                console.log(err.message);
             }) 
     }, []);
-
+  
     return (
         <section className="card users-container">
 
@@ -79,7 +81,7 @@ export default function UserList() {
                             </div> */}
                 {/* <!-- </div> --> */}
                 </div>
-                {/* End of Errors */}
+                {/* End of Errors */}   
 
                 <table className="table">
                     <thead>
@@ -137,6 +139,7 @@ export default function UserList() {
                         </tr>
                     </thead>
                     <tbody>
+                        {users.map(user => <UserListItem key={user._id} {...user} />)}
                         <UserListItem />
                     </tbody>
                 </table> 
