@@ -7,11 +7,14 @@ import Pagination from "./Pagination";
 import UserListItem from "./UserListItem";
 import UserCreate from "./UserCreate";
 import UserInfo from "./UserInfo";
+import UserDelete from "./UserDelete";
 
 export default function UserList() {
     const [users, setUsers] = useState([]);
     const [showCreate, setShowCreate] = useState(false);
     const [userIdInfo, setUserIdInfo] = useState(null);
+    const [userIdDelete, setUserIdDelete] = useState(null);
+
 
     useEffect(() => {
         userService.getAll()
@@ -33,7 +36,7 @@ export default function UserList() {
         e.preventDefault();
 
         // Get form data
-        const formData = new FormData(e.target.parentElement.parentElement);
+        const formData = new FormData(e.target);
         const formValues = Object.fromEntries(formData);
 
         // Create new user on server 
@@ -56,6 +59,24 @@ export default function UserList() {
         setUserIdInfo(null);
     }
 
+    const userDeleteClickHandler = (userId) => {
+        setUserIdDelete(userId);
+    }
+
+    const userDeleteCloseHandler = () => {
+        setUserIdDelete(null);
+    }
+
+    const userDeleteHandler = async () => {
+        // Delete request to server
+        await userService.delete(userIdDelete);
+        // Delete from local state
+        setUsers(state => state.filter(u => u._id !== userIdDelete));
+        // Close modal
+        setUserIdDelete(null);
+
+    }
+
     return (
         <section className="card users-container">
 
@@ -72,6 +93,13 @@ export default function UserList() {
                 <UserInfo
                     userId={userIdInfo}
                     onClose={closeUserInfoClickHandler}
+                />)
+            }
+
+            {userIdDelete && (
+                <UserDelete
+                    onClose={userDeleteCloseHandler}
+                    onDelete={userDeleteHandler}
                 />)
             }
 
@@ -193,6 +221,7 @@ export default function UserList() {
                         {users.map(user => <UserListItem
                             key={user._id}
                             onInfoClick={userInfoClickHandler}
+                            onDeleteClick={userDeleteClickHandler}
                             {...user}
                         />)}
                     </tbody>
