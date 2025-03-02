@@ -5,3 +5,4 @@ export const fromIsoDate = (isoDate) => {
 
     return formattedDate;
 }
+
