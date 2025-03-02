@@ -11,15 +11,12 @@ import UserInfo from "./UserInfo";
 export default function UserList() {
     const [users, setUsers] = useState([]);
     const [showCreate, setShowCreate] = useState(false);
-    const [userIdInfo, setUserIdInfo] = useState();
+    const [userIdInfo, setUserIdInfo] = useState(null);
 
     useEffect(() => {
         userService.getAll()
             .then(result => {
                 setUsers(result);
-            })
-            .catch(err => {
-                console.log(err.message);
             })
     }, []);
 
@@ -36,9 +33,8 @@ export default function UserList() {
         e.preventDefault();
 
         // Get form data
-        const formData = new FormData(e.target);
+        const formData = new FormData(e.target.parentElement.parentElement);
         const formValues = Object.fromEntries(formData);
-        console.log(formValues);
 
         // Create new user on server 
         const newUser = await userService.create(formValues);
