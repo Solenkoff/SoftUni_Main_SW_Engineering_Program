@@ -8,8 +8,10 @@ const wait = (time) => {
     });
 }
 
-export default function UncontrolledForm() {
+export default function ControlledForm() {
     const [pending, setPending] = useState(false);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     const submitHandler = async (e) => {
         // Set pending status
@@ -17,13 +19,6 @@ export default function UncontrolledForm() {
 
         // Prevent page refresh
         e.preventDefault();
-
-        // Get form data from DOM
-        const formData = new FormData(e.currentTarget);
-
-        // Get form values
-        const username = formData.get('username');
-        const password = formData.get('password');
 
         // Call rest api
         await wait(1500);
@@ -37,11 +32,19 @@ export default function UncontrolledForm() {
 
     };
 
+    const usernameChangeHandler = (e) => {
+       setUsername(e.target.value);
+    }
+
+    const passwordChangeHandler = (e) => {
+        setPassword(e.target.value);
+     }
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="w-full max-w-sm p-6 bg-white rounded-lg shadow-md">
                 <h2 className="text-2xl font-semibold text-center text-gray-700 mb-4">
-                    Uncontrolled Form
+                    Controlled Form
                 </h2>
 
                 <form onSubmit={submitHandler} className="space-y-4">
@@ -56,7 +59,8 @@ export default function UncontrolledForm() {
                             type="text"
                             id="username"
                             name="username"
-                            defaultValue="Pesho"
+                            value={username}
+                            onChange={usernameChangeHandler}
                             className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300"
                         />
                     </div>
@@ -72,6 +76,8 @@ export default function UncontrolledForm() {
                             type="password"
                             id="password"
                             name="password"
+                            value={password}
+                            onChange={passwordChangeHandler}
                             className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300"
                         />
                     </div>
