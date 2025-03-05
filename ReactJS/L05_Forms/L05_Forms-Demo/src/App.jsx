@@ -11,6 +11,8 @@ function App() {
             <ControlledForm />
 
             <UnifiedControlledForm />
+
+            <UseRef />
         </>
     )
 }
