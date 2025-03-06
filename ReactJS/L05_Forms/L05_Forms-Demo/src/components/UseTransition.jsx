@@ -56,7 +56,7 @@ export default function UseTransition() {
 
                     <div>
                         <input
-                            type="submit"s
+                            type="submit"
                             value="Get"
                             // disabled={pending}
                             className={`w-full px-4 py-2 font-semibold text-white transition bg-blue-600 rounded-md shadow-md ${isPending
