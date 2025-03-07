@@ -8,7 +8,6 @@ const navigation = [
     { name: 'Catalog', path: '/catalog' },
     { name: 'Pricing', path: '/pricing' },
     { name: 'Contacts', path: '/contacts' },
-    { name: 'Catalog', path: '/catalog' },
 ]
 
 export default function Header() {
