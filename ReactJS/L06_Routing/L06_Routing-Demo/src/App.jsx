@@ -4,6 +4,7 @@ import './App.css'
 
 import Header from './components/Header'
 import Home from './components/Home'
+import Contacts from './components/Contacts';
 import NotFound from './components/404';
 function App() {
    
@@ -11,6 +12,7 @@ function App() {
     return (   
             <Header />
                   <Route path="/" element={<Home />} />
+                  <Route path="/contacts" element={<Contacts />} />
                   <Route path="/*" element={<NotFound />} />
         
             
