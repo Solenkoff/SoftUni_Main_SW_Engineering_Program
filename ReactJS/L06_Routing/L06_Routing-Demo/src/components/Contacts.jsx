@@ -13,7 +13,7 @@ export default function Contacts() {
         console.log(Object.fromEntries(formData));
         console.log('Sending the contact info...');
         
-        navigate('/');
+        navigate('/');   
     }
 
     return (
