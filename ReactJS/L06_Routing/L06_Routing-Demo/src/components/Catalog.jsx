@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import { Link, useSearchParams } from "react-router"
+
 import {
     Menu,
     MenuButton,
@@ -40,14 +42,21 @@ import CatalogItem from "./CatalogItem"
 //     },
 //     // More products...
 //   ]
-  
-  export default function Catalog() {
+
+const sortOptions = [
+    { name: 'All', href: '/catalog', current: true },
+    { name: 'Best Rating', href: '/catalog?rating=true', current: false },
+    { name: 'Most Popular', href: '/catalog?popular=true', current: false },
+    { name: 'Price: Low to High', href: '/catalog?sortBy=price&dir=asc', current: false },
+    { name: 'Price: High to Low', href: '/catalog?sortBy=price&dir=desc', current: false },
+]
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 export default function Catalog() {
+    const [searchParams] = useSearchParams();
     const [products, setProducts] = useState([]);
     const [displayProducts, setDisplayProducts] = useState([]);
 
@@ -58,6 +67,21 @@ export default function Catalog() {
             .then(res => res.json())
             .then(result => setProducts(result));
     }, []);
+
+    useEffect(() => {
+        const filter = Object.fromEntries(searchParams);
+
+        if(filter.sortBy){ 
+            setDisplayProducts([...products].sort((p1, p2) => filter.dir === 'asc' ? p1.price - p2.price : p2.price - p1.price));
+        }else if(filter.rating){
+            setDisplayProducts([...products].filter(p => p.rating.rate >= 4).sort((p1, p2) => p2.rating.rate - p1.rating.rate));
+        }else if(filter.popular){
+            setDisplayProducts([...products].filter(p => p.rating.count >= 100).sort((p1, p2) => p2.rating.count - p1.rating.count));
+        }else{
+            setDisplayProducts([...products]);
+        }
+    }, [products, searchParams])
+
 
     return (
         <div className="bg-white">

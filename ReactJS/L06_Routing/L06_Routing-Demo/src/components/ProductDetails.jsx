@@ -102,15 +102,15 @@ export default function ProductDetails() {
                                             key={rating}
                                             aria-hidden="true"
                                             className={classNames(
-                                                reviews.average > rating ? 'text-gray-900' : 'text-gray-200',
+                                                product.rating?.rate > rating + 0.4 ? 'text-gray-900' : 'text-gray-200',
                                                 'size-5 shrink-0',
                                             )}
                                         />
                                     ))}
                                 </div>
-                                <p className="sr-only">{reviews.average} out of 5 stars</p>
+                                <p className="sr-only">{product.rating?.rate} out of 5 stars</p>
                                 <a href={reviews.href} className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                                    {reviews.totalCount} reviews
+                                    {product.rating?.count} reviews
                                 </a>
                             </div>
                         </div>
