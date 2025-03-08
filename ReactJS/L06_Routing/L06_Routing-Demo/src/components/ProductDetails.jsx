@@ -64,11 +64,25 @@ export default function ProductDetails() {
     const [selectedSize, setSelectedSize] = useState(templateProduct.sizes[2])
 
     useEffect(() => {
-        fetch(`https://fakestoreapi.com/products/${productId}`)
+        const abortController = new AbortController();
+
+        fetch(`https://fakestoreapi.com/products/${productId}`, { signal: abortController.signal })
             .then(res => res.json())
-            .then(result => {
+            .then(result => { 
                 setProduct(result);
             });
+
+        //  For Aborting of EventListener  JS / React -> set the eventListener in window... and then abort it in the return
+        // window.addEventListener('keypress', () => {
+        // }, { signal: abortController.signal })
+
+        return () => {
+            abortController.abort();
+        }
+
+        window.addEventListener('keypress', () => {
+
+        }, { signal: abortController.signal })
     }, [productId]);
 
     return (

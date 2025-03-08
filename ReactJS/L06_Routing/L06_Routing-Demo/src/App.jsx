@@ -25,7 +25,7 @@ function App() {
                 <Route path="/catalog/:productId" element={<ProductDetails />} />
                 <Route path="/pricing" element={<Pricing />} >
                     <Route index element={<IndividualPricing />} />
-                    <Route path='business' element={<BusinessPricing />} />
+                    <Route path='business' element={<BusinessPricing  />} />
                 </Route>
                 <Route path="/contacts" element={<Contacts />} />
                 <Route path="/*" element={<NotFound />} />
