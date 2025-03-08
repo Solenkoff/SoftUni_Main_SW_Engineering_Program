@@ -60,8 +60,8 @@ function classNames(...classes) {
 export default function ProductDetails() {
     const { productId } = useParams();
     const [product, setProduct] = useState({});
-    const [selectedColor, setSelectedColor] = useState(product.colors[0])
-    const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+    const [selectedColor, setSelectedColor] = useState(templateProduct.colors[0])
+    const [selectedSize, setSelectedSize] = useState(templateProduct.sizes[2])
 
     useEffect(() => {
         fetch(`https://fakestoreapi.com/products/${productId}`)
@@ -122,7 +122,7 @@ export default function ProductDetails() {
 
                                 <fieldset aria-label="Choose a color" className="mt-4">
                                     <RadioGroup value={selectedColor} onChange={setSelectedColor} className="flex items-center gap-x-3">
-                                        {product.colors.map((color) => (
+                                        {templateProduct.colors.map((color) => (
                                             <Radio
                                                 key={color.name}
                                                 value={color}
@@ -157,7 +157,7 @@ export default function ProductDetails() {
                                         onChange={setSelectedSize}
                                         className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4"
                                     >
-                                        {product.sizes.map((size) => (
+                                        {templateProduct.sizes.map((size) => (
                                             <Radio
                                                 key={size.name}
                                                 value={size}
@@ -220,7 +220,7 @@ export default function ProductDetails() {
 
                             <div className="mt-4">
                                 <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
-                                    {product.highlights.map((highlight) => (
+                                    {templateProduct.highlights.map((highlight) => (
                                         <li key={highlight} className="text-gray-400">
                                             <span className="text-gray-600">{highlight}</span>
                                         </li>
