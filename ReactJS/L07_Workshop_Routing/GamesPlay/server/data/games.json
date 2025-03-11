@@ -1,0 +1,26 @@
+{
+    "6f642815-7f85-4a67-99f8-b52481b6fc98": {
+        "title": "Shadow of the Tomb Raider",
+        "category": "action-adventure ",
+        "maxLevel": "19",
+        "imageUrl": "https://i.ebayimg.com/images/g/LfsAAOSwfP1dGdcf/s-l1200.jpg",
+        "summary": "Set three years after the events of Rise of the Tomb Raider, its story follows Lara Croft as she ventures through the tropical regions of the Americas to the legendary city Paititi, battling the paramilitary organization Trinity and racing to stop a Mayan apocalypse she has unleashed",
+        "_id": "6f642815-7f85-4a67-99f8-b52481b6fc98"
+    },
+    "52e8dd04-350a-4c69-b330-be37b2b74713": {
+        "title": "Mortal Kombat 1",
+        "category": "Fighting",
+        "maxLevel": "100",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/pt/9/9d/Mortal_Kombat_1_PS5_capa_digital.png",
+        "summary": "After defeating Kronika and Shang Tsung, Fire God Liu Kang uses Kronika's Hourglass to recreate the universe before relinquishing control of it to Geras to become Earthrealm's protector. Over time, he forms a tenuous alliance with Outworld under the auspices of continuing the Mortal Kombat tournaments",
+        "_id": "52e8dd04-350a-4c69-b330-be37b2b74713"
+    },
+    "3b5ef993-ccb2-4e35-92b4-d3dce004d5ea": {
+        "title": "Counter-Strike 2",
+        "category": "shooting",
+        "maxLevel": "40",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/f/f2/CS2_Cover_Art.jpg",
+        "summary": "Counter-Strike 2 is a multiplayer tactical first-person shooter,[1] in which two teams, the Terrorists and Counter-Terrorists, complete various objectives.[2] The game includes two team-based objective scenarios: bomb defusal, and hostage rescue, with the bomb defusal scenario making up the primary gameplay experience and all of competitive esports.",
+        "_id": "3b5ef993-ccb2-4e35-92b4-d3dce004d5ea"
+    }
+}
