@@ -21,8 +21,6 @@ export default function UserCreate({
             });
     }, [userId]);
 
-    console.log(user);
-    
 
     return (
         <div className="overlay">

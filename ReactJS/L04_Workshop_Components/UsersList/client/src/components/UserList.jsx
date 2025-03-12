@@ -8,10 +8,10 @@ import UserListItem from "./UserListItem";
 import UserCreate from "./UserCreate";
 import UserInfo from "./UserInfo";
 import UserDelete from "./UserDelete";
-import UserEdit from "./UserEdit";
 
 export default function UserList() {
     const [users, setUsers] = useState([]);
+    const [displayUsers, setDisplayUsers] = useState([]);
     const [showCreate, setShowCreate] = useState(false);
     const [userIdInfo, setUserIdInfo] = useState(null);
     const [userIdDelete, setUserIdDelete] = useState(null);
@@ -24,6 +24,21 @@ export default function UserList() {
                 setUsers(result);
             })
     }, []);
+
+    useEffect(() => {
+        userService.getAll()
+            .then(result => {
+                setUsers(result);
+            })
+        setDisplayUsers();
+    }, [users, filter, sort]);
+
+    // useEffect(() => {
+    //     setDisplayUsers();
+    // }, [filter]);
+    // useEffect(() => {
+    //     setDisplayUsers();
+    // }, [sort]);
 
     const createUserClickHandler = () => {
         setShowCreate(true);
@@ -39,7 +54,7 @@ export default function UserList() {
         e.preventDefault();
 
         // Get form data
-        const formData = new FormData(e.target);
+        const formData = new FormData(e.target.parentElement.parentElement);
         const formValues = Object.fromEntries(formData);
 
         // Create new user on server 

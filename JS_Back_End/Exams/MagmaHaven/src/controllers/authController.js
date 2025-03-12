@@ -39,7 +39,7 @@ authController.post('/login', async (req, res) => {
     } catch (err) {
         res.render('auth/login', { 
             error: getErrorMessage(err), 
-            user: { email } 
+            userData: { email } 
         });
     }
 });
