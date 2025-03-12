@@ -15,19 +15,19 @@ export default function GameEdit() {
             })
     }, [gameId]);
 
-    const gameEditClickHandler = async () => {
-            
-             
-            const result = await gameService.edit(gameId, game);
-            console.log(result);
-            
-            navigate('/games');
-        }
+    const formAction = async (formData) => {
+        const gameData = Object.fromEntries(formData);
+
+        await gameService.edit(gameId, gameData);
+
+        navigate(`/games/${gameId}/details`);
+
+    }
 
 
     return (
         <section id="edit-page" className="auth">
-            <form id="edit" onSubmit={gameEditClickHandler}>
+            <form id="edit" action={formAction}>
                 <div className="container">
 
                     <h1>Edit Game</h1>
@@ -38,7 +38,7 @@ export default function GameEdit() {
                     <input type="text" id="category" name="category" defaultValue={game.category} />
 
                     <label htmlFor="levels">MaxLevel:</label>
-                    <input type="number" id="maxLevel" name="maxLevel" min="1" defaultValue={game.maxLevel}/>
+                    <input type="number" id="maxLevel" name="maxLevel" min="1" defaultValue={game.maxLevel} />
 
                     <label htmlFor="game-img">Image:</label>
                     <input type="text" id="imageUrl" name="imageUrl" defaultValue={game.imageUrl} />
