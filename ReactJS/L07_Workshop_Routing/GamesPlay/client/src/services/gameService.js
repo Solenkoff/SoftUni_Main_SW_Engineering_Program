@@ -12,5 +12,8 @@ export default {
     },
     create(gameData) {
         return request.post(baseUrl, gameData);
+    },
+    getOne(gameId){
+        return request.get(`${baseUrl}/${gameId}`);
     }
 };      
