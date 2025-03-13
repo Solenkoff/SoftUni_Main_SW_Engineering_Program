@@ -9,7 +9,7 @@ export default function Login({
         const email = formData.get('email');
         onLogin(email);
 
-        navigate('/games');
+        navigate('/games'); 
     }
 
     return (
