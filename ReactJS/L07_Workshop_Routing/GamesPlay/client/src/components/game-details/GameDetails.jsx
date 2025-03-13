@@ -18,6 +18,9 @@ export default function GameDetails({
     useEffect(() => {
         gameService.getOne(gameId)
             .then(setGame);
+        commentService.getAll(gameId)
+            .then(commentsData => {
+                setComments(commentsData);
             })
     }, [gameId]);
 
