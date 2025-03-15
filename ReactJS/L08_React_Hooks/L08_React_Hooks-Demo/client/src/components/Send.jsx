@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { use, useContext } from "react";
 
 import { Input, Button, message } from "antd";
 import { SendOutlined } from '@ant-design/icons';
@@ -8,7 +8,13 @@ import { UserContext } from "../contexts/UserContext";
 const url = 'http://localhost:3030/jsonstore/messages';
 
 export default function Send() {
-    const { user } = useContext(UserContext);
+    //const { user } = useContext(UserContext);   //  -useContext- can NOT  be used conditionally
+    const { user } = use(UserContext);            //  -use- can be used conditionally
+
+    // if(true){
+    //     const {user} = use(UserContext);
+    // }
+
     const [messageApi, contextHolder] = message.useMessage();
 
     const formSubmit = async (values) => {
@@ -22,7 +28,7 @@ export default function Send() {
                 content: values.message,
             }),
         });
-
+  
         messageApi.open({
             type: 'success',
             content: 'Message sent successfully.'
@@ -38,7 +44,7 @@ export default function Send() {
         <>
             {contextHolder}
             <form onSubmit={submitHandler}>
-                <Input
+                <Input  
                     size="large"
                     name="message"
                     value={values.massage}
