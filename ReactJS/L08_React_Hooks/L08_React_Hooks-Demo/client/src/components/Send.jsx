@@ -1,14 +1,16 @@
+import { useContext } from "react";
+
 import { Input, Button, message } from "antd";
 import { SendOutlined } from '@ant-design/icons';
 import useForm from "../hooks/useForm";
+import { UserContext } from "../contexts/UserContext";
 
 const url = 'http://localhost:3030/jsonstore/messages';
 
-export default function Send({
-    user,
-}) {
+export default function Send() {
+    const { user } = useContext(UserContext);
     const [messageApi, contextHolder] = message.useMessage();
-   
+
     const formSubmit = async (values) => {
         await fetch(url, {
             method: 'POST',
