@@ -4,7 +4,9 @@ import useForm from "../hooks/useForm";
 
 const url = 'http://localhost:3030/jsonstore/messages';
 
-export default function Send() {
+export default function Send({
+    user,
+}) {
     const [messageApi, contextHolder] = message.useMessage();
    
     const formSubmit = async (values) => {
@@ -14,7 +16,7 @@ export default function Send() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                author: 'John Doe',
+                author: user,
                 content: values.message,
             }),
         });
@@ -25,10 +27,10 @@ export default function Send() {
         });
     }
 
-    const { values, changeHandler, submitHandler } = useForm({
+    const { values, changeHandler, submitHandler } = useForm(formSubmit, {
         message: '',
         author: ''
-    }, formSubmit);
+    });
 
     return (
         <>
