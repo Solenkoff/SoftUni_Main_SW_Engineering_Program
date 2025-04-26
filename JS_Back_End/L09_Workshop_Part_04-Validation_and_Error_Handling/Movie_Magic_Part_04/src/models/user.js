@@ -24,7 +24,6 @@ userSchema.virtual('rePassword')
             throw new Error('Password missmatch!');
         }
     })
-//.get()    getter if we need the rePassword somewhere...
 
 userSchema.pre('save', async function () {
     this.password = await bcrypt.hash(this.password, 10);
