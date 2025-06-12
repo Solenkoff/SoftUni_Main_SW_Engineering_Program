@@ -5,7 +5,9 @@ import { Language } from "./contracts/language";
 
 export class LanguageMessageEncoder<TLang extends Language, TCipher extends Cipher<TLang>> extends PartialMessageEncoder {
     private encodedCharsCount = 0;                       
+    private decodedCharsCount = 0;
 
+    
     constructor( lang: TLang, cipher: TCipher){          
         super(lang, cipher);
     }     
@@ -27,6 +29,21 @@ export class LanguageMessageEncoder<TLang extends Language, TCipher extends Ciph
         return encodedMessage;                                                        
     }
 
+    public decodeMessage(secretMessage: unknown): string {
+        if(typeof secretMessage !== 'string' || secretMessage.length === 0){
+            return 'No message.';
+        }
+
+        const isCompatible = this.language.isCompatibleToCharset(secretMessage);      
+
+        if(!isCompatible){
+            return 'Message not compatible.';                                         
+        }
+
+        const decodedMessage = this.cipher.decipher(secretMessage);                   
+        this.decodedCharsCount += decodedMessage.length;                              
+        return decodedMessage;                                                        
+    }
     
 
 } 
