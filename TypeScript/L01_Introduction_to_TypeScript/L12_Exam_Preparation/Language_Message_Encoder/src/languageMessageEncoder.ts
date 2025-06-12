@@ -1,6 +1,8 @@
 import { Cipher } from "./contracts/cipher";
 import { PartialMessageEncoder } from "./contracts/implemented/partialMessageEncoder";
 import { Language } from "./contracts/language";
+import { ProcessedCharsType } from "./types";
+
 
 
 export class LanguageMessageEncoder<TLang extends Language, TCipher extends Cipher<TLang>> extends PartialMessageEncoder {
@@ -43,6 +45,18 @@ export class LanguageMessageEncoder<TLang extends Language, TCipher extends Ciph
         const decodedMessage = this.cipher.decipher(secretMessage);                   
         this.decodedCharsCount += decodedMessage.length;                              
         return decodedMessage;                                                        
+    }
+
+    public totalProcessedCharacters(type: ProcessedCharsType): string {
+        let totalChars = 0;
+
+        switch(type){
+            case "Encoded": totalChars = this.encodedCharsCount; break;
+            case "Decoded": totalChars = this.decodedCharsCount; break;
+            case "Both": totalChars = this.encodedCharsCount + this.decodedCharsCount; break;
+        }
+
+        return `Total processed characters count: ${totalChars}`;
     }
     
 
