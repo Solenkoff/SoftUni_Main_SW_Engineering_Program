@@ -59,5 +59,10 @@ export class LanguageMessageEncoder<TLang extends Language, TCipher extends Ciph
         return `Total processed characters count: ${totalChars}`;
     }
     
+     protected override stripForbiddenSymbols(message: string): string {
+        let forbiddenSymbols = PartialMessageEncoder.forbiddenSymbols;
+          forbiddenSymbols.forEach(x => message = message.replaceAll(x, ''));
+          return message;
+    }
 
 } 
