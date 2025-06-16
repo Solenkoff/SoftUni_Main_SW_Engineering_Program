@@ -66,7 +66,7 @@ export class MonthlyMotel<T extends SeasonalMonth> extends PartialMonthlyMotel {
 
         this.totalBudget -= room.cancellationPrice;
         roomBookings.delete(bookedMonth);
-        this.bookings.set(roomNumber, roomBookings);
+        this.bookings.set(roomNumber, roomBookings); 
 
         return `Booking cancelled for Room '${roomNumber}' for '${bookedMonth}'.`;
     }
@@ -78,5 +78,6 @@ export class MonthlyMotel<T extends SeasonalMonth> extends PartialMonthlyMotel {
             'totalPrice' in possibleRoom && typeof possibleRoom.totalPrice === 'number' &&
             'cancellationPrice' in possibleRoom && typeof possibleRoom.cancellationPrice === 'number';
     }
+
 }
 
