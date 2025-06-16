@@ -25,7 +25,14 @@ export class MonthlyMotel<T extends SeasonalMonth> extends PartialMonthlyMotel {
             return `Value was not a Room.`;
         }
 
-        return "";
+        if (this.rooms.has(room.roomNumber)) {
+            return `Room '${room.roomNumber}' already exists.`
+        }
+
+        this.rooms.set(room.roomNumber, room);
+        this.bookings.set(room.roomNumber, new Set<T>());
+
+        return `Room '${room.roomNumber}' added.`
     }
 
 
