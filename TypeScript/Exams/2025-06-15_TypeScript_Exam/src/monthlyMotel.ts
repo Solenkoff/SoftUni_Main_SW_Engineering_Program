@@ -35,6 +35,24 @@ export class MonthlyMotel<T extends SeasonalMonth> extends PartialMonthlyMotel {
         return `Room '${room.roomNumber}' added.`
     }
 
+    bookRoom(roomNumber: RoomNumber, bookedMonth: T): string {
+        let room = this.rooms.get(roomNumber);
+        if (!room) {
+            return `Room '${roomNumber}' does not exist.`;
+        }
+
+        let roomBookings = this.bookings.get(roomNumber)!;
+        if (roomBookings.has(bookedMonth)) {
+            return `Room '${roomNumber}' is already booked for '${bookedMonth}'.`;
+        }
+
+        this.totalBudget += room.totalPrice;
+        roomBookings.add(bookedMonth);
+        //this.bookings.set(roomNumber, roomBookings!);    //  NO Need  =>  prev. line mutates through reference
+
+        return `Room '${roomNumber}' booked for '${bookedMonth}'.`
+    }
+
 
     private isRoom(possibleRoom: unknown): possibleRoom is Room {
         return possibleRoom !== null && typeof possibleRoom === 'object' &&
