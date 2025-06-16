@@ -19,7 +19,22 @@ export class MonthlyMotel<T extends SeasonalMonth> extends PartialMonthlyMotel {
         const hotelNameString = super.getTotalBudget();
         return `${hotelNameString}\nTotal budget: $${this.totalBudget.toFixed(2)}`;
     }
-   
 
+    addRoom(room: unknown): string {
+        if (!this.isRoom(room)) {
+            return `Value was not a Room.`;
+        }
+
+        return "";
+    }
+
+
+    private isRoom(possibleRoom: unknown): possibleRoom is Room {
+        return possibleRoom !== null && typeof possibleRoom === 'object' &&
+            'roomNumber' in possibleRoom && typeof possibleRoom.roomNumber === 'string' &&
+            ['A01', 'A02', 'A03', 'B01', 'B02', 'B03'].includes(possibleRoom.roomNumber) &&
+            'totalPrice' in possibleRoom && typeof possibleRoom.totalPrice === 'number' &&
+            'cancellationPrice' in possibleRoom && typeof possibleRoom.cancellationPrice === 'number';
+    }
 }
 
