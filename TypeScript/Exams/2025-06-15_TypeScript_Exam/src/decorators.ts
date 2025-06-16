@@ -11,7 +11,15 @@ export function decorator2(target: any, propName: string, descriptor: PropertyDe
     return descriptor;
 }
 
-export function decorator3(target: Object, methodName: string, paramIndex: number) {}
+export function decorator3(target: any, propName: string, descriptor: PropertyDescriptor) {
+    const originalGetter = descriptor.get;
+
+    descriptor.get = function () {
+        return originalGetter?.call(this) * 1.2;
+    }
+
+    return descriptor;
+}
 
 export function decorator4(target: Object, methodName: string, paramIndex: number) {}
 
