@@ -15,6 +15,10 @@ export class MonthlyMotel<T extends SeasonalMonth> extends PartialMonthlyMotel {
     }
 
 
+    getTotalBudget() {
+        const hotelNameString = super.getTotalBudget();
+        return `${hotelNameString}\nTotal budget: $${this.totalBudget.toFixed(2)}`;
+    }
    
 
 }
