@@ -53,6 +53,23 @@ export class MonthlyMotel<T extends SeasonalMonth> extends PartialMonthlyMotel {
         return `Room '${roomNumber}' booked for '${bookedMonth}'.`
     }
 
+    cancelBooking(roomNumber: RoomNumber, bookedMonth: T): string {
+        let room = this.rooms.get(roomNumber);
+        if (!room) {
+            return `Room '${roomNumber}' does not exist.`;
+        }
+
+        let roomBookings = this.bookings.get(roomNumber)!;
+        if (!roomBookings.has(bookedMonth)) {
+            return `Room '${roomNumber}' is not booked for '${bookedMonth}'.`;
+        }
+
+        this.totalBudget -= room.cancellationPrice;
+        roomBookings.delete(bookedMonth);
+        this.bookings.set(roomNumber, roomBookings);
+
+        return `Booking cancelled for Room '${roomNumber}' for '${bookedMonth}'.`;
+    }
 
     private isRoom(possibleRoom: unknown): possibleRoom is Room {
         return possibleRoom !== null && typeof possibleRoom === 'object' &&
