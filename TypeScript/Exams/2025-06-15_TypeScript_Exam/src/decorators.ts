@@ -23,5 +23,11 @@ export function decorator3(target: any, propName: string, descriptor: PropertyDe
 
 export function decorator4(target: Object, methodName: string, paramIndex: number) {}
 
-export function decorator5(target: Object, methodName: string, paramIndex: number) {}
+export function decorator5<T extends (abstract new (...args: any[]) => {})>(constructor: T) {
+    abstract class ExtendedPartialMonthlyMotel extends constructor {
+        public static readonly MotelName = 'Monthly Motel';
+    }
+
+    return ExtendedPartialMonthlyMotel;
+}
 
