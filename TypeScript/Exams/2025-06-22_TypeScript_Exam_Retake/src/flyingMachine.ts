@@ -25,7 +25,13 @@ export class FlyingMachine<T extends LiftMode> implements Flyer {
         return FlyingMachine._totalMetersMoved;
     }
 
-    
+    get weight(): number {
+        if (this.isActive()) {
+            return this._weight + this._gas.fuelWeight;
+        } else {
+            return this._weight;
+        }
+    }
 
 
 
