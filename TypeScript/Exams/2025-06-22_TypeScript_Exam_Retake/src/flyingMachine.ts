@@ -21,7 +21,9 @@ export class FlyingMachine<T extends LiftMode> implements Flyer {
         this.altitude = altitude;
     }
 
-    
+    static get TotalMetersMoved(){
+        return FlyingMachine._totalMetersMoved;
+    }
 
 }
 
