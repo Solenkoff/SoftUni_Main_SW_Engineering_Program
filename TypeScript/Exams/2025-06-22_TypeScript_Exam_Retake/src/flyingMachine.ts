@@ -25,5 +25,20 @@ export class FlyingMachine<T extends LiftMode> implements Flyer {
         return FlyingMachine._totalMetersMoved;
     }
 
+    
+
+
+
+
+    private isActive(): this is FlyingMachine<'Active'> {
+        return 'fuelConsumptionRate' in this._liftDevice && typeof this._liftDevice.fuelConsumptionRate === 'number' && 'liftPerFuelUnit' in this._liftDevice && typeof this._liftDevice.liftPerFuelUnit === 'number' &&
+            'getAltitudeChange' in this._liftDevice && typeof this._liftDevice.getAltitudeChange === 'function';
+    }
+
+    private isPassive(): this is FlyingMachine<'Passive'> {
+        return 'maxHeight' in this._liftDevice && typeof this._liftDevice.maxHeight === 'number' &&
+            'getAltitudeChange' in this._liftDevice && typeof this._liftDevice.getAltitudeChange === 'function';
+    }
+
 }
 
