@@ -33,6 +33,20 @@ export class FlyingMachine<T extends LiftMode> implements Flyer {
         }
     }
 
+    get altitude(): number {
+        return this._altitude;
+    }
+
+    private set altitude(value: number) {
+        if (value < 0) {
+            this._altitude = 0;
+        } else if (this.isPassive() && value > this._liftDevice.maxHeight) {
+            this._altitude = this._liftDevice.maxHeight;
+        } else {
+            this._altitude = value;
+        }
+    }
+
 
 
 
