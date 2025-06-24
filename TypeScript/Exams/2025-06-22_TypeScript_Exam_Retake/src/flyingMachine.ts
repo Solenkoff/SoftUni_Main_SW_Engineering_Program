@@ -84,6 +84,21 @@ export class FlyingMachine<T extends LiftMode> implements Flyer {
         }
     }
 
+    checkStatus(): string {
+        let result: string[] = [];
+
+        result.push(`Flyer altitude: ${Math.trunc(this.altitude)} meters`);
+        result.push(`Flyer weight: ${this.weight}`);
+
+        if (this.isActive()) {
+            result.push(`Fuel left: ${this._gas.fuelAmount}`);
+        } else if (this.isPassive()) {
+            result.push(`Max height: ${this._liftDevice.maxHeight}`);
+        }
+
+        return result.join('\n');
+    }
+
 
     private isActive(): this is FlyingMachine<'Active'> {
         return 'fuelConsumptionRate' in this._liftDevice && typeof this._liftDevice.fuelConsumptionRate === 'number' && 'liftPerFuelUnit' in this._liftDevice && typeof this._liftDevice.liftPerFuelUnit === 'number' &&
