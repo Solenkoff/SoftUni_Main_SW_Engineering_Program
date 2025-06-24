@@ -19,6 +19,15 @@ export function decorator2(target: object, methodName: string, descriptor: Prope
     }
 }
 
-export function decorator3(target: object, propertyKey: string, descriptor: PropertyDescriptor) {}
+export function decorator3<T extends { new(...args: any[]): SolidRocketBooster }>(superConstructor: T) {
+    return class extends superConstructor {
+        constructor(...args: any[]) {
+            super(...args);
+            this._optimalWeight = args[2];
+        }
+
+    }
+}
+
 
 export function decorator4(target: object, propertyKey: string, descriptor: PropertyDescriptor) {}
