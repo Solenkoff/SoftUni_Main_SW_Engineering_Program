@@ -48,6 +48,41 @@ export class FlyingMachine<T extends LiftMode> implements Flyer {
     }
 
 
+    move(): string {
+
+        let altitudeChange = 0;
+
+        if (this.isActive()) {
+            if (this._gas.fuelAmount >= this._liftDevice.fuelConsumptionRate) {
+                altitudeChange = this._liftDevice.getAltitudeChange(this.weight);
+                this._gas.fuelAmount -= this._liftDevice.fuelConsumptionRate;
+            } else {
+                altitudeChange = 0;
+            }
+        }
+
+        if (this.isPassive()) {
+            const probableAltitudeChange = this._liftDevice.getAltitudeChange(this._gas, this.altitude);
+            if (this.altitude + probableAltitudeChange < 0) {
+                altitudeChange = this.altitude * -1;
+            } else if (this.altitude + probableAltitudeChange > this._liftDevice.maxHeight) {
+                altitudeChange = this._liftDevice.maxHeight - this.altitude;
+            } else {
+                altitudeChange = probableAltitudeChange;
+            }
+        }
+
+        this.altitude += altitudeChange;
+        const absAltitudeChange = Math.abs(altitudeChange);
+        FlyingMachine._totalMetersMoved += absAltitudeChange;
+        const direction = altitudeChange > 0 ? 'up' : 'down';
+
+        if (altitudeChange === 0) {
+            return `Flyer stayed in place`;
+        } else {
+            return `Flyer moved ${absAltitudeChange.toFixed(2)} meters ${direction}`;
+        }
+    }
 
 
     private isActive(): this is FlyingMachine<'Active'> {
