@@ -156,3 +156,28 @@ a {
     }
 }
 
+
+/* ----------   Continue Watching  ----------- */
+
+.continue-watching {
+
+    .img-container {
+        width: 18.6rem;
+        height: 12.3rem;
+        border-radius: 1em;
+        overflow: hidden;
+    }
+
+    .watch-progress {
+        width: 18.5rem;
+        height: 0.48em;
+        border-radius: 1.2em;
+        margin-top: 0.4em;
+        background: linear-gradient(to right,
+                var(--clr-red) 0%,
+                var(--clr-red) 40%,
+                var(--clr-bar-gray) 40%,
+                var(--clr-bar-gray) 100%);
+    }
+
+}
