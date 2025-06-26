@@ -1,0 +1,50 @@
+@import url(reset.css);
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap");
+
+
+html {
+    font: 21px/1.5 "Comic Neue", cursive;
+}
+
+body {
+    font: inherit;
+    background-color: #F0F0F0;
+}
+
+
+.page-wrapper {
+    width: 660px;
+    margin: 1.5em auto;
+    border-radius: 1em;
+    box-shadow: 0 0 1.2em 0 rgb(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.section.image-container {
+    height: 480px;
+}
+
+img {
+    height: 100%;
+}
+
+.section.content {
+    background-color: #FFFFFF;
+    padding: 0.5em 2em 1em 1.5em;
+
+    p {
+        padding-top: 1.5em;
+        opacity: 0.9;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .italic {
+        font-size: 19px;
+        font-style: italic;
+        color: #888888;
+        padding-top: 1em;
+    }
+}
