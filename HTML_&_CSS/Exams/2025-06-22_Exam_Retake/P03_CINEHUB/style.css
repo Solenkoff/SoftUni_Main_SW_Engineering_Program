@@ -181,3 +181,19 @@ a {
     }
 
 }
+
+.top-picks {
+
+    ul {
+        display: flex;
+        justify-content: flex-start;
+        gap: 1.7em;
+
+    }
+
+    .img-container {
+        width: 20rem;
+        border-radius: 0.7em;
+        overflow: hidden;
+    }
+}
