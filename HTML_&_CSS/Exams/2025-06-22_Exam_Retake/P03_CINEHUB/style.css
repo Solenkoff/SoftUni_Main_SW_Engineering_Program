@@ -1,0 +1,101 @@
+@import url(reset.css);
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@400;500;700&display=swap");
+
+
+:root {
+    --clr-bg: #0B0B0B;
+    --clr-white: #FFFFFF;
+    --clr-font-gray: #CCCCCC;
+    --clr-bar-gray: #333333;
+    --clr-bg-gray: #1A1A1A;
+    --clr-socials-bg-gray: #111111;
+    --clr-red: #E50914;
+}
+
+
+html {
+    font: 16px/1.5 "Inter", sans-serif;
+    color: var(--clr-white);
+}
+
+
+h1 {
+    font-size: 3.4rem;
+}
+
+h2 {
+    font-size: 2.7rem;
+}
+
+h3 {
+    font-size: 2.1rem;
+}
+
+h4 {
+    font: 2.2rem/1.5 "Inter", sans-serif;
+    padding-bottom: 0.6em;
+}
+
+h5 {
+    font-size: 1.4em;
+}
+
+h6 {
+    font-size: 1.2em;
+}
+
+
+.site-wrapper {
+    width: 100%;
+    padding: 0 1.7rem;
+    background-color: var(--clr-bg);
+}
+
+.montserrat {
+    font-family: "Montserrat", sans-serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-white);
+}
+
+.gray {
+    color: var(--clr-font-gray);
+}
+
+.btn-container {
+    display: inline-block;
+    background-color: var(--clr-red);
+}
+
+.section {
+    width: 100%;
+    padding: 4em 0.5em 0 0.8em;
+}
+
+
+/* ----------   Header  ----------- */
+
+.section.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5em 0 1.5em;
+
+    .nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.4rem;
+        gap: 2em;
+        padding-right: 1em;
+    }
+
+}
+
