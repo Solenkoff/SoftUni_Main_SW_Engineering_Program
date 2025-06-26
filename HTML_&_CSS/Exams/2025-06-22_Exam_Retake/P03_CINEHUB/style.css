@@ -99,3 +99,60 @@ a {
 
 }
 
+/* ----------   Hero  ----------- */
+
+.section-hero {
+    background-image: url(img/movies/city-under-the-fire-bg.webp);
+    background-repeat: no-repeat;
+    background-size: 112%;
+    border-radius: 1em;
+    padding: 10.9em 3.5em 10em;
+
+    h1 {
+        width: 23ch;
+        line-height: 1.2em;
+    }
+
+    .gray {
+        font-size: 1.45rem;
+        padding: 1em 0;
+    }
+
+    .red {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--clr-red);
+    }
+
+    .upper {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .categories {
+        display: flex;
+        justify-content: flex-start;
+        gap: 1em;
+        padding-top: 1em;
+
+        li {
+            padding: 4px 14px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 1.4em;
+        }
+    }
+
+    .star {
+        font-size: 1.2rem;
+        padding: 0.6em 0;
+
+    }
+
+    .btn-container {
+        padding: 0.6em 1.4em;
+        font-size: 1.4rem;
+        border-radius: 0.3em;
+        margin-top: 1.5em;
+    }
+}
+
