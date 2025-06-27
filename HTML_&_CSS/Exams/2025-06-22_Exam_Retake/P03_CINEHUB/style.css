@@ -246,3 +246,36 @@ a {
     }
 
 }
+
+/* ----------   Browse  ----------- */
+
+.browse {
+
+    .genre-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3.2em;
+    }
+
+    .icon-container {
+        width: 6.27rem;
+        aspect-ratio: 1/1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--clr-socials-bg-gray);
+        border-radius: 50%;
+
+        img {
+            width: 65%;
+            /* height: 60%; */
+        }
+    }
+
+    p {
+        font-size: 1.25em;
+        text-align: center;
+        padding-top: 0.5em;
+    }
+}
