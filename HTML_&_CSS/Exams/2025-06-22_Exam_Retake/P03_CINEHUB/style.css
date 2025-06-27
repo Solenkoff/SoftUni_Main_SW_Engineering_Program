@@ -279,3 +279,23 @@ a {
         padding-top: 0.5em;
     }
 }
+
+/* ----------   Footer  ----------- */
+
+footer {
+    border-top: 2px solid #969696;
+    margin-top: 4em;
+    text-align: center;
+    padding: 3.8em 0 1.6em;
+
+    p {
+        font-size: 1.32em;
+        padding-bottom: 1em;
+    }
+
+    .btn-container {
+        font-size: 1.35em;
+        padding: 0.8em 1.9em;
+        border-radius: 0.46em;
+    }
+}
