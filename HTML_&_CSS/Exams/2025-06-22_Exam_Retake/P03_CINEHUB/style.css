@@ -197,3 +197,52 @@ a {
         overflow: hidden;
     }
 }
+
+/* ----------   Coming Soon  ----------- */
+
+.coming-soon {
+
+    .section-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        gap: 1.6em;
+        padding: 1.6em;
+        background-color: var(--clr-bg-gray);
+        border-radius: 0.6em;
+    }
+
+    .img-container {
+        width: 12.7rem;
+        height: 8.5rem;
+        border-radius: 0.5em;
+        overflow: hidden;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .montserrat {
+        font-size: 1.56em;
+        font-weight: 700;
+        color: var(--clr-white);
+        padding-bottom: 0;
+        line-height: 0.9em;
+    }
+
+    p {
+        font-size: 1.3em;
+        color: var(--clr-font-gray);
+        padding-bottom: 0.5em;
+    }
+
+    .small {
+        font-size: 1.14em;
+        padding: 0.4em 1.1em;
+        border-radius: 0.25em;
+    }
+
+}
