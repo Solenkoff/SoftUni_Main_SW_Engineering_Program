@@ -10,6 +10,8 @@ namespace _05_Fashion_Boutique
         {
             string  newVariable = "Added change from second DevOps";
 
+            string secondVariable = "Added one more variable as a change"
+
             int[] input = Console.ReadLine()
                                  .Split(' ', StringSplitOptions.RemoveEmptyEntries)
                                  .Select(int.Parse)
