@@ -8,6 +8,7 @@ namespace _05_Fashion_Boutique
     {
         static void Main(string[] args)
         {
+            string  newVariable = "Added change from second DevOps";
 
             int[] input = Console.ReadLine()
                                  .Split(' ', StringSplitOptions.RemoveEmptyEntries)
