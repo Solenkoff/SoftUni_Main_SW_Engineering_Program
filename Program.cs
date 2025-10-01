@@ -46,6 +46,12 @@ namespace _05_Fashion_Boutique
                 racks++;
             }
 
+             if (sum > 11)
+            {
+                racks++;
+                racks--;
+            }
+
             Console.WriteLine(racks);
 
         }
