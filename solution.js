@@ -32,7 +32,6 @@ function fillSearchForm(e) {
     document.querySelector('#people').value = reservation.guestsCount;
 }
 
-
 document.querySelectorAll('.room-type').forEach(room => {
     room.addEventListener("click", (e) => selectRoomType(e))
 });
@@ -58,6 +57,7 @@ function findRoom(e) {
     reservation.roomType = roomInfo;
     console.log(reservation);
     changeContent('guest-details-form-content');
+}
 
 document.querySelector('#guest-details-back-btn').addEventListener('click', (e) => fillRoomForm(e));
 
@@ -112,3 +112,18 @@ function searchFormData(e) {
         changeContent('search-result-form-content');
     }
 }
+
+document.querySelector('#confirm-back-btn').addEventListener('click', (e) => getBackToPersonalData(e));
+
+function getBackToPersonalData(e) {
+    e.preventDefault();
+    changeContent('guest-details-form-content');
+}
+
+document.querySelector('#confirm-reservation').addEventListener('click', (e) => showThanksPage(e));
+
+function showThanksPage(e) {
+    e.preventDefault();
+    changeContent('thank-you-content');
+}
+
