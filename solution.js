@@ -32,7 +32,6 @@ function fillSearchForm(e) {
     document.querySelector('#people').value = reservation.guestsCount;
 }
 
-
 document.querySelectorAll('.room-type').forEach(room => {
     room.addEventListener("click", (e) => selectRoomType(e))
 });
@@ -127,3 +126,4 @@ function showThanksPage(e) {
     e.preventDefault();
     changeContent('thank-you-content');
 }
+
