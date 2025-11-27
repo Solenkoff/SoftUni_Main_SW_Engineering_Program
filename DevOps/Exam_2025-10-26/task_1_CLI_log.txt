@@ -1,0 +1,183 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20251026094920
+Username: SOLL\Soll
+RunAs User: SOLL\Soll
+Configuration Name: 
+Machine: SOLL (Microsoft Windows NT 10.0.19045.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 12068
+PSVersion: 5.1.19041.6456
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6456
+BuildVersion: 10.0.19041.6456
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is .\task_1_CLI_log.txt
+PS C:\Users\Soll\Desktop\SEDO_Exam> git clone https://github.com/Solenkoff/SEDO_Regular-Exam-1.git
+Cloning into 'SEDO_Regular-Exam-1'...
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 5 (delta 0), reused 0 (delta 0), pack-reused 2 (from 1)
+Receiving objects: 100% (5/5), done.
+PS C:\Users\Soll\Desktop\SEDO_Exam> git clone https://github.com/Solenkoff/SEDO_Regular-Exam-2.git
+Cloning into 'SEDO_Regular-Exam-2'...
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (4/4), done.
+PS C:\Users\Soll\Desktop\SEDO_Exam> git clone https://github.com/Solenkoff/SEDO_Regular-Exam-3.git
+Cloning into 'SEDO_Regular-Exam-3'...
+remote: Enumerating objects: 177, done.
+remote: Counting objects: 100% (177/177), done.
+remote: Compressing objects: 100% (116/116), done.
+remote: Total 177 (delta 56), reused 169 (delta 56), pack-reused 0 (from 0)
+Receiving objects: 100% (177/177), 1.32 MiB | 4.61 MiB/s, done.
+Resolving deltas: 100% (56/56), done.
+PS C:\Users\Soll\Desktop\SEDO_Exam> git pull
+fatal: not a git repository (or any of the parent directories): .git
+PS C:\Users\Soll\Desktop\SEDO_Exam> cd .\SEDO_Regular-Exam-1\
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git pull
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git pull
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git checkout feature/add-quotes
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git diff
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git add .
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git commit -m "first-commit-to-add-quotes"
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git add .
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git commit -m "second-commit-to-add-quotes"
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git add .
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git commit -m "third-commit-to-add-quotes"
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git rebase -i HEAD~3
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git push --force-with-lease
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git checkout bugfix/change-button
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git add .
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git commit -m "first-commit-to-change-button"
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git diff
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git diff
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git add .
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git commit -m "second-commit-to-change-button"
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git add .
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git commit -m "third-commit-to-change-button"
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git log --oneline
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git rebase -i HEAD~3
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git push --force-with-lease
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git checkout chore/display-logic
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git add .
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git commit -m "first-commit-to-display-logic"
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git add .
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1>  git commit -m "second-commit-to-display-logic"
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git add .
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git commit -m "third-commit-to-display-logic"
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git rebase -i HEAD~3
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git push --force-with-lease
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git checkout bugfix/change-button
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git push --force-with-lease
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git checkout main
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> git status
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> Stop recording
+Stop : The term 'Stop' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ Stop recording
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (Stop:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+Stop : The term 'Stop' is not recognized as the name of a cmdlet, function, script file, or operable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ Stop recording
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (Stop:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\Soll\Desktop\SEDO_Exam\SEDO_Regular-Exam-1> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20251026123639
+**********************
