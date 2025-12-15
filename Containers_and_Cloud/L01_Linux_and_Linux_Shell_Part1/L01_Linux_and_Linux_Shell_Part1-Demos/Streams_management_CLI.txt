@@ -1,0 +1,58 @@
+
+
+$ pwd
+/home/solenkoff/projects
+
+$ ls
+data  logs  README.old.md
+
+$ echo "alice,admin" > data/users.txt
+
+$ echo "bob,user" >> data/users.txt
+
+$ cat data/users.txt
+alice,admin
+bob,user
+
+$ wc -l data/users.txt
+2 data/users.txt
+
+$ cat data/users.txt | grep admin
+alice,admin
+
+$ grep root /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+
+$ grep doesnotexist /etc/passwd
+(no output)
+
+$ grep doesnotexist /etc/passwd 2> errors.log
+
+$ cat errors.log
+grep: /etc/passwd: No such file or directory
+
+$ ls doesnotexist.txt
+ls: cannot access 'doesnotexist.txt': No such file or directory
+
+$ ls doesnotexist.txt > out.log 2>&1
+
+$ cat out.log
+ls: cannot access 'doesnotexist.txt': No such file or directory
+
+$ echo -e "INFO startup\nERROR disk\nINFO shutdown" > logs/app.log
+
+$ cat logs/app.log | grep ERROR > logs/errors_only.log
+
+$ cat logs/errors_only.log
+ERROR disk
+
+$ sort data/users.txt | uniq > data/users_unique.txt
+
+$ cat data/users_unique.txt
+alice,admin
+bob,user
+
+$ tail -f logs/app.log
+INFO startup
+ERROR disk
+INFO shutdown
