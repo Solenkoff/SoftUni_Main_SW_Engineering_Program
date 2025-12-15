@@ -1,0 +1,36 @@
+
+
+solenkoff@host:~/projects$ pwd
+/home/solenkoff/projects
+
+solenkoff@host:~/projects$ ls non-existing-file.txt ; echo OK
+ls: cannot access 'non-existing-file.txt': No such file or directory
+OK
+
+solenkoff@host:~/projects$ ls non-existing-file.txt && echo "This will not run"
+ls: cannot access 'non-existing-file.txt': No such file or directory
+
+solenkoff@host:~/projects$ ls non-existing-file.txt || echo "Command failed"
+ls: cannot access 'non-existing-file.txt': No such file or directory
+Command failed
+
+solenkoff@host:~/projects$ mkdir testdir && echo "directory created"
+directory created
+
+solenkoff@host:~/projects$ cd testdir && pwd
+/home/solenkoff/projects/testdir
+
+solenkoff@host:~/projects/testdir$ echo -e "zeta\nalpha\ngamma\nbeta" > items.txt
+
+solenkoff@host:~/projects/testdir$ cat items.txt | sort | head -n 3
+alpha
+beta
+gamma
+
+solenkoff@host:~/projects/testdir$ ls *.txt | wc -l
+1
+
+solenkoff@host:~/projects/testdir$ rm items.txt && echo "cleanup done"
+cleanup done
+
+solenkoff@host:~/projects/testdir$ cd .. && rmdir testdir || echo "directory not empty"
