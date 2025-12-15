@@ -1,0 +1,120 @@
+
+
+                   BASIC LINUX COMMANDS
+				   
+	=======================================		
+	
+                Command              What it does
+			
+       📁 File & Directory Management
+	
+                ls	                           List files and directories
+                pwd	                       Show current directory
+                cd	                       Change directory
+                mkdir	                   Create a directory
+                rmdir	                   Remove an empty directory
+                cp	                       Copy files or directories
+                mv	                       Move or rename files
+                rm	                       Delete files or directories
+                touch	                   Create an empty file
+                tree	                       Show directory structure (if installed)
+				
+				
+	    📄 Viewing & Editing Files			
+		
+                cat	                       Display file contents
+                less	                       View file contents page by page
+                more	                   Basic pager (older than less)
+                head	                   Show first lines of a file
+                tail	                       Show last lines of a file
+                nano	                   Simple terminal text editor
+                vim	                       Advanced text editor
+                vi	                           Classic editor (often links to vim)
+				
+				
+    	🔍 Searching & Filtering		
+		
+                grep	                       Search text using patterns
+                find	                       Search for files
+                locate	                   Fast file search (uses index)
+                which	                   Show command location
+                whereis	               Find binaries, source, manuals		
+				
+				
+        📦 File Permissions & Ownership				
+		
+                chmod	                   Change permissions
+                chown	                   Change file owner
+                chgrp	                   Change group
+                stat	                       Show file metadata
+                umask	                   Default permission settings		
+		
+		
+		⚙️ System Information
+		
+                uname  -a	           System info
+                hostname	           Show system hostname
+                uptime	                   System running time
+                whoami                  Current user
+                id	                           User/group IDs
+                df	                           Disk space usage
+                du	                       Directory size
+                free	                       Memory usage
+                lsblk	                       Block devices		
+				
+				
+		🧠 Process Management		
+		
+                ps	                       Show running processes
+                top	                       Real-time process viewer
+                htop	                   Enhanced top (if installed)
+                kill	                       Stop a process
+                killall	                   Kill by process name
+                bg	                       Resume job in background
+                fg	                           Resume job in foreground
+                jobs	                       List background jobs		
+				
+				
+		🌐 Networking
+
+                ip  a                        Network interfaces
+                ping	                       Test connectivity
+                curl	                       Transfer data from URLs
+                wget	                   Download files
+                ss	                           Socket statistics
+                netstat	                   Network info (legacy)		
+				
+				
+	    📦 Package Management (varies by distro)			
+		
+                        Debian / Ubuntu
+                apt
+                apt update
+                apt install
+                apt remove
+
+                        Red Hat / Fedora
+                dnf
+                yum		
+				
+				
+        🔑 Privileges & Users		
+		 
+                sudo	                    Run as superuser
+                su	                        Switch user
+                passwd	                Change password
+                logout	                    End session		 
+				
+	
+        🔧 Shell & Utility Commands	
+		
+                history	                    Command history
+                clear	                    Clear terminal
+                alias	                        Create shortcuts
+                env	                        Environment variables
+                export	                    Set environment variable
+                man	                        Manual pages
+                echo	                    Print text		
+				
+				
+			
