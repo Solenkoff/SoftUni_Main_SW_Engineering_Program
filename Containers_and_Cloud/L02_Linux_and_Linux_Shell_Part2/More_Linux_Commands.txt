@@ -1,0 +1,42 @@
+
+
+                   More LINUX COMMANDS
+				   
+	=======================================		
+	
+                Command              What it does
+
+
+	    📦 Package Management (varies by distro)			
+		
+                        Debian / Ubuntu
+                apt
+                apt update
+                apt install
+                apt remove
+
+                        Red Hat / Fedora
+                dnf
+                yum		
+				
+				
+		🌐 Networking
+
+                ip  a                        Network interfaces
+                ping	                       Test connectivity
+                curl	                       Transfer data from URLs
+                wget	                   Download files
+                ss	                           Socket statistics
+                netstat	                   Network info (legacy)					
+				
+				
+		🧠 Process Management		
+		
+                ps	                       Show running processes
+                top	                       Real-time process viewer
+                htop	                   Enhanced top (if installed)
+                kill	                       Stop a process
+                killall	                   Kill by process name
+                bg	                       Resume job in background
+                fg	                           Resume job in foreground
+                jobs	                       List background jobs					
