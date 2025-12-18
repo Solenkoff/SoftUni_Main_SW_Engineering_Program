@@ -1,0 +1,22 @@
+
+
+solenkoff@host:~$ ssh solenkoff@remote-server
+The authenticity of host 'remote-server (192.168.1.50)' can't be established.
+ED25519 key fingerprint is SHA256:abcd1234example.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'remote-server' (ED25519) to the list of known hosts.
+solenkoff@remote-server:~$ whoami
+solenkoff
+
+solenkoff@remote-server:~$ hostname
+remote-server
+
+solenkoff@remote-server:~$ uptime
+ 11:42:18 up 14 days,  3:10,  1 user,  load average: 0.08, 0.05, 0.01
+
+solenkoff@remote-server:~$ exit
+logout
+Connection to remote-server closed.
+
+solenkoff@host:~$ ssh -i ~/.ssh/id_ed25519 solenkoff@remote-server uptime
+ 11:43:02 up 14 days,  3:11,  1 user,  load average: 0.06, 0.04, 0.01
