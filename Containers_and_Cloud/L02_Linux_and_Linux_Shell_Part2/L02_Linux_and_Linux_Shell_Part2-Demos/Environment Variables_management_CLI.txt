@@ -1,0 +1,24 @@
+
+
+solenkoff@host:~/projects$ echo $PATH
+/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin
+
+solenkoff@host:~/projects$ export APP_ENV=production
+
+solenkoff@host:~/projects$ echo $APP_ENV
+production
+
+solenkoff@host:~/projects$ export DB_HOST=localhost
+solenkoff@host:~/projects$ export DB_PORT=5432
+
+solenkoff@host:~/projects$ env | grep DB_
+DB_HOST=localhost
+DB_PORT=5432
+
+solenkoff@host:~/projects$ APP_ENV=debug ./run_app.sh
+Starting app in debug mode
+
+solenkoff@host:~/projects$ unset APP_ENV
+
+solenkoff@host:~/projects$ echo $APP_ENV
+
