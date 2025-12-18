@@ -1,0 +1,60 @@
+
+
+root@host:~# whoami
+root
+
+root@host:~# id solenkoff
+uid=1000(solenkoff) gid=1000(solenkoff) groups=1000(solenkoff),27(sudo)
+
+root@host:~# groupadd developers
+
+root@host:~# getent group developers
+developers:x:1001:
+
+root@host:~# useradd -m -s /bin/bash alice
+
+root@host:~# id alice
+uid=1001(alice) gid=1002(alice) groups=1002(alice)
+
+root@host:~# usermod -aG developers alice
+
+root@host:~# id alice
+uid=1001(alice) gid=1002(alice) groups=1002(alice),1001(developers)
+
+root@host:~# passwd alice
+New password:
+Retype new password:
+passwd: password updated successfully
+
+root@host:~# su - alice
+alice@host:~$ whoami
+alice
+
+alice@host:~$ groups
+alice developers
+
+alice@host:~$ exit
+logout
+
+root@host:~# mkdir /srv/project
+
+root@host:~# chown root:developers /srv/project
+
+root@host:~# chmod 2775 /srv/project
+
+root@host:~# ls -ld /srv/project
+drwxrwsr-x 2 root developers 4096 Jan 24 11:02 /srv/project
+
+root@host:~# deluser alice developers
+Removing user `alice' from group `developers' ...
+
+root@host:~# id alice
+uid=1001(alice) gid=1002(alice) groups=1002(alice)
+
+root@host:~# userdel -r alice
+userdel: alice mail spool (/var/mail/alice) not found
+
+root@host:~# getent passwd alice
+(no output)
+
+root@host:~# groupdel developers
