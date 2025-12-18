@@ -1,0 +1,32 @@
+
+
+solenkoff@host:~/projects$ ps -u solenkoff
+  PID TTY          TIME CMD
+ 2143 pts/0    00:00:00 bash
+ 2281 pts/0    00:00:00 ps
+
+solenkoff@host:~/projects$ sleep 300 &
+[1] 2310
+
+solenkoff@host:~/projects$ jobs
+[1]+  Running                 sleep 300 &
+
+solenkoff@host:~/projects$ fg %1
+sleep 300
+^Z
+
+solenkoff@host:~/projects$ jobs
+[1]+  Stopped                 sleep 300
+
+solenkoff@host:~/projects$ bg %1
+[1]+ sleep 300 &
+
+solenkoff@host:~/projects$ ps aux | grep sleep
+solenkoff 2310  0.0  0.0   2904   560 pts/0    S    11:45   0:00 sleep 300
+
+solenkoff@host:~/projects$ kill 2310
+
+solenkoff@host:~/projects$ jobs
+(no output)
+
+solenkoff@host:~/projects$ top
