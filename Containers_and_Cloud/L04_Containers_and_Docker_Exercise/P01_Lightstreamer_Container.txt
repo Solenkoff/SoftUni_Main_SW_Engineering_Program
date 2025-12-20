@@ -1,0 +1,44 @@
+solenkoff@host:~$ docker pull lightstreamer:latest
+latest: Pulling from library/lightstreamer
+9b18e9b68314: Pull complete
+f8c9d0a2e3b4: Pull complete
+7a6b5c4d3e2f: Pull complete
+Digest: sha256:4c3b2a1d0e9f87654321abcdef1234567890abcdef1234567890abcd
+Status: Downloaded newer image for lightstreamer:latest
+docker.io/library/lightstreamer:latest
+
+solenkoff@host:~$ docker images
+REPOSITORY        TAG       IMAGE ID       CREATED        SIZE
+lightstreamer     latest    a9b8c7d6e5f4   2 months ago   620MB
+
+solenkoff@host:~$ docker run -d \
+  --name ls-server \
+  -p 80:8080 \
+  lightstreamer:latest
+c4f3e2d1a9b8c7d6e5f4321098abcdef1234567890abcdef1234567890ab
+
+solenkoff@host:~$ docker ps
+CONTAINER ID   IMAGE              COMMAND                  STATUS         PORTS                 NAMES
+c4f3e2d1a9b8   lightstreamer       "/lightstreamer.sh"    Up 12 seconds  0.0.0.0:80->8080/tcp  ls-server
+
+solenkoff@host:~$ docker logs ls-server | head -n 10
+Starting Lightstreamer Server...
+Lightstreamer Server 7.4.1 build 20230915
+Server listening on port 8080
+Web client interface available
+Server startup completed successfully
+
+solenkoff@host:~$ curl -I http://localhost
+HTTP/1.1 200 OK
+Content-Type: text/html
+Server: Lightstreamer
+
+solenkoff@host:~$ docker stop ls-server
+ls-server
+
+solenkoff@host:~$ docker rm ls-server
+ls-server
+
+solenkoff@host:~$ docker rmi lightstreamer:latest
+Untagged: lightstreamer:latest
+Deleted: sha256:a9b8c7d6e5f4321098abcdef1234567890abcdef1234567890abcd
