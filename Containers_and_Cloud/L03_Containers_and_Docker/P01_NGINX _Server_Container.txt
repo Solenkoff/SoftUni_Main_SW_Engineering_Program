@@ -1,0 +1,86 @@
+solenkoff@host:~$ docker pull nginxdemos/hello
+Using default tag: latest
+latest: Pulling from nginxdemos/hello
+2c7c8c7a0f4a: Pull complete
+4e2f3d9c8a5b: Pull complete
+Digest: sha256:9f3a2b4c6d7e8f9a1b2c3d4e5f6a7b8c9d0e
+Status: Downloaded newer image for nginxdemos/hello:latest
+docker.io/nginxdemos/hello:latest
+
+solenkoff@host:~$ docker images
+REPOSITORY          TAG       IMAGE ID       CREATED        SIZE
+nginxdemos/hello    latest    a1b2c3d4e5f6   2 weeks ago    23MB
+
+solenkoff@host:~$ docker run nginxdemos/hello
+Unable to find image 'nginxdemos/hello:latest' locally
+Hello from Docker!
+Server name:  8a4f9d3b2c1e
+Server address:  172.17.0.2:80
+Server OS:  Linux 5.15
+Client address:  172.17.0.1
+Client port:  41234
+Client OS:  Linux 5.15
+Client browser:  curl/8.0.1
+
+^C
+
+solenkoff@host:~$ docker ps
+CONTAINER ID   IMAGE              COMMAND                  STATUS          PORTS     NAMES
+8a4f9d3b2c1e   nginxdemos/hello   "/docker-entrypoint.…"  Up 20 seconds             keen_brown
+
+solenkoff@host:~$ docker stop keen_brown
+keen_brown
+
+solenkoff@host:~$ docker rm keen_brown
+keen_brown
+
+solenkoff@host:~$ docker run -p 5000:80 nginxdemos/hello
+Hello from Docker!
+Server name:  f7c8e9a1b2d3
+Server address:  172.17.0.2:80
+Server OS:  Linux 5.15
+Client address:  172.17.0.1
+Client port:  51422
+Client OS:  Linux 5.15
+Client browser:  Mozilla/5.0
+
+^C
+
+solenkoff@host:~$ docker stop f7c8e9a1b2d3
+f7c8e9a1b2d3
+
+solenkoff@host:~$ docker rm f7c8e9a1b2d3
+f7c8e9a1b2d3
+
+solenkoff@host:~$ docker run -d --name hello-nginx -p 5000:80 nginxdemos/hello
+c3e7f1a9b2d4e5f67890123456789abcdeffedcba9876543210fedcba12345
+
+solenkoff@host:~$ docker ps
+CONTAINER ID   IMAGE              COMMAND                  STATUS         PORTS                    NAMES
+c3e7f1a9b2d4   nginxdemos/hello   "/docker-entrypoint.…"  Up 10 seconds  0.0.0.0:5000->80/tcp     hello-nginx
+
+solenkoff@host:~$ docker logs hello-nginx
+Hello from Docker!
+Server name:  c3e7f1a9b2d4
+Server address:  172.17.0.2:80
+Server OS:  Linux 5.15
+
+solenkoff@host:~$ docker logs c3
+Hello from Docker!
+Server name:  c3e7f1a9b2d4
+Server address:  172.17.0.2:80
+Server OS:  Linux 5.15
+
+solenkoff@host:~$ docker ps -a
+CONTAINER ID   IMAGE              STATUS         NAMES
+c3e7f1a9b2d4   nginxdemos/hello   Up 30 seconds  hello-nginx
+
+solenkoff@host:~$ docker stop hello-nginx
+hello-nginx
+
+solenkoff@host:~$ docker rm hello-nginx
+hello-nginx
+
+solenkoff@host:~$ docker rmi nginxdemos/hello
+Untagged: nginxdemos/hello:latest
+Deleted: sha256:a1b2c3d4e5f67890123456789abcdef1234567890abcdef1234567890abcd
