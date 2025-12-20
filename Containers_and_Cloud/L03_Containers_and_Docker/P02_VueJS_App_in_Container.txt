@@ -1,0 +1,72 @@
+solenkoff@host:~$ mkdir MyWebsite
+solenkoff@host:~$ cd MyWebsite
+
+solenkoff@host:~/MyWebsite$ vue create .
+? Please pick a preset: Default ([Vue 3] babel, eslint)
+
+Vue CLI v5.0.8
+✨  Creating project in /home/solenkoff/MyWebsite.
+⚙️  Installing CLI plugins. This might take a while...
+
+✔  Successfully created project MyWebsite.
+👉  Get started with the following commands:
+
+ $ npm run serve
+
+solenkoff@host:~/MyWebsite$ docker pull node:18
+18: Pulling from library/node
+2c7c8c7a0f4a: Pull complete
+4e2f3d9c8a5b: Pull complete
+Digest: sha256:aa9b8c7d6e5f4a3210fedcba9876543210abcdef9876543210abcdef12345678
+Status: Downloaded newer image for node:18
+docker.io/library/node:18
+
+solenkoff@host:~/MyWebsite$ npm install
+added 1450 packages, and audited 1451 packages in 38s
+
+solenkoff@host:~/MyWebsite$ npm run serve
+
+> mywebsite@0.1.0 serve
+> vue-cli-service serve
+
+ INFO  Starting development server...
+ DONE  Compiled successfully in 6734ms
+
+ App running at:
+ - Local:   http://localhost:8080/
+ - Network: http://192.168.1.20:8080/
+
+^C
+
+solenkoff@host:~/MyWebsite$ nano package.json
+
+---------------------------------
+   edit package.json 
+        =>       "scripts": {
+                    "serve": "vue-cli-service serve --host 0.0.0.0",
+                    "build": "vue-cli-service build",
+                    "lint": "vue-cli-service lint"
+                  }
+---------------------------------
+
+solenkoff@host:~/MyWebsite$ docker run -it \
+  -p 8080:8080 \
+  -v "$(pwd)":/app \
+  -w /app \
+  node:18 \
+  bash
+
+root@c1a9b8d7e6f5:/app# npm install
+added 1450 packages, and audited 1451 packages in 41s
+
+root@c1a9b8d7e6f5:/app# npm run serve
+
+> mywebsite@0.1.0 serve
+> vue-cli-service serve --host 0.0.0.0
+
+ INFO  Starting development server...
+ DONE  Compiled successfully in 6451ms
+
+ App running at:
+ - Local:   http://localhost:8080/
+ - Network: http://172.17.0.2:8080/
