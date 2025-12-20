@@ -1,0 +1,75 @@
+solenkoff@host:~$ docker pull mongo
+Using default tag: latest
+latest: Pulling from library/mongo
+2c7c8c7a0f4a: Pull complete
+4e2f3d9c8a5b: Pull complete
+7a6b5c4d3e2f: Pull complete
+Digest: sha256:8e9f0a1b2c3d4e5f67890abcdef1234567890abcdef1234567890abcd
+Status: Downloaded newer image for mongo:latest
+docker.io/library/mongo:latest
+
+solenkoff@host:~$ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+mongo        latest    d1e2f3a4b5c6   3 weeks ago    493MB
+
+solenkoff@host:~$ mkdir -p mongo-data/data
+
+solenkoff@host:~$ docker run \
+  -p 27017:27017 \
+  -v ${PWD}/mongo-data:/etc/mongo \
+  -d \
+  -e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
+  -e MONGO_INITDB_ROOT_PASSWORD=mongoadminpass \
+  mongo
+a7b8c9d0e1f234567890abcdef1234567890abcdef1234567890abcd12
+
+solenkoff@host:~$ docker ps
+CONTAINER ID   IMAGE   COMMAND                  STATUS         PORTS                      NAMES
+a7b8c9d0e1f2   mongo   "docker-entrypoint.s…"  Up 15 seconds  0.0.0.0:27017->27017/tcp   hopeful_morse
+
+solenkoff@host:~$ docker logs hopeful_morse | head -n 8
+{"t":{"$date":"2025-12-19T10:15:01.123+00:00"},"s":"I","c":"CONTROL","id":23285,"ctx":"main","msg":"Automatically disabling TLS 1.0"}
+{"t":{"$date":"2025-12-19T10:15:01.456+00:00"},"s":"I","c":"NETWORK","id":23015,"ctx":"listener","msg":"Listening on","attr":{"address":"0.0.0.0","port":27017}}
+{"t":{"$date":"2025-12-19T10:15:02.001+00:00"},"s":"I","c":"CONTROL","id":4615611,"ctx":"initandlisten","msg":"MongoDB starting"}
+{"t":{"$date":"2025-12-19T10:15:02.789+00:00"},"s":"I","c":"CONTROL","id":20536,"ctx":"initandlisten","msg":"MongoDB ready"}
+
+solenkoff@host:~$ docker exec -it hopeful_morse mongosh -u mongoadmin -p mongoadminpass --authenticationDatabase admin
+Current Mongosh Log ID: 65c1f1d2a9c8b7e6d5c4b3a2
+Connecting to: mongodb://<credentials>@127.0.0.1:27017/?authSource=admin
+Using MongoDB: 7.0.5
+Using Mongosh: 2.2.0
+
+test> show dbs
+admin   40.00 KiB
+config  96.00 KiB
+local   72.00 KiB
+
+test> exit
+bye
+
+solenkoff@host:~$ docker stop hopeful_morse
+hopeful_morse
+
+solenkoff@host:~$ docker rm hopeful_morse
+hopeful_morse
+
+solenkoff@host:~$ docker volume create mongo_volume
+mongo_volume
+
+solenkoff@host:~$ docker volume ls
+DRIVER    VOLUME NAME
+local     mongo_volume
+
+solenkoff@host:~$ docker run \
+  -p 27017:27017 \
+  -v mongo_volume:/data/db \
+  -d \
+  -e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
+  -e MONGO_INITDB_ROOT_PASSWORD=mongoadminpass \
+  --name mongo-db \
+  mongo
+b9c8d7e6f5a4321098abcdef1234567890abcdef1234567890abcd34
+
+solenkoff@host:~$ docker ps
+CONTAINER ID   IMAGE   STATUS         PORTS                      NAMES
+b9c8d7e6f5a4   mongo   Up 10 seconds  0.0.0.0:27017->27017/tcp   mongo-db
