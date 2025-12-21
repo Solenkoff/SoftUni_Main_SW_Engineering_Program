@@ -1,0 +1,49 @@
+solenkoff@host:~$ docker pull ghost:latest
+latest: Pulling from library/ghost
+2c7c8c7a0f4a: Pull complete
+4e2f3d9c8a5b: Pull complete
+7a6b5c4d3e2f: Pull complete
+Digest: sha256:1a2b3c4d5e6f7890abcdef1234567890abcdef1234567890abcdef1234567890
+Status: Downloaded newer image for ghost:latest
+docker.io/library/ghost:latest
+
+solenkoff@host:~$ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+ghost        latest    b1c2d3e4f5a6   2 weeks ago    530MB
+
+solenkoff@host:~$ docker run -d \
+  --name ghost-container \
+  -p 3001:2368 \
+  -e NODE_ENV=development \
+  ghost:latest
+d4c3b2a1f0e9876543210abcdef1234567890abcdef1234567890abcdef1234
+
+solenkoff@host:~$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  STATUS         PORTS                    NAMES
+d4c3b2a1f0e9   ghost:latest   "docker-entrypoint.s…"  Up 15 seconds  0.0.0.0:3001->2368/tcp   ghost-container
+
+solenkoff@host:~$ docker logs ghost-container | head -n 12
+[2025-12-19 10:25:11] INFO Ghost is running in development...
+[2025-12-19 10:25:12] INFO Listening on: 0.0.0.0:2368
+[2025-12-19 10:25:12] INFO Url configured as: http://localhost:2368/
+[2025-12-19 10:25:12] INFO Ctrl+C to shut down
+[2025-12-19 10:25:12] INFO Ghost boot 1.7s
+
+solenkoff@host:~$ curl -I http://localhost:3001
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Server: nginx
+X-Powered-By: Express
+
+solenkoff@host:~$ docker inspect -f '{{.Name}} {{range .Config.Env}}{{println .}}{{end}}' ghost-container | grep NODE_ENV
+NODE_ENV=development
+
+solenkoff@host:~$ docker stop ghost-container
+ghost-container
+
+solenkoff@host:~$ docker rm ghost-container
+ghost-container
+
+solenkoff@host:~$ docker rmi ghost:latest
+Untagged: ghost:latest
+Deleted: sha256:b1c2d3e4f5a67890abcdef1234567890abcdef1234567890abcdef123456
