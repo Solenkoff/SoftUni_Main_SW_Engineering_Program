@@ -1,0 +1,57 @@
+solenkoff@host:~$ docker run \
+  -e "ACCEPT_EULA=Y" \
+  -e "MSSQL_SA_PASSWORD=Str0ng!Passw0rd" \
+  -p 1433:1433 \
+  -v sqldata:/var/opt/mssql \
+  --name sqlserver \
+  -d \
+  mcr.microsoft.com/mssql/server:latest
+Unable to find image 'mcr.microsoft.com/mssql/server:latest' locally
+latest: Pulling from mssql/server
+2c7c8c7a0f4a: Pull complete
+4e2f3d9c8a5b: Pull complete
+7a6b5c4d3e2f: Pull complete
+Digest: sha256:3f2e1d0c9b8a76543210abcdef1234567890abcdef1234567890abcd
+Status: Downloaded newer image for mcr.microsoft.com/mssql/server:latest
+docker.io/mcr.microsoft.com/mssql/server:latest
+a1b2c3d4e5f67890123456789abcdef0123456789abcdef0123456789abcd
+
+solenkoff@host:~$ docker ps
+CONTAINER ID   IMAGE                                    COMMAND                  STATUS         PORTS                    NAMES
+a1b2c3d4e5f6   mcr.microsoft.com/mssql/server:latest     "/opt/mssql/bin/…"       Up 20 seconds  0.0.0.0:1433->1433/tcp   sqlserver
+
+solenkoff@host:~$ docker volume ls
+DRIVER    VOLUME NAME
+local     sqldata
+
+solenkoff@host:~$ docker logs sqlserver | tail -n 8
+SQL Server 2022 (RTM) - 16.0.xxxxx (X64)
+Dec 19 2025 12:05:01
+Copyright (C) 2022 Microsoft Corporation
+Starting up database 'master'.
+Starting up database 'model'.
+Starting up database 'msdb'.
+The tempdb database has 8 data file(s).
+SQL Server is now ready for client connections. This is an informational message; no user action is required.
+
+solenkoff@host:~$ docker exec -it sqlserver /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "Str0ng!Passw0rd" -Q "SELECT @@VERSION;"
+--------------------------------------------------------------------------------------------------------------------------------
+Microsoft SQL Server 2022 (RTM) - 16.0.xxxxx (X64)
+        Dec 19 2025 12:05:01
+        Copyright (C) 2022 Microsoft Corporation
+        Developer Edition (64-bit) on Linux (Ubuntu 22.04)
+
+(1 rows affected)
+
+solenkoff@host:~$ docker stop sqlserver
+sqlserver
+
+solenkoff@host:~$ docker rm sqlserver
+sqlserver
+
+solenkoff@host:~$ docker volume rm sqldata
+sqldata
+
+solenkoff@host:~$ docker rmi mcr.microsoft.com/mssql/server:latest
+Untagged: mcr.microsoft.com/mssql/server:latest
+Deleted: sha256:aa11bb22cc33dd44ee55ff6677889900aabbccddeeff00112233445566778899
