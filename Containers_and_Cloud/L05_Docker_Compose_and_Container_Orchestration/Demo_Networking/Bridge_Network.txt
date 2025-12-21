@@ -1,0 +1,660 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop>docker run -d --name test nginxdemos/hello
+Unable to find image 'nginxdemos/hello:latest' locally
+latest: Pulling from nginxdemos/hello
+9824c27679d3: Pull complete
+c9ebe2ff2d2c: Pull complete
+f5f620b01943: Pull complete
+a992fbc61ecc: Pull complete
+7a8a46741e18: Pull complete
+4c3bda1d1bf7: Pull complete
+cb1ff4086f82: Pull complete
+403e3f251637: Pull complete
+8cd004bdedf3: Pull complete
+9adfbae99cb7: Pull complete
+6bc572a340ec: Pull complete
+Digest: sha256:b28d1e16c676896aaa98ed9c36d406cc4f4289558487f15e37e04354720f807a
+Status: Downloaded newer image for nginxdemos/hello:latest
+1b04e924d1f05b5241076646ad3248bd64a31d7fd658b450f110d2d87d00af23
+
+C:\Users\Soll\Desktop>docker inspect 1b0
+[
+    {
+        "Id": "1b04e924d1f05b5241076646ad3248bd64a31d7fd658b450f110d2d87d00af23",
+        "Created": "2025-11-23T16:30:27.26859403Z",
+        "Path": "/docker-entrypoint.sh",
+        "Args": [
+            "nginx",
+            "-g",
+            "daemon off;"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 2536,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2025-11-23T16:30:27.844911072Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:b28d1e16c676896aaa98ed9c36d406cc4f4289558487f15e37e04354720f807a",
+        "ResolvConfPath": "/var/lib/docker/containers/1b04e924d1f05b5241076646ad3248bd64a31d7fd658b450f110d2d87d00af23/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/1b04e924d1f05b5241076646ad3248bd64a31d7fd658b450f110d2d87d00af23/hostname",
+        "HostsPath": "/var/lib/docker/containers/1b04e924d1f05b5241076646ad3248bd64a31d7fd658b450f110d2d87d00af23/hosts",
+        "LogPath": "/var/lib/docker/containers/1b04e924d1f05b5241076646ad3248bd64a31d7fd658b450f110d2d87d00af23/1b04e924d1f05b5241076646ad3248bd64a31d7fd658b450f110d2d87d00af23-json.log",
+        "Name": "/test",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "bridge",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                36,
+                112
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "host",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": null,
+            "Name": "overlayfs"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "1b04e924d1f0",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NGINX_VERSION=1.29.1",
+                "PKG_RELEASE=1",
+                "DYNPKG_RELEASE=1",
+                "NJS_VERSION=0.9.1",
+                "NJS_RELEASE=1"
+            ],
+            "Cmd": [
+                "nginx",
+                "-g",
+                "daemon off;"
+            ],
+            "Image": "nginxdemos/hello",
+            "Volumes": null,
+            "WorkingDir": "/",
+            "Entrypoint": [
+                "/docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "maintainer": "NGINX Docker Maintainers \u003cdocker-maint@nginx.com\u003e"
+            },
+            "StopSignal": "SIGQUIT",
+            "StopTimeout": 1
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "0874bf3470d376372f0c20e3d3f573c7f9f7c12a01066f27dbd166b1c734af9e",
+            "SandboxKey": "/var/run/docker/netns/0874bf3470d3",
+            "Ports": {
+                "80/tcp": null
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "835e2fa76c85765d3ab49e53a33ad34f7b59f4fb792844f5143297afe8825568",
+            "Gateway": "172.17.0.1",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "172.17.0.2",
+            "IPPrefixLen": 16,
+            "IPv6Gateway": "",
+            "MacAddress": "4a:62:af:f8:f0:35",
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "MacAddress": "4a:62:af:f8:f0:35",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "24ceb13b8854b5989a059a966dfc51eb1201ccf92f8e5e0270cd988b566a95ab",
+                    "EndpointID": "835e2fa76c85765d3ab49e53a33ad34f7b59f4fb792844f5143297afe8825568",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:f90bc1ba07d215b9506732d5615d90cf84d694ece0af1b751d9e79c8bd0c561f",
+            "size": 2374,
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    }
+]
+
+C:\Users\Soll\Desktop>docker run -d --name test2 nginxdemos/hello
+29841734e5c38f04e25337504cd1d6095d77daa4a6d2f6240a2b7497f3c2089e
+
+C:\Users\Soll\Desktop>docker inspect 298
+[
+    {
+        "Id": "29841734e5c38f04e25337504cd1d6095d77daa4a6d2f6240a2b7497f3c2089e",
+        "Created": "2025-11-23T16:33:16.289429114Z",
+        "Path": "/docker-entrypoint.sh",
+        "Args": [
+            "nginx",
+            "-g",
+            "daemon off;"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 2632,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2025-11-23T16:33:16.451864876Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:b28d1e16c676896aaa98ed9c36d406cc4f4289558487f15e37e04354720f807a",
+        "ResolvConfPath": "/var/lib/docker/containers/29841734e5c38f04e25337504cd1d6095d77daa4a6d2f6240a2b7497f3c2089e/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/29841734e5c38f04e25337504cd1d6095d77daa4a6d2f6240a2b7497f3c2089e/hostname",
+        "HostsPath": "/var/lib/docker/containers/29841734e5c38f04e25337504cd1d6095d77daa4a6d2f6240a2b7497f3c2089e/hosts",
+        "LogPath": "/var/lib/docker/containers/29841734e5c38f04e25337504cd1d6095d77daa4a6d2f6240a2b7497f3c2089e/29841734e5c38f04e25337504cd1d6095d77daa4a6d2f6240a2b7497f3c2089e-json.log",
+        "Name": "/test2",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "bridge",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                36,
+                112
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "host",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": null,
+            "Name": "overlayfs"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "29841734e5c3",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NGINX_VERSION=1.29.1",
+                "PKG_RELEASE=1",
+                "DYNPKG_RELEASE=1",
+                "NJS_VERSION=0.9.1",
+                "NJS_RELEASE=1"
+            ],
+            "Cmd": [
+                "nginx",
+                "-g",
+                "daemon off;"
+            ],
+            "Image": "nginxdemos/hello",
+            "Volumes": null,
+            "WorkingDir": "/",
+            "Entrypoint": [
+                "/docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "maintainer": "NGINX Docker Maintainers \u003cdocker-maint@nginx.com\u003e"
+            },
+            "StopSignal": "SIGQUIT",
+            "StopTimeout": 1
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "d0cc7f03c082a49a77386eab88600842d7a34bc2de7551c0b5ab5ea918454353",
+            "SandboxKey": "/var/run/docker/netns/d0cc7f03c082",
+            "Ports": {
+                "80/tcp": null
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "1aa1db01052d40214dd3ec434a5b5df1ac3686d39a5fa972a22d7b17b7ee8a75",
+            "Gateway": "172.17.0.1",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "172.17.0.3",
+            "IPPrefixLen": 16,
+            "IPv6Gateway": "",
+            "MacAddress": "06:7c:c5:63:87:47",
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "MacAddress": "06:7c:c5:63:87:47",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "24ceb13b8854b5989a059a966dfc51eb1201ccf92f8e5e0270cd988b566a95ab",
+                    "EndpointID": "1aa1db01052d40214dd3ec434a5b5df1ac3686d39a5fa972a22d7b17b7ee8a75",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.3",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:f90bc1ba07d215b9506732d5615d90cf84d694ece0af1b751d9e79c8bd0c561f",
+            "size": 2374,
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    }
+]
+
+C:\Users\Soll\Desktop>docker network inspect bridge
+[
+    {
+        "Name": "bridge",
+        "Id": "24ceb13b8854b5989a059a966dfc51eb1201ccf92f8e5e0270cd988b566a95ab",
+        "Created": "2025-11-23T11:43:03.411647383Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.17.0.0/16",
+                    "Gateway": "172.17.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "1b04e924d1f05b5241076646ad3248bd64a31d7fd658b450f110d2d87d00af23": {
+                "Name": "test",
+                "EndpointID": "835e2fa76c85765d3ab49e53a33ad34f7b59f4fb792844f5143297afe8825568",
+                "MacAddress": "4a:62:af:f8:f0:35",
+                "IPv4Address": "172.17.0.2/16",
+                "IPv6Address": ""
+            },
+            "29841734e5c38f04e25337504cd1d6095d77daa4a6d2f6240a2b7497f3c2089e": {
+                "Name": "test2",
+                "EndpointID": "1aa1db01052d40214dd3ec434a5b5df1ac3686d39a5fa972a22d7b17b7ee8a75",
+                "MacAddress": "06:7c:c5:63:87:47",
+                "IPv4Address": "172.17.0.3/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.bridge.default_bridge": "true",
+            "com.docker.network.bridge.enable_icc": "true",
+            "com.docker.network.bridge.enable_ip_masquerade": "true",
+            "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+            "com.docker.network.bridge.name": "docker0",
+            "com.docker.network.driver.mtu": "1500"
+        },
+        "Labels": {}
+    }
+]
+
+C:\Users\Soll\Desktop>docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+24ceb13b8854   bridge    bridge    local
+61c727a9e348   host      host      local
+7dbec24e0fa7   none      null      local
+
+C:\Users\Soll\Desktop>docker network create soll_network
+ae7ec86c002991544dfee5f3842a796307adf15bdb0417142b3296d1e3625fc5
+
+C:\Users\Soll\Desktop>docker network ls
+NETWORK ID     NAME           DRIVER    SCOPE
+24ceb13b8854   bridge         bridge    local
+61c727a9e348   host           host      local
+7dbec24e0fa7   none           null      local
+ae7ec86c0029   soll_network   bridge    local
+
+C:\Users\Soll\Desktop>docker run -d --name test3 --network soll_network nginxdemos/hello
+d5e105265c7a1981a03d06e50175ac5c030f13ca7c307c5cd7b1940143012a33
+
+C:\Users\Soll\Desktop>docker run -d --name test4 --network soll_network nginxdemos/hello
+f65c1a29bf748c508a9b2fcc04468754b6279d93f95c5321683a0905e903599c
+
+C:\Users\Soll\Desktop>docker network inspect bridge
+[
+    {
+        "Name": "bridge",
+        "Id": "24ceb13b8854b5989a059a966dfc51eb1201ccf92f8e5e0270cd988b566a95ab",
+        "Created": "2025-11-23T11:43:03.411647383Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.17.0.0/16",
+                    "Gateway": "172.17.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "1b04e924d1f05b5241076646ad3248bd64a31d7fd658b450f110d2d87d00af23": {
+                "Name": "test",
+                "EndpointID": "835e2fa76c85765d3ab49e53a33ad34f7b59f4fb792844f5143297afe8825568",
+                "MacAddress": "4a:62:af:f8:f0:35",
+                "IPv4Address": "172.17.0.2/16",
+                "IPv6Address": ""
+            },
+            "29841734e5c38f04e25337504cd1d6095d77daa4a6d2f6240a2b7497f3c2089e": {
+                "Name": "test2",
+                "EndpointID": "1aa1db01052d40214dd3ec434a5b5df1ac3686d39a5fa972a22d7b17b7ee8a75",
+                "MacAddress": "06:7c:c5:63:87:47",
+                "IPv4Address": "172.17.0.3/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.bridge.default_bridge": "true",
+            "com.docker.network.bridge.enable_icc": "true",
+            "com.docker.network.bridge.enable_ip_masquerade": "true",
+            "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+            "com.docker.network.bridge.name": "docker0",
+            "com.docker.network.driver.mtu": "1500"
+        },
+        "Labels": {}
+    }
+]
+
+C:\Users\Soll\Desktop>docker network inspect soll_network
+[
+    {
+        "Name": "soll_network",
+        "Id": "ae7ec86c002991544dfee5f3842a796307adf15bdb0417142b3296d1e3625fc5",
+        "Created": "2025-11-23T20:08:16.867075635Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "d5e105265c7a1981a03d06e50175ac5c030f13ca7c307c5cd7b1940143012a33": {
+                "Name": "test3",
+                "EndpointID": "2cfd6a47dd0aad31483f92654b5545315e73bdfb2a82fdbc32631bf8e32144bd",
+                "MacAddress": "f6:da:64:12:34:5a",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            },
+            "f65c1a29bf748c508a9b2fcc04468754b6279d93f95c5321683a0905e903599c": {
+                "Name": "test4",
+                "EndpointID": "747479e9189962bbca5131e4d122320ae539a9af17ee472d665d7b09f7aca3fe",
+                "MacAddress": "2e:27:cc:84:18:58",
+                "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {}
+    }
+]
+
+C:\Users\Soll\Desktop>
