@@ -1,0 +1,161 @@
+
+
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\Demo>docker run -d soll
+Unable to find image 'soll:latest' locally
+docker: Error response from daemon: pull access denied for soll, repository does not exist or may require 'docker login'
+
+Run 'docker run --help' for more information
+
+C:\Users\Soll\Desktop\Demo>docker build -t soll .
+[+] Building 4.2s (7/7) FINISHED                                                                                                  docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                              0.0s
+ => => transferring dockerfile: 101B                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/alpine:latest                                                                                  2.0s
+ => [auth] library/alpine:pull token for registry-1.docker.io                                                                                     0.0s
+ => [internal] load .dockerignore                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                   0.0s
+ => [1/2] FROM docker.io/library/alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412                            1.0s
+ => => resolve docker.io/library/alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412                            0.0s
+ => => sha256:2d35ebdb57d9971fea0cac1582aa78935adf8058b2cc32db163c98822e5dfa1b 3.80MB / 3.80MB                                                    0.6s
+ => => extracting sha256:2d35ebdb57d9971fea0cac1582aa78935adf8058b2cc32db163c98822e5dfa1b                                                         0.2s
+ => [2/2] WORKDIR /soll                                                                                                                           0.1s
+ => exporting to image                                                                                                                            0.5s
+ => => exporting layers                                                                                                                           0.2s
+ => => exporting manifest sha256:2100b546d965a612ea474483fbbca8486d4ae907d3be5b2a01854ca2609ad797                                                 0.0s
+ => => exporting config sha256:bd2907b76ab8c9b6e6ce68847e4714d87c79fc9ec25710ad543f8e71b62c8be4                                                   0.0s 
+ => => exporting attestation manifest sha256:179f5b12ccd4d36b1dd79c5c0106acb8086877f811dbacea4d9a150d267bbef1                                     0.1s 
+ => => exporting manifest list sha256:d5099e62e2ef5794c3499204e6dbebb30e4ba2b9f3c2857749e9a6495927e573                                            0.0s
+ => => naming to docker.io/library/soll:latest                                                                                                    0.0s 
+ => => unpacking to docker.io/library/soll:latest                                                                                                 0.0s 
+
+C:\Users\Soll\Desktop\Demo>docker run -d soll 
+adef35fd3a0a8cc4376e24ef9c07dac7812339622caa453469c5ecac57148244
+
+C:\Users\Soll\Desktop\Demo>docker run -d soll 
+995757c29002b737287f0808b3164f50366ca488d9c3756a86cc6af634215679
+
+C:\Users\Soll\Desktop\Demo>docker build -t soll:1 .
+[+] Building 1.3s (6/6) FINISHED                                                                                                  docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                              0.0s
+ => => transferring dockerfile: 98B                                                                                                               0.0s 
+ => [internal] load metadata for docker.io/library/alpine:latest                                                                                  0.6s 
+ => [internal] load .dockerignore                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                   0.0s 
+ => [1/2] FROM docker.io/library/alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412                            0.1s 
+ => => resolve docker.io/library/alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412                            0.1s 
+ => CACHED [2/2] WORKDIR /soll                                                                                                                    0.0s
+ => exporting to image                                                                                                                            0.3s 
+ => => exporting layers                                                                                                                           0.0s 
+ => => exporting manifest sha256:6f5f9f1f32a29bfbcb1b86f22e504662e2fddd67a018b20782c6d0f25789dfa0                                                 0.0s 
+ => => exporting config sha256:e48b49c640e651d81150d151af1be4a42755574dfdc8e1be305f0d40c9a6ccb8                                                   0.0s 
+ => => exporting attestation manifest sha256:8098948102e557efaa8598180a29263c4c3253155951f8608b33675dfa52e53d                                     0.1s 
+ => => exporting manifest list sha256:626d1d16cd623617072422b9d816567d6b23ae322a5aece5a11bc4ee4304a803                                            0.0s
+ => => naming to docker.io/library/soll:1                                                                                                         0.0s 
+ => => unpacking to docker.io/library/soll:1                                                                                                      0.0s
+
+C:\Users\Soll\Desktop\Demo>docker run soll:1
+
+C:\Users\Soll\Desktop\Demo>docker build -t soll:2 . 
+[+] Building 1.4s (6/6) FINISHED                                                                                                  docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                              0.0s
+ => => transferring dockerfile: 100B                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/alpine:latest                                                                                  0.6s 
+ => [internal] load .dockerignore                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                   0.0s 
+ => [1/2] FROM docker.io/library/alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412                            0.1s 
+ => => resolve docker.io/library/alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412                            0.0s 
+ => CACHED [2/2] WORKDIR /soll                                                                                                                    0.0s
+ => exporting to image                                                                                                                            0.3s 
+ => => exporting layers                                                                                                                           0.0s 
+ => => exporting manifest sha256:c1aa338953f4ec962aba678cfb2a799677a3cb5fbaad6435757ede17ae065f83                                                 0.0s 
+ => => exporting config sha256:357d1568f98bfd01ad9f3159089c711dd01e29a86a5967a09927107b3010f052                                                   0.0s 
+ => => exporting attestation manifest sha256:a6abdb0067ce88819f6a2b1553d4b343ad2f0d4d32e2f1f6e0d021bf9a3e356b                                     0.1s 
+ => => exporting manifest list sha256:6d240a1849a69d6f3ff8305b6518866f743de0209ec37a61226c059082e65196                                            0.0s
+ => => naming to docker.io/library/soll:2                                                                                                         0.0s 
+ => => unpacking to docker.io/library/soll:2                                                                                                      0.0s
+
+C:\Users\Soll\Desktop\Demo>docker run -d soll:2
+a225500c7ef9f5f7d3314b3fad401ce81d81688e530fb005ed8543442dfc4f84
+
+C:\Users\Soll\Desktop\Demo>docker exec -it a22 sh
+/soll # touch soll.txt
+/soll # ls -la
+total 8
+drwxr-xr-x    1 root     root          4096 Nov 23 15:49 .
+drwxr-xr-x    1 root     root          4096 Nov 23 15:47 ..
+-rw-r--r--    1 root     root             0 Nov 23 15:49 soll.txt
+/soll # nano soll.txt
+sh: nano: not found
+/soll # exit
+
+C:\Users\Soll\Desktop\Demo>docker build -t soll:3 . 
+[+] Building 4.0s (7/7) FINISHED                                                                                                  docker:desktop-linux 
+ => [internal] load build definition from Dockerfile                                                                                              0.0s 
+ => => transferring dockerfile: 118B                                                                                                              0.0s 
+ => [internal] load metadata for docker.io/library/alpine:latest                                                                                  0.6s 
+ => [internal] load .dockerignore                                                                                                                 0.0s 
+ => => transferring context: 2B                                                                                                                   0.0s 
+ => [1/3] FROM docker.io/library/alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412                            0.1s 
+ => => resolve docker.io/library/alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412                            0.1s 
+ => CACHED [2/3] WORKDIR /soll                                                                                                                    0.0s 
+ => [3/3] RUN apk add nano                                                                                                                        2.0s 
+ => exporting to image                                                                                                                            0.8s
+ => => exporting layers                                                                                                                           0.4s
+ => => exporting manifest sha256:58ffb438fc5e84bf43af9847f4b2527fcbbded4dd228fbbb4665798c481b8891                                                 0.0s
+ => => exporting config sha256:42d3710e4e4cddd78c726c2907f30f6b0f6921d530ec728d51aa3db5fa7d671f                                                   0.0s 
+ => => exporting attestation manifest sha256:22e216a801aff4764db75cf6bd5dd38f2db3faae7340c81fd64cec8abce8d823                                     0.1s 
+
+C:\Users\Soll\Desktop\Demo>docker build -t soll:4 . 
+[+] Building 1.4s (6/6) FINISHED                                                                                                  docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                              0.0s
+ => => transferring dockerfile: 207B                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/alpine:latest                                                                                  0.6s
+ => [internal] load .dockerignore                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                   0.0s
+ => [1/2] FROM docker.io/library/alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412                            0.1s
+ => => resolve docker.io/library/alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412                            0.1s
+ => CACHED [2/2] WORKDIR /soll                                                                                                                    0.0s
+ => exporting to image                                                                                                                            0.3s
+ => => exporting layers                                                                                                                           0.0s
+ => => exporting manifest sha256:a33b44ca4392ea4aedf003c2916304056f779d25f293efa846a8ea9f4e501061                                                 0.0s
+ => => exporting config sha256:d0baa7eb773452e083c1e9ad3cf7f727a40cf9f7c61b528a85b497c0ecd5bbc4                                                   0.0s
+ => => exporting attestation manifest sha256:41ac0bf28b6d5eb913c51cb797c5f73f28ccd4113b47cf204994be7aad9972ca                                     0.1s
+ => => exporting manifest list sha256:b841701f128201caac8e5673f3bcc7ba15f5edbc40bc9bc15c198ba91830c999                                            0.0s
+ => => naming to docker.io/library/soll:4                                                                                                         0.0s
+ => => unpacking to docker.io/library/soll:4                                                                                                      0.0s
+
+C:\Users\Soll\Desktop\Demo>docker run -d soll:4
+0394097e6f1bd17126ea78e05d82e3803a5ba76dd35c2388c9766f1be772a380
+
+C:\Users\Soll\Desktop\Demo>docker run soll:4    
+Hello
+
+C:\Users\Soll\Desktop\Demo>docker build -t soll:5 . 
+[+] Building 1.1s (6/6) FINISHED                                                                                                  docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                              0.0s
+ => => transferring dockerfile: 227B                                                                                                              0.0s 
+ => [internal] load metadata for docker.io/library/alpine:latest                                                                                  0.4s 
+ => [internal] load .dockerignore                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                   0.0s 
+ => [1/2] FROM docker.io/library/alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412                            0.1s 
+ => => resolve docker.io/library/alpine:latest@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412                            0.0s 
+ => CACHED [2/2] WORKDIR /soll                                                                                                                    0.0s 
+ => exporting to image                                                                                                                            0.3s 
+ => => exporting layers                                                                                                                           0.0s
+ => => exporting manifest sha256:6c2a80a203686ded22bce60a876f20615f478e4da32d32b965a71af62d3a4b78                                                 0.0s 
+ => => exporting config sha256:6bb6f929bb16f62725f373c212f8163394afe22e5f941518924d37c5e63fbfb5                                                   0.0s 
+ => => exporting attestation manifest sha256:eddebefc32b765c3565b13d963f374f0fffd8fa38876011f5bd80673c1bc7af6                                     0.1s 
+ => => exporting manifest list sha256:575fd40e14317a96f4b7feb20f872ba936deb02631e248f28c49fe44c42b6e7e                                            0.0s
+ => => naming to docker.io/library/soll:5                                                                                                         0.0s 
+ => => unpacking to docker.io/library/soll:5                                                                                                      0.0s 
+
+C:\Users\Soll\Desktop\Demo>docker run soll:5 
+Hello DevOps
+
+C:\Users\Soll\Desktop\Demo>docker run soll:5 "Solenkoff"
+Hello Solenkoff
+
+C:\Users\Soll\Desktop\Demo>
