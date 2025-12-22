@@ -1,0 +1,156 @@
+
+
+
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P02_WordPress_App_with_MySQL_DB>docker network ls
+NETWORK ID     NAME         DRIVER    SCOPE
+fa06e4dc9752   bridge       bridge    local
+61c727a9e348   host         host      local
+d7e4c806f394   my_network   bridge    local
+7dbec24e0fa7   none         null      local
+
+C:\Users\Soll\Desktop\P02_WordPress_App_with_MySQL_DB>docker run -dit --name wordpress_db -e MYSQL_ROOT_PASSWORD=pass -e MYSQL_DATABASE=wordpressdb -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress -v %cd%:/var/lib/mysql --network my_network mysql
+Unable to find image 'mysql:latest' locally
+latest: Pulling from library/mysql
+21aa606d8d58: Pull complete
+dcee80f7340c: Pull complete
+f5f78fcd9ccb: Pull complete
+023a182c62a0: Pull complete
+834e15e3ed24: Pull complete
+0cd145fbb449: Pull complete
+5a3f7744d0e7: Pull complete
+494c372d15c3: Pull complete
+c276de9b5571: Pull complete
+480d01bd7a6a: Pull complete
+Digest: sha256:569c4128dfa625ac2ac62cdd8af588a3a6a60a049d1a8d8f0fac95880ecdbbe5
+Status: Downloaded newer image for mysql:latest
+081440968b4a5ebfa8938ceb264e12e8267980d8c66c55661422cd2ab45fcc2a
+
+C:\Users\Soll\Desktop\P02_WordPress_App_with_MySQL_DB>docker network inspect my_network
+[
+    {
+        "Name": "my_network",
+        "Id": "d7e4c806f394377d1b96378852f4e2b490783c673a4f3c4223a3b0aabac9c8c0",
+        "Created": "2025-11-24T15:46:57.120363617Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.19.0.0/16",
+                    "Gateway": "172.19.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "081440968b4a5ebfa8938ceb264e12e8267980d8c66c55661422cd2ab45fcc2a": {
+                "Name": "wordpress_db",
+                "EndpointID": "d725f3ddcee1d5cb59c070c377df0f906c42e3b06cfa2e4f2e1946f2542aabea",
+                "MacAddress": "0a:50:ea:98:3c:c0",
+                "IPv4Address": "172.19.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {}
+    }
+]
+
+C:\Users\Soll\Desktop\P02_WordPress_App_with_MySQL_DB> docker run -dit --name wordpress-website -e WORDPRESS_DB_HOST=wordpress_db -e WORDPRESS_DB_USER=wordpress -e WORDPRESS_DB_PASSWORD=wordpress -e WORDPRESS_DB_NAME=wordpressdb --network my_network -p 80:80 -v %cd%/wp-data:/var/www/html wordpress
+Unable to find image 'wordpress:latest' locally
+latest: Pulling from library/wordpress
+2e42a5718777: Pull complete
+1786c40e6ef6: Pull complete
+30d3fccd4e77: Pull complete
+336946dd099b: Pull complete
+d546c1d12a7f: Pull complete
+2da9ad8b7fb7: Pull complete
+53cbf50969c4: Pull complete
+8e3cf1a078fa: Pull complete
+5ff292d92bef: Pull complete
+64709930f968: Pull complete
+d1a33af9a2e4: Pull complete
+4f4fb700ef54: Pull complete
+b95356b5f483: Pull complete
+dba783666fd7: Pull complete
+e4aedbf72206: Pull complete
+7ac08dbbed07: Pull complete
+b237a14d49b4: Pull complete
+f3c8c18e18ce: Pull complete
+387c70da0b5e: Pull complete
+78e81f73c2d7: Pull complete
+22803a624815: Pull complete
+175dfdd2b654: Pull complete
+83f77dfb5823: Pull complete
+Digest: sha256:849910d6855a86ec52224f70601be0b2c2a4cc2496b535ddcfb1f3e7aa2fe396
+Status: Downloaded newer image for wordpress:latest
+c85e1bb78effd40f9faaac079c0e311f5e74b800ae15b213ba497c3713a4c042
+
+C:\Users\Soll\Desktop\P02_WordPress_App_with_MySQL_DB>docker network inspect my_network
+[
+    {
+        "Name": "my_network",
+        "Id": "d7e4c806f394377d1b96378852f4e2b490783c673a4f3c4223a3b0aabac9c8c0",
+        "Created": "2025-11-24T15:46:57.120363617Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.19.0.0/16",
+                    "Gateway": "172.19.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "081440968b4a5ebfa8938ceb264e12e8267980d8c66c55661422cd2ab45fcc2a": {
+                "Name": "wordpress_db",
+                "EndpointID": "d725f3ddcee1d5cb59c070c377df0f906c42e3b06cfa2e4f2e1946f2542aabea",
+                "MacAddress": "0a:50:ea:98:3c:c0",
+                "IPv4Address": "172.19.0.2/16",
+                "IPv6Address": ""
+            },
+            "c85e1bb78effd40f9faaac079c0e311f5e74b800ae15b213ba497c3713a4c042": {
+                "Name": "wordpress-website",
+                "EndpointID": "b33d7788234c27d43fc0d76a6f83e6be59596765fd26ec4bef5938fd318b958b",
+                "MacAddress": "da:4c:bf:bc:95:75",
+                "IPv4Address": "172.19.0.3/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {}
+    }
+]
+
+C:\Users\Soll\Desktop\P02_WordPress_App_with_MySQL_DB>
