@@ -1,0 +1,1017 @@
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.14.17
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+
+C:\Users\Soll\Desktop\P02_TaskBoard>cd TaskBoard.WebApp
+
+C:\Users\Soll\Desktop\P02_TaskBoard\TaskBoard.WebApp>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 4A63-CDF6
+
+ Directory of C:\Users\Soll\Desktop\P02_TaskBoard\TaskBoard.WebApp
+
+26-Nov-25  19:30    <DIR>          .
+26-Nov-25  19:30    <DIR>          ..
+18-Nov-25  13:58               168 appsettings.Development.json
+18-Nov-25  13:58               356 appsettings.json
+26-Nov-25  19:23    <DIR>          Areas
+26-Nov-25  19:25    <DIR>          bin
+26-Nov-25  19:23    <DIR>          Controllers
+26-Nov-25  19:30             1,326 Dockerfile
+26-Nov-25  19:23    <DIR>          Models
+26-Nov-25  19:30    <DIR>          obj
+18-Nov-25  13:58             1,700 Program.cs
+26-Nov-25  19:23    <DIR>          Properties
+18-Nov-25  13:58             1,154 TaskBoard.sln
+26-Nov-25  19:30             1,632 TaskBoard.WebApp.csproj
+26-Nov-25  19:30             1,217 TaskBoard.WebApp.csproj.user
+26-Nov-25  19:23    <DIR>          Views
+26-Nov-25  19:23    <DIR>          wwwroot
+               7 File(s)          7,553 bytes
+              10 Dir(s)  66,988,822,528 bytes free
+
+C:\Users\Soll\Desktop\P02_TaskBoard\TaskBoard.WebApp>docker build -t taskboard .
+[+] Building 2.2s (12/18)                                                                                                                         docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                              0.1s
+ => => transferring dockerfile: 1.36kB                                                                                                                            0.0s
+ => [internal] load metadata for mcr.microsoft.com/dotnet/aspnet:6.0                                                                                              0.2s
+ => [internal] load metadata for mcr.microsoft.com/dotnet/sdk:6.0                                                                                                 1.0s
+ => [internal] load .dockerignore                                                                                                                                 0.1s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [build 1/8] FROM mcr.microsoft.com/dotnet/sdk:6.0@sha256:c8fdd06e430de9f4ddd066b475ea350d771f341b77dd5ff4c2fafa748e3f2ef2                                     0.8s
+ => => resolve mcr.microsoft.com/dotnet/sdk:6.0@sha256:c8fdd06e430de9f4ddd066b475ea350d771f341b77dd5ff4c2fafa748e3f2ef2                                           0.1s
+ => => sha256:b25595df572c41dfde1ff0ebe1926f380e21870c9525ef929991ca3f3b870352 0B / 151.39MB                                                                      0.4s
+ => => sha256:17701958766f7af9dd1c203824a21d9ba620df4f6845bafb53eb19b6543204fa 0B / 13.75MB                                                                       0.4s
+ => => sha256:7450cfae47eb504c6f33f6177d82d62f38265f78b15854d3151892712c12484e 0B / 25.51MB                                                                       0.3s
+ => [internal] load build context                                                                                                                                 0.7s
+ => => transferring context: 5.24MB                                                                                                                               0.5s
+ => [base 1/2] FROM mcr.microsoft.com/dotnet/aspnet:6.0@sha256:e70c493f8af7f95bf459cb2b15c7e7a6173228929c2b7a9a6836b19377890e78                                   0.1s
+ => => resolve mcr.microsoft.com/dotnet/aspnet:6.0@sha256:e70c493f8af7f95bf459cb2b15c7e7a6173228929c2b7a9a6836b19377890e78                                        0.1s
+ => CACHED [base 2/2] WORKDIR /app                                                                                                                                0.0s
+ => [final 1/2] WORKDIR /app                                                                                                                                      0.2s
+ => CANCELED [build 2/8] WORKDIR /src                                                                                                                             0.0s
+ => ERROR [build 3/8] COPY [TaskBoard.WebApp/TaskBoard.WebApp.csproj, TaskBoard.WebApp/]                                                                          0.0s
+ => ERROR [build 4/8] COPY [TaskBoard.Data/TaskBoard.Data.csproj, TaskBoard.Data/]                                                                                0.0s
+------
+ > [build 3/8] COPY [TaskBoard.WebApp/TaskBoard.WebApp.csproj, TaskBoard.WebApp/]:
+------
+------
+ > [build 4/8] COPY [TaskBoard.Data/TaskBoard.Data.csproj, TaskBoard.Data/]:
+------
+Dockerfile:15
+--------------------
+  13 |     WORKDIR /src
+  14 |     COPY ["TaskBoard.WebApp/TaskBoard.WebApp.csproj", "TaskBoard.WebApp/"]
+  15 | >>> COPY ["TaskBoard.Data/TaskBoard.Data.csproj", "TaskBoard.Data/"]
+  16 |     RUN dotnet restore "./TaskBoard.WebApp/TaskBoard.WebApp.csproj"
+  17 |     COPY . .
+--------------------
+ERROR: failed to build: failed to solve: failed to compute cache key: failed to calculate checksum of ref jd1uonfmk9igbn9v5h5d1q4bv::txsw6b3604mbgzbphgf9z5aca: "/TaskBoard.Data/TaskBoard.Data.csproj": not found
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/bhias7yhbqgy3r0ts3vb32hul
+
+C:\Users\Soll\Desktop\P02_TaskBoard\TaskBoard.WebApp>cd ..
+
+C:\Users\Soll\Desktop\P02_TaskBoard>docker build -t taskboard .
+[+] Building 0.2s (1/1) FINISHED                                                                                                                  docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 2B                                                                                                                                0.0s
+ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/jn94wn8c6cux3k9ni18e0587d
+
+C:\Users\Soll\Desktop\P02_TaskBoard>docker build -t taskboard -f TaskBoard.WebApp .
+[+] Building 0.7s (1/1) FINISHED                                                                                                                  docker:desktop-linux
+ => [internal] load build definition from TaskBoard.WebApp                                                                                                        0.5s
+ => => transferring dockerfile: 5.24MB                                                                                                                            0.5s
+ERROR: failed to build: failed to solve: failed to read dockerfile: read /var/lib/docker/tmp/buildkit-mount3527080147/TaskBoard.WebApp: is a directory
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/sjwggbvqlcoz3m2husejf9s9v
+
+C:\Users\Soll\Desktop\P02_TaskBoard>docker build -t taskboard -f TaskBoard.WebApp/Dockerfile .
+[+] Building 164.7s (13/18)                                                                                                                       docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 1.36kB                                                                                                                            0.0s
+ => [internal] load metadata for mcr.microsoft.com/dotnet/sdk:6.0                                                                                                 0.4s
+ => [internal] load metadata for mcr.microsoft.com/dotnet/aspnet:6.0                                                                                              0.1s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 464B                                                                                                                                 0.0s
+ => [base 1/2] FROM mcr.microsoft.com/dotnet/aspnet:6.0@sha256:e70c493f8af7f95bf459cb2b15c7e7a6173228929c2b7a9a6836b19377890e78                                   0.1s
+ => => resolve mcr.microsoft.com/dotnet/aspnet:6.0@sha256:e70c493f8af7f95bf459cb2b15c7e7a6173228929c2b7a9a6836b19377890e78                                        0.1s
+ => [build 1/8] FROM mcr.microsoft.com/dotnet/sdk:6.0@sha256:c8fdd06e430de9f4ddd066b475ea350d771f341b77dd5ff4c2fafa748e3f2ef2                                    42.0s
+ => => resolve mcr.microsoft.com/dotnet/sdk:6.0@sha256:c8fdd06e430de9f4ddd066b475ea350d771f341b77dd5ff4c2fafa748e3f2ef2                                           0.1s
+ => => sha256:17701958766f7af9dd1c203824a21d9ba620df4f6845bafb53eb19b6543204fa 13.75MB / 13.75MB                                                                  4.3s
+ => => sha256:b25595df572c41dfde1ff0ebe1926f380e21870c9525ef929991ca3f3b870352 151.39MB / 151.39MB                                                               34.1s
+ => => sha256:7450cfae47eb504c6f33f6177d82d62f38265f78b15854d3151892712c12484e 25.51MB / 25.51MB                                                                  8.2s
+ => => extracting sha256:7450cfae47eb504c6f33f6177d82d62f38265f78b15854d3151892712c12484e                                                                         3.4s
+ => => extracting sha256:b25595df572c41dfde1ff0ebe1926f380e21870c9525ef929991ca3f3b870352                                                                         7.0s
+ => => extracting sha256:17701958766f7af9dd1c203824a21d9ba620df4f6845bafb53eb19b6543204fa                                                                         0.7s
+ => [internal] load build context                                                                                                                                 2.0s
+ => => transferring context: 4.41MB                                                                                                                               1.9s
+ => CACHED [base 2/2] WORKDIR /app                                                                                                                                0.0s
+ => CACHED [final 1/2] WORKDIR /app                                                                                                                               0.0s
+ => [build 2/8] WORKDIR /src                                                                                                                                      6.0s
+ => [build 3/8] COPY [TaskBoard.WebApp/TaskBoard.WebApp.csproj, TaskBoard.WebApp/]                                                                                0.1s
+ => [build 4/8] COPY [TaskBoard.Data/TaskBoard.Data.csproj, TaskBoard.Data/]                                                                                      0.1s
+ => ERROR [build 5/8] RUN dotnet restore "./TaskBoard.WebApp/TaskBoard.WebApp.csproj"                                                                           115.9s
+------
+ > [build 5/8] RUN dotnet restore "./TaskBoard.WebApp/TaskBoard.WebApp.csproj":
+1.791   Determining projects to restore...
+74.51   Failed to download package 'Microsoft.Data.SqlClient.SNI.runtime.2.1.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/2.1.1/microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg'.
+74.51   The download of 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/2.1.1/microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg' timed out because no data was received for 60000ms.
+74.51     Exception of type 'System.TimeoutException' was thrown.
+74.63   Failed to download package 'Microsoft.Identity.Client.4.21.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/4.21.1/microsoft.identity.client.4.21.1.nupkg'.
+74.63   The download of 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/4.21.1/microsoft.identity.client.4.21.1.nupkg' timed out because no data was received for 60000ms.
+74.63     Exception of type 'System.TimeoutException' was thrown.
+74.70   Failed to download package 'System.Configuration.ConfigurationManager.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/4.7.0/system.configuration.configurationmanager.4.7.0.nupkg'.
+74.70   The download of 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/4.7.0/system.configuration.configurationmanager.4.7.0.nupkg' timed out because no data was received for 60000ms.
+74.70     Exception of type 'System.TimeoutException' was thrown.
+74.75   Failed to download package 'System.Reflection.4.1.0' from 'https://api.nuget.org/v3-flatcontainer/system.reflection/4.1.0/system.reflection.4.1.0.nupkg'.
+74.75   The download of 'https://api.nuget.org/v3-flatcontainer/system.reflection/4.1.0/system.reflection.4.1.0.nupkg' timed out because no data was received for 60000ms.
+74.75     Exception of type 'System.TimeoutException' was thrown.
+76.10   Failed to download package 'Microsoft.CodeAnalysis.VisualBasic.4.0.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.visualbasic/4.0.0/microsoft.codeanalysis.visualbasic.4.0.0.nupkg'.
+76.10   The download of 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.visualbasic/4.0.0/microsoft.codeanalysis.visualbasic.4.0.0.nupkg' timed out because no data was received for 60000ms.
+76.10     Exception of type 'System.TimeoutException' was thrown.
+84.13   Failed to download package 'Microsoft.VisualStudio.Web.CodeGeneration.Templating.6.0.10' from 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.web.codegeneration.templating/6.0.10/microsoft.visualstudio.web.codegeneration.templating.6.0.10.nupkg'.
+84.13   Name or service not known (api.nuget.org:443)
+84.13     Name or service not known
+84.49   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.analyzerutilities/index.json'.
+84.49   Name or service not known (api.nuget.org:443)
+84.49     Name or service not known
+85.23   Failed to download package 'Microsoft.VisualStudio.Web.CodeGeneration.Templating.6.0.10' from 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.web.codegeneration.templating/6.0.10/microsoft.visualstudio.web.codegeneration.templating.6.0.10.nupkg'.
+85.23   Name or service not known (api.nuget.org:443)
+85.23     Name or service not known
+85.64   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.analyzerutilities/index.json'.
+85.64   Name or service not known (api.nuget.org:443)
+85.64     Name or service not known
+86.39   Failed to download package 'Microsoft.NETCore.Platforms.3.1.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg'.
+86.39   Name or service not known (api.nuget.org:443)
+86.39     Name or service not known
+86.41   Failed to download package 'Microsoft.VisualStudio.Web.CodeGeneration.Templating.6.0.10' from 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.web.codegeneration.templating/6.0.10/microsoft.visualstudio.web.codegeneration.templating.6.0.10.nupkg'.
+86.41   Name or service not known (api.nuget.org:443)
+86.41     Name or service not known
+86.71   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.analyzerutilities/index.json'.
+86.71   Name or service not known (api.nuget.org:443)
+86.71     Name or service not known
+87.49   Failed to download package 'Microsoft.VisualStudio.Web.CodeGeneration.Templating.6.0.10' from 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.web.codegeneration.templating/6.0.10/microsoft.visualstudio.web.codegeneration.templating.6.0.10.nupkg'.
+87.49   Name or service not known (api.nuget.org:443)
+87.49     Name or service not known
+87.55   Failed to download package 'Microsoft.NETCore.Platforms.3.1.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg'.
+87.55   Name or service not known (api.nuget.org:443)
+87.55     Name or service not known
+87.78   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.analyzerutilities/index.json'.
+87.78   Name or service not known (api.nuget.org:443)
+87.78     Name or service not known
+88.59   Failed to download package 'Microsoft.VisualStudio.Web.CodeGeneration.Templating.6.0.10' from 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.web.codegeneration.templating/6.0.10/microsoft.visualstudio.web.codegeneration.templating.6.0.10.nupkg'.
+88.59   Name or service not known (api.nuget.org:443)
+88.59     Name or service not known
+88.73   Failed to download package 'Microsoft.NETCore.Platforms.3.1.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg'.
+88.73   Name or service not known (api.nuget.org:443)
+88.73     Name or service not known
+88.90   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.analyzerutilities/index.json'.
+88.90   Name or service not known (api.nuget.org:443)
+88.90     Name or service not known
+90.02 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Failed to download package 'Microsoft.VisualStudio.Web.CodeGeneration.Templating.6.0.10' from 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.web.codegeneration.templating/6.0.10/microsoft.visualstudio.web.codegeneration.templating.6.0.10.nupkg'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+90.02 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Name or service not known (api.nuget.org:443) [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+90.02 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error :   Name or service not known [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+90.02   Failed to download package 'Microsoft.NETCore.Platforms.3.1.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg'.
+90.02   Name or service not known (api.nuget.org:443)
+90.02     Name or service not known
+90.03 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'Microsoft.CodeAnalysis.AnalyzerUtilities' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.analyzerutilities/index.json'.
+90.03   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.web.codegeneration.templating/index.json'.
+90.03   Name or service not known (api.nuget.org:443)
+90.03     Name or service not known
+90.87   Failed to download package 'Microsoft.IdentityModel.JsonWebTokens.6.8.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/6.8.0/microsoft.identitymodel.jsonwebtokens.6.8.0.nupkg'.
+90.87   An error occurred while sending the request.
+90.87     The response ended prematurely.
+91.03   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.protocols/index.json'.
+91.03   An error occurred while sending the request.
+91.03     The response ended prematurely.
+91.03   Failed to download package 'Microsoft.NETCore.Targets.1.0.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.targets/1.0.1/microsoft.netcore.targets.1.0.1.nupkg'.
+91.03   An error occurred while sending the request.
+91.03     The response ended prematurely.
+91.04   Failed to download package 'System.Runtime.Caching.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/4.7.0/system.runtime.caching.4.7.0.nupkg'.
+91.04   An error occurred while sending the request.
+91.04     The response ended prematurely.
+91.06   Failed to download package 'System.Globalization.4.0.11' from 'https://api.nuget.org/v3-flatcontainer/system.globalization/4.0.11/system.globalization.4.0.11.nupkg'.
+91.06   An error occurred while sending the request.
+91.06     The response ended prematurely.
+91.07   Failed to download package 'Microsoft.NETCore.Platforms.3.1.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg'.
+91.07   Name or service not known (api.nuget.org:443)
+91.07     Name or service not known
+91.08   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.web.codegeneration.templating/index.json'.
+91.08   Name or service not known (api.nuget.org:443)
+91.08     Name or service not known
+91.37   Failed to download package 'System.Reflection.Emit.Lightweight.4.3.0' from 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/4.3.0/system.reflection.emit.lightweight.4.3.0.nupkg'.
+91.37   An error occurred while sending the request.
+91.37     The response ended prematurely.
+92.03   Failed to download package 'Microsoft.IdentityModel.JsonWebTokens.6.8.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/6.8.0/microsoft.identitymodel.jsonwebtokens.6.8.0.nupkg'.
+92.03   Name or service not known (api.nuget.org:443)
+92.03     Name or service not known
+92.12   Failed to download package 'Microsoft.NETCore.Targets.1.0.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.targets/1.0.1/microsoft.netcore.targets.1.0.1.nupkg'.
+92.12   Name or service not known (api.nuget.org:443)
+92.12     Name or service not known
+92.17   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.protocols/index.json'.
+92.17   Name or service not known (api.nuget.org:443)
+92.17     Name or service not known
+92.19   Failed to download package 'System.Security.AccessControl.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/4.7.0/system.security.accesscontrol.4.7.0.nupkg'.
+92.19   An error occurred while sending the request.
+92.19     The response ended prematurely.
+92.19   Failed to download package 'System.Globalization.4.0.11' from 'https://api.nuget.org/v3-flatcontainer/system.globalization/4.0.11/system.globalization.4.0.11.nupkg'.
+92.19   Name or service not known (api.nuget.org:443)
+92.19     Name or service not known
+92.22   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.web.codegeneration.templating/index.json'.
+92.22   Name or service not known (api.nuget.org:443)
+92.22     Name or service not known
+92.23 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Failed to download package 'Microsoft.NETCore.Platforms.3.1.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+92.23 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Name or service not known (api.nuget.org:443) [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+92.23 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error :   Name or service not known [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+92.23   Failed to download package 'System.Runtime.Caching.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/4.7.0/system.runtime.caching.4.7.0.nupkg'.
+92.23   Name or service not known (api.nuget.org:443)
+92.23     Name or service not known
+92.23   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/index.json'.
+92.23   Name or service not known (api.nuget.org:443)
+92.23     Name or service not known
+92.24   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/index.json'.
+92.24   Name or service not known (api.nuget.org:443)
+92.24     Name or service not known
+92.47   Failed to download package 'System.Reflection.Emit.Lightweight.4.3.0' from 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/4.3.0/system.reflection.emit.lightweight.4.3.0.nupkg'.
+92.47   Name or service not known (api.nuget.org:443)
+92.47     Name or service not known
+92.60   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.debugger.contracts/index.json'.
+92.60   An error occurred while sending the request.
+92.60     The response ended prematurely.
+93.14   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.identitymodel.tokens.jwt/index.json'.
+93.14   An error occurred while sending the request.
+93.14     The response ended prematurely.
+93.16   Failed to download package 'Microsoft.NETCore.Targets.1.0.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.targets/1.0.1/microsoft.netcore.targets.1.0.1.nupkg'.
+93.16   Name or service not known (api.nuget.org:443)
+93.16     Name or service not known
+93.17   Failed to download package 'Microsoft.IdentityModel.JsonWebTokens.6.8.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/6.8.0/microsoft.identitymodel.jsonwebtokens.6.8.0.nupkg'.
+93.17   Name or service not known (api.nuget.org:443)
+93.17     Name or service not known
+93.19   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.protocols/index.json'.
+93.19   Name or service not known (api.nuget.org:443)
+93.19     Name or service not known
+93.20   Failed to download package 'System.Security.AccessControl.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/4.7.0/system.security.accesscontrol.4.7.0.nupkg'.
+93.20   Name or service not known (api.nuget.org:443)
+93.20     Name or service not known
+93.27   Failed to download package 'System.Globalization.4.0.11' from 'https://api.nuget.org/v3-flatcontainer/system.globalization/4.0.11/system.globalization.4.0.11.nupkg'.
+93.27   Name or service not known (api.nuget.org:443)
+93.27     Name or service not known
+93.33   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/index.json'.
+93.33   Name or service not known (api.nuget.org:443)
+93.33     Name or service not known
+93.33   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/index.json'.
+93.33   Name or service not known (api.nuget.org:443)
+93.33     Name or service not known
+93.39   Failed to download package 'System.Runtime.Caching.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/4.7.0/system.runtime.caching.4.7.0.nupkg'.
+93.39   Name or service not known (api.nuget.org:443)
+93.39     Name or service not known
+93.42   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.web.codegeneration.templating/index.json'.
+93.42   Name or service not known (api.nuget.org:443)
+93.42     Name or service not known
+93.63   Failed to download package 'System.Reflection.Emit.Lightweight.4.3.0' from 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/4.3.0/system.reflection.emit.lightweight.4.3.0.nupkg'.
+93.63   Name or service not known (api.nuget.org:443)
+93.63     Name or service not known
+93.70   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.debugger.contracts/index.json'.
+93.70   Name or service not known (api.nuget.org:443)
+93.70     Name or service not known
+94.17   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.identitymodel.tokens.jwt/index.json'.
+94.17   Name or service not known (api.nuget.org:443)
+94.17     Name or service not known
+94.20   Failed to download package 'Microsoft.NETCore.Targets.1.0.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.targets/1.0.1/microsoft.netcore.targets.1.0.1.nupkg'.
+94.20   Name or service not known (api.nuget.org:443)
+94.20     Name or service not known
+94.28   Failed to download package 'Microsoft.IdentityModel.JsonWebTokens.6.8.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/6.8.0/microsoft.identitymodel.jsonwebtokens.6.8.0.nupkg'.
+94.28   Name or service not known (api.nuget.org:443)
+94.28     Name or service not known
+94.28   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.protocols/index.json'.
+94.28   Name or service not known (api.nuget.org:443)
+94.28     Name or service not known
+94.30   Failed to download package 'System.Security.AccessControl.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/4.7.0/system.security.accesscontrol.4.7.0.nupkg'.
+94.30   Name or service not known (api.nuget.org:443)
+94.30     Name or service not known
+94.33   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/index.json'.
+94.33   Name or service not known (api.nuget.org:443)
+94.33     Name or service not known
+94.38   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/index.json'.
+94.38   Name or service not known (api.nuget.org:443)
+94.38     Name or service not known
+94.46   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.web.codegeneration.templating/index.json'.
+94.46   Name or service not known (api.nuget.org:443)
+94.46     Name or service not known
+94.47   Failed to download package 'System.Globalization.4.0.11' from 'https://api.nuget.org/v3-flatcontainer/system.globalization/4.0.11/system.globalization.4.0.11.nupkg'.
+94.47   Name or service not known (api.nuget.org:443)
+94.47     Name or service not known
+94.49   Failed to download package 'System.Runtime.Caching.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/4.7.0/system.runtime.caching.4.7.0.nupkg'.
+94.49   Name or service not known (api.nuget.org:443)
+94.49     Name or service not known
+94.65   Failed to download package 'System.Reflection.Emit.Lightweight.4.3.0' from 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/4.3.0/system.reflection.emit.lightweight.4.3.0.nupkg'.
+94.65   Name or service not known (api.nuget.org:443)
+94.65     Name or service not known
+94.75   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.debugger.contracts/index.json'.
+94.75   Name or service not known (api.nuget.org:443)
+94.75     Name or service not known
+97.49   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.diasymreader/index.json'.
+97.49   An error occurred while sending the request.
+97.49     The response ended prematurely.
+105.0   Failed to download package 'Microsoft.Data.SqlClient.SNI.runtime.2.1.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/2.1.1/microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0   Failed to download package 'System.Configuration.ConfigurationManager.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/4.7.0/system.configuration.configurationmanager.4.7.0.nupkg'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0   Failed to download package 'Microsoft.Identity.Client.4.21.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/4.21.1/microsoft.identity.client.4.21.1.nupkg'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.identitymodel.tokens.jwt/index.json'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0   Failed to download package 'Microsoft.NETCore.Targets.1.0.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.targets/1.0.1/microsoft.netcore.targets.1.0.1.nupkg'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0   Failed to download package 'Microsoft.IdentityModel.JsonWebTokens.6.8.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/6.8.0/microsoft.identitymodel.jsonwebtokens.6.8.0.nupkg'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0   Failed to download package 'System.Security.AccessControl.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/4.7.0/system.security.accesscontrol.4.7.0.nupkg'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0   Failed to download package 'System.Reflection.4.1.0' from 'https://api.nuget.org/v3-flatcontainer/system.reflection/4.1.0/system.reflection.4.1.0.nupkg'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/index.json'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.protocols/index.json'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/index.json'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0   Failed to download package 'System.Globalization.4.0.11' from 'https://api.nuget.org/v3-flatcontainer/system.globalization/4.0.11/system.globalization.4.0.11.nupkg'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'Microsoft.VisualStudio.Web.CodeGeneration.Templating' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.web.codegeneration.templating/index.json'.
+105.0   Failed to download package 'System.Runtime.Caching.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/4.7.0/system.runtime.caching.4.7.0.nupkg'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.debugger.contracts/index.json'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0   Failed to download package 'System.Reflection.Emit.Lightweight.4.3.0' from 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/4.3.0/system.reflection.emit.lightweight.4.3.0.nupkg'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0   Failed to download package 'Microsoft.CodeAnalysis.VisualBasic.4.0.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.visualbasic/4.0.0/microsoft.codeanalysis.visualbasic.4.0.0.nupkg'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+105.0   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.diasymreader/index.json'.
+105.0   Name or service not known (api.nuget.org:443)
+105.0     Name or service not known
+106.0   Failed to download package 'System.Configuration.ConfigurationManager.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/4.7.0/system.configuration.configurationmanager.4.7.0.nupkg'.
+106.0   Name or service not known (api.nuget.org:443)
+106.0     Name or service not known
+106.0   Failed to download package 'Microsoft.Data.SqlClient.SNI.runtime.2.1.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/2.1.1/microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg'.
+106.0   Name or service not known (api.nuget.org:443)
+106.0     Name or service not known
+106.1   Failed to download package 'System.Reflection.4.1.0' from 'https://api.nuget.org/v3-flatcontainer/system.reflection/4.1.0/system.reflection.4.1.0.nupkg'.
+106.1   Name or service not known (api.nuget.org:443)
+106.1     Name or service not known
+106.1 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Failed to download package 'Microsoft.NETCore.Targets.1.0.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.targets/1.0.1/microsoft.netcore.targets.1.0.1.nupkg'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.1 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Name or service not known (api.nuget.org:443) [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.1 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error :   Name or service not known [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.1 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'Microsoft.IdentityModel.Protocols' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.protocols/index.json'.
+106.1 /src/TaskBoard.Data/TaskBoard.Data.csproj : error NU1301: Failed to retrieve information about 'Microsoft.IdentityModel.Protocols' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.protocols/index.json'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.1   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.identitymodel.tokens.jwt/index.json'.
+106.1   Name or service not known (api.nuget.org:443)
+106.1     Name or service not known
+106.1   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.targets/index.json'.
+106.1   Name or service not known (api.nuget.org:443)
+106.1     Name or service not known
+106.1   Failed to download package 'Microsoft.Identity.Client.4.21.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/4.21.1/microsoft.identity.client.4.21.1.nupkg'.
+106.1   Name or service not known (api.nuget.org:443)
+106.1     Name or service not known
+106.1 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Failed to download package 'System.Runtime.Caching.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/4.7.0/system.runtime.caching.4.7.0.nupkg'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.1 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Name or service not known (api.nuget.org:443) [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.1 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error :   Name or service not known [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.1   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/index.json'.
+106.1   Name or service not known (api.nuget.org:443)
+106.1     Name or service not known
+106.1   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/index.json'.
+106.1   Name or service not known (api.nuget.org:443)
+106.1     Name or service not known
+106.1 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Failed to download package 'System.Reflection.Emit.Lightweight.4.3.0' from 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/4.3.0/system.reflection.emit.lightweight.4.3.0.nupkg'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.1 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Name or service not known (api.nuget.org:443) [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.1 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error :   Name or service not known [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.1   Failed to download package 'Microsoft.CodeAnalysis.VisualBasic.4.0.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.visualbasic/4.0.0/microsoft.codeanalysis.visualbasic.4.0.0.nupkg'.
+106.1   Name or service not known (api.nuget.org:443)
+106.1     Name or service not known
+106.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.diasymreader/index.json'.
+106.2   Name or service not known (api.nuget.org:443)
+106.2     Name or service not known
+106.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/index.json'.
+106.2   Name or service not known (api.nuget.org:443)
+106.2     Name or service not known
+106.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+106.2   Name or service not known (api.nuget.org:443)
+106.2     Name or service not known
+106.2   Failed to download package 'System.Security.AccessControl.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/4.7.0/system.security.accesscontrol.4.7.0.nupkg'.
+106.2   Name or service not known (api.nuget.org:443)
+106.2     Name or service not known
+106.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+106.2   Name or service not known (api.nuget.org:443)
+106.2     Name or service not known
+106.2 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Failed to download package 'Microsoft.IdentityModel.JsonWebTokens.6.8.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/6.8.0/microsoft.identitymodel.jsonwebtokens.6.8.0.nupkg'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.2 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Name or service not known (api.nuget.org:443) [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.2 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error :   Name or service not known [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+106.2   Name or service not known (api.nuget.org:443)
+106.2     Name or service not known
+106.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/index.json'.
+106.2   Name or service not known (api.nuget.org:443)
+106.2     Name or service not known
+106.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+106.2   Name or service not known (api.nuget.org:443)
+106.2     Name or service not known
+106.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/index.json'.
+106.2   Name or service not known (api.nuget.org:443)
+106.2     Name or service not known
+106.2 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Failed to download package 'System.Globalization.4.0.11' from 'https://api.nuget.org/v3-flatcontainer/system.globalization/4.0.11/system.globalization.4.0.11.nupkg'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.2 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Name or service not known (api.nuget.org:443) [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.2 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error :   Name or service not known [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+106.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+106.2   Name or service not known (api.nuget.org:443)
+106.2     Name or service not known
+106.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+106.2   Name or service not known (api.nuget.org:443)
+106.2     Name or service not known
+106.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.globalization/index.json'.
+106.2   Name or service not known (api.nuget.org:443)
+106.2     Name or service not known
+106.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+106.2   Name or service not known (api.nuget.org:443)
+106.2     Name or service not known
+106.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/index.json'.
+106.2   Name or service not known (api.nuget.org:443)
+106.2     Name or service not known
+106.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.debugger.contracts/index.json'.
+106.2   Name or service not known (api.nuget.org:443)
+106.2     Name or service not known
+107.1   Failed to download package 'System.Configuration.ConfigurationManager.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/4.7.0/system.configuration.configurationmanager.4.7.0.nupkg'.
+107.1   Name or service not known (api.nuget.org:443)
+107.1     Name or service not known
+107.1   Failed to download package 'Microsoft.Data.SqlClient.SNI.runtime.2.1.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/2.1.1/microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg'.
+107.1   Name or service not known (api.nuget.org:443)
+107.1     Name or service not known
+107.2   Failed to download package 'Microsoft.Identity.Client.4.21.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/4.21.1/microsoft.identity.client.4.21.1.nupkg'.
+107.2   Name or service not known (api.nuget.org:443)
+107.2     Name or service not known
+107.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/index.json'.
+107.2   Name or service not known (api.nuget.org:443)
+107.2     Name or service not known
+107.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.diasymreader/index.json'.
+107.2   Name or service not known (api.nuget.org:443)
+107.2     Name or service not known
+107.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.targets/index.json'.
+107.2   Name or service not known (api.nuget.org:443)
+107.2     Name or service not known
+107.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+107.2   Name or service not known (api.nuget.org:443)
+107.2     Name or service not known
+107.2 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'Microsoft.NETCore.Platforms' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/index.json'.
+107.2   Failed to download package 'System.Reflection.4.1.0' from 'https://api.nuget.org/v3-flatcontainer/system.reflection/4.1.0/system.reflection.4.1.0.nupkg'.
+107.2   Name or service not known (api.nuget.org:443)
+107.2     Name or service not known
+107.3 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'Microsoft.VisualStudio.Debugger.Contracts' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.visualstudio.debugger.contracts/index.json'.
+107.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+107.3   Name or service not known (api.nuget.org:443)
+107.3     Name or service not known
+107.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.identitymodel.tokens.jwt/index.json'.
+107.3   Name or service not known (api.nuget.org:443)
+107.3     Name or service not known
+107.3 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Failed to download package 'System.Security.AccessControl.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/4.7.0/system.security.accesscontrol.4.7.0.nupkg'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+107.3 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Name or service not known (api.nuget.org:443) [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+107.3 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error :   Name or service not known [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+107.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+107.3   Name or service not known (api.nuget.org:443)
+107.3     Name or service not known
+107.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/index.json'.
+107.3   Name or service not known (api.nuget.org:443)
+107.3     Name or service not known
+107.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/index.json'.
+107.3   Name or service not known (api.nuget.org:443)
+107.3     Name or service not known
+107.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.globalization/index.json'.
+107.3   Name or service not known (api.nuget.org:443)
+107.3     Name or service not known
+107.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+107.3   Name or service not known (api.nuget.org:443)
+107.3     Name or service not known
+107.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+107.3   Name or service not known (api.nuget.org:443)
+107.3     Name or service not known
+107.4   Failed to download package 'Microsoft.CodeAnalysis.VisualBasic.4.0.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.visualbasic/4.0.0/microsoft.codeanalysis.visualbasic.4.0.0.nupkg'.
+107.4   Name or service not known (api.nuget.org:443)
+107.4     Name or service not known
+107.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/index.json'.
+107.4   Name or service not known (api.nuget.org:443)
+107.4     Name or service not known
+107.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/index.json'.
+107.4   Name or service not known (api.nuget.org:443)
+107.4     Name or service not known
+107.4 /src/TaskBoard.Data/TaskBoard.Data.csproj : error NU1301: Failed to retrieve information about 'Microsoft.NETCore.Platforms' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.platforms/index.json'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+107.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/index.json'.
+107.4   Name or service not known (api.nuget.org:443)
+107.4     Name or service not known
+107.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+107.4   Name or service not known (api.nuget.org:443)
+107.4     Name or service not known
+107.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+107.4   Name or service not known (api.nuget.org:443)
+107.4     Name or service not known
+108.2   Failed to download package 'System.Configuration.ConfigurationManager.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/4.7.0/system.configuration.configurationmanager.4.7.0.nupkg'.
+108.2   Name or service not known (api.nuget.org:443)
+108.2     Name or service not known
+108.2   Failed to download package 'Microsoft.Data.SqlClient.SNI.runtime.2.1.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/2.1.1/microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg'.
+108.2   Name or service not known (api.nuget.org:443)
+108.2     Name or service not known
+108.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/index.json'.
+108.3   Name or service not known (api.nuget.org:443)
+108.3     Name or service not known
+108.3   Failed to download package 'System.Reflection.4.1.0' from 'https://api.nuget.org/v3-flatcontainer/system.reflection/4.1.0/system.reflection.4.1.0.nupkg'.
+108.3   Name or service not known (api.nuget.org:443)
+108.3     Name or service not known
+108.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.targets/index.json'.
+108.3   Name or service not known (api.nuget.org:443)
+108.3     Name or service not known
+108.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+108.4   Name or service not known (api.nuget.org:443)
+108.4     Name or service not known
+108.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+108.4   Name or service not known (api.nuget.org:443)
+108.4     Name or service not known
+108.4 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'System.IdentityModel.Tokens.Jwt' from remote source 'https://api.nuget.org/v3-flatcontainer/system.identitymodel.tokens.jwt/index.json'.
+108.4 /src/TaskBoard.Data/TaskBoard.Data.csproj : error NU1301: Failed to retrieve information about 'System.IdentityModel.Tokens.Jwt' from remote source 'https://api.nuget.org/v3-flatcontainer/system.identitymodel.tokens.jwt/index.json'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+108.4   Failed to download package 'Microsoft.Identity.Client.4.21.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/4.21.1/microsoft.identity.client.4.21.1.nupkg'.
+108.4   Name or service not known (api.nuget.org:443)
+108.4     Name or service not known
+108.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.diasymreader/index.json'.
+108.4   Name or service not known (api.nuget.org:443)
+108.4     Name or service not known
+108.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+108.4   Name or service not known (api.nuget.org:443)
+108.4     Name or service not known
+108.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.globalization/index.json'.
+108.4   Name or service not known (api.nuget.org:443)
+108.4     Name or service not known
+108.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/index.json'.
+108.4   Name or service not known (api.nuget.org:443)
+108.4     Name or service not known
+108.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/index.json'.
+108.4   Name or service not known (api.nuget.org:443)
+108.4     Name or service not known
+108.5   Failed to download package 'Microsoft.CodeAnalysis.VisualBasic.4.0.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.visualbasic/4.0.0/microsoft.codeanalysis.visualbasic.4.0.0.nupkg'.
+108.5   Name or service not known (api.nuget.org:443)
+108.5     Name or service not known
+108.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/index.json'.
+108.5   Name or service not known (api.nuget.org:443)
+108.5     Name or service not known
+108.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/index.json'.
+108.5   Name or service not known (api.nuget.org:443)
+108.5     Name or service not known
+108.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+108.5   Name or service not known (api.nuget.org:443)
+108.5     Name or service not known
+108.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+108.5   Name or service not known (api.nuget.org:443)
+108.5     Name or service not known
+108.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+108.5   Name or service not known (api.nuget.org:443)
+108.5     Name or service not known
+108.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+108.5   Name or service not known (api.nuget.org:443)
+108.5     Name or service not known
+108.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/index.json'.
+108.5   Name or service not known (api.nuget.org:443)
+108.5     Name or service not known
+109.2 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Failed to download package 'Microsoft.Data.SqlClient.SNI.runtime.2.1.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/2.1.1/microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+109.2 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Name or service not known (api.nuget.org:443) [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+109.2 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error :   Name or service not known [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+109.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/index.json'.
+109.2   Name or service not known (api.nuget.org:443)
+109.2     Name or service not known
+109.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/index.json'.
+109.2   Name or service not known (api.nuget.org:443)
+109.2     Name or service not known
+109.3 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Failed to download package 'System.Configuration.ConfigurationManager.4.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/4.7.0/system.configuration.configurationmanager.4.7.0.nupkg'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+109.3 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Name or service not known (api.nuget.org:443) [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+109.3 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error :   Name or service not known [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+109.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/index.json'.
+109.3   Name or service not known (api.nuget.org:443)
+109.3     Name or service not known
+109.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/index.json'.
+109.3   Name or service not known (api.nuget.org:443)
+109.3     Name or service not known
+109.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/index.json'.
+109.3   Name or service not known (api.nuget.org:443)
+109.3     Name or service not known
+109.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+109.4   Name or service not known (api.nuget.org:443)
+109.4     Name or service not known
+109.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/index.json'.
+109.5   Name or service not known (api.nuget.org:443)
+109.5     Name or service not known
+109.5 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Failed to download package 'System.Reflection.4.1.0' from 'https://api.nuget.org/v3-flatcontainer/system.reflection/4.1.0/system.reflection.4.1.0.nupkg'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+109.5 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Name or service not known (api.nuget.org:443) [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+109.5 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error :   Name or service not known [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+109.5 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'Microsoft.DiaSymReader' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.diasymreader/index.json'.
+109.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection/index.json'.
+109.5   Name or service not known (api.nuget.org:443)
+109.5     Name or service not known
+109.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/index.json'.
+109.5   Name or service not known (api.nuget.org:443)
+109.5     Name or service not known
+109.5 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Failed to download package 'Microsoft.CodeAnalysis.VisualBasic.4.0.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.visualbasic/4.0.0/microsoft.codeanalysis.visualbasic.4.0.0.nupkg'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+109.5 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Name or service not known (api.nuget.org:443) [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+109.5 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error :   Name or service not known [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+109.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.visualbasic/index.json'.
+109.5   Name or service not known (api.nuget.org:443)
+109.5     Name or service not known
+109.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+109.5   Name or service not known (api.nuget.org:443)
+109.5     Name or service not known
+109.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+109.5   Name or service not known (api.nuget.org:443)
+109.5     Name or service not known
+109.5 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Failed to download package 'Microsoft.Identity.Client.4.21.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/4.21.1/microsoft.identity.client.4.21.1.nupkg'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+109.5 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error : Name or service not known (api.nuget.org:443) [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+109.5 /usr/share/dotnet/sdk/6.0.428/NuGet.targets(132,5): error :   Name or service not known [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+109.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.targets/index.json'.
+109.5   Name or service not known (api.nuget.org:443)
+109.5     Name or service not known
+109.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/index.json'.
+109.5   Name or service not known (api.nuget.org:443)
+109.5     Name or service not known
+109.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/index.json'.
+109.5   Name or service not known (api.nuget.org:443)
+109.5     Name or service not known
+109.6   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+109.6   Name or service not known (api.nuget.org:443)
+109.6     Name or service not known
+109.6   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/index.json'.
+109.6   Name or service not known (api.nuget.org:443)
+109.6     Name or service not known
+109.6   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+109.6   Name or service not known (api.nuget.org:443)
+109.6     Name or service not known
+109.6   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/index.json'.
+109.6   Name or service not known (api.nuget.org:443)
+109.6     Name or service not known
+109.6   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.globalization/index.json'.
+109.6   Name or service not known (api.nuget.org:443)
+109.6     Name or service not known
+109.6   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+109.6   Name or service not known (api.nuget.org:443)
+109.6     Name or service not known
+109.6   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+109.6   Name or service not known (api.nuget.org:443)
+109.6     Name or service not known
+109.7   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/index.json'.
+109.7   Name or service not known (api.nuget.org:443)
+109.7     Name or service not known
+110.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/index.json'.
+110.3   Name or service not known (api.nuget.org:443)
+110.3     Name or service not known
+110.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/index.json'.
+110.4   Name or service not known (api.nuget.org:443)
+110.4     Name or service not known
+110.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/index.json'.
+110.4   Name or service not known (api.nuget.org:443)
+110.4     Name or service not known
+110.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/index.json'.
+110.4   Name or service not known (api.nuget.org:443)
+110.4     Name or service not known
+110.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/index.json'.
+110.4   Name or service not known (api.nuget.org:443)
+110.4     Name or service not known
+110.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection/index.json'.
+110.5   Name or service not known (api.nuget.org:443)
+110.5     Name or service not known
+110.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+110.5   Name or service not known (api.nuget.org:443)
+110.5     Name or service not known
+110.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.visualbasic/index.json'.
+110.5   Name or service not known (api.nuget.org:443)
+110.5     Name or service not known
+110.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/index.json'.
+110.5   Name or service not known (api.nuget.org:443)
+110.5     Name or service not known
+110.6   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/index.json'.
+110.6   Name or service not known (api.nuget.org:443)
+110.6     Name or service not known
+110.6   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+110.6   Name or service not known (api.nuget.org:443)
+110.6     Name or service not known
+110.6   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.globalization/index.json'.
+110.6   Name or service not known (api.nuget.org:443)
+110.6     Name or service not known
+110.7   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/index.json'.
+110.7   Name or service not known (api.nuget.org:443)
+110.7     Name or service not known
+110.7   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/index.json'.
+110.7   Name or service not known (api.nuget.org:443)
+110.7     Name or service not known
+110.7   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+110.7   Name or service not known (api.nuget.org:443)
+110.7     Name or service not known
+110.7   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/index.json'.
+110.7   Name or service not known (api.nuget.org:443)
+110.7     Name or service not known
+110.7   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+110.7   Name or service not known (api.nuget.org:443)
+110.7     Name or service not known
+110.7   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+110.7   Name or service not known (api.nuget.org:443)
+110.7     Name or service not known
+110.7   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+110.7   Name or service not known (api.nuget.org:443)
+110.7     Name or service not known
+110.7   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.targets/index.json'.
+110.7   Name or service not known (api.nuget.org:443)
+110.7     Name or service not known
+110.7   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/index.json'.
+110.7   Name or service not known (api.nuget.org:443)
+110.7     Name or service not known
+110.8   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+110.8   Name or service not known (api.nuget.org:443)
+110.8     Name or service not known
+110.8   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/index.json'.
+110.8   Name or service not known (api.nuget.org:443)
+110.8     Name or service not known
+111.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/index.json'.
+111.4   Name or service not known (api.nuget.org:443)
+111.4     Name or service not known
+111.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/index.json'.
+111.4   Name or service not known (api.nuget.org:443)
+111.4     Name or service not known
+111.4 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'System.Runtime.Caching' from remote source 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/index.json'.
+111.5   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/index.json'.
+111.5   Name or service not known (api.nuget.org:443)
+111.5     Name or service not known
+111.6   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection/index.json'.
+111.6   Name or service not known (api.nuget.org:443)
+111.6     Name or service not known
+111.6   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/index.json'.
+111.6   Name or service not known (api.nuget.org:443)
+111.6     Name or service not known
+111.7 /src/TaskBoard.Data/TaskBoard.Data.csproj : error NU1301: Failed to retrieve information about 'System.Runtime.Caching' from remote source 'https://api.nuget.org/v3-flatcontainer/system.runtime.caching/index.json'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+111.7   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.visualbasic/index.json'.
+111.7   Name or service not known (api.nuget.org:443)
+111.7     Name or service not known
+112.1 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'System.Reflection.Emit.Lightweight' from remote source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+112.2 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'System.Globalization' from remote source 'https://api.nuget.org/v3-flatcontainer/system.globalization/index.json'.
+112.2 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'Microsoft.IdentityModel.JsonWebTokens' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/index.json'.
+112.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/index.json'.
+112.2   Name or service not known (api.nuget.org:443)
+112.2     Name or service not known
+112.2 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'System.Reflection.Emit.Lightweight' from remote source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+112.2 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'System.Reflection.Emit.Lightweight' from remote source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+112.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/index.json'.
+112.2   Name or service not known (api.nuget.org:443)
+112.2     Name or service not known
+112.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/index.json'.
+112.2   Name or service not known (api.nuget.org:443)
+112.2     Name or service not known
+112.2 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'System.Reflection.Emit.Lightweight' from remote source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+112.3 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'System.Reflection.Emit.Lightweight' from remote source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+112.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/index.json'.
+112.3   Name or service not known (api.nuget.org:443)
+112.3     Name or service not known
+112.3 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'System.Reflection.Emit.Lightweight' from remote source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+112.3 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'Microsoft.NETCore.Targets' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.netcore.targets/index.json'.
+112.3 /src/TaskBoard.Data/TaskBoard.Data.csproj : error NU1301: Failed to retrieve information about 'Microsoft.IdentityModel.JsonWebTokens' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.identitymodel.jsonwebtokens/index.json'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+112.4 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'System.Reflection.Emit.Lightweight' from remote source 'https://api.nuget.org/v3-flatcontainer/system.reflection.emit.lightweight/index.json'.
+113.0   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/index.json'.
+113.0   Name or service not known (api.nuget.org:443)
+113.0     Name or service not known
+113.0   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/index.json'.
+113.0   Name or service not known (api.nuget.org:443)
+113.0     Name or service not known
+113.0   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/index.json'.
+113.0   Name or service not known (api.nuget.org:443)
+113.0     Name or service not known
+113.1   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/index.json'.
+113.1   Name or service not known (api.nuget.org:443)
+113.1     Name or service not known
+113.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.visualbasic/index.json'.
+113.2   Name or service not known (api.nuget.org:443)
+113.2     Name or service not known
+113.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection/index.json'.
+113.2   Name or service not known (api.nuget.org:443)
+113.2     Name or service not known
+113.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/index.json'.
+113.3   Name or service not known (api.nuget.org:443)
+113.3     Name or service not known
+113.4 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'System.Security.AccessControl' from remote source 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/index.json'.
+113.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/index.json'.
+113.4   Name or service not known (api.nuget.org:443)
+113.4     Name or service not known
+113.5 /src/TaskBoard.Data/TaskBoard.Data.csproj : error NU1301: Failed to retrieve information about 'System.Security.AccessControl' from remote source 'https://api.nuget.org/v3-flatcontainer/system.security.accesscontrol/index.json'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+114.1   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/index.json'.
+114.1   Name or service not known (api.nuget.org:443)
+114.1     Name or service not known
+114.1   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/index.json'.
+114.1   Name or service not known (api.nuget.org:443)
+114.1     Name or service not known
+114.2   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/index.json'.
+114.2   Name or service not known (api.nuget.org:443)
+114.2     Name or service not known
+114.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/index.json'.
+114.3   Name or service not known (api.nuget.org:443)
+114.3     Name or service not known
+114.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.visualbasic/index.json'.
+114.3   Name or service not known (api.nuget.org:443)
+114.3     Name or service not known
+114.3   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/system.reflection/index.json'.
+114.3   Name or service not known (api.nuget.org:443)
+114.3     Name or service not known
+114.4   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/index.json'.
+114.4   Name or service not known (api.nuget.org:443)
+114.4     Name or service not known
+114.6   Retrying 'FindPackagesByIdAsync' for source 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/index.json'.
+114.6   Name or service not known (api.nuget.org:443)
+114.6     Name or service not known
+115.1 /src/TaskBoard.Data/TaskBoard.Data.csproj : error NU1301: Failed to retrieve information about 'Microsoft.Data.SqlClient.SNI.runtime' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/index.json'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+115.2 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'Microsoft.Data.SqlClient.SNI.runtime' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient.sni.runtime/index.json'.
+115.3 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'System.Configuration.ConfigurationManager' from remote source 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/index.json'.
+115.4 /src/TaskBoard.Data/TaskBoard.Data.csproj : error NU1301: Failed to retrieve information about 'System.Configuration.ConfigurationManager' from remote source 'https://api.nuget.org/v3-flatcontainer/system.configuration.configurationmanager/index.json'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+115.5 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'Microsoft.CodeAnalysis.VisualBasic' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.visualbasic/index.json'.
+115.5 /src/TaskBoard.Data/TaskBoard.Data.csproj : error NU1301: Failed to retrieve information about 'Microsoft.Identity.Client' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/index.json'. [/src/TaskBoard.WebApp/TaskBoard.WebApp.csproj]
+115.5 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'System.Reflection' from remote source 'https://api.nuget.org/v3-flatcontainer/system.reflection/index.json'.
+115.6   Failed to restore /src/TaskBoard.Data/TaskBoard.Data.csproj (in 1.86 min).
+115.8 /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj : error NU1301: Failed to retrieve information about 'Microsoft.Identity.Client' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.identity.client/index.json'.
+115.8   Failed to restore /src/TaskBoard.WebApp/TaskBoard.WebApp.csproj (in 1.87 min).
+------
+Dockerfile:16
+--------------------
+  14 |     COPY ["TaskBoard.WebApp/TaskBoard.WebApp.csproj", "TaskBoard.WebApp/"]
+  15 |     COPY ["TaskBoard.Data/TaskBoard.Data.csproj", "TaskBoard.Data/"]
+  16 | >>> RUN dotnet restore "./TaskBoard.WebApp/TaskBoard.WebApp.csproj"
+  17 |     COPY . .
+  18 |     WORKDIR "/src/TaskBoard.WebApp"
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c dotnet restore \"./TaskBoard.WebApp/TaskBoard.WebApp.csproj\"" did not complete successfully: exit code: 1
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/j0o3j7ikpqq1cnhvkczhgny1v
+
+C:\Users\Soll\Desktop\P02_TaskBoard> docker build -t taskboard .
+[+] Building 0.8s (12/18)                                                                                                                         docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 1.37kB                                                                                                                            0.0s
+ => [internal] load metadata for mcr.microsoft.com/dotnet/sdk:6.0                                                                                                 0.4s
+ => [internal] load metadata for mcr.microsoft.com/dotnet/aspnet:6.0                                                                                              0.4s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 464B                                                                                                                                 0.0s
+ => [build 1/8] FROM mcr.microsoft.com/dotnet/sdk:6.0@sha256:c8fdd06e430de9f4ddd066b475ea350d771f341b77dd5ff4c2fafa748e3f2ef2                                     0.1s
+ => => resolve mcr.microsoft.com/dotnet/sdk:6.0@sha256:c8fdd06e430de9f4ddd066b475ea350d771f341b77dd5ff4c2fafa748e3f2ef2                                           0.1s
+ => [base 1/2] FROM mcr.microsoft.com/dotnet/aspnet:6.0@sha256:e70c493f8af7f95bf459cb2b15c7e7a6173228929c2b7a9a6836b19377890e78                                   0.1s
+ => => resolve mcr.microsoft.com/dotnet/aspnet:6.0@sha256:e70c493f8af7f95bf459cb2b15c7e7a6173228929c2b7a9a6836b19377890e78                                        0.1s
+ => [internal] load build context                                                                                                                                 0.1s
+ => => transferring context: 8.33kB                                                                                                                               0.0s
+ => CACHED [base 2/2] WORKDIR /app                                                                                                                                0.0s
+ => CACHED [final 1/2] WORKDIR /app                                                                                                                               0.0s
+ => CACHED [build 2/8] WORKDIR /src                                                                                                                               0.0s
+ => CACHED [build 3/8] COPY [TaskBoard.WebApp/TaskBoard.WebApp.csproj, TaskBoard.WebApp/]                                                                         0.0s
+ => ERROR [build 4/8] COPY [T askBoard.Data/TaskBoard.Data.csproj, TaskBoard.Data/]                                                                               0.0s
+------
+ > [build 4/8] COPY [T askBoard.Data/TaskBoard.Data.csproj, TaskBoard.Data/]:
+------
+Dockerfile:15
+--------------------
+  13 |     WORKDIR /src
+  14 |     COPY ["TaskBoard.WebApp/TaskBoard.WebApp.csproj", "TaskBoard.WebApp/"]
+  15 | >>> COPY ["T askBoard.Data/TaskBoard.Data.csproj", "TaskBoard.Data/"]
+  16 |     RUN dotnet restore "./TaskBoard.WebApp/TaskBoard.WebApp.csproj"
+  17 |     COPY . .
+--------------------
+ERROR: failed to build: failed to solve: failed to compute cache key: failed to calculate checksum of ref jd1uonfmk9igbn9v5h5d1q4bv::3w7nscyn4lvvr01wkw1eg00wj: "/T askBoard.Data/TaskBoard.Data.csproj": not found
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/t3nn2bht4vcbg4xevbzn4s1el
+
+C:\Users\Soll\Desktop\P02_TaskBoard>docker build -t taskboard .
+[+] Building 57.8s (19/19) FINISHED                                                                                                               docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 1.36kB                                                                                                                            0.0s
+ => [internal] load metadata for mcr.microsoft.com/dotnet/aspnet:6.0                                                                                              0.4s
+ => [internal] load metadata for mcr.microsoft.com/dotnet/sdk:6.0                                                                                                 0.4s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 464B                                                                                                                                 0.0s
+ => [build 1/8] FROM mcr.microsoft.com/dotnet/sdk:6.0@sha256:c8fdd06e430de9f4ddd066b475ea350d771f341b77dd5ff4c2fafa748e3f2ef2                                     0.1s
+ => => resolve mcr.microsoft.com/dotnet/sdk:6.0@sha256:c8fdd06e430de9f4ddd066b475ea350d771f341b77dd5ff4c2fafa748e3f2ef2                                           0.1s
+ => [internal] load build context                                                                                                                                 0.1s
+ => => transferring context: 8.33kB                                                                                                                               0.0s
+ => [base 1/2] FROM mcr.microsoft.com/dotnet/aspnet:6.0@sha256:e70c493f8af7f95bf459cb2b15c7e7a6173228929c2b7a9a6836b19377890e78                                   0.1s
+ => => resolve mcr.microsoft.com/dotnet/aspnet:6.0@sha256:e70c493f8af7f95bf459cb2b15c7e7a6173228929c2b7a9a6836b19377890e78                                        0.1s
+ => CACHED [base 2/2] WORKDIR /app                                                                                                                                0.0s
+ => CACHED [final 1/2] WORKDIR /app                                                                                                                               0.0s
+ => CACHED [build 2/8] WORKDIR /src                                                                                                                               0.0s
+ => CACHED [build 3/8] COPY [TaskBoard.WebApp/TaskBoard.WebApp.csproj, TaskBoard.WebApp/]                                                                         0.0s
+ => CACHED [build 4/8] COPY [TaskBoard.Data/TaskBoard.Data.csproj, TaskBoard.Data/]                                                                               0.0s
+ => [build 5/8] RUN dotnet restore "./TaskBoard.WebApp/TaskBoard.WebApp.csproj"                                                                                  23.0s
+ => [build 6/8] COPY . .                                                                                                                                          0.3s
+ => [build 7/8] WORKDIR /src/TaskBoard.WebApp                                                                                                                     0.1s
+ => [build 8/8] RUN dotnet build "./TaskBoard.WebApp.csproj" -c Release -o /app/build                                                                            13.3s
+ => [publish 1/1] RUN dotnet publish "./TaskBoard.WebApp.csproj" -c Release -o /app/publish /p:UseAppHost=false                                                  11.4s
+ => [final 2/2] COPY --from=publish /app/publish .                                                                                                                1.0s
+ => exporting to image                                                                                                                                            6.9s
+ => => exporting layers                                                                                                                                           5.6s
+ => => exporting manifest sha256:81056c168e0149b7177e925d22e5f9c1f719dce6c1eb64738098d6a44018e757                                                                 0.0s
+ => => exporting config sha256:a7157b4bfea412612f0edaa761ab6c140eab01518034e23acb1ffb6fd2457ec2                                                                   0.0s
+ => => exporting attestation manifest sha256:501161dd1af10153b5db3c94b3ddb40ccb11c011c906f3571a9bfd0e5b5a267e                                                     0.1s
+ => => exporting manifest list sha256:637c5eedc267d5c96f6d8b1db080725f016b38220a46b353a3771669b0819771                                                            0.0s
+ => => naming to docker.io/library/taskboard:latest                                                                                                               0.0s
+ => => unpacking to docker.io/library/taskboard:latest                                                                                                            1.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/rsdfuuy71ks25aumlxy9rhqv3
+
+C:\Users\Soll\Desktop\P02_TaskBoard>dokcer build -t isolenkoff/taskboard_app:1 -f ./TaskBoard.WebApp/Dockerfile .
+'dokcer' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Soll\Desktop\P02_TaskBoard>docker build -t isolenkoff/taskboard_app:1 -f ./TaskBoard.WebApp/Dockerfile .
+[+] Building 0.2s (1/1) FINISHED                                                                                                                  docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 2B                                                                                                                                0.0s
+ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/sz9c9yoxqx415s9qtx6bu69tf
+
+C:\Users\Soll\Desktop\P02_TaskBoard>docker build -t isolenkoff/taskboard_app:1 -f ./TaskBoard.WebApp/Dockerfile .
+[+] Building 2.4s (19/19) FINISHED                                                                                                                docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 1.36kB                                                                                                                            0.0s
+ => [internal] load metadata for mcr.microsoft.com/dotnet/sdk:6.0                                                                                                 0.4s
+ => [internal] load metadata for mcr.microsoft.com/dotnet/aspnet:6.0                                                                                              0.4s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 464B                                                                                                                                 0.0s
+ => [build 1/8] FROM mcr.microsoft.com/dotnet/sdk:6.0@sha256:c8fdd06e430de9f4ddd066b475ea350d771f341b77dd5ff4c2fafa748e3f2ef2                                     0.1s
+ => => resolve mcr.microsoft.com/dotnet/sdk:6.0@sha256:c8fdd06e430de9f4ddd066b475ea350d771f341b77dd5ff4c2fafa748e3f2ef2                                           0.1s
+ => [base 1/2] FROM mcr.microsoft.com/dotnet/aspnet:6.0@sha256:e70c493f8af7f95bf459cb2b15c7e7a6173228929c2b7a9a6836b19377890e78                                   0.1s
+ => => resolve mcr.microsoft.com/dotnet/aspnet:6.0@sha256:e70c493f8af7f95bf459cb2b15c7e7a6173228929c2b7a9a6836b19377890e78                                        0.1s
+ => [internal] load build context                                                                                                                                 0.1s
+ => => transferring context: 8.33kB                                                                                                                               0.0s
+ => CACHED [base 2/2] WORKDIR /app                                                                                                                                0.0s
+ => CACHED [final 1/2] WORKDIR /app                                                                                                                               0.0s
+ => CACHED [build 2/8] WORKDIR /src                                                                                                                               0.0s
+ => CACHED [build 3/8] COPY [TaskBoard.WebApp/TaskBoard.WebApp.csproj, TaskBoard.WebApp/]                                                                         0.0s
+ => CACHED [build 4/8] COPY [TaskBoard.Data/TaskBoard.Data.csproj, TaskBoard.Data/]                                                                               0.0s
+ => CACHED [build 5/8] RUN dotnet restore "./TaskBoard.WebApp/TaskBoard.WebApp.csproj"                                                                            0.0s
+ => CACHED [build 6/8] COPY . .                                                                                                                                   0.0s
+ => CACHED [build 7/8] WORKDIR /src/TaskBoard.WebApp                                                                                                              0.0s
+ => CACHED [build 8/8] RUN dotnet build "./TaskBoard.WebApp.csproj" -c Release -o /app/build                                                                      0.0s
+ => CACHED [publish 1/1] RUN dotnet publish "./TaskBoard.WebApp.csproj" -c Release -o /app/publish /p:UseAppHost=false                                            0.0s
+ => CACHED [final 2/2] COPY --from=publish /app/publish .                                                                                                         0.0s
+ => exporting to image                                                                                                                                            1.3s
+ => => exporting layers                                                                                                                                           0.0s
+ => => exporting manifest sha256:81056c168e0149b7177e925d22e5f9c1f719dce6c1eb64738098d6a44018e757                                                                 0.0s
+ => => exporting config sha256:a7157b4bfea412612f0edaa761ab6c140eab01518034e23acb1ffb6fd2457ec2                                                                   0.0s
+ => => exporting attestation manifest sha256:7ccd1e483c74e4303bd4a24e2c16cfcc2d2215b81f3f913ef847f48e7a11b2e9                                                     0.1s
+ => => exporting manifest list sha256:3d906c9bf6d327f745ab62795205bb3a0c6f3c952e4874c0f9b6365e403b68f0                                                            0.0s
+ => => naming to docker.io/isolenkoff/taskboard_app:1                                                                                                             0.0s
+ => => unpacking to docker.io/isolenkoff/taskboard_app:1                                                                                                          1.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/6s596mw41ki1w6d0afjulb5b2
+
+C:\Users\Soll\Desktop\P02_TaskBoard>docker images
+REPOSITORY                 TAG       IMAGE ID       CREATED          SIZE
+isolenkoff/taskboard_app   1         3d906c9bf6d3   18 minutes ago   412MB
+
+C:\Users\Soll\Desktop\P02_TaskBoard>docker tag isolenkoff/taskboard_app:1 isolenkoff/taskboard_app:latest
+
+C:\Users\Soll\Desktop\P02_TaskBoard>docker images
+REPOSITORY                 TAG       IMAGE ID       CREATED          SIZE
+isolenkoff/taskboard_app   1         3d906c9bf6d3   28 minutes ago   412MB
+isolenkoff/taskboard_app   latest    3d906c9bf6d3   28 minutes ago   412MB
+
+C:\Users\Soll\Desktop\P02_TaskBoard>docker login
+Authenticating with existing credentials... [Username: isolenkoff]
+
+i Info → To login with a different account, run 'docker logout' followed by 'docker login'
+
+
+Login Succeeded
+
+C:\Users\Soll\Desktop\P02_TaskBoard>docker push isolenkoff/taskboard_app:latest
+The push refers to repository [docker.io/isolenkoff/taskboard_app]
+952b1bd0bb13: Pushed
+56efa3ddd819: Pushed
+fb3701fae227: Pushed
+4f4fb700ef54: Pushed
+89320e7119e2: Pushed
+041c49fe43c3: Pushed
+280d9cc3bb13: Pushed
+78f394ff90b4: Pushed
+8715c03abd5b: Pushed
+latest: digest: sha256:3d906c9bf6d327f745ab62795205bb3a0c6f3c952e4874c0f9b6365e403b68f0 size: 856
+
