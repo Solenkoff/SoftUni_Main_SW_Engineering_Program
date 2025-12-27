@@ -1,0 +1,52 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\Demo_01>docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+1686b31fcd2f   bridge    bridge    local
+61c727a9e348   host      host      local
+7dbec24e0fa7   none      null      local
+
+C:\Users\Soll\Desktop\Demo_01>docker compose build
+
+C:\Users\Soll\Desktop\Demo_01>docker compose up
+ *  History restored 
+
+Microsoft Windows [Version 10.0.19045.6466]    
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\Demo_01>docker network ls
+error during connect: Get "http://%2F%2F.%2Fpipe%2FdockerDesktopLinuxEngine/v1.51/networks": open //./pipe/dockerDesktopLinuxEngine: The system cannot 
+
+C:\Users\Soll\Desktop\Demo_01>docker compose build
+
+C:\Users\Soll\Desktop\Demo_01>docker compose up -d
+[+] Running 35/35
+ ✔ app Pulled                                                                                                                                    68.1s 
+ ✔ mysql Pulled                                                                                                                                  76.5s 
+[+] Running 5/5
+ ✔ Network demo_01_default  Created                                                                                                               0.1s 
+ ✔ Volume demo_01_wp_data   Created                                                                                                               0.0s 
+ ✔ Volume demo_01_db_data   Created                                                                                                               0.0s 
+ ✔ Container wordpress_db   Started                                                                                                               6.9s 
+ ✔ Container wordpress_app  Started                                                                                                               7.2s 
+
+C:\Users\Soll\Desktop\Demo_01>docker compose up -d
+[+] Running 3/3
+ ✔ Network demo_01_default  Created                                                                                                               0.1s 
+ ✔ Container wordpress_app  Started                                                                                                               1.0s 
+ ✔ Container wordpress_db   Started                                                                                                               0.9s 
+
+C:\Users\Soll\Desktop\Demo_01>docker compose down
+[+] Running 3/3
+ ✔ Container wordpress_db   Removed                                                                                                               2.0s 
+ ✔ Container wordpress_app  Removed                                                                                                               1.9s 
+ ✔ Network demo_01_default  Removed                                                                                                               0.7s 
+
+C:\Users\Soll\Desktop\Demo_01>docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+3603a3baad67   bridge    bridge    local
+61c727a9e348   host      host      local
+7dbec24e0fa7   none      null      local
+
+C:\Users\Soll\Desktop\Demo_01>
