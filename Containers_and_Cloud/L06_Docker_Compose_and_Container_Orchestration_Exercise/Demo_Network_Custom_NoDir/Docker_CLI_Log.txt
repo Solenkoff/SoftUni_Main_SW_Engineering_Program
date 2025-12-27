@@ -1,0 +1,48 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\Demo_03>docker network create custom-network  
+82a5dd101e2678c8570b98833f1f1abfa11571fcd27b79d6a75bfe0fb49239e0
+
+C:\Users\Soll\Desktop\Demo_03>docker network ls
+NETWORK ID     NAME             DRIVER    SCOPE
+3603a3baad67   bridge           bridge    local
+82a5dd101e26   custom-network   bridge    local
+61c727a9e348   host             host      local
+7dbec24e0fa7   none             null      local
+
+C:\Users\Soll\Desktop\Demo_03>docker compose build
+validating C:\Users\Soll\Desktop\Demo_03\docker-compose.yml: networks.external must be a mapping or null
+
+C:\Users\Soll\Desktop\Demo_03>docker compose up -d
+validating C:\Users\Soll\Desktop\Demo_03\docker-compose.yml: networks.external must be a mapping or null
+
+C:\Users\Soll\Desktop\Demo_03>docker compose build
+
+C:\Users\Soll\Desktop\Demo_03>docker compose up -d
+[+] Running 4/4
+ ✔ Volume demo_03_wp_data   Created                                                                                                               0.0s 
+ ✔ Volume demo_03_db_data   Created                                                                                                               0.0s 
+ ✔ Container wordpress_app  Started                                                                                                               1.3s 
+ ✔ Container wordpress_db   Started                                                                                                               1.2s 
+
+C:\Users\Soll\Desktop\Demo_03>docker network ls
+NETWORK ID     NAME             DRIVER    SCOPE
+3603a3baad67   bridge           bridge    local
+82a5dd101e26   custom-network   bridge    local
+61c727a9e348   host             host      local
+7dbec24e0fa7   none             null      local
+
+C:\Users\Soll\Desktop\Demo_03>docker compose down
+[+] Running 2/2
+ ✔ Container wordpress_app  Removed                                                                                                               1.9s 
+ ✔ Container wordpress_db   Removed                                                                                                               2.2s 
+
+C:\Users\Soll\Desktop\Demo_03>docker network ls
+NETWORK ID     NAME             DRIVER    SCOPE
+3603a3baad67   bridge           bridge    local
+82a5dd101e26   custom-network   bridge    local
+61c727a9e348   host             host      local
+7dbec24e0fa7   none             null      local
+
+C:\Users\Soll\Desktop\Demo_03>
