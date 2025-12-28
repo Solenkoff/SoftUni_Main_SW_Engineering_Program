@@ -1,0 +1,165 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P_01>docker network ls
+NETWORK ID     NAME             DRIVER    SCOPE
+3603a3baad67   bridge           bridge    local
+82a5dd101e26   custom-network   bridge    local
+61c727a9e348   host             host      local
+7dbec24e0fa7   none             null      local
+
+C:\Users\Soll\Desktop\P_01>docker network rm 82
+82
+
+C:\Users\Soll\Desktop\P_01>docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+3603a3baad67   bridge    bridge    local
+61c727a9e348   host      host      local
+7dbec24e0fa7   none      null      local
+
+C:\Users\Soll\Desktop\P_01>docker network create mariadb_network
+ceec8c10bdea21f617611625799b2693507ecd3a62c38d27fe85c3c20bab1f80
+
+C:\Users\Soll\Desktop\P_01>docker network ls
+NETWORK ID     NAME              DRIVER    SCOPE
+3603a3baad67   bridge            bridge    local
+61c727a9e348   host              host      local
+ceec8c10bdea   mariadb_network   bridge    local
+7dbec24e0fa7   none              null      local
+
+C:\Users\Soll\Desktop\P_01>docker run -d --network mariadb_network  --name mariadb_server -e MARIADB_USER=example-user -e MARIADB_PASSWORD=my_cool_secret -e MARIADB_DATABASE=exmple-database -e MARIADB_ROOT_PASSWORD=my-secret-pw mariadb:latest
+Unable to find image 'mariadb:latest' locally
+latest: Pulling from library/mariadb
+eca7ec75082e: Pull complete
+20043066d3d5: Pull complete
+75e5c9f5eeb0: Pull complete
+9047f410cb7d: Pull complete
+be922ac1f9ed: Pull complete
+4be15142d46e: Pull complete
+ee5b64c3e2f5: Pull complete
+ba2d27f4ceca: Pull complete
+Digest: sha256:e1bcd6f85781f4a875abefb11c4166c1d79e4237c23de597bf0df81fec225b40
+Status: Downloaded newer image for mariadb:latest
+9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+
+C:\Users\Soll\Desktop\P_01>docker logs 97 -f
+2025-11-26 16:15:33+00:00 [Note] [Entrypoint]: Entrypoint script for MariaDB Server 1:12.1.2+maria~ubu2404 started.
+2025-11-26 16:15:33+00:00 [Warn] [Entrypoint]: /sys/fs/cgroup/name=systemd:/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+14:misc:/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+13:rdma:/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+12:pids:/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+11:hugetlb:/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+10:net_prio:/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+9:perf_event:/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+8:net_cls:/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+7:freezer:/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+6:devices:/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+5:memory:/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+4:blkio:/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+3:cpuacct:/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+2:cpu:/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+1:cpuset:/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da
+0::/docker/9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da/memory.pressure not writable, functionality unavailable to MariaDB
+2025-11-26 16:15:33+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+2025-11-26 16:15:33+00:00 [Note] [Entrypoint]: Entrypoint script for MariaDB Server 1:12.1.2+maria~ubu2404 started.
+2025-11-26 16:15:34+00:00 [Note] [Entrypoint]: Initializing database files
+2025-11-26 16:15:34 0 [Warning] mariadbd: io_uring_queue_init() failed with EPERM: sysctl kernel.io_uring_disabled has the value 2, or 1 and the user of the process is not a member of sysctl kernel.io_uring_group. (see man 2 io_uring_setup).
+create_uring failed: falling back to libaio
+2025-11-26 16:15:38+00:00 [Note] [Entrypoint]: Database files initialized
+2025-11-26 16:15:38+00:00 [Note] [Entrypoint]: Starting temporary server
+2025-11-26 16:15:38+00:00 [Note] [Entrypoint]: Waiting for server startup
+2025-11-26 16:15:38 0 [Note] Starting MariaDB 12.1.2-MariaDB-ubu2404 source revision 70117463f032d59f8e328335e19b59157d34cf07 server_uid 4ABF3BRgTEbl2tf/newOn1errLY= as process 90
+2025-11-26 16:15:38 0 [Note] InnoDB: Compressed tables use zlib 1.3
+2025-11-26 16:15:38 0 [Note] InnoDB: Number of transaction pools: 1
+2025-11-26 16:15:38 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2025-11-26 16:15:38 0 [Note] mariadbd: O_TMPFILE is not supported on /tmp (disabling future attempts)
+2025-11-26 16:15:38 0 [Warning] mariadbd: io_uring_queue_init() failed with EPERM: sysctl kernel.io_uring_disabled has the value 2, or 1 and the user of the process is not a member of sysctl kernel.io_uring_group. (see man 2 io_uring_setup).
+create_uring failed: falling back to libaio
+2025-11-26 16:15:38 0 [Note] InnoDB: Using Linux native AIO
+2025-11-26 16:15:38 0 [Note] InnoDB: innodb_buffer_pool_size_max=128m, innodb_buffer_pool_size=128m
+2025-11-26 16:15:38 0 [Note] InnoDB: Completed initialization of buffer pool
+2025-11-26 16:15:38 0 [Note] InnoDB: File system buffers for log disabled (block size=4096 bytes)
+2025-11-26 16:15:38 0 [Note] InnoDB: End of log at LSN=46204
+2025-11-26 16:15:39 0 [Note] InnoDB: Opened 3 undo tablespaces
+2025-11-26 16:15:39 0 [Note] InnoDB: 128 rollback segments in 3 undo tablespaces are active.
+2025-11-26 16:15:39 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2025-11-26 16:15:39 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2025-11-26 16:15:39 0 [Note] InnoDB: log sequence number 46204; transaction id 14
+2025-11-26 16:15:39 0 [Note] Plugin 'FEEDBACK' is disabled.
+2025-11-26 16:15:39 0 [Note] Plugin 'wsrep-provider' is disabled.
+2025-11-26 16:15:40 0 [Note] mariadbd: Event Scheduler: Loaded 0 events
+2025-11-26 16:15:40 0 [Note] Replication not automatically started: --skip-slave-start was specified
+2025-11-26 16:15:40 0 [Note] mariadbd: ready for connections.
+Version: '12.1.2-MariaDB-ubu2404'  socket: '/run/mysqld/mysqld.sock'  port: 0  mariadb.org binary distribution
+2025-11-26 16:15:40+00:00 [Note] [Entrypoint]: Temporary server started.
+2025-11-26 16:15:42+00:00 [Note] [Entrypoint]: Creating database exmple-database
+2025-11-26 16:15:42+00:00 [Note] [Entrypoint]: Creating user example-user
+2025-11-26 16:15:42+00:00 [Note] [Entrypoint]: Giving user example-user access to schema exmple-database
+2025-11-26 16:15:42+00:00 [Note] [Entrypoint]: Securing system users (equivalent to running mysql_secure_installation)
+
+2025-11-26 16:15:42+00:00 [Note] [Entrypoint]: Stopping temporary server
+2025-11-26 16:15:42 0 [Note] mariadbd (initiated by: unknown): Normal shutdown
+2025-11-26 16:15:42 0 [Note] InnoDB: FTS optimize thread exiting.
+2025-11-26 16:15:42 0 [Note] InnoDB: Starting shutdown...
+2025-11-26 16:15:42 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+2025-11-26 16:15:42 0 [Note] InnoDB: Buffer pool(s) dump completed at 251126 16:15:42
+2025-11-26 16:15:42 0 [Note] InnoDB: Removed temporary tablespace data file: "./ibtmp1"
+2025-11-26 16:15:42 0 [Note] InnoDB: Shutdown completed; log sequence number 46204; transaction id 15
+2025-11-26 16:15:42 0 [Note] mariadbd: Shutdown complete
+2025-11-26 16:15:42+00:00 [Note] [Entrypoint]: Temporary server stopped
+
+2025-11-26 16:15:42+00:00 [Note] [Entrypoint]: MariaDB init process done. Ready for start up.
+
+2025-11-26 16:15:42 0 [Note] Starting MariaDB 12.1.2-MariaDB-ubu2404 source revision 70117463f032d59f8e328335e19b59157d34cf07 server_uid 4ABF3BRgTEbl2tf/newOn1errLY= as process 1
+2025-11-26 16:15:42 0 [Note] InnoDB: Compressed tables use zlib 1.3
+2025-11-26 16:15:42 0 [Note] InnoDB: Number of transaction pools: 1
+2025-11-26 16:15:42 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2025-11-26 16:15:42 0 [Note] mariadbd: O_TMPFILE is not supported on /tmp (disabling future attempts)
+2025-11-26 16:15:42 0 [Warning] mariadbd: io_uring_queue_init() failed with EPERM: sysctl kernel.io_uring_disabled has the value 2, or 1 and the user of the process is not a member of sysctl kernel.io_uring_group. (see man 2 io_uring_setup).
+create_uring failed: falling back to libaio
+2025-11-26 16:15:42 0 [Note] InnoDB: Using Linux native AIO
+2025-11-26 16:15:42 0 [Note] InnoDB: innodb_buffer_pool_size_max=128m, innodb_buffer_pool_size=128m
+2025-11-26 16:15:42 0 [Note] InnoDB: Completed initialization of buffer pool
+2025-11-26 16:15:42 0 [Note] InnoDB: File system buffers for log disabled (block size=4096 bytes)
+2025-11-26 16:15:42 0 [Note] InnoDB: End of log at LSN=46204
+2025-11-26 16:15:42 0 [Note] InnoDB: Opened 3 undo tablespaces
+2025-11-26 16:15:42 0 [Note] InnoDB: 128 rollback segments in 3 undo tablespaces are active.
+2025-11-26 16:15:42 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2025-11-26 16:15:42 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2025-11-26 16:15:42 0 [Note] InnoDB: log sequence number 46204; transaction id 14
+2025-11-26 16:15:42 0 [Note] Plugin 'FEEDBACK' is disabled.
+2025-11-26 16:15:42 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+2025-11-26 16:15:42 0 [Note] Plugin 'wsrep-provider' is disabled.
+2025-11-26 16:15:42 0 [Note] InnoDB: Buffer pool(s) load completed at 251126 16:15:42
+2025-11-26 16:15:45 0 [Note] Server socket created on IP: '0.0.0.0', port: '3306'.
+2025-11-26 16:15:45 0 [Note] Server socket created on IP: '::', port: '3306'.
+2025-11-26 16:15:45 0 [Note] mariadbd: Event Scheduler: Loaded 0 events
+2025-11-26 16:15:45 0 [Note] mariadbd: ready for connections.
+Version: '12.1.2-MariaDB-ubu2404'  socket: '/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
+
+C:\Users\Soll\Desktop\P_01>docker run -it --name mariadb_client --network mariadb_network --rm mariadb:latest mariadb -h mariadb_server -u example-user -p
+Enter password:
+ERROR 1045 (28000): Access denied for user 'example-user'@'172.18.0.3' (using password: YES)
+
+C:\Users\Soll\Desktop\P_01>docker run -it --name mariadb_client --network mariadb_network --rm mariadb:latest mariadb -h mariadb_server -u example-user -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 4
+Server version: 12.1.2-MariaDB-ubu2404 mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SELECT VERSION();
++------------------------+
+| VERSION()              |
++------------------------+
+| 12.1.2-MariaDB-ubu2404 |
++------------------------+
+1 row in set (0.002 sec)
+
+MariaDB [(none)]> exit
+Bye
+
+C:\Users\Soll\Desktop\P_01>

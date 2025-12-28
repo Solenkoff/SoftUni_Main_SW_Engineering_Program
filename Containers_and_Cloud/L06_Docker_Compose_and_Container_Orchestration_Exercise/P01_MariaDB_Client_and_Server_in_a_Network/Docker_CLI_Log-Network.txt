@@ -1,0 +1,55 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll>docker network inspect mariadb_network
+[
+    {
+        "Name": "mariadb_network",
+        "Id": "ceec8c10bdea21f617611625799b2693507ecd3a62c38d27fe85c3c20bab1f80",
+        "Created": "2025-11-26T16:07:32.143661851Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "801d4b530cea285c68669699b8fca98338c2db02349bde0248677f16a5f75bbb": {
+                "Name": "mariadb_client",
+                "EndpointID": "0327f8794e9a567c2e7085988a96838f174c966563104d8ff63949166a483527",
+                "MacAddress": "02:e2:4e:80:8d:12",
+                "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": ""
+            },
+            "9742baccb34b284c5e2de2efe1d23fb8d1c8824b84cb73e747d0950a4d7d72da": {
+                "Name": "mariadb_server",
+                "EndpointID": "df933d44c940f374bcd3aff282680873e4a224d54891715d45fca347bad712c1",
+                "MacAddress": "52:f7:19:e7:6b:4a",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {}
+    }
+]
+
+C:\Users\Soll>
