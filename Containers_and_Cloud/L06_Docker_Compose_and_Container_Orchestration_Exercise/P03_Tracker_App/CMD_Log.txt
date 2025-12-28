@@ -1,0 +1,57 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P03_Tracker_App>docker build -t isolenkoff/tracker_app:1 .
+[+] Building 2.3s (16/16) FINISHED                                                                                                docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                              0.0s
+ => => transferring dockerfile: 324B                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/nginx:latest                                                                                   1.2s
+ => [internal] load metadata for docker.io/library/node:14-alpine                                                                                 1.1s
+ => [auth] library/nginx:pull token for registry-1.docker.io                                                                                      0.0s
+ => [auth] library/node:pull token for registry-1.docker.io                                                                                       0.0s
+ => [internal] load .dockerignore                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                   0.0s
+ => [build-stage 1/6] FROM docker.io/library/node:14-alpine@sha256:434215b487a329c9e867202ff89e704d3a75e554822e07f3e0c0f9e606121b33               0.1s
+ => => resolve docker.io/library/node:14-alpine@sha256:434215b487a329c9e867202ff89e704d3a75e554822e07f3e0c0f9e606121b33                           0.1s
+ => [production-stage 1/2] FROM docker.io/library/nginx:latest@sha256:553f64aecdc31b5bf944521731cd70e35da4faed96b2b7548a3d8e2598c52a42            0.1s
+ => => resolve docker.io/library/nginx:latest@sha256:553f64aecdc31b5bf944521731cd70e35da4faed96b2b7548a3d8e2598c52a42                             0.1s
+ => [internal] load build context                                                                                                                 0.2s
+ => => transferring context: 956.46kB                                                                                                             0.1s
+ => CACHED [build-stage 2/6] WORKDIR /vue_app                                                                                                     0.0s
+ => CACHED [build-stage 3/6] COPY package.json ./                                                                                                 0.0s
+ => CACHED [build-stage 4/6] RUN npm install                                                                                                      0.0s
+ => CACHED [build-stage 5/6] COPY . .                                                                                                             0.0s
+ => CACHED [build-stage 6/6] RUN npm run build                                                                                                    0.0s
+ => CACHED [production-stage 2/2] COPY --from=build-stage /vue_app/dist /usr/share/nginx/html                                                     0.0s
+ => exporting to image                                                                                                                            0.3s 
+ => => exporting layers                                                                                                                           0.0s 
+ => => exporting manifest sha256:029ac3587fa49ed93cdf5fe0dcdc72d3279a86aae341398ad9a055356326ab66                                                 0.0s 
+ => => exporting config sha256:739f031cb09396151599445d98e5c6d39f93d845eb2bcab669d125d96b207b58                                                   0.0s
+ => => exporting attestation manifest sha256:25bb92ca0a6fcbe44241571f5cd3ada240d1c790d96e3808d203fe680dec615a                                     0.1s 
+ => => exporting manifest list sha256:80d8afad3e23f25a264e2bb0ef94ad0d878e310691204ba16cd8709016f898ba                                            0.0s 
+ => => naming to docker.io/isolenkoff/tracker_app:1                                                                                               0.0s 
+ => => unpacking to docker.io/isolenkoff/tracker_app:1                                                                                            0.1s 
+
+C:\Users\Soll\Desktop\P03_Tracker_App>docker push isolenkoff/tracker_app:1 
+The push refers to repository [docker.io/isolenkoff/tracker_app]
+b5feb73171bf: Pushed
+192e2451f875: Pushed
+53d743880af4: Pushed
+5cd3310f3e94: Pushed
+108ab8292820: Pushed
+0e4bc2bd6656: Pushed
+de57a609c9d5: Pushed
+4307a300d7fe: Pushed
+77fa2eb06317: Pushed
+1: digest: sha256:80d8afad3e23f25a264e2bb0ef94ad0d878e310691204ba16cd8709016f898ba size: 856
+
+C:\Users\Soll\Desktop\P03_Tracker_App>docker run --name tracker_app -p 80:80 -d isolenkoff/tracker_app
+Unable to find image 'isolenkoff/tracker_app:latest' locally
+docker: Error response from daemon: failed to resolve reference "docker.io/isolenkoff/tracker_app:latest": docker.io/isolenkoff/tracker_app:latest: not found
+
+Run 'docker run --help' for more information
+
+C:\Users\Soll\Desktop\P03_Tracker_App>docker run --name tracker_app -p 80:80 -d isolenkoff/tracker_app:1
+b63a3a625eb006fbad13f2f188c31f12b74aeac7e583dc3ea2b52187e551ae1b
+
+C:\Users\Soll\Desktop\P03_Tracker_App>
