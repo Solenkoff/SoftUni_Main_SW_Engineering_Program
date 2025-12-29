@@ -1,0 +1,22 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P04>docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MSSQL*Pass01" -p 1433:1433  -v sql_data:/var/opt/mssql --name mssql_server --network taskboard_network -d mcr.microsoft.com/mssql/server
+Unable to find image 'mcr.microsoft.com/mssql/server:latest' locally
+latest: Pulling from mssql/server
+ae76d5a26e47: Pull complete
+a640612140d3: Pull complete
+95d90ad22b86: Pull complete
+Digest: sha256:54b23ca766287dab5f6f55162923325f07cdec6ccb42108f37c55c87e7688ebd
+Status: Downloaded newer image for mcr.microsoft.com/mssql/server:latest
+ef84c39111878677bd74558d56f4e55ee86c26cac1726e78bb12092ce41a2792
+
+C:\Users\Soll\Desktop\P04>docker image ls
+                                                                                            i Info →   U  In Use
+IMAGE                                   ID             DISK USAGE   CONTENT SIZE   EXTRA
+isolenkoff/tracker_app:1                80d8afad3e23        226MB           60MB
+mcr.microsoft.com/dotnet/aspnet:6.0     e70c493f8af7        308MB         86.4MB
+mcr.microsoft.com/mssql/server:latest   54b23ca76628       2.47GB          648MB    U
+taskboardwebapp:dev                     31e7847f49bd        308MB         86.4MB    U
+
+C:\Users\Soll\Desktop\P04>

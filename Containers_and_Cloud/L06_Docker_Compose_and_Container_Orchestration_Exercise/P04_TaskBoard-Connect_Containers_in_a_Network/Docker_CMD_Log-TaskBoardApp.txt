@@ -1,0 +1,131 @@
+
+C:\Users\Soll\Desktop\P04\TaskBoard>docker build -t isolenkoff/taskboard_app -f TaskBoard.WebApp\Dockerfile .
+[+] Building 141.0s (19/19) FINISHED                                                                                                              docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 1.36kB                                                                                                                            0.0s
+ => [internal] load metadata for mcr.microsoft.com/dotnet/sdk:6.0                                                                                                 1.3s
+ => [internal] load metadata for mcr.microsoft.com/dotnet/aspnet:6.0                                                                                              0.5s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 464B                                                                                                                                 0.0s
+ => [build 1/8] FROM mcr.microsoft.com/dotnet/sdk:6.0@sha256:c8fdd06e430de9f4ddd066b475ea350d771f341b77dd5ff4c2fafa748e3f2ef2                                    64.0s
+ => => resolve mcr.microsoft.com/dotnet/sdk:6.0@sha256:c8fdd06e430de9f4ddd066b475ea350d771f341b77dd5ff4c2fafa748e3f2ef2                                           0.1s
+ => => sha256:17701958766f7af9dd1c203824a21d9ba620df4f6845bafb53eb19b6543204fa 13.75MB / 13.75MB                                                                  6.0s
+ => => sha256:7450cfae47eb504c6f33f6177d82d62f38265f78b15854d3151892712c12484e 25.51MB / 25.51MB                                                                 11.3s
+ => => sha256:b25595df572c41dfde1ff0ebe1926f380e21870c9525ef929991ca3f3b870352 151.39MB / 151.39MB                                                               56.5s
+ => => extracting sha256:7450cfae47eb504c6f33f6177d82d62f38265f78b15854d3151892712c12484e                                                                         2.9s
+ => => extracting sha256:b25595df572c41dfde1ff0ebe1926f380e21870c9525ef929991ca3f3b870352                                                                         6.2s
+ => => extracting sha256:17701958766f7af9dd1c203824a21d9ba620df4f6845bafb53eb19b6543204fa                                                                         0.6s
+ => [internal] load build context                                                                                                                                 0.6s
+ => => transferring context: 4.41MB                                                                                                                               0.5s
+ => [base 1/2] FROM mcr.microsoft.com/dotnet/aspnet:6.0@sha256:e70c493f8af7f95bf459cb2b15c7e7a6173228929c2b7a9a6836b19377890e78                                   0.1s
+ => => resolve mcr.microsoft.com/dotnet/aspnet:6.0@sha256:e70c493f8af7f95bf459cb2b15c7e7a6173228929c2b7a9a6836b19377890e78                                        0.1s
+ => CACHED [base 2/2] WORKDIR /app                                                                                                                                0.0s
+ => [final 1/2] WORKDIR /app                                                                                                                                      0.1s
+ => [build 2/8] WORKDIR /src                                                                                                                                      3.3s
+ => [build 3/8] COPY [TaskBoard.WebApp/TaskBoard.WebApp.csproj, TaskBoard.WebApp/]                                                                                0.1s
+ => [build 4/8] COPY [TaskBoard.Data/TaskBoard.Data.csproj, TaskBoard.Data/]                                                                                      0.1s
+ => [build 5/8] RUN dotnet restore "./TaskBoard.WebApp/TaskBoard.WebApp.csproj"                                                                                  39.8s
+ => [build 6/8] COPY . .                                                                                                                                          0.3s
+ => [build 7/8] WORKDIR /src/TaskBoard.WebApp                                                                                                                     0.1s
+ => [build 8/8] RUN dotnet build "./TaskBoard.WebApp.csproj" -c Release -o /app/build                                                                            10.5s
+ => [publish 1/1] RUN dotnet publish "./TaskBoard.WebApp.csproj" -c Release -o /app/publish /p:UseAppHost=false                                                  12.0s
+ => [final 2/2] COPY --from=publish /app/publish .                                                                                                                0.6s
+ => exporting to image                                                                                                                                            6.7s
+ => => exporting layers                                                                                                                                           5.4s
+ => => exporting manifest sha256:341ddede6ea0ebc56a542bf5bfb2d9751e9d06a774fad4ed6eadae3c04a59683                                                                 0.0s
+ => => exporting config sha256:9d7ba91c60148632be99fe76aafdf38de53dce752b862ae8c9503680e2713c00                                                                   0.0s
+ => => exporting attestation manifest sha256:b0f2e3d1c10c2d2afea8ccb0c998276c7e7e156b0b45f70fc88f375148cacdb9                                                     0.1s
+ => => exporting manifest list sha256:a466a9d550ba7cffef2f907e6efcf8aeefccea9c03e4844e9cf0055e4c2f5caa                                                            0.0s
+ => => naming to docker.io/isolenkoff/taskboard_app:latest                                                                                                        0.0s
+ => => unpacking to docker.io/isolenkoff/taskboard_app:latest                                                                                                     1.0s
+
+C:\Users\Soll\Desktop\P04\TaskBoard>docker push isoelenkoff/taskboard_app
+Using default tag: latest
+The push refers to repository [docker.io/isoelenkoff/taskboard_app]
+tag does not exist: isoelenkoff/taskboard_app:latest
+
+C:\Users\Soll\Desktop\P04\TaskBoard>docker push isolenkoff/taskboard_app
+Using default tag: latest
+The push refers to repository [docker.io/isolenkoff/taskboard_app]
+4667588a33b8: Pushed
+07884240670e: Pushed
+952b1bd0bb13: Pushed
+78f394ff90b4: Pushed
+8715c03abd5b: Pushed
+39bc5b3deeeb: Pushed
+56efa3ddd819: Pushed
+89320e7119e2: Pushed
+4f4fb700ef54: Pushed
+latest: digest: sha256:a466a9d550ba7cffef2f907e6efcf8aeefccea9c03e4844e9cf0055e4c2f5caa size: 856
+
+C:\Users\Soll\Desktop\P04\TaskBoard>docker run --name taskboard_app --network taskboard_network -d -p 5000:80 isolenkoff/taskboard_app
+47d092ebb4a6154574d0690c95b23cde5f0f762305c07c89fd727814fd89704c
+
+C:\Users\Soll\Desktop\P04\TaskBoard>docker ps
+CONTAINER ID   IMAGE                            COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+47d092ebb4a6   isolenkoff/taskboard_app         "dotnet TaskBoard.We…"   18 seconds ago   Up 19 seconds   0.0.0.0:5000->80/tcp, [::]:5000->80/tcp       taskboard_app
+ef84c3911187   mcr.microsoft.com/mssql/server   "/opt/mssql/bin/laun…"   45 minutes ago   Up 45 minutes   0.0.0.0:1433->1433/tcp, [::]:1433->1433/tcp   mssql_server
+
+C:\Users\Soll\Desktop\P04\TaskBoard>docker network inspect taskboard_network
+[
+    {
+        "Name": "taskboard_network",
+	    "Id": "c2ea227b782f2c86a7297d382b2e3cda9c6f46cc94ad873a45c92cbe599a95d6",
+        "Created": "2025-11-28T18:09:45.964564399Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "IPRange": "",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {},
+        "Containers": {
+            "47d092ebb4a6154574d0690c95b23cde5f0f762305c07c89fd727814fd89704c": {
+			                "Name": "taskboard_app",
+                "EndpointID": "4d043b5819d96e9f46982f2ae6b3f81d5e682f1935f67baa9857694d3dd0decf",
+                "MacAddress": "9e:91:db:9c:19:c7",
+                "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": ""
+            },
+            "ef84c39111878677bd74558d56f4e55ee86c26cac1726e78bb12092ce41a2792": {
+                "Name": "mssql_server",
+                "EndpointID": "2043a92a8875f5dbbf00115665ae4c694aebc4853f246e9515684cb6bc673f8b",
+                "MacAddress": "fa:fc:55:ba:0b:e6",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.18.0.0/16": {
+                        "IPsInUse": 5,
+                        "DynamicIPsAvailable": 65531
+                    }
+                }
+            }
+        }
+    }
+]
+
+C:\Users\Soll\Desktop\P04\TaskBoard>
