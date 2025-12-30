@@ -1,0 +1,43 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P05_TODO_App>cd backend
+
+C:\Users\Soll\Desktop\P05_TODO_App\backend>docker build -t backend .    
+[+] Building 34.5s (12/12) FINISHED                                                                                               docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                              0.1s
+ => => transferring dockerfile: 601B                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/node:lts-buster-slim                                                                           1.1s
+ => [auth] library/node:pull token for registry-1.docker.io                                                                                       0.0s
+ => [internal] load .dockerignore                                                                                                                 0.1s
+ => => transferring context: 2B                                                                                                                   0.0s
+ => [1/6] FROM docker.io/library/node:lts-buster-slim@sha256:b5c14e85662c43b8c86a3a88259a34f0071474ad0a029ecb4ec39bbea588b030                    13.4s
+ => => resolve docker.io/library/node:lts-buster-slim@sha256:b5c14e85662c43b8c86a3a88259a34f0071474ad0a029ecb4ec39bbea588b030                     0.1s
+ => => sha256:91fb5bf3bf5644e732816abba38fa882f8f219b0e5e94721769d22be091d346e 40.56MB / 40.56MB                                                  8.1s
+ => => sha256:cfc35741f7c213ed8d4fe84fc24fa7276066a6cbb24bc2483349ebc0c4532d41 453B / 453B                                                        0.5s
+ => => sha256:92fb55bbf58f7d8f1e314d1d57935fe02bc2793dbea1584620ba06774751336b 1.71MB / 1.71MB                                                    1.1s
+ => => sha256:83e7bff444cbbba7a4525fb9f89eed0fec15f0fee7634be90e605e976e0a2b62 4.08kB / 4.08kB                                                    0.7s
+ => => sha256:b338562f40a7fb7360dfae935da6d7e40d2545db18bc461d9d70ec1b2b657f33 27.34MB / 27.34MB                                                  6.9s
+ => => extracting sha256:b338562f40a7fb7360dfae935da6d7e40d2545db18bc461d9d70ec1b2b657f33                                                         1.7s
+ => => extracting sha256:83e7bff444cbbba7a4525fb9f89eed0fec15f0fee7634be90e605e976e0a2b62                                                         0.1s
+ => => extracting sha256:91fb5bf3bf5644e732816abba38fa882f8f219b0e5e94721769d22be091d346e                                                         2.0s
+ => => extracting sha256:92fb55bbf58f7d8f1e314d1d57935fe02bc2793dbea1584620ba06774751336b                                                         0.1s
+ => => extracting sha256:cfc35741f7c213ed8d4fe84fc24fa7276066a6cbb24bc2483349ebc0c4532d41                                                         0.0s
+ => [internal] load build context                                                                                                                 0.2s
+ => => transferring context: 74.58kB                                                                                                              0.0s
+ => [2/6] WORKDIR /usr/src/app                                                                                                                    1.9s
+ => [3/6] COPY package.json /usr/src/app/package.json                                                                                             0.1s
+ => [4/6] COPY package-lock.json /usr/src/app/package-lock.json                                                                                   0.1s
+ => [5/6] RUN npm ci                                                                                                                             10.4s
+ => [6/6] COPY . /usr/src/app                                                                                                                     0.2s 
+ => exporting to image                                                                                                                            8.3s 
+ => => exporting layers                                                                                                                           4.1s 
+ => => exporting manifest sha256:24058887b77624a013ce069a5dbe37b5ec628efffa546562850b3633bd2427e1                                                 0.0s 
+ => => exporting config sha256:c74efb232e04b438c36f4aab734353dfe0a7d4ce65e987fae4620dad7dcbf6e3                                                   0.0s 
+ => => exporting attestation manifest sha256:17e46ec6bdef5c59aa9d0f58ea332cb12741ec1014794e954920a9fb1f69ef7d                                     0.1s 
+ => => exporting manifest list sha256:c16309fafbd8521e9f168cd37d2bd503131511b46b7b44069389904e9bf37672                                            0.0s 
+ => => naming to docker.io/library/backend:latest                                                                                                 0.0s 
+ => => unpacking to docker.io/library/backend:latest                  
+ 
+ C:\Users\Soll\Desktop\P05_TODO_App\backend>docker run --name backend -d --network react-express --network express-mongo backend
+490eb0372fffc11ed5155c58a6d2956effd8a8a216bf07fa1a362394b7c3eafc

@@ -1,0 +1,51 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P05_TODO_App>cd frontend
+
+C:\Users\Soll\Desktop\P05_TODO_App\frontend>docker build -t frontend .                                           
+[+] Building 167.0s (12/12) FINISHED                                                                                  docker:desktop-linux 
+ => [internal] load build definition from Dockerfile                                                                                  0.1s 
+ => => transferring dockerfile: 874B                                                                                                  0.0s 
+ => [internal] load metadata for docker.io/library/node:lts-buster                                                                    2.0s 
+ => [auth] library/node:pull token for registry-1.docker.io                                                                           0.0s 
+ => [internal] load .dockerignore                                                                                                     0.1s 
+ => => transferring context: 2B                                                                                                       0.0s 
+ => [1/6] FROM docker.io/library/node:lts-buster@sha256:479103df06b40b90f189461b6f824a62906683e26a32c77d7c3e2d855a0e3e9f             54.9s 
+ => => resolve docker.io/library/node:lts-buster@sha256:479103df06b40b90f189461b6f824a62906683e26a32c77d7c3e2d855a0e3e9f              0.1s 
+ => => sha256:ab80d1950cdb44d12f0729d9d9d3f624dd1d347ca142b323742a79ce2e32d8f1 452B / 452B                                            0.3s 
+ => => sha256:e20b342eff9190e35ab3c6a9e05cac912ebed6848d3fa4caaa1dc31f28acd6f9 1.25MB / 1.25MB                                        0.7s 
+ => => sha256:3bcf1cf7cb91fe6b1ebeb2a4113148f94e21b4e399fba8fc08cdee7a0c5104a1 48.02MB / 48.02MB                                     20.7s 
+ => => sha256:a508c11d72bec9ab7ecb8e2f18f9399603b028f6eb8da53a4411c5f9a15dd921 4.09kB / 4.09kB                                        0.6s 
+ => => sha256:9be81a73cfb7b45f4634965206adaa318a889f15cff6ced0ffd70f7c2d851fe4 191.96MB / 191.96MB                                   39.6s 
+ => => sha256:2a567eb2264b60aa779a5bc8f8f4dc7a6d3e1e01d8f5d1bcd039ed444d91a408 51.90MB / 51.90MB                                     25.5s 
+ => => sha256:32ab8bed435ee0e35413bb45d14dae2283dc0841644d881be35089debdc88cc3 17.59MB / 17.59MB                                      8.5s 
+ => => sha256:3892befd2c3f36ceb247ba7d906de12601d69b806597e65c4c837cf3d93df119 50.66MB / 50.66MB                                     20.0s 
+ => => extracting sha256:3892befd2c3f36ceb247ba7d906de12601d69b806597e65c4c837cf3d93df119                                             6.6s 
+ => => extracting sha256:32ab8bed435ee0e35413bb45d14dae2283dc0841644d881be35089debdc88cc3                                             1.8s
+ => => extracting sha256:2a567eb2264b60aa779a5bc8f8f4dc7a6d3e1e01d8f5d1bcd039ed444d91a408                                             4.6s
+ => => extracting sha256:9be81a73cfb7b45f4634965206adaa318a889f15cff6ced0ffd70f7c2d851fe4                                             8.7s
+ => => extracting sha256:a508c11d72bec9ab7ecb8e2f18f9399603b028f6eb8da53a4411c5f9a15dd921                                             0.1s
+ => => extracting sha256:3bcf1cf7cb91fe6b1ebeb2a4113148f94e21b4e399fba8fc08cdee7a0c5104a1                                             3.2s
+ => => extracting sha256:e20b342eff9190e35ab3c6a9e05cac912ebed6848d3fa4caaa1dc31f28acd6f9                                             0.2s
+ => => extracting sha256:ab80d1950cdb44d12f0729d9d9d3f624dd1d347ca142b323742a79ce2e32d8f1                                             0.0s
+ => [internal] load build context                                                                                                     0.2s 
+ => => transferring context: 569.56kB                                                                                                 0.1s 
+ => [2/6] WORKDIR /usr/src/app                                                                                                        7.0s 
+ => [3/6] COPY package.json .                                                                                                         0.1s 
+ => [4/6] COPY package-lock.json .                                                                                                    0.1s 
+ => [5/6] RUN npm ci                                                                                                                 61.8s 
+ => [6/6] COPY . .                                                                                                                    0.7s 
+ => exporting to image                                                                                                               39.4s 
+ => => exporting layers                                                                                                              23.0s 
+ => => exporting manifest sha256:579610f393bb4cd95ee7356ba063a61814d95d9006f501c4a8852198c196ca21                                     0.0s 
+ => => exporting config sha256:4eb444bff15fa075f0fb039808556afff27a8641ed5dac6128cc5b094c2d70c6                                       0.0s 
+ => => exporting attestation manifest sha256:bc611ac14d6d28823adbe467521e5d12a49074bd3446735155daf76a0783c004                         0.1s 
+ => => exporting manifest list sha256:03ab97cf45ed7778b699c66ceb819436e1427782bc74b2d74a8978828f3e2bad                                0.0s 
+ => => naming to docker.io/library/frontend:latest                                                                                    0.0s 
+ => => unpacking to docker.io/library/frontend:latest                                                                                16.2s 
+
+C:\Users\Soll\Desktop\P05_TODO_App\frontend>docker run --name frontend -d --network react-express -p 3000:3000 frontend
+b33dbec1f46ed43de0d396c05fd3778bc74a9e2352a3c3b367321fdd24bf7c3a
+
+C:\Users\Soll\Desktop\P05_TODO_App\frontend>
