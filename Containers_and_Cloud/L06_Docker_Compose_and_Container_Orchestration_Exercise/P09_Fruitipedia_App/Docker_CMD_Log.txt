@@ -1,0 +1,100 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P09_Fruitipedia_App\Fruitipedia_App>docker build -t fruitipedia .
+[+] Building 5.3s (9/12)                                                                                                          docker:desktop-linux 
+ => [internal] load build definition from Dockerfile                                                                                              0.0s 
+ => => transferring dockerfile: 382B                                                                                                              0.0s 
+ => [internal] load metadata for docker.io/library/python:3.11-slim-buster                                                                        1.2s 
+ => [auth] library/python:pull token for registry-1.docker.io                                                                                     0.0s 
+ => [internal] load .dockerignore                                                                                                                 0.0s 
+ => => transferring context: 2B                                                                                                                   0.0s 
+ => [internal] load build context                                                                                                                 0.1s 
+ => => transferring context: 9.27kB                                                                                                               0.0s 
+ => [1/7] FROM docker.io/library/python:3.11-slim-buster@sha256:c46b0ae5728c2247b99903098ade3176a58e274d9c7d2efeaaab3e0621a53935                  0.1s 
+ => => resolve docker.io/library/python:3.11-slim-buster@sha256:c46b0ae5728c2247b99903098ade3176a58e274d9c7d2efeaaab3e0621a53935                  0.1s 
+ => CACHED [2/7] WORKDIR /app                                                                                                                     0.0s 
+ => CACHED [3/7] COPY requirements.txt .                                                                                                          0.0s 
+ => ERROR [4/7] RUN pip install -no-cache-dir -r requirements.txt                                                                                 3.4s 
+------
+ > [4/7] RUN pip install -no-cache-dir -r requirements.txt:
+3.097
+3.097 Usage:
+3.097   pip install [options] <requirement specifier> [package-index-options] ...
+3.097   pip install [options] -r <requirements file> [package-index-options] ...
+3.097   pip install [options] [-e] <vcs project url> ...
+
+C:\Users\Soll\Desktop\P09_Fruitipedia_App\Fruitipedia_App>docker build -t fruitipedia .
+[+] Building 21.2s (12/12) FINISHED                                                                                               docker:desktop-linux 
+ => [internal] load build definition from Dockerfile                                                                                              0.0s 
+ => => transferring dockerfile: 383B                                                                                                              0.0s 
+ => [internal] load metadata for docker.io/library/python:3.11-slim-buster                                                                        0.4s 
+ => [internal] load .dockerignore                                                                                                                 0.0s 
+ => => transferring context: 2B                                                                                                                   0.0s 
+ => [internal] load build context                                                                                                                 0.1s 
+ => => transferring context: 9.48kB                                                                                                               0.0s 
+ => [1/7] FROM docker.io/library/python:3.11-slim-buster@sha256:c46b0ae5728c2247b99903098ade3176a58e274d9c7d2efeaaab3e0621a53935                  0.1s 
+ => => resolve docker.io/library/python:3.11-slim-buster@sha256:c46b0ae5728c2247b99903098ade3176a58e274d9c7d2efeaaab3e0621a53935                  0.1s 
+ => CACHED [2/7] WORKDIR /app                                                                                                                     0.0s 
+ => CACHED [3/7] COPY requirements.txt .                                                                                                          0.0s 
+ => [4/7] RUN pip install --no-cache-dir -r requirements.txt                                                                                     13.1s 
+ => [5/7] COPY . .                                                                                                                                0.4s
+ => [6/7] RUN  mkdir staticfiles                                                                                                                  0.5s
+ => [7/7] COPY /static /staticfiles                                                                                                               0.2s
+ => exporting to image                                                                                                                            7.2s
+ => => exporting layers                                                                                                                           3.6s 
+ => => exporting manifest sha256:f992b445e218410f00e10007cd339a10cd9708db216c6552e9a69c85a7b7cf24                                                 0.0s 
+ => => exporting config sha256:3f1c5e6f7b693d96f1f27bca05a242db1188ea739d05ac19482d6418851cb9d5                                                   0.0s 
+ => => exporting attestation manifest sha256:a820183e9254c2d877a7e57f98f5bf2d3a038a644c9d49b17dc753c9cbbe8f9b                                     0.1s 
+ => => exporting manifest list sha256:d098eaeba8aaa913d4d54d0128b105b931ff7ecee5b6ca5e0b582e4e4591846d                                            0.0s 
+ => => naming to docker.io/library/fruitipedia:latest                                                                                             0.0s 
+ => => unpacking to docker.io/library/fruitipedia:latest                                                                                          3.3s 
+
+C:\Users\Soll\Desktop\P09_Fruitipedia_App\Fruitipedia_App>docker run -d -p 8000:8000 fruitipedia
+ce4a5d9fc0cf7572ab3d7d97cecaa0317f98a1c74fd839d25e75fee5afaf2cdd
+
+C:\Users\Soll\Desktop\P09_Fruitipedia_App\Fruitipedia_App>docker compose build
+[+] Building 2.4s (15/15) FINISHED
+ => [internal] load local bake definitions                                                                                                        0.0s 
+ => => reading from stdin 582B                                                                                                                    0.0s 
+ => [internal] load build definition from Dockerfile                                                                                              0.0s 
+ => => transferring dockerfile: 383B                                                                                                              0.0s 
+ => [internal] load metadata for docker.io/library/python:3.11-slim-buster                                                                        1.1s 
+ => [auth] library/python:pull token for registry-1.docker.io                                                                                     0.0s 
+ => [internal] load .dockerignore                                                                                                                 0.0s 
+ => => transferring context: 2B                                                                                                                   0.0s 
+ => [1/7] FROM docker.io/library/python:3.11-slim-buster@sha256:c46b0ae5728c2247b99903098ade3176a58e274d9c7d2efeaaab3e0621a53935                  0.1s 
+ => => resolve docker.io/library/python:3.11-slim-buster@sha256:c46b0ae5728c2247b99903098ade3176a58e274d9c7d2efeaaab3e0621a53935                  0.1s 
+ => [internal] load build context                                                                                                                 0.1s 
+ => => transferring context: 9.12kB                                                                                                               0.0s 
+ => CACHED [2/7] WORKDIR /app                                                                                                                     0.0s 
+ => CACHED [3/7] COPY requirements.txt .                                                                                                          0.0s 
+ => CACHED [4/7] RUN pip install --no-cache-dir -r requirements.txt                                                                               0.0s 
+ => CACHED [5/7] COPY . .                                                                                                                         0.0s 
+ => CACHED [6/7] RUN  mkdir staticfiles                                                                                                           0.0s 
+ => CACHED [7/7] COPY /static /staticfiles                                                                                                        0.0s 
+ => exporting to image                                                                                                                            0.4s 
+ => => exporting layers                                                                                                                           0.0s 
+ => => exporting manifest sha256:eafa049917d05b5199f5b43c7c7f94a49659257677f7cc909127d22c42f9dcf8                                                 0.1s 
+ => => exporting config sha256:bc28fa288708782be6dd3956988e296d1950ef9d3a0d5e10f7c4500f0ce0c3f1                                                   0.0s 
+ => => exporting attestation manifest sha256:04a83e7d25e8d8d459654fb5874bb4047ad95d41c63114c009f8c02e8f2ae0de                                     0.1s 
+ => => exporting manifest list sha256:99aacb90206b2ff0597e4832dd1280450122913a2a1134dfaa156ddc3b0de8bf                                            0.0s 
+ => => naming to docker.io/library/fruitipedia_app-web:latest                                                                                     0.0s 
+ => => unpacking to docker.io/library/fruitipedia_app-web:latest                                                                                  0.0s 
+ => resolving provenance for metadata file                                                                                                        0.1s 
+[+] Building 1/1
+ ✔ fruitipedia_app-web  Built                                                                                                                     0.0s 
+
+C:\Users\Soll\Desktop\P09_Fruitipedia_App\Fruitipedia_App>docker compose up
+[+] Running 2/2
+ ✔ Network fruitipedia_app_default  Created                                                                                                       0.1s 
+ ✔ Container fruitipedia_app-web-1  Created                                                                                                       0.2s 
+Attaching to web-1
+
+
+C:\Users\Soll\Desktop\P09_Fruitipedia_App\Fruitipedia_App>docker compose down
+[+] Running 2/2
+ ✔ Container fruitipedia_app-web-1  Removed                                                                                                       0.4s 
+ ✔ Network fruitipedia_app_default  Removed                                                                                                       0.7s 
+
+C:\Users\Soll\Desktop\P09_Fruitipedia_App\Fruitipedia_App>

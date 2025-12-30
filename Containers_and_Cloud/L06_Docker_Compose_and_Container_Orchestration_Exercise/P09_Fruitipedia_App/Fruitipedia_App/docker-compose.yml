@@ -1,0 +1,10 @@
+services:
+  web:
+    #image: fruitipedia_app
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=False
+    volumes:
+      - ./static:/app/staticfiles
