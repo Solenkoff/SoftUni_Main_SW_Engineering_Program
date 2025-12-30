@@ -1,0 +1,16 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P07_Blue_vs_Green_App\Blue_vs_Green_App>docker compose build
+
+C:\Users\Soll\Desktop\P07_Blue_vs_Green_App\Blue_vs_Green_App>docker compose up -d
+[+] Running 5/5
+ ✔ Container db      Started                                                                               1.8s
+ ✔ Container result  Started                                                                               2.4s
+ ✔ Container worker  Started                                                                               1.7s
+ ✔ Container redis   Started                                                                               1.6s
+ ✔ Container vote    Started                                                                               2.2s
+
+C:\Users\Soll\Desktop\P07_Blue_vs_Green_App\Blue_vs_Green_App>
+
+

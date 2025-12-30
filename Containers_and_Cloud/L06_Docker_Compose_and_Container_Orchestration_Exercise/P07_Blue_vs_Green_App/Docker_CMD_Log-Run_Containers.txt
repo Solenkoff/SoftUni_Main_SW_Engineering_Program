@@ -1,0 +1,24 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll>docker run --network backend --name db -d -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres  -v db:/var/lib/postgresql postgres
+19dd50d7ed7536bf77f11e3ff2e82931537200fcc6a1f44d61e932af73c366ff
+
+C:\Users\Soll>docker run --network backend --name redis -d redis
+46b1040beaeec75c409df30c93c07646b1c3db439e92b9ec5114bac1c9ac40d1
+
+C:\Users\Soll>docker run --network backend --name worker -d worker
+eec786205db578b6d7e2f41de93a6a6c70a6b78c71d6b64f45ac851e3eaea2e7
+
+C:\Users\Soll>docker run --network backend --network frontend --name vote -d -p 5000:80 vote
+124cdf56c28a3346508ea9367b32f26b25e17e5255f7e7bdb613ce4440d83b1d
+
+C:\Users\Soll>docker run --network backend --network frontend --name result -d -p 5001:80 result
+c47c91bc61e131a52fe7da124fd3d180cc01b1b62f4eaea7037b9c6ea01834c2
+
+C:\Users\Soll>docker run --network backend --name worker -d worker
+fe443187002a8732b846f4453981010750743516d52a70a903088ca54576a191
+
+C:\Users\Soll>
+
+

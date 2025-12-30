@@ -1,0 +1,167 @@
+
+C:\Users\Soll>docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+22f690c143e9   bridge    bridge    local
+9f4ab026e4d2   host      host      local
+099737912b53   none      null      local
+
+C:\Users\Soll>docker network create backend
+712cba009fe35385dcdaef82c423fa4bd8c15560f08b45ec1b19687853a772c3
+
+C:\Users\Soll>docker network create frontend
+b57eed741cd07aab0edc800f0a4f4af36ff7b722beb07ff5d8bf527fe4dac8e9
+
+C:\Users\Soll>docker network ls
+NETWORK ID     NAME       DRIVER    SCOPE
+712cba009fe3   backend    bridge    local
+22f690c143e9   bridge     bridge    local
+b57eed741cd0   frontend   bridge    local
+9f4ab026e4d2   host       host      local
+099737912b53   none       null      local
+
+C:\Users\Soll>docker network inspect frontend
+[
+    {
+        "Name": "frontend",
+        "Id": "b57eed741cd07aab0edc800f0a4f4af36ff7b722beb07ff5d8bf527fe4dac8e9",
+        "Created": "2025-11-30T17:15:31.149126569Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.19.0.0/16",
+                    "IPRange": "",
+                    "Gateway": "172.19.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {},
+        "Containers": {
+            "124cdf56c28a3346508ea9367b32f26b25e17e5255f7e7bdb613ce4440d83b1d": {
+                "Name": "vote",
+                "EndpointID": "01accaaed97feb71d0c9505bb29e2845ba5b41a95547f8a8b267840bf2adb1a1",
+                "MacAddress": "da:6b:27:e0:1f:36",
+                "IPv4Address": "172.19.0.2/16",
+                "IPv6Address": ""
+            },
+            "c47c91bc61e131a52fe7da124fd3d180cc01b1b62f4eaea7037b9c6ea01834c2": {
+                "Name": "result",
+                "EndpointID": "4de503362b40f6a57b126b5aa36590f8f6721980a3bfeb8c87ba7738292f3933",
+                "MacAddress": "6a:2f:c5:5b:a1:bb",
+                "IPv4Address": "172.19.0.3/16",
+                "IPv6Address": ""
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.19.0.0/16": {
+                        "IPsInUse": 5,
+                        "DynamicIPsAvailable": 65531
+                    }
+                }
+            }
+        }
+    }
+]
+
+C:\Users\Soll>docker network inspect backend
+[
+    {
+        "Name": "backend",
+        "Id": "712cba009fe35385dcdaef82c423fa4bd8c15560f08b45ec1b19687853a772c3",
+        "Created": "2025-11-30T17:15:13.302991412Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "IPRange": "",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {},
+        "Containers": {
+            "124cdf56c28a3346508ea9367b32f26b25e17e5255f7e7bdb613ce4440d83b1d": {
+                "Name": "vote",
+                "EndpointID": "e85f59d7d0104be00ab710009639eb9198a38023737aa071333b7b7939bce046",
+                "MacAddress": "06:d3:cc:2f:d1:d5",
+                "IPv4Address": "172.18.0.4/16",
+                "IPv6Address": ""
+            },
+            "19dd50d7ed7536bf77f11e3ff2e82931537200fcc6a1f44d61e932af73c366ff": {
+                "Name": "db",
+                "EndpointID": "91fe360896ac8c7579f3ea38186b0d5e7d2d39c6a9b91f53c70ef3c5abba9a77",
+                "MacAddress": "8e:a1:2d:f2:21:73",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            },
+            "46b1040beaeec75c409df30c93c07646b1c3db439e92b9ec5114bac1c9ac40d1": {
+                "Name": "redis",
+                "EndpointID": "738d49ffd36c30220405d16d9a3802f1f084fa97f027cada543e6cd58b467ced",
+                "MacAddress": "4a:6e:44:bb:73:08",
+                "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": ""
+            },
+            "c47c91bc61e131a52fe7da124fd3d180cc01b1b62f4eaea7037b9c6ea01834c2": {
+                "Name": "result",
+                "EndpointID": "67affc6193e23fbba824b704b8f2cfdaff19d8174f625046911c32d1991e36de",
+                "MacAddress": "9e:6e:22:9d:4f:8a",
+                "IPv4Address": "172.18.0.5/16",
+                "IPv6Address": ""
+            },
+            "fe443187002a8732b846f4453981010750743516d52a70a903088ca54576a191": {
+                "Name": "worker",
+                "EndpointID": "db3c25dce36283d939325ea4902a1313a65fe06fe98fa094e9a3c2685014754f",
+                "MacAddress": "a6:50:9e:8d:0c:be",
+                "IPv4Address": "172.18.0.6/16",
+                "IPv6Address": ""
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.18.0.0/16": {
+                        "IPsInUse": 8,
+                        "DynamicIPsAvailable": 65528
+                    }
+                }
+            }
+        }
+    }
+]
+
+C:\Users\Soll>
