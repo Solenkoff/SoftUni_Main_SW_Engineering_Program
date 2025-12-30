@@ -1,0 +1,30 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>docker networks
+docker: unknown command: docker networks
+
+Run 'docker --help' for more information
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>docker network ls
+NETWORK ID     NAME                          DRIVER    SCOPE
+d7e876e31490   bridge                        bridge    local
+05a7c56365ae   express-mongo                 bridge    local
+9f4ab026e4d2   host                          host      local
+099737912b53   none                          null      local
+2c4d7d3acddb   react-express                 bridge    local
+ebfe0126dfab   taskboard_taskboard_network   bridge    local
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>docker compose down --rmi all --volumes
+[+] Running 5/5
+ ✔ Container mssql_server                       Removed                                                    2.4s
+ ✔ Container taskboard_app                      Removed                                                    2.2s
+ ✔ Image mcr.microsoft.com/mssql/server:latest  Removed                                                    1.6s
+ ✔ Image isolenkoff/taskboard_app:latest        Removed                                                    1.7s
+ ✔ Network taskboard_taskboard_network          Removed                                                    0.8s
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>
+
+
+
+

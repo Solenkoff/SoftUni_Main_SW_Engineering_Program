@@ -1,0 +1,277 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>docker compose build
+
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>docker compose build
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+Microsoft Windows [Version 10.0.19045.6466]
+Microsoft Windows [Version 10.0.19045.6466]
+Microsoft Windows [Version 10.0.19045.6466]
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>docker compose build
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>docker compose up -d
+[+] Running 4/4
+ ✔ Network taskboard_taskboard_network  Created                                                                                                   0.1s 
+ ✔ Volume taskboard_sql_data            Created                                                                                                   0.0s 
+ ✔ Container mssql_server               Started                                                                                                   1.1s 
+ ✔ Container taskboard_app              Started                                                                                                   1.0s 
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>docker compose build
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>docker compose up -d
+[+] Running 3/3
+ ✔ Network taskboard_taskboard_network  Created                                                                                                   0.1s 
+ ✔ Container mssql_server               Started                                                                                                   1.0s 
+ ✔ Container taskboard_app              Started                                                                                                   0.9s 
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>docker compose down
+[+] Running 3/3
+ ✔ Container mssql_server               Removed                                                                                                   2.0s 
+ ✔ Container taskboard_app              Removed                                                                                                   0.8s 
+ ✔ Network taskboard_taskboard_network  Removed                                                                                                   0.7s 
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>docker build -t isolenkoff/taskboard_app .
+[+] Building 0.2s (1/1) FINISHED                                                                                                  docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                              0.0s
+ => => transferring dockerfile: 2B                                                                                                                0.0s 
+ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>docker build -t isolenkoff/taskboard_app -f TaskBoard.WebApp\Dockerfile .
+[+] Building 64.5s (19/19) FINISHED                                                                                               docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                              0.0s
+ => => transferring dockerfile: 1.36kB                                                                                                            0.0s 
+ => [internal] load metadata for mcr.microsoft.com/dotnet/sdk:6.0                                                                                 0.3s 
+ => [internal] load metadata for mcr.microsoft.com/dotnet/aspnet:6.0                                                                              0.3s 
+ => [internal] load .dockerignore                                                                                                                 0.0s
+ => => transferring context: 464B                                                                                                                 0.0s 
+ => [build 1/8] FROM mcr.microsoft.com/dotnet/sdk:6.0@sha256:c8fdd06e430de9f4ddd066b475ea350d771f341b77dd5ff4c2fafa748e3f2ef2                     0.1s 
+ => => resolve mcr.microsoft.com/dotnet/sdk:6.0@sha256:c8fdd06e430de9f4ddd066b475ea350d771f341b77dd5ff4c2fafa748e3f2ef2                           0.1s 
+ => [base 1/2] FROM mcr.microsoft.com/dotnet/aspnet:6.0@sha256:e70c493f8af7f95bf459cb2b15c7e7a6173228929c2b7a9a6836b19377890e78                   0.1s 
+ => => resolve mcr.microsoft.com/dotnet/aspnet:6.0@sha256:e70c493f8af7f95bf459cb2b15c7e7a6173228929c2b7a9a6836b19377890e78                        0.1s
+ => [internal] load build context                                                                                                                 0.1s
+ => => transferring context: 8.33kB                                                                                                               0.0s
+ => CACHED [build 2/8] WORKDIR /src                                                                                                               0.0s
+ => CACHED [build 3/8] COPY [TaskBoard.WebApp/TaskBoard.WebApp.csproj, TaskBoard.WebApp/]                                                         0.0s
+ => CACHED [build 4/8] COPY [TaskBoard.Data/TaskBoard.Data.csproj, TaskBoard.Data/]                                                               0.0s
+ => [build 5/8] RUN dotnet restore "./TaskBoard.WebApp/TaskBoard.WebApp.csproj"                                                                  29.5s
+ => [build 6/8] COPY . .                                                                                                                          0.4s 
+ => [build 7/8] WORKDIR /src/TaskBoard.WebApp                                                                                                     0.1s 
+ => [build 8/8] RUN dotnet build "./TaskBoard.WebApp.csproj" -c Debug -o /app/build                                                              14.1s 
+ => [publish 1/1] RUN dotnet publish "./TaskBoard.WebApp.csproj" -c Debug -o /app/publish /p:UseAppHost=false                                    10.6s 
+ => CACHED [base 2/2] WORKDIR /app                                                                                                                0.0s 
+ => CACHED [final 1/2] WORKDIR /app                                                                                                               0.0s 
+ => [final 2/2] COPY --from=publish /app/publish .                                                                                                0.6s 
+ => exporting to image                                                                                                                            7.2s 
+ => => exporting layers                                                                                                                           5.9s 
+ => => exporting manifest sha256:f1653aa30a99186b7eceab24eb9a69bb879d4863653531297966fe39fb8ecfac                                                 0.0s
+ => => exporting config sha256:91c0f64be1c3d181f65e909e9421e744168652d84b2198818195a48d5debab06                                                   0.0s 
+ => => exporting attestation manifest sha256:6024ab57917e606c3c1e2e4e4facf6388e77c5c604ee18b761927330d94eb59d                                     0.1s 
+ => => exporting manifest list sha256:22ec412ad190c911885507802b6c27d079b479efe26d4f70c8ca9e6149ccabe7                                            0.0s 
+ => => naming to docker.io/isolenkoff/taskboard_app:latest                                                                                        0.0s 
+ => => unpacking to docker.io/isolenkoff/taskboard_app:latest                                                                                     1.1s 
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>docker compose build
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>docker compose up
+[+] Running 3/3
+ ✔ Network taskboard_taskboard_network  Created                                                                                                   0.1s 
+ ✔ Container taskboard_app              Created                                                                                                   0.2s 
+ ✔ Container mssql_server               Created                                                                                                   0.2s 
+Attaching to mssql_server, taskboard_app
+mssql_server  | SQL Server 2025 will run as non-root by default.
+mssql_server  | This container is running as user mssql.
+mssql_server  | Your master database file is owned by mssql.
+mssql_server  | To learn more visit https://go.microsoft.com/fwlink/?linkid=2099216.
+taskboard_app  | warn: Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository[60]
+taskboard_app  |       Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+taskboard_app  | warn: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[35]
+taskboard_app  |       No XML encryptor configured. Key {b92b8b06-70dd-46b1-84fe-03ec3b436fc2} may be persisted to storage in unencrypted form.        
+taskboard_app  | info: Microsoft.Hosting.Lifetime[14]
+taskboard_app  |       Now listening on: http://[::]:80
+taskboard_app  | info: Microsoft.Hosting.Lifetime[0]
+taskboard_app  |       Application started. Press Ctrl+C to shut down.
+taskboard_app  | info: Microsoft.Hosting.Lifetime[0]
+taskboard_app  |       Hosting environment: Production
+taskboard_app  | info: Microsoft.Hosting.Lifetime[0]
+taskboard_app  |       Content root path: /app/
+mssql_server   | 2025-11-29 17:43:41.30 Server      Setup step is FORCE copying system data file 'C:\templatedata\model_replicatedmaster.mdf' to '/var/opt/mssql/data/model_replicatedmaster.mdf'.
+2025-11-29 17:43:41.35 Server      Setup step is FORCE copying system data file 'C:\templatedata\model_replicatedmaster.ldf' to '/var/opt/mssql/data/model_replicatedmaster.ldf'.
+2025-11-29 17:43:41.36 Server      Setup step is FORCE copying system data file 'C:\templatedata\model_msdbdata.mdf' to '/var/opt/mssql/data/model_msdbdata.mdf'.
+2025-11-29 17:43:41.38 Server      Setup step is FORCE copying system data file 'C:\templatedata\model_msdblog.ldf' to '/var/opt/mssql/data/model_msdblog.ldf'.
+2025-11-29 17:43:41.45 Server      Microsoft SQL Server 2025 (RTM) - 17.0.1000.7 (X64)
+mssql_seOct 21 2025 12:05:57
+mssql_seCopyright (C) 2025 Microsoft Corporation
+mssql_seEnterprise Developer Edition (64-bit) on Linux (Ubuntu 22.04.5 LTS) <X64>
+2025-11-29 17:43:41.46 Server      UTC adjustment: 0:00
+2025-11-29 17:43:41.46 Server      (c) Microsoft Corporation.
+2025-11-29 17:43:41.46 Server      All rights reserved.
+2025-11-29 17:43:41.46 Server      Server process ID is 880.
+2025-11-29 17:43:41.47 Server      Logging SQL Server messages in file '/var/opt/mssql/log/errorlog'.
+2025-11-29 17:43:41.47 Server      Registry startup parameters:
+mssql_se -d /var/opt/mssql/data/master.mdf
+mssql_se -l /var/opt/mssql/data/mastlog.ldf
+mssql_se -e /var/opt/mssql/log/errorlog
+2025-11-29 17:43:41.48 Server      SQL Server detected 1 sockets with 4 cores per socket and 8 logical processors per socket, 8 total logical processors; using 8 logical processors based on SQL Server licensing. This is an informational message; no user action is required.
+2025-11-29 17:43:41.49 Server      SQL Server is starting at normal priority base (=7). This is an informational message only. No user action is required.
+2025-11-29 17:43:41.49 Server      Using conventional memory in the memory manager.
+2025-11-29 17:43:41.50 Server      SQL Server detected the following NUMA node configuration (NUMA Node number 0, Processor Group number 0, CPU Mask 0x00000000000000ff).
+2025-11-29 17:43:41.52 Server      Page exclusion bitmap is enabled.
+2025-11-29 17:43:41.56 Server      Detected 9563 MB of RAM, 9161 MB of available memory, 9161 MB of available page file. This is an informational message; no user action is required.
+2025-11-29 17:43:41.57 Server      Buffer pool extension is not supported on Linux platform.
+2025-11-29 17:43:41.58 Server      Buffer Pool: Allocating 16777216 bytes for 1464526 hashPages.
+2025-11-29 17:43:41.99 Server      Buffer pool extension is already disabled. No action is necessary.
+[EnableRbpexForGP] : Rbpex non HS FS Toggled, isGeneralPurpose:[0]
+[EnableRbpexForLogicalMaster] : Rbpex for LM Toggled
+[RbpexEnableGrowWithoutShrink] : Rbpex Thin Provisioning FS Toggled
+2025-11-29 17:43:43.04 Server      Skipping small memory environment configuration. State 1.
+[INFO] [InitXdbSrvGlobals]: In InitXdbSrvGlobals, FAlternateIoFactorEnabled() = [1]. IsRBPEXEnabledNonHyperscaleEdition() = [0].
+[RSC Capacity config] MaximumNumberOfCachePerDb: 0, MaximumSpaceForCachePerDbInMB: -1, MaximumNumberOfCacheGlobal: -1
+[INFO] [InitServerComponents]: IsRBPEXEnabledNonHyperscaleEdition() = [0], IsSubCoreCPUAllocation = [0], GetSchedulersNumber*100 = [800], GetCPUCorePercentCap = [800.000000], EnableResilientBufferPoolExtension = [0], , RbpexEnableShrink (thin provisioning)  = [0], RbpexEnableGrowWithoutShrink = [0].  
+2025-11-29 17:43:43.21 Server      Installing Client TLS certificates to the store.
+2025-11-29 17:43:43.23 Server      CPU vectorization level(s) detected:  SSE SSE2 SSE3 SSSE3 SSE41 SSE42 AVX POPCNT
+SqlInstanceNetworkManager: Finished setting callback functions for network IO tracking in UCS broker.
+2025-11-29 17:43:43.30 Server      Successfully initialized the TLS configuration. Allowed TLS protocol versions are ['1.0 1.1 1.2 1.3']. Allowed TLS ciphers are ['TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:!DHE-RSA-AES256-GCM-SHA384:!DHE-RSA-AES128-GCM-SHA256:!DHE-RSA-AES256-SHA:!DHE-RSA-AES128-SHA'].
+2025-11-29 17:43:43.40 Server      Query Store settings initialized with enabled = 1,
+2025-11-29 17:43:43.41 Server      The maximum number of dedicated administrator connections for this instance is '1'
+2025-11-29 17:43:43.43 Server      Node configuration: node 0: CPU mask: 0x00000000000000ff:0 Active CPU mask: 0x00000000000000ff:0. This message provides a description of the NUMA configuration for this computer. This is an informational message only. No user action is required.
+2025-11-29 17:43:43.45 Server      Using dynamic lock allocation.  Initial allocation of 2500 Lock blocks and 5000 Lock Owner blocks per node.  This is an informational message only.  No user action is required.
+2025-11-29 17:43:43.49 Server      In-Memory OLTP initialized on standard machine.
+2025-11-29 17:43:43.54 Server      [INFO] Created Extended Events session 'hkenginexesession'
+2025-11-29 17:43:43.54 Server      CLR version v4.0.30319 loaded.
+2025-11-29 17:43:43.55 Server      Database Instant File Initialization: enabled. For security and performance considerations see the topic 'Database Instant File Initialization' in SQL Server Books Online. This is an informational message only. No user action is required.
+ForceFlush is enabled for this instance.
+2025-11-29 17:43:43.58 Server      Total Log Writer threads: 2. This is an informational message; no user action is required.
+2025-11-29 17:43:43.59 Server      clflush is selected for pmem flush operation.
+2025-11-29 17:43:43.60 Server      Software Usage Metrics is disabled.
+Failed to open password policy registry path. Using default password policy values.
+2025-11-29 17:43:43.63 spid28s     [1]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2025-11-29 17:43:43.65 spid28s     Starting up database 'master'.
+ForceFlush feature is enabled for log durability.
+2025-11-29 17:43:43.79 spid28s     24 transactions rolled forward in database 'master' (1:0). This is an informational message only. No user action is 
+required.
+2025-11-29 17:43:43.83 spid28s     0 transactions rolled back in database 'master' (1:0). This is an informational message only. No user action is required.
+2025-11-29 17:43:43.83 spid28s     Recovery is writing a checkpoint in database 'master' (1). This is an informational message only. No user action is 
+required.
+[INFO] [StartUp::OpenDBsAndRecover]: In Startup, FEnableResilientBufferPoolExtensionEnabled() = [0]. IsRBPEXSupportedNonHyperscaleEdition() = [0]. IsSubCore = [0].
+2025-11-29 17:43:44.03 spid28s     [32762]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2025-11-29 17:43:44.03 spid30s     [32767]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2025-11-29 17:43:44.03 spid28s     Starting up database 'model_replicatedmaster'.
+2025-11-29 17:43:44.03 spid30s     Starting up database 'mssqlsystemresource'.
+2025-11-29 17:43:44.04 spid30s     The resource database build version is 17.00.1000. This is an informational message only. No user action is required.
+2025-11-29 17:43:44.10 spid30s     [3]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2025-11-29 17:43:44.10 spid30s     Starting up database 'model'.
+2025-11-29 17:43:44.15 Server      Common language runtime (CLR) functionality initialized.
+2025-11-29 17:43:44.29 spid28s     Converting database 'model_replicatedmaster' from version 984 to the current version 998.
+2025-11-29 17:43:44.29 spid28s     Database 'model_replicatedmaster' running the upgrade step from version 984 to version 985.
+2025-11-29 17:43:44.35 spid28s     Database 'model_replicatedmaster' running the upgrade step from version 985 to version 986.
+2025-11-29 17:43:44.37 spid28s     Database 'model_replicatedmaster' running the upgrade step from version 986 to version 987.
+2025-11-29 17:43:44.40 spid28s     Database 'model_replicatedmaster' running the upgrade step from version 987 to version 988.
+2025-11-29 17:43:44.44 spid28s     Database 'model_replicatedmaster' running the upgrade step from version 988 to version 989.
+2025-11-29 17:43:44.46 spid28s     Database 'model_replicatedmaster' running the upgrade step from version 989 to version 990.
+2025-11-29 17:43:44.49 spid28s     Database 'model_replicatedmaster' running the upgrade step from version 990 to version 991.
+2025-11-29 17:43:44.49 spid28s     [METADATA] XE max_rollover_files update status is : 0.
+2025-11-29 17:43:44.53 spid28s     Database 'model_replicatedmaster' running the upgrade step from version 991 to version 992.
+2025-11-29 17:43:44.55 spid28s     Database 'model_replicatedmaster' running the upgrade step from version 992 to version 993.
+2025-11-29 17:43:44.57 spid28s     Database 'model_replicatedmaster' running the upgrade step from version 993 to version 994.
+2025-11-29 17:43:44.62 spid37s     A self-generated certificate was successfully loaded for encryption.
+2025-11-29 17:43:44.62 spid37s     Server is listening on [ 'any' <ipv6> 1433] accept sockets 1.
+2025-11-29 17:43:44.63 spid37s     Server is listening on [ 'any' <ipv4> 1433] accept sockets 1.
+2025-11-29 17:43:44.64 Server      Server is listening on [ ::1 <ipv6> 1434] accept sockets 1.
+2025-11-29 17:43:44.65 spid28s     Database 'model_replicatedmaster' running the upgrade step from version 994 to version 995.
+2025-11-29 17:43:44.70 Server      Server is listening on [ 127.0.0.1 <ipv4> 1434] accept sockets 1.
+2025-11-29 17:43:44.70 Server      Dedicated admin connection support was established for listening locally on port 1434.
+TDS initialization result: 0.
+2025-11-29 17:43:44.71 spid37s     Server is listening on [ ::1 <ipv6> 1431] accept sockets 1.
+2025-11-29 17:43:44.72 spid37s     Server is listening on [ 127.0.0.1 <ipv4> 1431] accept sockets 1.
+SQLSERVR_SSL_CERTIFICATE_DNS_OR_SUBJECT_NAME environment variable was not set as SSL cert is self signed or untrusted.
+2025-11-29 17:43:44.74 spid37s     SQL Server is now ready for client connections. This is an informational message; no user action is required.       
+2025-11-29 17:43:44.74 spid28s     Database 'model_replicatedmaster' running the upgrade step from version 995 to version 996.
+2025-11-29 17:43:44.76 spid28s     Database 'model_replicatedmaster' running the upgrade step from version 996 to version 997.
+2025-11-29 17:43:44.79 spid28s     Database 'model_replicatedmaster' running the upgrade step from version 997 to version 998.
+2025-11-29 17:43:44.84 spid28s     Synchronize Database 'model_replicatedmaster' (32762) with Resource Database.
+2025-11-29 17:43:44.98 spid28s     [32761]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2025-11-29 17:43:44.98 spid28s     Starting up database 'model_msdb'.
+2025-11-29 17:43:45.14 spid28s     Converting database 'model_msdb' from version 984 to the current version 998.
+2025-11-29 17:43:45.14 spid28s     Database 'model_msdb' running the upgrade step from version 984 to version 985.
+2025-11-29 17:43:45.24 spid28s     Database 'model_msdb' running the upgrade step from version 985 to version 986.
+2025-11-29 17:43:45.25 spid28s     Database 'model_msdb' running the upgrade step from version 986 to version 987.
+2025-11-29 17:43:45.28 spid28s     Database 'model_msdb' running the upgrade step from version 987 to version 988.
+2025-11-29 17:43:45.34 spid28s     Database 'model_msdb' running the upgrade step from version 988 to version 989.
+2025-11-29 17:43:45.36 Server      External governance manager initialized
+2025-11-29 17:43:45.36 spid28s     Database 'model_msdb' running the upgrade step from version 989 to version 990.
+2025-11-29 17:43:45.36 Server      Detected pause instruction latency: 10 cycles.
+2025-11-29 17:43:45.39 spid28s     Database 'model_msdb' running the upgrade step from version 990 to version 991.
+2025-11-29 17:43:45.39 spid28s     [METADATA] XE max_rollover_files update status is : 0.
+2025-11-29 17:43:45.42 spid28s     Database 'model_msdb' running the upgrade step from version 991 to version 992.
+2025-11-29 17:43:45.44 spid28s     Database 'model_msdb' running the upgrade step from version 992 to version 993.
+2025-11-29 17:43:45.47 spid28s     Database 'model_msdb' running the upgrade step from version 993 to version 994.
+2025-11-29 17:43:45.49 spid28s     Database 'model_msdb' running the upgrade step from version 994 to version 995.
+2025-11-29 17:43:45.54 spid28s     Database 'model_msdb' running the upgrade step from version 995 to version 996.
+2025-11-29 17:43:45.58 spid28s     Database 'model_msdb' running the upgrade step from version 996 to version 997.
+2025-11-29 17:43:45.60 spid28s     Database 'model_msdb' running the upgrade step from version 997 to version 998.
+2025-11-29 17:43:45.63 spid28s     Synchronize Database 'model_msdb' (32761) with Resource Database.
+2025-11-29 17:43:45.74 spid28s     Resource governor reconfiguration succeeded.
+2025-11-29 17:43:45.74 spid28s     SQL Server Audit is starting the audits. This is an informational message. No user action is required.
+[Auditing][SecAuditPkg::AutoStartAuditSessions] Entered function.
+2025-11-29 17:43:45.74 spid28s     [AutoStartAuditSessions] Starting audit session task
+2025-11-29 17:43:45.75 spid28s     SQL Server Audit has started the audits. This is an informational message. No user action is required.
+2025-11-29 17:43:45.84 spid28s     SQL Trace ID 1 was started by login "sa".
+2025-11-29 17:43:45.86 spid28s     Server name is 'ef84c3911187'. This is an informational message only. No user action is required.
+2025-11-29 17:43:45.89 spid30s     Clearing tempdb database.
+2025-11-29 17:43:45.89 spid51s     Always On Availability Groups: The availability replica manager is starting. This is an informational message only. 
+No user action is required.
+2025-11-29 17:43:45.89 spid50s     [4]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2025-11-29 17:43:45.90 spid52s     [5]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2025-11-29 17:43:45.90 spid50s     Starting up database 'msdb'.
+2025-11-29 17:43:45.90 spid51s     Always On Availability Groups: The availability replica manager is waiting for the instance of SQL Server to allow client connections. This is an informational message only. No user action is required.
+2025-11-29 17:43:45.91 spid52s     Starting up database 'TaskBoardDB'.
+2025-11-29 17:43:46.02 spid52s     Parallel redo is started for database 'TaskBoardDB' with worker pool size [4].
+2025-11-29 17:43:46.07 spid52s     56 transactions rolled forward in database 'TaskBoardDB' (5:0). This is an informational message only. No user action is required.
+2025-11-29 17:43:46.10 spid28s     Recovery is writing a checkpoint in database 'msdb' (4). This is an informational message only. No user action is required.
+2025-11-29 17:43:46.20 spid30s     [2]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2025-11-29 17:43:46.21 spid30s     Starting up database 'tempdb'.
+2025-11-29 17:43:46.24 spid28s     0 transactions rolled back in database 'TaskBoardDB' (5:0). This is an informational message only. No user action is required.
+2025-11-29 17:43:46.24 spid28s     Parallel redo is shutdown for database 'TaskBoardDB' with worker pool size [4].
+2025-11-29 17:43:46.93 spid30s     The tempdb database has 8 data file(s).
+2025-11-29 17:43:46.94 spid40s     The Service Broker endpoint is in disabled or stopped state.
+2025-11-29 17:43:46.94 spid40s     The Database Mirroring endpoint is in disabled or stopped state.
+2025-11-29 17:43:46.96 spid28s     Recovery is complete. This is an informational message only. No user action is required.
+2025-11-29 17:43:46.96 spid40s     Service Broker manager has started.
+taskboard_app  | warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+taskboard_app  |       Failed to determine the https port for redirect.
+taskboard_app  | fail: Microsoft.AspNetCore.Antiforgery.DefaultAntiforgery[7]
+taskboard_app  |       An exception was thrown while deserializing the token.
+taskboard_app  |       Microsoft.AspNetCore.Antiforgery.AntiforgeryValidationException: The antiforgery token could not be decrypted.
+taskboard_app  |        ---> System.Security.Cryptography.CryptographicException: The key {fc9eaf31-73ec-4d62-a5e5-5c88371bcd9d} was not found in the key ring. For more information go to http://aka.ms/dataprotectionwarning
+taskboard_app  |          at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.UnprotectCore(Byte[] protectedData, Boolean allowOperationsOnRevokedKeys, UnprotectStatus& status)
+taskboard_app  |          at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingBasedDataProtector.Unprotect(Byte[] protectedData)
+taskboard_app  |          at Microsoft.AspNetCore.Antiforgery.DefaultAntiforgeryTokenSerializer.Deserialize(String serializedToken)
+taskboard_app  |          --- End of inner exception stack trace ---
+taskboard_app  |          at Microsoft.AspNetCore.Antiforgery.DefaultAntiforgeryTokenSerializer.Deserialize(String serializedToken)
+taskboard_app  |          at Microsoft.AspNetCore.Antiforgery.DefaultAntiforgery.GetCookieTokenDoesNotThrow(HttpContext httpContext)
+2025-11-29 17:49:55.64 spid59      Attempting to load library 'xplog70.dll' into memory. This is an informational message only. No user action is required.
+2025-11-29 17:49:55.72 spid59      Using 'xplog70.dll' version '2025.170.1000' to execute extended stored procedure 'xp_msver'. This is an informational message only; no user action is required.
+2025-11-29 17:52:37.50 spid59      Using 'dbghelp.dll' version '4.0.5'
+mssql_server   | 
+taskboard_app exited with code 137
+mssql_server exited with code 137
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>fff
+'fff' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Soll\Desktop\P06_TaskBoard\TaskBoard>
+
+
+
