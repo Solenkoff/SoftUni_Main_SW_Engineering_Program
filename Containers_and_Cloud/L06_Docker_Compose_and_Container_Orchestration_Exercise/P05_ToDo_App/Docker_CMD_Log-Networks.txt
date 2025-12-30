@@ -1,0 +1,161 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll>docker network ls
+NETWORK ID     NAME                DRIVER    SCOPE
+d7e876e31490   bridge              bridge    local
+9f4ab026e4d2   host                host      local
+099737912b53   none                null      local
+c2ea227b782f   taskboard_network   bridge    local
+
+C:\Users\Soll>docker network rm c2
+c2
+
+C:\Users\Soll>docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+d7e876e31490   bridge    bridge    local
+9f4ab026e4d2   host      host      local
+099737912b53   none      null      local
+
+C:\Users\Soll>docker network create react-express
+2c4d7d3acddb18d8fc0f368c2acdcdece038248a137420d73739d8b0e05f7d07
+
+C:\Users\Soll>docker network create express-mongo
+05a7c56365ae1cc38b0d1bcadf0d39936a7904289fcdde3024f109f957efc775
+
+C:\Users\Soll>docker network ls
+NETWORK ID     NAME            DRIVER    SCOPE
+d7e876e31490   bridge          bridge    local
+05a7c56365ae   express-mongo   bridge    local
+9f4ab026e4d2   host            host      local
+099737912b53   none            null      local
+2c4d7d3acddb   react-express   bridge    local
+
+C:\Users\Soll>docker volume create mongo_data
+mongo_data
+
+C:\Users\Soll>docker network inspect express-mongo
+[
+    {
+        "Name": "express-mongo",
+        "Id": "05a7c56365ae1cc38b0d1bcadf0d39936a7904289fcdde3024f109f957efc775",
+        "Created": "2025-11-29T11:43:30.43142776Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.19.0.0/16",
+                    "IPRange": "",
+                    "Gateway": "172.19.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {},
+        "Containers": {
+            "490eb0372fffc11ed5155c58a6d2956effd8a8a216bf07fa1a362394b7c3eafc": {
+                "Name": "backend",
+                "EndpointID": "e71df8d4840466f18cddc9689f5ab33b4e5f549b019ac3ac424bc87651b71e5a",
+                "MacAddress": "aa:cf:6a:e8:c1:46",
+                "IPv4Address": "172.19.0.3/16",
+                "IPv6Address": ""
+            },
+            "b8b4f908cca6efa7559415653778e5da5698e976f68bea3c5f2de260a7ae068a": {
+                "Name": "mongo",
+                "EndpointID": "a0aaac17572c008f548deea791992dd04c8b30756bcf24733d1ea0aff9ae5d84",
+                "MacAddress": "a2:ce:e8:c7:2b:5d",
+                "IPv4Address": "172.19.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.19.0.0/16": {
+                        "IPsInUse": 5,
+                        "DynamicIPsAvailable": 65531
+                    }
+                }
+            }
+        }
+    }
+]
+
+C:\Users\Soll>docker network inspect react-express
+[
+    {
+        "Name": "react-express",
+        "Id": "2c4d7d3acddb18d8fc0f368c2acdcdece038248a137420d73739d8b0e05f7d07",
+        "Created": "2025-11-29T11:43:02.426630675Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "IPRange": "",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {},
+        "Containers": {
+            "490eb0372fffc11ed5155c58a6d2956effd8a8a216bf07fa1a362394b7c3eafc": {
+                "Name": "backend",
+                "EndpointID": "6f5bf1323e81c4421af675910634c38c4b1917462015333cd56c8214d1f8f79d",
+                "MacAddress": "9e:90:f9:81:21:76",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            },
+            "6e8d651b4b4ad81607a16f76a7dfdb076057ed15f25e10585a13e9a3903dba1f": {
+                "Name": "frontend",
+                "EndpointID": "1eabb8e91f0cd943afacd54247479060ee0a6ff492e1953e6078373ad2c1ac6c",
+                "MacAddress": "46:ff:ee:ec:97:53",
+                "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": ""
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.18.0.0/16": {
+                        "IPsInUse": 5,
+                        "DynamicIPsAvailable": 65531
+                    }
+                }
+            }
+        }
+    }
+]
+
+C:\Users\Soll>

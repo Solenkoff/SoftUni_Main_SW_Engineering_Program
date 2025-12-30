@@ -1,0 +1,32 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P05_TODO_App>docker pull mongo
+Using default tag: latest
+latest: Pulling from library/mongo
+a89cc6fb1ead: Pull complete
+20043066d3d5: Pull complete
+7230971360e4: Pull complete
+88373bcb58c1: Pull complete
+6dc84fd2f3ac: Pull complete
+1732f2a4d259: Pull complete
+8a63055b2837: Pull complete
+dcec2d403c4e: Pull complete
+Digest: sha256:7245ffb851d149dbfac67397caf91bae4974d899972f9fd1d8985fc6eea3c13d
+Status: Downloaded newer image for mongo:latest
+docker.io/library/mongo:latest
+
+C:\Users\Soll\Desktop\P05_TODO_App>docker run --name mongo -d --network express-mongo -v mongo_data:/data/db mongo
+b8b4f908cca6efa7559415653778e5da5698e976f68bea3c5f2de260a7ae068a
+
+C:\Users\Soll\Desktop\P05_TODO_App>docker run --name mongo -d -p 27017:27017 --network express-mongo -v mongo_data:/data/db mongo
+d16b7c28a65bdcb910c33d47bd04b79f62f4e08b58d6ec52bc82a9147f1a3bae
+
+C:\Users\Soll\Desktop\P05_TODO_App>
+
+
+
+
+
+
+
