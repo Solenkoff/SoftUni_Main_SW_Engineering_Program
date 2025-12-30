@@ -1,0 +1,46 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P08_Reseller_App\Reseller_App>docker build -t isolenkoff/reseller_app .
+[+] Building 2.4s (8/8) FINISHED                                                           docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                       0.0s
+ => => transferring dockerfile: 221B                                                                       0.0s
+ => [internal] load metadata for docker.io/library/eclipse-temurin:11-jre-jammy                            3.0s
+ => [auth] library/eclipse-temurin:pull token for registry-1.docker.io                                     0.0s
+ => [internal] load .dockerignore                                                                          0.0s
+ => => transferring context: 2B                                                                            0.0s
+ => [internal] load build context                                                                          0.0s
+ => => transferring context: 87B                                                                           0.0s
+ => [1/2] FROM docker.io/library/eclipse-temurin:11-jre-jammy@sha256:5f6d671962cbd2c9875e76b98ca2a79e037e  0.1s
+ => => resolve docker.io/library/eclipse-temurin:11-jre-jammy@sha256:5f6d671962cbd2c9875e76b98ca2a79e037e  0.1s
+ => CACHED [2/2] COPY target/*.jar app.jar                                                                 0.0s
+ => exporting to image                                                                                     0.7s
+ => => exporting layers                                                                                    0.0s
+ => => exporting manifest sha256:6662be69086ef83a259c7f56493ec72747836af5ef88013f8500e05354ce31c8          0.0s
+ => => exporting config sha256:79c95ef557333b1f3614aca7dfc796e70e4049dfabac477ffa34b17a3ba66dc8            0.0s
+ => => exporting attestation manifest sha256:64fe48ffeb5dd969e8a8942b037a2ff89be2c0d73d05342c9283469bc7ec  0.1s
+ => => exporting manifest list sha256:dcdd9b47b405e6762193310ce950a353bc9ba858810eecdebbcc443b38bfb696     0.0s
+ => => naming to docker.io/isolenkoff/reseller_app:latest                                                  0.0s
+ => => unpacking to docker.io/isolenkoff/reseller_app:latest                                               0.5s
+
+C:\Users\Soll\Desktop\P08_Reseller_App\Reseller_App>docker compose build
+
+C:\Users\Soll\Desktop\P08_Reseller_App\Reseller_App>docker compose up -d
+[+] Running 12/12
+ ✔ mysql Pulled                                                                                           52.9s
+   ✔ 023a182c62a0 Pull complete                                                                           25.4s
+   ✔ fdca9f583d44 Pull complete                                                                            0.5s
+   ✔ 4f94eaa123bf Pull complete                                                                            0.7s
+   ✔ d68710a4a4e9 Pull complete                                                                            0.8s
+   ✔ 37bd516ff765 Pull complete                                                                            0.4s
+   ✔ c9ecfb07ed08 Pull complete                                                                           26.4s
+   ✔ 48ec49971d94 Pull complete                                                                           30.3s
+   ✔ 4f78e34adfad Pull complete                                                                            0.7s
+   ✔ a2ed1082d9e2 Pull complete                                                                           25.6s
+   ✔ abcf302dead6 Pull complete                                                                           50.5s
+   ✔ 2a2d53254403 Pull complete                                                                            0.7s
+[+] Running 2/2
+ ✔ Container reseller_app-mysql-1       Started                                                            9.8s
+ ✔ Container reseller_app-reselerapp-1  Started                                                            1.4s
+
+C:\Users\Soll\Desktop\P08_Reseller_App\Reseller_App>
