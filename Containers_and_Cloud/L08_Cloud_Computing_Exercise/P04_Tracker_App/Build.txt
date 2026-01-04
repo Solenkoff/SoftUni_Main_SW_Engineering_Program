@@ -1,0 +1,44 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P04_Tracker_App>docker build -t tracker-app-image .
+[+] Building 1.7s (14/14) FINISHED                                                         docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                       0.0s
+ => => transferring dockerfile: 324B                                                                       0.0s
+ => [internal] load metadata for docker.io/library/node:14-alpine                                          0.7s
+ => [internal] load metadata for docker.io/library/nginx:latest                                            0.7s
+ => [internal] load .dockerignore                                                                          0.0s
+ => => transferring context: 2B                                                                            0.0s
+ => [build-stage 1/6] FROM docker.io/library/node:14-alpine@sha256:434215b487a329c9e867202ff89e704d3a75e5  0.1s
+ => => resolve docker.io/library/node:14-alpine@sha256:434215b487a329c9e867202ff89e704d3a75e554822e07f3e0  0.1s
+ => [production-stage 1/2] FROM docker.io/library/nginx:latest@sha256:553f64aecdc31b5bf944521731cd70e35da  0.1s
+ => => resolve docker.io/library/nginx:latest@sha256:553f64aecdc31b5bf944521731cd70e35da4faed96b2b7548a3d  0.1s
+ => [internal] load build context                                                                          0.2s
+ => => transferring context: 956.46kB                                                                      0.1s
+ => CACHED [build-stage 2/6] WORKDIR /vue_app                                                              0.0s
+ => CACHED [build-stage 3/6] COPY package.json ./                                                          0.0s
+ => CACHED [build-stage 4/6] RUN npm install                                                               0.0s
+ => CACHED [build-stage 5/6] COPY . .                                                                      0.0s
+ => CACHED [build-stage 6/6] RUN npm run build                                                             0.0s
+ => CACHED [production-stage 2/2] COPY --from=build-stage /vue_app/dist /usr/share/nginx/html              0.0s
+ => exporting to image                                                                                     0.3s
+ => => exporting layers                                                                                    0.0s
+ => => exporting manifest sha256:029ac3587fa49ed93cdf5fe0dcdc72d3279a86aae341398ad9a055356326ab66          0.0s
+ => => exporting config sha256:739f031cb09396151599445d98e5c6d39f93d845eb2bcab669d125d96b207b58            0.0s
+ => => exporting attestation manifest sha256:7b0a9dbd0be6698b31f7ffd308cabcfc3d62289cb1eb13b76501f600ec31  0.1s
+ => => exporting manifest list sha256:70dd603a062b473f3424e24ec3ce6731b39f1e80b5a3dd2a447dc8d316fb671b     0.0s
+ => => naming to docker.io/library/tracker-app-image:latest                                                0.0s
+ => => unpacking to docker.io/library/tracker-app-image:latest                                             0.1s
+
+C:\Users\Soll\Desktop\P04_Tracker_App>docker images
+                                                                                            i Info →   U  In Use
+IMAGE                      ID             DISK USAGE   CONTENT SIZE   EXTRA
+tracker-app-image:latest   70dd603a062b        226MB           60MB
+
+C:\Users\Soll\Desktop\P04_Tracker_App>docker run -d --name tracker_app tracker-app-image
+f6d7697a84f55265f76980ca2ba7865f429cb15612d00d59c442a2a0ac18154f
+
+C:\Users\Soll\Desktop\P04_Tracker_App>docker run -d --name tracker_app -p 80:80 tracker-app-image
+0a1f27c7ab3bc3b67280ce3f3563771b91ed9b2188f0e7c32dc3ba305f0abb4f
+
+C:\Users\Soll\Desktop\P04_Tracker_App>

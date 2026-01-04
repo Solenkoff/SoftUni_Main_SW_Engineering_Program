@@ -1,0 +1,126 @@
+
+C:\Users\Soll>az group create --name trackerapp-rg --location polandcentral
+{
+  "id": "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/trackerapp-rg",
+  "location": "polandcentral",
+  "managedBy": null,
+  "name": "trackerapp-rg",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/resourceGroups"
+}
+
+C:\Users\Soll>az group ls
+'ls' is misspelled or not recognized by the system.
+
+Examples from AI knowledge base:
+az group list --query "[?location=='westus']"
+List all resource groups located in the West US region.
+
+https://docs.microsoft.com/en-US/cli/azure/group#az_group_list
+Read more about the command in reference docs
+
+C:\Users\Soll>az group list
+[
+  {
+    "id": "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/DefaultResourceGroup-WEU",
+    "location": "westeurope",
+    "managedBy": null,
+    "name": "DefaultResourceGroup-WEU",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/DefaultResourceGroup-NOE",
+    "location": "norwayeast",
+    "managedBy": null,
+    "name": "DefaultResourceGroup-NOE",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/DefaultResourceGroup-PAR",
+    "location": "francecentral",
+    "managedBy": null,
+    "name": "DefaultResourceGroup-PAR",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/DefaultResourceGroup-NEU",
+    "location": "northeurope",
+    "managedBy": null,
+    "name": "DefaultResourceGroup-NEU",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/WordPressRG",
+    "location": "polandcentral",
+    "managedBy": null,
+    "name": "WordPressRG",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/NetworkWatcherRG",
+    "location": "polandcentral",
+    "managedBy": null,
+    "name": "NetworkWatcherRG",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/DefaultResourceGroup-CHN",
+    "location": "switzerlandnorth",
+    "managedBy": null,
+    "name": "DefaultResourceGroup-CHN",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/trackerapp-rg",
+    "location": "polandcentral",
+    "managedBy": null,
+    "name": "trackerapp-rg",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  },
+  {
+    "id": "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/DefaultResourceGroup-EUS",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "DefaultResourceGroup-EUS",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": null,
+    "type": "Microsoft.Resources/resourceGroups"
+  }
+]
