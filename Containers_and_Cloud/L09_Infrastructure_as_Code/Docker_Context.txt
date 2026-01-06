@@ -1,0 +1,24 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+
+C:\Users\Soll\Desktop>docker context ls
+
+NAME              DESCRIPTION                               DOCKER ENDPOINT                             ERROR
+default           Current DOCKER_HOST based configuration   npipe:////./pipe/docker_engine
+desktop-linux *   Docker Desktop                            npipe:////./pipe/dockerDesktopLinuxEngine
+
+C:\Users\Soll\Desktop>docker context use default
+default
+Current context is now "default"
+
+C:\Users\Soll\Desktop>docker context ls
+NAME            DESCRIPTION                               DOCKER ENDPOINT                             ERROR
+default *       Current DOCKER_HOST based configuration   npipe:////./pipe/docker_engine
+desktop-linux   Docker Desktop                            npipe:////./pipe/dockerDesktopLinuxEngine
+
+C:\Users\Soll\Desktop>
+
+
+
+
