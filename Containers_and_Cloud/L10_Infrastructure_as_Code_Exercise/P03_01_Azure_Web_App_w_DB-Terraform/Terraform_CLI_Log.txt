@@ -1,0 +1,244 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\TaskBoardApp_DB_Terraform>terraform fmt
+
+C:\Users\Soll\Desktop\TaskBoardApp_DB_Terraform>terraform validate
+Success! The configuration is valid.
+
+
+C:\Users\Soll\Desktop\TaskBoardApp_DB_Terraform>terraform apply
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_app_service_source_control.github will be created
+  + resource "azurerm_app_service_source_control" "github" {
+      + app_id                 = (known after apply)
+      + branch                 = "main"
+      + id                     = (known after apply)
+      + repo_url               = "https://github.com/Solenkoff/TaskBoardApp_DB_Terraform"
+      + rollback_enabled       = false
+      + scm_type               = (known after apply)
+      + use_local_git          = false
+      + use_manual_integration = true
+      + use_mercurial          = false
+      + uses_github_action     = (known after apply)
+    }
+
+  # azurerm_linux_web_app.alwa will be created
+  + resource "azurerm_linux_web_app" "alwa" {
+      + client_affinity_enabled                        = false
+      + client_certificate_enabled                     = false
+      + client_certificate_mode                        = "Required"
+      + custom_domain_verification_id                  = (sensitive value)
+      + default_hostname                               = (known after apply)
+      + enabled                                        = true
+      + ftp_publish_basic_authentication_enabled       = true
+      + hosting_environment_id                         = (known after apply)
+      + https_only                                     = false
+      + id                                             = (known after apply)
+      + key_vault_reference_identity_id                = (known after apply)
+      + kind                                           = (known after apply)
+      + location                                       = "spaincentral"
+      + name                                           = (known after apply)
+      + outbound_ip_address_list                       = (known after apply)
+      + outbound_ip_addresses                          = (known after apply)
+      + possible_outbound_ip_address_list              = (known after apply)
+      + possible_outbound_ip_addresses                 = (known after apply)
+      + public_network_access_enabled                  = true
+      + resource_group_name                            = (known after apply)
+      + service_plan_id                                = (known after apply)
+      + site_credential                                = (sensitive value)
+      + virtual_network_backup_restore_enabled         = false
+      + vnet_image_pull_enabled                        = false
+      + webdeploy_publish_basic_authentication_enabled = true
+      + zip_deploy_file                                = (known after apply)
+
+      + connection_string {
+          # At least one attribute in this block is (or was) sensitive,
+          # so its contents will not be displayed.
+        }
+
+      + site_config {
+          + always_on                               = false
+          + container_registry_use_managed_identity = false
+          + default_documents                       = (known after apply)
+          + detailed_error_logging_enabled          = (known after apply)
+          + ftps_state                              = "Disabled"
+          + http2_enabled                           = false
+          + ip_restriction_default_action           = "Allow"
+          + linux_fx_version                        = (known after apply)
+          + load_balancing_mode                     = "LeastRequests"
+          + local_mysql_enabled                     = false
+          + managed_pipeline_mode                   = "Integrated"
+          + minimum_tls_version                     = "1.2"
+          + remote_debugging_enabled                = false
+          + remote_debugging_version                = (known after apply)
+          + scm_ip_restriction_default_action       = "Allow"
+          + scm_minimum_tls_version                 = "1.2"
+          + scm_type                                = (known after apply)
+          + scm_use_main_ip_restriction             = false
+          + use_32_bit_worker                       = true
+          + vnet_route_all_enabled                  = false
+          + websockets_enabled                      = false
+          + worker_count                            = (known after apply)
+
+          + application_stack {
+              + dotnet_version = "6.0"
+            }
+        }
+    }
+
+  # azurerm_mssql_database.mssql_db will be created
+  + resource "azurerm_mssql_database" "mssql_db" {
+      + auto_pause_delay_in_minutes                                = (known after apply)
+      + collation                                                  = "SQL_Latin1_General_CP1_CI_AS"
+      + create_mode                                                = "Default"
+      + creation_source_database_id                                = (known after apply)
+      + enclave_type                                               = (known after apply)
+      + geo_backup_enabled                                         = false
+      + id                                                         = (known after apply)
+      + ledger_enabled                                             = (known after apply)
+      + license_type                                               = "LicenseIncluded"
+      + maintenance_configuration_name                             = (known after apply)
+      + max_size_gb                                                = 2
+      + min_capacity                                               = (known after apply)
+      + name                                                       = (known after apply)
+      + read_replica_count                                         = (known after apply)
+      + read_scale                                                 = (known after apply)
+      + restore_point_in_time                                      = (known after apply)
+      + sample_name                                                = (known after apply)
+      + secondary_type                                             = (known after apply)
+      + server_id                                                  = (known after apply)
+      + sku_name                                                   = "S0"
+      + storage_account_type                                       = "Local"
+      + transparent_data_encryption_enabled                        = true
+      + transparent_data_encryption_key_automatic_rotation_enabled = false
+      + zone_redundant                                             = false
+
+      + long_term_retention_policy (known after apply)
+
+      + short_term_retention_policy (known after apply)
+
+      + threat_detection_policy (known after apply)
+    }
+
+  # azurerm_mssql_firewall_rule.FirewallRule1 will be created
+  + resource "azurerm_mssql_firewall_rule" "FirewallRule1" {
+      + end_ip_address   = "0.0.0.0"
+      + id               = (known after apply)
+      + name             = "FirewallRule1"
+      + server_id        = (known after apply)
+      + start_ip_address = "0.0.0.0"
+    }
+
+  # azurerm_mssql_server.mssqlserver will be created
+  + resource "azurerm_mssql_server" "mssqlserver" {
+      + administrator_login                      = "*admin-soll?"
+      + administrator_login_password             = (sensitive value)
+      + administrator_login_password_wo          = (write-only attribute)
+      + connection_policy                        = "Default"
+      + express_vulnerability_assessment_enabled = false
+      + fully_qualified_domain_name              = (known after apply)
+      + id                                       = (known after apply)
+      + location                                 = "spaincentral"
+      + minimum_tls_version                      = "1.2"
+      + name                                     = (known after apply)
+      + outbound_network_restriction_enabled     = false
+      + primary_user_assigned_identity_id        = (known after apply)
+      + public_network_access_enabled            = true
+      + resource_group_name                      = (known after apply)
+      + restorable_dropped_database_ids          = (known after apply)
+      + version                                  = "12.0"
+    }
+
+  # azurerm_resource_group.arg will be created
+  + resource "azurerm_resource_group" "arg" {
+      + id       = (known after apply)
+      + location = "spaincentral"
+      + name     = (known after apply)
+    }
+
+  # azurerm_service_plan.asp will be created
+  + resource "azurerm_service_plan" "asp" {
+      + id                              = (known after apply)
+      + kind                            = (known after apply)
+      + location                        = "spaincentral"
+      + maximum_elastic_worker_count    = (known after apply)
+      + name                            = (known after apply)
+      + os_type                         = "Linux"
+      + per_site_scaling_enabled        = false
+      + premium_plan_auto_scale_enabled = false
+      + reserved                        = (known after apply)
+      + resource_group_name             = (known after apply)
+      + sku_name                        = "F1"
+      + worker_count                    = (known after apply)
+    }
+
+  # random_integer.ri will be created
+  + resource "random_integer" "ri" {
+      + id     = (known after apply)
+      + max    = 99999
+      + min    = 1
+      + result = (known after apply)
+    }
+
+Plan: 8 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+random_integer.ri: Creating...
+random_integer.ri: Creation complete after 0s [id=32414]
+azurerm_resource_group.arg: Creating...
+azurerm_resource_group.arg: Still creating... [00m10s elapsed]
+azurerm_resource_group.arg: Still creating... [00m20s elapsed]
+azurerm_resource_group.arg: Creation complete after 28s [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/TaskBoard32414]
+azurerm_service_plan.asp: Creating...
+azurerm_mssql_server.mssqlserver: Creating...
+azurerm_service_plan.asp: Still creating... [00m10s elapsed]
+azurerm_mssql_server.mssqlserver: Still creating... [00m10s elapsed]
+azurerm_service_plan.asp: Creation complete after 14s [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/TaskBoard32414/providers/Microsoft.Web/serverFarms/TaskBoardServicePlan32414]
+azurerm_mssql_server.mssqlserver: Still creating... [00m20s elapsed]
+azurerm_mssql_server.mssqlserver: Still creating... [00m30s elapsed]
+azurerm_mssql_server.mssqlserver: Still creating... [00m40s elapsed]
+azurerm_mssql_server.mssqlserver: Still creating... [00m50s elapsed]
+azurerm_mssql_server.mssqlserver: Still creating... [01m00s elapsed]
+azurerm_mssql_server.mssqlserver: Creation complete after 1m3s [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/TaskBoard32414/providers/Microsoft.Sql/servers/mssqlserver32414]
+azurerm_mssql_firewall_rule.FirewallRule1: Creating...
+azurerm_mssql_database.mssql_db: Creating...
+azurerm_mssql_firewall_rule.FirewallRule1: Creation complete after 2s [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/TaskBoard32414/providers/Microsoft.Sql/servers/mssqlserver32414/firewallRules/FirewallRule1]
+azurerm_mssql_database.mssql_db: Still creating... [00m10s elapsed]
+azurerm_mssql_database.mssql_db: Still creating... [00m20s elapsed]
+azurerm_mssql_database.mssql_db: Still creating... [00m30s elapsed]
+azurerm_mssql_database.mssql_db: Still creating... [00m40s elapsed]
+azurerm_mssql_database.mssql_db: Still creating... [00m50s elapsed]
+azurerm_mssql_database.mssql_db: Still creating... [01m00s elapsed]
+azurerm_mssql_database.mssql_db: Still creating... [01m10s elapsed]
+azurerm_mssql_database.mssql_db: Still creating... [01m20s elapsed]
+azurerm_mssql_database.mssql_db: Still creating... [01m30s elapsed]
+azurerm_mssql_database.mssql_db: Still creating... [01m40s elapsed]
+azurerm_mssql_database.mssql_db: Still creating... [01m50s elapsed]
+azurerm_mssql_database.mssql_db: Creation complete after 1m52s [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/TaskBoard32414/providers/Microsoft.Sql/servers/mssqlserver32414/databases/mssql_db32414]
+azurerm_linux_web_app.alwa: Creating...
+azurerm_linux_web_app.alwa: Still creating... [00m10s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [00m20s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [00m30s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [00m40s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [00m50s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [01m00s elapsed]
+azurerm_linux_web_app.alwa: Creation complete after 1m0s [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/TaskBoard32414/providers/Microsoft.Web/sites/TaskBoardApp32414]
+azurerm_app_service_source_control.github: Creating...
+azurerm_app_service_source_control.github: Still creating... [00m10s elapsed]
+azurerm_app_service_source_control.github: Creation complete after 20s [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/TaskBoard32414/providers/Microsoft.Web/sites/TaskBoardApp32414]
+
+Apply complete! Resources: 8 added, 0 changed, 0 destroyed.
+
+C:\Users\Soll\Desktop\TaskBoardApp_DB_Terraform>
