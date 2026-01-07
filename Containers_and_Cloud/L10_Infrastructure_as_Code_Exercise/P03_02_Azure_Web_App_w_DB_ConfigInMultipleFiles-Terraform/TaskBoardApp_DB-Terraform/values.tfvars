@@ -1,0 +1,11 @@
+resource_group_name     = "taskboardRG"
+resource_group_location = "Spain Central"
+app_service_plan_name   = "taskboardPlan"
+app_service_name        = "taskboardApp"
+sql_server_name         = "sqlserver"
+sql_database_name       = "taskboardDb"
+sql_admin_username      = "*admin-soll?"
+sql_admin_password      = "*TaskBoard-pass78"
+firewall_rule_name      = "FirewallRule1"
+github_repo_url         = "https://github.com/Solenkoff/TaskBoardApp_DB_Terraform"
+ 
