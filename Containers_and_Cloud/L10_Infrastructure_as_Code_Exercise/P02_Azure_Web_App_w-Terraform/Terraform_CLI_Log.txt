@@ -1,0 +1,704 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P01_Azure_RG_w_Terraform>az login
+Select the account you want to log in with. For more information on login with Azure CLI, see https://go.microsoft.com/fwlink/?linkid=2271136
+
+
+No     Subscription name    Subscription ID                       Tenant
+-----  -------------------  ------------------------------------  -----------------------------
+[1] *  Azure for Students   a807f40c-6671-4b6e-9c3e-411f84153bba  Software University (SoftUni)
+
+The default is marked with an *; the default tenant is 'Software University (SoftUni)' and subscription is 'Azure for Students' (a807f40c-6671-4b6e-9c3e-411f84153bba).
+
+Select a subscription and tenant (Type a number or Enter for no changes): 1
+
+Tenant: Software University (SoftUni)
+Subscription: Azure for Students (a807f40c-6671-4b6e-9c3e-411f84153bba)
+
+[Announcements]
+With the new Azure CLI login experience, you can select the subscription you want to use more easily. Learn more about it and its configuration at https://go.microsoft.com/fwlink/?linkid=2271236
+
+===============
+
+
+  Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P02>terraform init
+Initializing the backend...
+Initializing provider plugins...
+- Finding hashicorp/azurerm versions matching "4.54.0"...
+- Installing hashicorp/azurerm v4.54.0...
+- Installed hashicorp/azurerm v4.54.0 (signed by HashiCorp)
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
+C:\Users\Soll\Desktop\P02>terraform fmt
+main.tf
+
+C:\Users\Soll\Desktop\P02>terraform validate
+╷
+│ Error: Missing required provider
+│
+│ This configuration requires provider registry.terraform.io/hashicorp/random, but that provider isn't
+│ available. You may be able to install it automatically by running:
+│   terraform init
+╵
+
+C:\Users\Soll\Desktop\P02>terraform init
+Initializing the backend...
+Initializing provider plugins...
+- Finding hashicorp/random versions matching "3.7.2"...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Installing hashicorp/random v3.7.2...
+- Installed hashicorp/random v3.7.2 (signed by HashiCorp)
+- Using previously-installed hashicorp/azurerm v4.54.0
+Terraform has made some changes to the provider dependency selections recorded
+in the .terraform.lock.hcl file. Review those changes and commit them to your
+version control system if they represent changes you intended to make.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
+C:\Users\Soll\Desktop\P02>terraform fmt
+
+C:\Users\Soll\Desktop\P02>terraform plan
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_resource_group.arg will be created
+  + resource "azurerm_resource_group" "arg" {
+      + id       = (known after apply)
+      + location = "polandcentral"
+      + name     = (known after apply)
+    }
+
+  # random_integer.ri will be created
+  + resource "random_integer" "ri" {
+      + id     = (known after apply)
+      + max    = 9999
+      + min    = 1
+      + result = (known after apply)
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these
+actions if you run "terraform apply" now.
+
+C:\Users\Soll\Desktop\P02>terraform apply
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_resource_group.arg will be created
+  + resource "azurerm_resource_group" "arg" {
+      + id       = (known after apply)
+      + location = "polandcentral"
+      + name     = (known after apply)
+    }
+
+  # random_integer.ri will be created
+  + resource "random_integer" "ri" {
+      + id     = (known after apply)
+      + max    = 9999
+      + min    = 1
+      + result = (known after apply)
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+random_integer.ri: Creating...
+random_integer.ri: Creation complete after 0s [id=7041]
+azurerm_resource_group.arg: Creating...
+azurerm_resource_group.arg: Still creating... [00m10s elapsed]
+azurerm_resource_group.arg: Still creating... [00m20s elapsed]
+azurerm_resource_group.arg: Creation complete after 27s [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook7041]
+
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+
+C:\Users\Soll\Desktop\P02>terraform destroy
+random_integer.ri: Refreshing state... [id=7041]
+azurerm_resource_group.arg: Refreshing state... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook7041]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # azurerm_resource_group.arg will be destroyed
+  - resource "azurerm_resource_group" "arg" {
+      - id         = "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook7041" -> null
+      - location   = "polandcentral" -> null
+      - name       = "ContactBook7041" -> null
+      - tags       = {} -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # random_integer.ri will be destroyed
+  - resource "random_integer" "ri" {
+      - id     = "7041" -> null
+      - max    = 9999 -> null
+      - min    = 1 -> null
+      - result = 7041 -> null
+    }
+
+Plan: 0 to add, 0 to change, 2 to destroy.
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+azurerm_resource_group.arg: Destroying... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook7041]
+azurerm_resource_group.arg: Still destroying... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-...4153bba/resourceGroups/ContactBook7041, 00m10s elapsed]
+azurerm_resource_group.arg: Still destroying... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-...4153bba/resourceGroups/ContactBook7041, 00m20s elapsed]
+azurerm_resource_group.arg: Destruction complete after 22s
+random_integer.ri: Destroying... [id=7041]
+random_integer.ri: Destruction complete after 0s
+
+Destroy complete! Resources: 2 destroyed.
+
+C:\Users\Soll\Desktop\P02>terraform fmt
+
+C:\Users\Soll\Desktop\P02>terraform fmt
+main.tf
+
+C:\Users\Soll\Desktop\P02>terraform validate
+Success! The configuration is valid.
+
+
+C:\Users\Soll\Desktop\P02>terraform plan
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_app_service_source_control.aassc will be created
+  + resource "azurerm_app_service_source_control" "aassc" {
+      + app_id                 = (known after apply)
+      + branch                 = "master"
+      + id                     = (known after apply)
+      + repo_url               = "https://github.com/nakov/ContactBook"
+      + rollback_enabled       = false
+      + scm_type               = (known after apply)
+      + use_local_git          = false
+      + use_manual_integration = true
+      + use_mercurial          = false
+      + uses_github_action     = (known after apply)
+    }
+
+  # azurerm_linux_web_app.alwa will be created
+  + resource "azurerm_linux_web_app" "alwa" {
+      + client_affinity_enabled                        = false
+      + client_certificate_enabled                     = false
+      + client_certificate_mode                        = "Required"
+      + custom_domain_verification_id                  = (sensitive value)
+      + default_hostname                               = (known after apply)
+      + enabled                                        = true
+      + ftp_publish_basic_authentication_enabled       = true
+      + hosting_environment_id                         = (known after apply)
+      + https_only                                     = false
+      + id                                             = (known after apply)
+      + key_vault_reference_identity_id                = (known after apply)
+      + kind                                           = (known after apply)
+      + location                                       = "polandcentral"
+      + name                                           = (known after apply)
+      + outbound_ip_address_list                       = (known after apply)
+      + outbound_ip_addresses                          = (known after apply)
+      + possible_outbound_ip_address_list              = (known after apply)
+      + possible_outbound_ip_addresses                 = (known after apply)
+      + public_network_access_enabled                  = true
+      + resource_group_name                            = (known after apply)
+      + service_plan_id                                = (known after apply)
+      + site_credential                                = (sensitive value)
+      + virtual_network_backup_restore_enabled         = false
+      + vnet_image_pull_enabled                        = false
+      + webdeploy_publish_basic_authentication_enabled = true
+      + zip_deploy_file                                = (known after apply)
+
+      + site_config {
+          + always_on                               = false
+          + container_registry_use_managed_identity = false
+          + default_documents                       = (known after apply)
+          + detailed_error_logging_enabled          = (known after apply)
+          + ftps_state                              = "Disabled"
+          + http2_enabled                           = false
+          + ip_restriction_default_action           = "Allow"
+          + linux_fx_version                        = (known after apply)
+          + load_balancing_mode                     = "LeastRequests"
+          + local_mysql_enabled                     = false
+          + managed_pipeline_mode                   = "Integrated"
+          + minimum_tls_version                     = "1.2"
+          + remote_debugging_enabled                = false
+          + remote_debugging_version                = (known after apply)
+          + scm_ip_restriction_default_action       = "Allow"
+          + scm_minimum_tls_version                 = "1.2"
+          + scm_type                                = (known after apply)
+          + scm_use_main_ip_restriction             = false
+          + use_32_bit_worker                       = true
+          + vnet_route_all_enabled                  = false
+          + websockets_enabled                      = false
+          + worker_count                            = (known after apply)
+
+          + application_stack {
+              + node_version = "16-lts"
+            }
+        }
+    }
+
+  # azurerm_resource_group.arg will be created
+  + resource "azurerm_resource_group" "arg" {
+      + id       = (known after apply)
+      + location = "polandcentral"
+      + name     = (known after apply)
+    }
+
+  # azurerm_service_plan.asp will be created
+  + resource "azurerm_service_plan" "asp" {
+      + id                              = (known after apply)
+      + kind                            = (known after apply)
+      + location                        = "polandcentral"
+      + maximum_elastic_worker_count    = (known after apply)
+      + name                            = (known after apply)
+      + os_type                         = "Linux"
+      + per_site_scaling_enabled        = false
+      + premium_plan_auto_scale_enabled = false
+      + reserved                        = (known after apply)
+      + resource_group_name             = (known after apply)
+      + sku_name                        = "F1"
+      + worker_count                    = (known after apply)
+    }
+
+  # random_integer.ri will be created
+  + resource "random_integer" "ri" {
+      + id     = (known after apply)
+      + max    = 9999
+      + min    = 1
+      + result = (known after apply)
+    }
+
+Plan: 5 to add, 0 to change, 0 to destroy.
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these
+actions if you run "terraform apply" now.
+
+C:\Users\Soll\Desktop\P02>terraform apply
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_app_service_source_control.aassc will be created
+  + resource "azurerm_app_service_source_control" "aassc" {
+      + app_id                 = (known after apply)
+      + branch                 = "master"
+      + id                     = (known after apply)
+      + repo_url               = "https://github.com/nakov/ContactBook"
+      + rollback_enabled       = false
+      + scm_type               = (known after apply)
+      + use_local_git          = false
+      + use_manual_integration = true
+      + use_mercurial          = false
+      + uses_github_action     = (known after apply)
+    }
+
+  # azurerm_linux_web_app.alwa will be created
+  + resource "azurerm_linux_web_app" "alwa" {
+      + client_affinity_enabled                        = false
+      + client_certificate_enabled                     = false
+      + client_certificate_mode                        = "Required"
+      + custom_domain_verification_id                  = (sensitive value)
+      + default_hostname                               = (known after apply)
+      + enabled                                        = true
+      + ftp_publish_basic_authentication_enabled       = true
+      + hosting_environment_id                         = (known after apply)
+      + https_only                                     = false
+      + id                                             = (known after apply)
+      + key_vault_reference_identity_id                = (known after apply)
+      + kind                                           = (known after apply)
+      + location                                       = "polandcentral"
+      + name                                           = (known after apply)
+      + outbound_ip_address_list                       = (known after apply)
+      + outbound_ip_addresses                          = (known after apply)
+      + possible_outbound_ip_address_list              = (known after apply)
+      + possible_outbound_ip_addresses                 = (known after apply)
+      + public_network_access_enabled                  = true
+      + resource_group_name                            = (known after apply)
+      + service_plan_id                                = (known after apply)
+      + site_credential                                = (sensitive value)
+      + virtual_network_backup_restore_enabled         = false
+      + vnet_image_pull_enabled                        = false
+      + webdeploy_publish_basic_authentication_enabled = true
+      + zip_deploy_file                                = (known after apply)
+
+      + site_config {
+          + always_on                               = false
+          + container_registry_use_managed_identity = false
+          + default_documents                       = (known after apply)
+          + detailed_error_logging_enabled          = (known after apply)
+          + ftps_state                              = "Disabled"
+          + http2_enabled                           = false
+          + ip_restriction_default_action           = "Allow"
+          + linux_fx_version                        = (known after apply)
+          + load_balancing_mode                     = "LeastRequests"
+          + local_mysql_enabled                     = false
+          + managed_pipeline_mode                   = "Integrated"
+          + minimum_tls_version                     = "1.2"
+          + remote_debugging_enabled                = false
+          + remote_debugging_version                = (known after apply)
+          + scm_ip_restriction_default_action       = "Allow"
+          + scm_minimum_tls_version                 = "1.2"
+          + scm_type                                = (known after apply)
+          + scm_use_main_ip_restriction             = false
+          + use_32_bit_worker                       = true
+          + vnet_route_all_enabled                  = false
+          + websockets_enabled                      = false
+          + worker_count                            = (known after apply)
+
+          + application_stack {
+              + node_version = "16-lts"
+            }
+        }
+    }
+
+  # azurerm_resource_group.arg will be created
+  + resource "azurerm_resource_group" "arg" {
+      + id       = (known after apply)
+      + location = "polandcentral"
+      + name     = (known after apply)
+    }
+
+  # azurerm_service_plan.asp will be created
+  + resource "azurerm_service_plan" "asp" {
+      + id                              = (known after apply)
+      + kind                            = (known after apply)
+      + location                        = "polandcentral"
+      + maximum_elastic_worker_count    = (known after apply)
+      + name                            = (known after apply)
+      + os_type                         = "Linux"
+      + per_site_scaling_enabled        = false
+      + premium_plan_auto_scale_enabled = false
+      + reserved                        = (known after apply)
+      + resource_group_name             = (known after apply)
+      + sku_name                        = "F1"
+      + worker_count                    = (known after apply)
+    }
+
+  # random_integer.ri will be created
+  + resource "random_integer" "ri" {
+      + id     = (known after apply)
+      + max    = 9999
+      + min    = 1
+      + result = (known after apply)
+    }
+
+Plan: 5 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+random_integer.ri: Creating...
+random_integer.ri: Creation complete after 0s [id=5477]
+azurerm_resource_group.arg: Creating...
+azurerm_resource_group.arg: Still creating... [00m10s elapsed]
+azurerm_resource_group.arg: Still creating... [00m20s elapsed]
+azurerm_resource_group.arg: Still creating... [00m30s elapsed]
+azurerm_resource_group.arg: Still creating... [00m40s elapsed]
+azurerm_resource_group.arg: Creation complete after 47s [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477]
+azurerm_service_plan.asp: Creating...
+azurerm_service_plan.asp: Still creating... [00m10s elapsed]
+azurerm_service_plan.asp: Still creating... [00m20s elapsed]
+azurerm_service_plan.asp: Creation complete after 28s [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477/providers/Microsoft.Web/serverFarms/ContactBookServicePlan5477]
+azurerm_linux_web_app.alwa: Creating...
+azurerm_linux_web_app.alwa: Still creating... [00m10s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [00m20s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [00m30s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [00m40s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [00m50s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [01m00s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [01m10s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [01m20s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [01m30s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [01m40s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [01m50s elapsed]
+azurerm_linux_web_app.alwa: Still creating... [02m00s elapsed]
+azurerm_linux_web_app.alwa: Creation complete after 2m10s [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477/providers/Microsoft.Web/sites/ContactBookApp5477]
+azurerm_app_service_source_control.aassc: Creating...
+azurerm_app_service_source_control.aassc: Still creating... [00m10s elapsed]
+azurerm_app_service_source_control.aassc: Still creating... [00m20s elapsed]
+azurerm_app_service_source_control.aassc: Still creating... [00m30s elapsed]
+azurerm_app_service_source_control.aassc: Still creating... [00m40s elapsed]
+azurerm_app_service_source_control.aassc: Still creating... [00m50s elapsed]
+azurerm_app_service_source_control.aassc: Still creating... [01m00s elapsed]
+azurerm_app_service_source_control.aassc: Still creating... [01m10s elapsed]
+azurerm_app_service_source_control.aassc: Still creating... [01m20s elapsed]
+azurerm_app_service_source_control.aassc: Still creating... [01m30s elapsed]
+azurerm_app_service_source_control.aassc: Still creating... [01m40s elapsed]
+azurerm_app_service_source_control.aassc: Still creating... [01m50s elapsed]
+azurerm_app_service_source_control.aassc: Creation complete after 1m53s [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477/providers/Microsoft.Web/sites/ContactBookApp5477]
+
+Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
+
+C:\Users\Soll\Desktop\P02>terraform destroy
+random_integer.ri: Refreshing state... [id=5477]
+azurerm_resource_group.arg: Refreshing state... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477]
+azurerm_service_plan.asp: Refreshing state... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477/providers/Microsoft.Web/serverFarms/ContactBookServicePlan5477]
+azurerm_linux_web_app.alwa: Refreshing state... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477/providers/Microsoft.Web/sites/ContactBookApp5477]
+azurerm_app_service_source_control.aassc: Refreshing state... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477/providers/Microsoft.Web/sites/ContactBookApp5477]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # azurerm_app_service_source_control.aassc will be destroyed
+  - resource "azurerm_app_service_source_control" "aassc" {
+      - app_id                 = "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477/providers/Microsoft.Web/sites/ContactBookApp5477" -> null
+      - branch                 = "master" -> null
+      - id                     = "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477/providers/Microsoft.Web/sites/ContactBookApp5477" -> null
+      - repo_url               = "https://github.com/nakov/ContactBook" -> null
+      - rollback_enabled       = false -> null
+      - scm_type               = "ExternalGit" -> null
+      - use_local_git          = false -> null
+      - use_manual_integration = true -> null
+      - use_mercurial          = false -> null
+      - uses_github_action     = false -> null
+    }
+
+  # azurerm_linux_web_app.alwa will be destroyed
+  - resource "azurerm_linux_web_app" "alwa" {
+      - app_settings                                   = {} -> null
+      - client_affinity_enabled                        = false -> null
+      - client_certificate_enabled                     = false -> null
+      - client_certificate_mode                        = "Required" -> null
+      - custom_domain_verification_id                  = (sensitive value) -> null
+      - default_hostname                               = "contactbookapp5477.azurewebsites.net" -> null
+      - enabled                                        = true -> null
+      - ftp_publish_basic_authentication_enabled       = true -> null
+      - https_only                                     = false -> null
+      - id                                             = "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477/providers/Microsoft.Web/sites/ContactBookApp5477" -> null
+      - key_vault_reference_identity_id                = "SystemAssigned" -> null
+      - kind                                           = "app,linux" -> null
+      - location                                       = "polandcentral" -> null
+      - name                                           = "ContactBookApp5477" -> null
+      - outbound_ip_address_list                       = [
+          - "74.248.249.213",
+          - "74.248.177.201",
+          - "134.112.8.29",
+          - "134.112.80.188",
+          - "74.248.72.174",
+          - "74.248.73.133",
+          - "20.215.142.229",
+          - "134.112.83.238",
+          - "134.112.84.12",
+          - "134.112.11.66",
+          - "134.112.83.74",
+          - "134.112.11.70",
+          - "20.215.12.3",
+        ] -> null
+      - outbound_ip_addresses                          = "74.248.249.213,74.248.177.201,134.112.8.29,134.112.80.188,74.248.72.174,74.248.73.133,20.215.142.229,134.112.83.238,134.112.84.12,134.112.11.66,134.112.83.74,134.112.11.70,20.215.12.3" -> null
+      - possible_outbound_ip_address_list              = [
+          - "74.248.249.213",
+          - "74.248.177.201",
+          - "134.112.8.29",
+          - "134.112.80.188",
+          - "74.248.72.174",
+          - "74.248.73.133",
+          - "20.215.142.229",
+          - "134.112.83.238",
+          - "134.112.84.12",
+          - "134.112.11.66",
+          - "134.112.83.74",
+          - "134.112.11.70",
+          - "134.112.84.227",
+          - "74.248.253.114",
+          - "74.248.253.128",
+          - "74.248.76.66",
+          - "134.112.85.2",
+          - "74.248.253.130",
+          - "134.112.11.74",
+          - "134.112.85.65",
+          - "74.248.76.99",
+          - "74.248.177.160",
+          - "74.248.177.163",
+          - "134.112.81.156",
+          - "74.248.251.218",
+          - "134.112.82.55",
+          - "134.112.82.177",
+          - "134.112.83.110",
+          - "74.248.75.136",
+          - "74.248.177.254",
+          - "20.215.12.3",
+        ] -> null
+      - possible_outbound_ip_addresses                 = "74.248.249.213,74.248.177.201,134.112.8.29,134.112.80.188,74.248.72.174,74.248.73.133,20.215.142.229,134.112.83.238,134.112.84.12,134.112.11.66,134.112.83.74,134.112.11.70,134.112.84.227,74.248.253.114,74.248.253.128,74.248.76.66,134.112.85.2,74.248.253.130,134.112.11.74,134.112.85.65,74.248.76.99,74.248.177.160,74.248.177.163,134.112.81.156,74.248.251.218,134.112.82.55,134.112.82.177,134.112.83.110,74.248.75.136,74.248.177.254,20.215.12.3" -> null
+      - public_network_access_enabled                  = true -> null
+      - resource_group_name                            = "ContactBook5477" -> null
+      - service_plan_id                                = "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477/providers/Microsoft.Web/serverFarms/ContactBookServicePlan5477" -> null
+      - site_credential                                = (sensitive value) -> null
+      - tags                                           = {} -> null
+      - virtual_network_backup_restore_enabled         = false -> null
+      - vnet_image_pull_enabled                        = false -> null
+      - webdeploy_publish_basic_authentication_enabled = true -> null
+        # (4 unchanged attributes hidden)
+
+      - auth_settings {
+          - additional_login_parameters    = {} -> null
+          - allowed_external_redirect_urls = [] -> null
+          - enabled                        = false -> null
+          - token_refresh_extension_hours  = 0 -> null
+          - token_store_enabled            = false -> null
+            # (4 unchanged attributes hidden)
+        }
+
+      - site_config {
+          - always_on                                     = false -> null
+          - container_registry_use_managed_identity       = false -> null
+          - default_documents                             = [
+              - "Default.htm",
+              - "Default.html",
+              - "Default.asp",
+              - "index.htm",
+              - "index.html",
+              - "iisstart.htm",
+              - "default.aspx",
+              - "index.php",
+              - "hostingstart.html",
+            ] -> null
+          - detailed_error_logging_enabled                = false -> null
+          - ftps_state                                    = "Disabled" -> null
+          - health_check_eviction_time_in_min             = 0 -> null
+          - http2_enabled                                 = false -> null
+          - ip_restriction_default_action                 = "Allow" -> null
+          - linux_fx_version                              = "NODE|16-lts" -> null
+          - load_balancing_mode                           = "LeastRequests" -> null
+          - local_mysql_enabled                           = false -> null
+          - managed_pipeline_mode                         = "Integrated" -> null
+          - minimum_tls_version                           = "1.2" -> null
+          - remote_debugging_enabled                      = false -> null
+          - remote_debugging_version                      = "VS2022" -> null
+          - scm_ip_restriction_default_action             = "Allow" -> null
+          - scm_minimum_tls_version                       = "1.2" -> null
+          - scm_type                                      = "ExternalGit" -> null
+          - scm_use_main_ip_restriction                   = false -> null
+          - use_32_bit_worker                             = true -> null
+          - vnet_route_all_enabled                        = false -> null
+          - websockets_enabled                            = false -> null
+          - worker_count                                  = 1 -> null
+            # (5 unchanged attributes hidden)
+
+          - application_stack {
+              - node_version             = "16-lts" -> null
+                # (12 unchanged attributes hidden)
+            }
+        }
+    }
+
+  # azurerm_resource_group.arg will be destroyed
+  - resource "azurerm_resource_group" "arg" {
+      - id         = "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477" -> null
+      - location   = "polandcentral" -> null
+      - name       = "ContactBook5477" -> null
+      - tags       = {} -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # azurerm_service_plan.asp will be destroyed
+  - resource "azurerm_service_plan" "asp" {
+      - id                              = "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477/providers/Microsoft.Web/serverFarms/ContactBookServicePlan5477" -> null
+      - kind                            = "linux" -> null
+      - location                        = "polandcentral" -> null
+      - maximum_elastic_worker_count    = 1 -> null
+      - name                            = "ContactBookServicePlan5477" -> null
+      - os_type                         = "Linux" -> null
+      - per_site_scaling_enabled        = false -> null
+      - premium_plan_auto_scale_enabled = false -> null
+      - reserved                        = true -> null
+      - resource_group_name             = "ContactBook5477" -> null
+      - sku_name                        = "F1" -> null
+      - tags                            = {} -> null
+      - worker_count                    = 1 -> null
+      - zone_balancing_enabled          = false -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # random_integer.ri will be destroyed
+  - resource "random_integer" "ri" {
+      - id     = "5477" -> null
+      - max    = 9999 -> null
+      - min    = 1 -> null
+      - result = 5477 -> null
+    }
+
+Plan: 0 to add, 0 to change, 5 to destroy.
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+azurerm_app_service_source_control.aassc: Destroying... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477/providers/Microsoft.Web/sites/ContactBookApp5477]
+azurerm_app_service_source_control.aassc: Destruction complete after 7s
+azurerm_linux_web_app.alwa: Destroying... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477/providers/Microsoft.Web/sites/ContactBookApp5477]
+azurerm_linux_web_app.alwa: Still destroying... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-...Microsoft.Web/sites/ContactBookApp5477, 00m10s elapsed]
+azurerm_linux_web_app.alwa: Destruction complete after 11s
+azurerm_service_plan.asp: Destroying... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477/providers/Microsoft.Web/serverFarms/ContactBookServicePlan5477]
+azurerm_service_plan.asp: Destruction complete after 9s
+azurerm_resource_group.arg: Destroying... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/ContactBook5477]
+azurerm_resource_group.arg: Still destroying... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-...4153bba/resourceGroups/ContactBook5477, 00m10s elapsed]
+azurerm_resource_group.arg: Still destroying... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-...4153bba/resourceGroups/ContactBook5477, 00m20s elapsed]
+azurerm_resource_group.arg: Destruction complete after 23s
+random_integer.ri: Destroying... [id=5477]
+random_integer.ri: Destruction complete after 0s
+
+Destroy complete! Resources: 5 destroyed.
+
+C:\Users\Soll\Desktop\P02>
