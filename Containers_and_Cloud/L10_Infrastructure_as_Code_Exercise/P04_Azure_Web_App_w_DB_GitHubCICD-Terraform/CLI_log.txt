@@ -1,0 +1,392 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\New folder>terraform fmt
+variables.tf
+
+C:\Users\Soll\Desktop\New folder>terraform init
+Initializing the backend...
+Initializing provider plugins...
+- Finding hashicorp/random versions matching "3.7.2"...
+- Finding hashicorp/azurerm versions matching "4.54.0"...
+- Installing hashicorp/random v3.7.2...
+- Installed hashicorp/random v3.7.2 (signed by HashiCorp)
+- Installing hashicorp/azurerm v4.54.0...
+- Installed hashicorp/azurerm v4.54.0 (signed by HashiCorp)
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
+C:\Users\Soll\Desktop\New folder>terraform validate
+Success! The configuration is valid.
+
+C:\Users\Soll\Desktop\New folder>az ad sp create-for-rbac --name "Azure-Terraform-GitHub-Actions-Soll" --role contributor --scopes /subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba --sdk-auth
+Option '--sdk-auth' has been deprecated and will be removed in a future release.
+Creating 'contributor' role assignment under scope '/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba'
+The output includes credentials that you must protect. Be sure that you do not include these credentials in your code or check the credentials into your source control. For more information, see https://aka.ms/azadsp-cli
+{
+  "clientId": "246fda32-0634-495f-9447-2a352697e03d",
+  "clientSecret": "UYf8Q~kXsCWnxJLYr5MciBTtLMyQAzFX_okheb2N",
+  "subscriptionId": "a807f40c-6671-4b6e-9c3e-411f84153bba",
+  "tenantId": "4a06d40c-e447-42be-baef-dd0421ed10bd",
+  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+  "resourceManagerEndpointUrl": "https://management.azure.com/",
+  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+  "galleryEndpointUrl": "https://gallery.azure.com/",
+  "managementEndpointUrl": "https://management.core.windows.net/"
+}
+
+C:\Users\Soll\Desktop\New folder>terraform plan -out tfplan
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_app_service_source_control.github will be created
+  + resource "azurerm_app_service_source_control" "github" {
+      + app_id                 = (known after apply)
+      + branch                 = "main"
+      + id                     = (known after apply)
+      + repo_url               = "https://github.com/Solenkoff/TaskBoardApp_DB_Terraform"
+      + rollback_enabled       = false
+      + scm_type               = (known after apply)
+      + use_local_git          = false
+      + use_manual_integration = true
+      + use_mercurial          = false
+      + uses_github_action     = (known after apply)
+    }
+
+  # azurerm_linux_web_app.alwa will be created
+  + resource "azurerm_linux_web_app" "alwa" {
+      + client_affinity_enabled                        = false
+      + client_certificate_enabled                     = false
+      + client_certificate_mode                        = "Required"
+      + custom_domain_verification_id                  = (sensitive value)
+      + default_hostname                               = (known after apply)
+      + enabled                                        = true
+      + ftp_publish_basic_authentication_enabled       = true
+      + hosting_environment_id                         = (known after apply)
+      + https_only                                     = false
+      + id                                             = (known after apply)
+      + key_vault_reference_identity_id                = (known after apply)
+      + kind                                           = (known after apply)
+      + location                                       = "spaincentral"
+      + name                                           = (known after apply)
+      + outbound_ip_address_list                       = (known after apply)
+      + outbound_ip_addresses                          = (known after apply)
+      + possible_outbound_ip_address_list              = (known after apply)
+      + possible_outbound_ip_addresses                 = (known after apply)
+      + public_network_access_enabled                  = true
+      + resource_group_name                            = (known after apply)
+      + service_plan_id                                = (known after apply)
+      + site_credential                                = (sensitive value)
+      + virtual_network_backup_restore_enabled         = false
+      + vnet_image_pull_enabled                        = false
+      + webdeploy_publish_basic_authentication_enabled = true
+      + zip_deploy_file                                = (known after apply)
+
+      + connection_string {
+          # At least one attribute in this block is (or was) sensitive,
+          # so its contents will not be displayed.
+        }
+
+      + site_config {
+          + always_on                               = false
+          + container_registry_use_managed_identity = false
+          + default_documents                       = (known after apply)
+          + detailed_error_logging_enabled          = (known after apply)
+          + ftps_state                              = "Disabled"
+          + http2_enabled                           = false
+          + ip_restriction_default_action           = "Allow"
+          + linux_fx_version                        = (known after apply)
+          + load_balancing_mode                     = "LeastRequests"
+          + local_mysql_enabled                     = false
+          + managed_pipeline_mode                   = "Integrated"
+          + minimum_tls_version                     = "1.2"
+          + remote_debugging_enabled                = false
+          + remote_debugging_version                = (known after apply)
+          + scm_ip_restriction_default_action       = "Allow"
+          + scm_minimum_tls_version                 = "1.2"
+          + scm_type                                = (known after apply)
+          + scm_use_main_ip_restriction             = false
+          + use_32_bit_worker                       = true
+          + vnet_route_all_enabled                  = false
+          + websockets_enabled                      = false
+          + worker_count                            = (known after apply)
+
+          + application_stack {
+              + dotnet_version = "6.0"
+            }
+        }
+    }
+
+  # azurerm_mssql_database.mssql_db will be created
+  + resource "azurerm_mssql_database" "mssql_db" {
+      + auto_pause_delay_in_minutes                                = (known after apply)
+      + collation                                                  = "SQL_Latin1_General_CP1_CI_AS"
+      + create_mode                                                = "Default"
+      + creation_source_database_id                                = (known after apply)
+      + enclave_type                                               = (known after apply)
+      + geo_backup_enabled                                         = false
+      + id                                                         = (known after apply)
+      + ledger_enabled                                             = (known after apply)
+      + license_type                                               = "LicenseIncluded"
+      + maintenance_configuration_name                             = (known after apply)
+      + max_size_gb                                                = 2
+      + min_capacity                                               = (known after apply)
+      + name                                                       = (known after apply)
+      + read_replica_count                                         = (known after apply)
+      + read_scale                                                 = (known after apply)
+      + restore_point_in_time                                      = (known after apply)
+      + sample_name                                                = (known after apply)
+      + secondary_type                                             = (known after apply)
+      + server_id                                                  = (known after apply)
+      + sku_name                                                   = "S0"
+      + storage_account_type                                       = "Local"
+      + transparent_data_encryption_enabled                        = true
+      + transparent_data_encryption_key_automatic_rotation_enabled = false
+      + zone_redundant                                             = (known after apply)
+
+      + long_term_retention_policy (known after apply)
+
+      + short_term_retention_policy (known after apply)
+
+      + threat_detection_policy (known after apply)
+    }
+
+  # azurerm_mssql_firewall_rule.FirewallRule1 will be created
+  + resource "azurerm_mssql_firewall_rule" "FirewallRule1" {
+      + end_ip_address   = "0.0.0.0"
+      + id               = (known after apply)
+      + name             = "FirewallRule1"
+      + server_id        = (known after apply)
+      + start_ip_address = "0.0.0.0"
+    }
+
+  # azurerm_mssql_server.mssqlserver will be created
+  + resource "azurerm_mssql_server" "mssqlserver" {
+      + administrator_login                      = "*admin-soll?"
+      + administrator_login_password             = (sensitive value)
+      + administrator_login_password_wo          = (write-only attribute)
+      + connection_policy                        = "Default"
+      + express_vulnerability_assessment_enabled = false
+      + fully_qualified_domain_name              = (known after apply)
+      + id                                       = (known after apply)
+      + location                                 = "spaincentral"
+      + minimum_tls_version                      = "1.2"
+      + name                                     = (known after apply)
+      + outbound_network_restriction_enabled     = false
+      + primary_user_assigned_identity_id        = (known after apply)
+      + public_network_access_enabled            = true
+      + resource_group_name                      = (known after apply)
+      + restorable_dropped_database_ids          = (known after apply)
+      + version                                  = "12.0"
+    }
+
+  # azurerm_resource_group.arg will be created
+  + resource "azurerm_resource_group" "arg" {
+      + id       = (known after apply)
+      + location = "spaincentral"
+      + name     = (known after apply)
+    }
+
+  # azurerm_service_plan.asp will be created
+  + resource "azurerm_service_plan" "asp" {
+      + id                              = (known after apply)
+      + kind                            = (known after apply)
+      + location                        = "spaincentral"
+      + maximum_elastic_worker_count    = (known after apply)
+      + name                            = (known after apply)
+      + os_type                         = "Linux"
+      + per_site_scaling_enabled        = false
+      + premium_plan_auto_scale_enabled = false
+      + reserved                        = (known after apply)
+      + resource_group_name             = (known after apply)
+      + sku_name                        = "F1"
+      + worker_count                    = (known after apply)
+    }
+
+  # random_integer.ri will be created
+  + resource "random_integer" "ri" {
+      + id     = (known after apply)
+      + max    = 99999
+      + min    = 1
+      + result = (known after apply)
+    }
+
+Plan: 8 to add, 0 to change, 0 to destroy.
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "tfplan"
+
+C:\Users\Soll\Desktop\New folder>
+
+====================
+
+C:\Users\Soll>az storage account create --name taskboardstorage78soll --resource-group StorageRG --location germanywestcentral --sku Standard_LRS --kind StorageV2
+{
+  "accessTier": "Hot",
+  "accountMigrationInProgress": null,
+  "allowBlobPublicAccess": false,
+  "allowCrossTenantReplication": false,
+  "allowSharedKeyAccess": null,
+  "allowedCopyScope": null,
+  "azureFilesIdentityBasedAuthentication": null,
+  "blobRestoreStatus": null,
+  "creationTime": "2025-12-05T21:15:39.532378+00:00",
+  "customDomain": null,
+  "defaultToOAuthAuthentication": null,
+  "dnsEndpointType": null,
+  "dualStackEndpointPreference": null,
+  "enableExtendedGroups": null,
+  "enableHttpsTrafficOnly": true,
+  "enableNfsV3": null,
+  "encryption": {
+    "encryptionIdentity": null,
+    "keySource": "Microsoft.Storage",
+    "keyVaultProperties": null,
+    "requireInfrastructureEncryption": null,
+    "services": {
+      "blob": {
+        "enabled": true,
+        "keyType": "Account",
+        "lastEnabledTime": "2025-12-05T21:15:39.641781+00:00"
+      },
+      "file": {
+        "enabled": true,
+        "keyType": "Account",
+        "lastEnabledTime": "2025-12-05T21:15:39.641781+00:00"
+      },
+      "queue": null,
+      "table": null
+    }
+  },
+  "extendedLocation": null,
+  "failoverInProgress": null,
+  "geoPriorityReplicationStatus": null,
+  "geoReplicationStats": null,
+  "id": "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/StorageRG/providers/Microsoft.Storage/storageAccounts/taskboardstorage78soll",
+  "identity": null,
+  "immutableStorageWithVersioning": null,
+  "isHnsEnabled": null,
+  "isLocalUserEnabled": null,
+  "isSftpEnabled": null,
+  "isSkuConversionBlocked": null,
+  "keyCreationTime": {
+    "key1": "2025-12-05T21:15:39.641781+00:00",
+    "key2": "2025-12-05T21:15:39.641781+00:00"
+  },
+  "keyPolicy": null,
+  "kind": "StorageV2",
+  "largeFileSharesState": null,
+  "lastGeoFailoverTime": null,
+  "location": "germanywestcentral",
+  "minimumTlsVersion": "TLS1_0",
+  "name": "taskboardstorage78soll",
+  "networkRuleSet": {
+    "bypass": "AzureServices",
+    "defaultAction": "Allow",
+    "ipRules": [],
+    "ipv6Rules": [],
+    "resourceAccessRules": null,
+    "virtualNetworkRules": []
+  },
+  "placement": null,
+  "primaryEndpoints": {
+    "blob": "https://taskboardstorage78soll.blob.core.windows.net/",
+    "dfs": "https://taskboardstorage78soll.dfs.core.windows.net/",
+    "file": "https://taskboardstorage78soll.file.core.windows.net/",
+    "internetEndpoints": null,
+    "ipv6Endpoints": null,
+    "microsoftEndpoints": null,
+    "queue": "https://taskboardstorage78soll.queue.core.windows.net/",
+    "table": "https://taskboardstorage78soll.table.core.windows.net/",
+    "web": "https://taskboardstorage78soll.z1.web.core.windows.net/"
+  },
+  "primaryLocation": "germanywestcentral",
+  "privateEndpointConnections": [],
+  "provisioningState": "Succeeded",
+  "publicNetworkAccess": null,
+  "resourceGroup": "StorageRG",
+  "routingPreference": null,
+  "sasPolicy": null,
+  "secondaryEndpoints": null,
+  "secondaryLocation": null,
+  "sku": {
+    "name": "Standard_LRS",
+    "tier": "Standard"
+  },
+  "statusOfPrimary": "available",
+  "statusOfSecondary": null,
+  "storageAccountSkuConversionStatus": null,
+  "tags": {},
+  "type": "Microsoft.Storage/storageAccounts",
+  "zones": null
+}
+
+C:\Users\Soll>az storage container create -n taskboardcontainer --account-name taskboardstorage78soll
+
+There are no credentials provided in your command and environment, we will query for account key for your storage account.
+It is recommended to provide --connection-string, --account-key or --sas-token in your command as credentials.
+
+You also can add `--auth-mode login` in your command to use Azure Active Directory (Azure AD) for authorization if your login account is assigned required RBAC roles.
+For more information about RBAC roles in storage, visit https://learn.microsoft.com/azure/storage/common/storage-auth-aad-rbac-cli.
+
+In addition, setting the corresponding environment variables can avoid inputting credentials in your command. Please use --help to get more information about environment variable usage.
+{
+  "created": true
+}
+
+C:\Users\Soll>
+
+============================
+
+C:\Users\Soll\Desktop\New folder>terraform init
+Initializing the backend...
+
+Successfully configured the backend "azurerm"! Terraform will automatically
+use this backend unless the backend configuration changes.
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Reusing previous version of hashicorp/random from the dependency lock file
+- Using previously-installed hashicorp/azurerm v4.54.0
+- Using previously-installed hashicorp/random v3.7.2
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
+C:\Users\Soll\Desktop\New folder>terraform fmt
+main.tf
+
+C:\Users\Soll\Desktop\New folder>terraform validate
+Success! The configuration is valid.
+
+
+C:\Users\Soll\Desktop\New folder>
+
+
