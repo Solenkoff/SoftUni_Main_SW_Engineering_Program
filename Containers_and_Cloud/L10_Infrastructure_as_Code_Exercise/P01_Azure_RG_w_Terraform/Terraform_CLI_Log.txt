@@ -1,0 +1,160 @@
+Microsoft Windows [Version 10.0.19045.6466]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Soll\Desktop\P01_Azure_RG_w_Terraform>az login
+Select the account you want to log in with. For more information on login with Azure CLI, see https://go.microsoft.com/fwlink/?linkid=2271136
+
+Retrieving tenants and subscriptions for the selection...
+
+[Tenant and subscription selection]
+
+No     Subscription name    Subscription ID                       Tenant
+-----  -------------------  ------------------------------------  -----------------------------
+[1] *  Azure for Students   a807f40c-6671-4b6e-9c3e-411f84153bba  Software University (SoftUni)
+
+The default is marked with an *; the default tenant is 'Software University (SoftUni)' and subscription is 'Azure for Students' (a807f40c-6671-4b6e-9c3e-411f84153bba).
+
+Select a subscription and tenant (Type a number or Enter for no changes): 1
+
+Tenant: Software University (SoftUni)
+Subscription: Azure for Students (a807f40c-6671-4b6e-9c3e-411f84153bba)
+
+[Announcements]
+With the new Azure CLI login experience, you can select the subscription you want to use more easily. Learn more about it and its configuration at https://go.microsoft.com/fwlink/?linkid=2271236
+
+If you encounter any problem, please open an issue at https://aka.ms/azclibug
+
+[Warning] The login output has been updated. Please be aware that it no longer displays the full list of available subscriptions by default.
+
+===============
+
+C:\Users\Soll\Desktop\P01_Azure_RG_w_Terraform>terraform fmt
+main.tf
+
+C:\Users\Soll\Desktop\P01_Azure_RG_w_Terraform>terraform validate
+╷
+│ Error: Missing required provider
+│
+│ This configuration requires provider registry.terraform.io/hashicorp/azurerm, but that provider isn't
+│ available. You may be able to install it automatically by running:
+│   terraform init
+╵
+
+C:\Users\Soll\Desktop\P01_Azure_RG_w_Terraform>terraform init
+Initializing the backend...
+Initializing provider plugins...
+- Finding hashicorp/azurerm versions matching "4.54.0"...
+- Installing hashicorp/azurerm v4.54.0...
+- Installed hashicorp/azurerm v4.54.0 (signed by HashiCorp)
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
+C:\Users\Soll\Desktop\P01_Azure_RG_w_Terraform>terraform validate
+Success! The configuration is valid.
+
+================
+
+
+C:\Users\Soll\Desktop\P01_Azure_RG_w_Terraform>terraform plan
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_resource_group.arg will be created
+  + resource "azurerm_resource_group" "arg" {
+      + id       = (known after apply)
+      + location = "polandcentral"
+      + name     = "TerraformDemoRG"
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these
+actions if you run "terraform apply" now.
+
+C:\Users\Soll\Desktop\P01_Azure_RG_w_Terraform>terraform apply
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_resource_group.arg will be created
+  + resource "azurerm_resource_group" "arg" {
+      + id       = (known after apply)
+      + location = "polandcentral"
+      + name     = "TerraformDemoRG"
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+azurerm_resource_group.arg: Creating...
+azurerm_resource_group.arg: Still creating... [00m10s elapsed]
+azurerm_resource_group.arg: Still creating... [00m20s elapsed]
+azurerm_resource_group.arg: Creation complete after 27s [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/TerraformDemoRG]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+C:\Users\Soll\Desktop\P01_Azure_RG_w_Terraform>
+
+=================
+
+
+C:\Users\Soll\Desktop\P01_Azure_RG_w_Terraform>terraform destroy
+azurerm_resource_group.arg: Refreshing state... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/TerraformDemoRG]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # azurerm_resource_group.arg will be destroyed
+  - resource "azurerm_resource_group" "arg" {
+      - id         = "/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/TerraformDemoRG" -> null
+      - location   = "polandcentral" -> null
+      - name       = "TerraformDemoRG" -> null
+      - tags       = {} -> null
+        # (1 unchanged attribute hidden)
+    }
+
+Plan: 0 to add, 0 to change, 1 to destroy.
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+azurerm_resource_group.arg: Destroying... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-411f84153bba/resourceGroups/TerraformDemoRG]
+azurerm_resource_group.arg: Still destroying... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-...4153bba/resourceGroups/TerraformDemoRG, 00m10s elapsed]
+azurerm_resource_group.arg: Still destroying... [id=/subscriptions/a807f40c-6671-4b6e-9c3e-...4153bba/resourceGroups/TerraformDemoRG, 00m20s elapsed]
+azurerm_resource_group.arg: Destruction complete after 23s
+
+Destroy complete! Resources: 1 destroyed.
+
+C:\Users\Soll\Desktop\P01_Azure_RG_w_Terraform>
