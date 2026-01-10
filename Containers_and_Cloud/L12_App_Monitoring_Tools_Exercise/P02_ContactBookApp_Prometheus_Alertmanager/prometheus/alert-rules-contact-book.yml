@@ -1,0 +1,11 @@
+groups:
+  - name: Page access 3 times for 5 minutes
+    rules: 
+      - alert: PageAccessed3TimesFor5Minutes
+        expr: changes(contact_book_http_request_duration_seconds_count[5m]) >=  3
+        for: 10s
+        labels:
+          severity: warning
+        annotations:
+          summary: "The Page was accessed 3 or more times in the last 5 minutes."
+          
