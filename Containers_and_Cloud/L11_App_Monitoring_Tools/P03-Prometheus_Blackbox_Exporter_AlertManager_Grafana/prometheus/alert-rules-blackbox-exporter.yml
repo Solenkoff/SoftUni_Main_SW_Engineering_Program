@@ -1,0 +1,11 @@
+groups:
+  - name: Connection was slow
+    rules: 
+      - alert: Slow Connection
+        expr: probe_http_duration_seconds{phase="connect"} > 0.0025
+        for: 3s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Connection took longer than expected"
+          description: "Connection took longer than 2.5 milliseconds. Current value: {{ $value | humanize}}."
