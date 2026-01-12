@@ -1,0 +1,2 @@
+
+   Deployed_App_URL:   https://readinglist-soll.azurewebsites.net/
