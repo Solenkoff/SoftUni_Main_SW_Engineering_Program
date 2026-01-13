@@ -1,0 +1,11 @@
+groups:
+  - name: HTTP status code is not 200      #  !!!  IF  other Error  change  all
+    rules: 
+      - alert: SoftUniBazarWebApp_HTTP_Status_Not_200  # !!!   Change the name of the App
+        expr: probe_http_status_code != 200            # !!!   check  in   Prometheus Web / Query
+        for: 3s
+        labels:
+          severity: warning
+        annotations:
+          summary: "{{ $labels.instance }} HTTP status code is not 200"
+          description: "The HTTP status code for {{ $labels.instance }} is {{ $value }}"

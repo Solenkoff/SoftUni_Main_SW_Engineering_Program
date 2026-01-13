@@ -1,0 +1,30 @@
+global:
+  scrape_interval: 15s         #  !!!  Set by Requirements
+  evaluation_interval: 15s 
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - localhost:9093     # !!!   Before    # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  - alert-rule-exam.yml      # !!!   The name of alert-rule config file
+
+scrape_configs:
+  - job_name: "blackbox"
+    metrics_path: /probe     #  !!!  Set by Requirements   /  this is Default as well
+
+    static_configs:
+      - targets: 
+        - https://softunibazarsolenkoff.azurewebsites.net    # !!!  Put  the URL of the Web App
+
+    relabel_configs: 
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]  
+        target_label: instance
+      - target_label: __address__
+        replacement: localhost:9115   # The Blackbox exporter
