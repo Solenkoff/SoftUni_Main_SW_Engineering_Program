@@ -1,0 +1,11 @@
+groups:
+  - name: HTTP status code is not 200      
+    rules: 
+      - alert: Contacts_App_HTTP_Status_Not_200  
+        expr: probe_http_status_code != 200           
+        for: 3s
+        labels:
+          severity: warning
+        annotations:
+          summary: "{{ $labels.instance }} HTTP status code is not 200"
+          description: "The HTTP status code for {{ $labels.instance }} is {{ $value }}"
