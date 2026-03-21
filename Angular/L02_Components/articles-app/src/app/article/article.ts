@@ -18,9 +18,21 @@ export class Article {
     imageIsShown: boolean = false;
     imageButtonTitle: string = "Show Image";
 
-        constructor() {
+    constructor() {
         this.articleDescLen = 0;
         this.descToShow = '';
+    }
+
+    readMore(): void {
+        this.articleDescLen += this.symbols;
+
+        if (this.articleDescLen >= this.articleDesc.length) {
+            this.descToShow = this.articleDesc;
+            this.showHideBtn = true;
+            this.showReadMoreBtn = false;
+        } else {
+            this.descToShow = this.articleDesc.substring(0, this.articleDescLen);
+        }
     }
 
 }
