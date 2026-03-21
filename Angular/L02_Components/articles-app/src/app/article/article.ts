@@ -40,4 +40,12 @@ export class Article {
         this.imageButtonTitle = this.imageIsShown ? 'Hide Image' : 'Show Image';
     }
 
+    hideDesc(): void {
+        this.articleDescLen = 0;
+        this.descToShow = '';
+
+        this.showReadMoreBtn = true;
+        this.showHideBtn = false;
+    }
+
 }
