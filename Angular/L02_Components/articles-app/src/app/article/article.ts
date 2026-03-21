@@ -35,4 +35,9 @@ export class Article {
         }
     }
 
+    toggleImage(): void {
+        this.imageIsShown = !this.imageIsShown;
+        this.imageButtonTitle = this.imageIsShown ? 'Hide Image' : 'Show Image';
+    }
+
 }
