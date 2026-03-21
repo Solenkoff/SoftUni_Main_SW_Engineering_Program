@@ -3,6 +3,7 @@ import { Article } from '../article/article';
 import { ArticleData } from '../data/data';
 import { ArticleModel } from '../models/article.model';
 
+
 @Component({
     selector: 'app-articles',
     imports: [Article],

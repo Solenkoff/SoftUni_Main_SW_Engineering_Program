@@ -1,1 +1,6 @@
-<p>articles works!</p>
+<ul>
+    @for(a of articles; track a) {
+    <app-article [article]="a" [articleDesc]="a.description">
+    </app-article>
+    }
+</ul>
