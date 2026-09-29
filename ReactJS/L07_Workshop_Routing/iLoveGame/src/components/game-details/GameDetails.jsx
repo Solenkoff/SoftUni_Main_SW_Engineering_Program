@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import request from "../../utils/request";
 
 export default function GameDetails({
 
 }) {
     const { gameId } = useParams();
+    const navigate = useNavigate();
     const [game, setGame] = useState({});
 
     useEffect(() => {
@@ -16,6 +17,23 @@ export default function GameDetails({
             .catch(error => alert(error));
 
     }, [gameId]);
+
+    const deleteGameClickHandler = async (e) => {
+        e.preventDefault();
+
+        const confirmed = confirm(`Are yoiu sure you want to delete ${game.title} game?`);
+
+        if(!confirmed){
+            return;
+        }
+
+        try {
+            await request(`/games?id=eq.${gameId}`, 'DELETE');
+            navigate('/catalog');
+        } catch (error) {
+            alert(err);
+        }
+    }
 
     return (
         <section id="game-details">
@@ -47,14 +65,11 @@ export default function GameDetails({
                         <p className="text-summary">{game.summary}</p>
                     </div>
                 </div>
+
                 {/* Edit/Delete buttons ( Only for creator of this game )  */}
                 <div className="buttons">
-                    <a href="#" className="button">
-                        Edit
-                    </a>
-                    <a href="#" className="button">
-                        Delete
-                    </a>
+                    <a href="#" className="button">Edit</a>
+                    <a href="#" className="button" onClick={deleteGameClickHandler}>Delete</a>
                 </div>
                 <div className="details-comments">
                     <h2>Comments:</h2>
@@ -75,6 +90,7 @@ export default function GameDetails({
                     {/* <p class="no-comment">No comments.</p> */}
                 </div>
             </div>
+
             {/* Add Comment ( Only for logged-in users, which is not creators of the current game ) */}
             <article className="create-comment">
                 <label>Add new comment:</label>
