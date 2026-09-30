@@ -1,11 +1,12 @@
 const url = "https://hcfgbaublpibdkyhllqi.supabase.co/rest/v1";
 const apiKey = "sb_publishable_pA-XOlx980ShnF8IvH0rag_D7upZu9Q";
 
-export default async function request(path = '/', method = "GET", data = null) {
+export default async function request(path = '/', method = "GET", data = null, specs = {}) {
     const options = {
         headers:{
             apiKey,
-        }
+        },
+        ...specs
     };
 
     if(method !== "GET")
