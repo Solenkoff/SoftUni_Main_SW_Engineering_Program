@@ -1,12 +1,11 @@
-const url = "https://hcfgbaublpibdkyhllqi.supabase.co/rest/v1";
-const apiKey = "sb_publishable_pA-XOlx980ShnF8IvH0rag_D7upZu9Q";
+const mainUrl = import.meta.env.VITE_MAIN_URL;
 
 export default async function request(path = '/', method = "GET", data = null, specs = {}) {
     const options = {
         headers:{
-            apiKey,
+            apiKey: import.meta.env.VITE_API_KEY,
         },
-        ...specs
+        ...specs   
     };
 
     if(method !== "GET")
@@ -19,7 +18,7 @@ export default async function request(path = '/', method = "GET", data = null, s
         options.body = JSON.stringify(data);
     }
 
-    const response = await fetch(`${url}${path}`, options);
+    const response = await fetch(`${mainUrl}${path}`, options);
 
     if(!response.ok){
         throw new Error(`HTTP error! status: ${response.status}`);
